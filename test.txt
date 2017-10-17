@@ -1,8 +1,1 @@
 file
-<<<<<<< HEAD
-edit#1
-edit#2
-edit#3
-=======
-edit#1
->>>>>>> parent of 05b935d... edit#2
