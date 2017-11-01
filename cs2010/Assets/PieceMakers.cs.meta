@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: b3f525cfb85f9044aa76a153a55a8cca
-timeCreated: 1509552261
+timeCreated: 1509561744
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blackPiecePrefab: {fileID: 1877867875929936, guid: 1a491dbdabc8a664c8cc8450ec664991,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

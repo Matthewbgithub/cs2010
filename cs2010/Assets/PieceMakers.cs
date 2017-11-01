@@ -5,9 +5,12 @@ using UnityEngine;
 public class PieceMakers : MonoBehaviour {
 
 	public GameObject blackPiecePrefab;
+	public GameObject whitePiecePrefab;
+	
+	private static int turns = 0;
+	
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -16,11 +19,12 @@ public class PieceMakers : MonoBehaviour {
 	}
 	void OnMouseDown()
 	{
-		Debug.Log("Place a piece");
+		turns++;
+		Debug.Log(turns);
 		var pos = this.transform.position;
 		var rot = Quaternion.Euler(-90,0,0);
-
-		var newPiece = Instantiate(blackPiecePrefab, pos, rot);
+		
+		var newPiece = Instantiate((turns % 2 == 0)?blackPiecePrefab:whitePiecePrefab, pos, rot);
 		
 	}
 }
