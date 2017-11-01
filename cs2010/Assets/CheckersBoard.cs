@@ -47,7 +47,8 @@ public class CheckersBoard : MonoBehaviour {
 		{
 			for(int y = 0; y < 16; y++)
 			{
-				GameObject ph = Instantiate(piecePlaceHolder) as GameObject;
+				var ph = Instantiate(piecePlaceHolder);
+				ph.GetComponent<PieceMakers>().Initialize(x,y);
 //				ph.transform.SetParent(transform);
 //				GameObject g = ph.GetComponent<GameObject>();
 //				Pieces[x,y] = g;

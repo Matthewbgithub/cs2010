@@ -21,7 +21,6 @@ public class Clicking : MonoBehaviour {
 	 }
 	
 	
-	
 	// Use this for initialization
 	/*
 	void Start () {
