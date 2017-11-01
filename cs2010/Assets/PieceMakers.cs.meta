@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: b3f525cfb85f9044aa76a153a55a8cca
-timeCreated: 1509561744
+timeCreated: 1509576557
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - blackPiecePrefab: {fileID: 1877867875929936, guid: 1a491dbdabc8a664c8cc8450ec664991,
       type: 2}
+  - whitePiecePrefab: {fileID: 100000, guid: 9f7dec8e80fc81e44acd26dc19814ec4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

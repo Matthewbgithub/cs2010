@@ -122,3 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackPiecePrefab: {fileID: 1877867875929936, guid: 1a491dbdabc8a664c8cc8450ec664991,
     type: 2}
+  whitePiecePrefab: {fileID: 100000, guid: 9f7dec8e80fc81e44acd26dc19814ec4, type: 3}
