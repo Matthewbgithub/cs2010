@@ -20,6 +20,7 @@ MonoBehaviour:
     x: 0
     y: 30
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 1440
     height: 742
   m_MinSize: {x: 713, y: 492}
@@ -28,12 +29,19 @@ MonoBehaviour:
   controlID: 2652
 =======
     width: 2544
+=======
+    width: 2560
+>>>>>>> parent of 3318051... changed the lighting
     height: 947
   m_MinSize: {x: 917, y: 492}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 769
 >>>>>>> matt
+=======
+  controlID: 1927
+>>>>>>> parent of 3318051... changed the lighting
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -57,6 +65,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 0
     y: 588
     width: 799
@@ -65,6 +74,11 @@ MonoBehaviour:
     x: 681
     y: 100
     width: 848
+=======
+    x: 677
+    y: 92
+    width: 855
+>>>>>>> parent of 3318051... changed the lighting
     height: 629
 >>>>>>> matt
   m_MaximizeOnPlay: 1
@@ -76,6 +90,7 @@ MonoBehaviour:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_HBaseRangeMin: -199.75
     m_HBaseRangeMax: 199.75
     m_VBaseRangeMin: -52.25
@@ -83,6 +98,10 @@ MonoBehaviour:
 =======
     m_HBaseRangeMin: -424
     m_HBaseRangeMax: 424
+=======
+    m_HBaseRangeMin: -427.5
+    m_HBaseRangeMax: 427.5
+>>>>>>> parent of 3318051... changed the lighting
     m_VBaseRangeMin: -306
     m_VBaseRangeMax: 306
 >>>>>>> matt
@@ -103,6 +122,7 @@ MonoBehaviour:
       x: 0
       y: 17
 <<<<<<< HEAD
+<<<<<<< HEAD
       width: 799
       height: 209
     m_Scale: {x: 2, y: 2}
@@ -113,12 +133,19 @@ MonoBehaviour:
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 424, y: 306}
 >>>>>>> matt
+=======
+      width: 855
+      height: 612
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 427.5, y: 306}
+>>>>>>> parent of 3318051... changed the lighting
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
       x: -199.75
       y: -52.25
@@ -128,6 +155,11 @@ MonoBehaviour:
       x: -424
       y: -306
       width: 848
+=======
+      x: -427.5
+      y: -306
+      width: 855
+>>>>>>> parent of 3318051... changed the lighting
       height: 612
 >>>>>>> matt
     m_MinimalGUI: 1
@@ -135,10 +167,14 @@ MonoBehaviour:
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 1598, y: 452}
 =======
   m_LastWindowPixelSize: {x: 848, y: 629}
 >>>>>>> matt
+=======
+  m_LastWindowPixelSize: {x: 855, y: 629}
+>>>>>>> parent of 3318051... changed the lighting
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -161,6 +197,7 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 801
     height: 742
   m_MinSize: {x: 202, y: 442}
@@ -169,12 +206,19 @@ MonoBehaviour:
   controlID: 2653
 =======
     width: 1523
+=======
+    width: 1534
+>>>>>>> parent of 3318051... changed the lighting
     height: 947
   m_MinSize: {x: 406, y: 342}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 770
 >>>>>>> matt
+=======
+  controlID: 1788
+>>>>>>> parent of 3318051... changed the lighting
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,12 +239,20 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1523
+=======
+    width: 1534
+>>>>>>> parent of 3318051... changed the lighting
     height: 650
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 771
+=======
+  controlID: 1789
+>>>>>>> parent of 3318051... changed the lighting
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -219,6 +271,7 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 801
     height: 495
   m_MinSize: {x: 202, y: 221}
@@ -226,6 +279,9 @@ MonoBehaviour:
   m_ActualView: {fileID: 5}
 =======
     width: 671
+=======
+    width: 675
+>>>>>>> parent of 3318051... changed the lighting
     height: 650
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -259,6 +315,7 @@ MonoBehaviour:
     serializedVersion: 2
 <<<<<<< HEAD
     x: 0
+<<<<<<< HEAD
     y: 93
     width: 799
     height: 474
@@ -266,6 +323,10 @@ MonoBehaviour:
     x: 8
     y: 100
     width: 669
+=======
+    y: 92
+    width: 673
+>>>>>>> parent of 3318051... changed the lighting
     height: 629
 >>>>>>> matt
   m_SceneLighting: 1
@@ -274,9 +335,15 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 0, y: 0, z: 0}
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
+=======
+    m_Target: {x: 5.0807686, y: -24.393436, z: 3.3324943}
+    speed: 2
+    m_Value: {x: 5.0807686, y: -24.393436, z: 3.3324943}
+>>>>>>> parent of 3318051... changed the lighting
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -299,6 +366,7 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
     speed: 2
     m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
@@ -312,13 +380,25 @@ MonoBehaviour:
     speed: 2
     m_Value: 53.296227
 >>>>>>> matt
+=======
+    m_Target: {x: -0.6548604, y: 0.020400224, z: -0.017688546, w: -0.75526744}
+    speed: 2
+    m_Value: {x: -0.6548604, y: 0.020400224, z: -0.017688546, w: -0.75526744}
+  m_Size:
+    m_Target: 46.8183
+    speed: 2
+    m_Value: 46.8183
+>>>>>>> parent of 3318051... changed the lighting
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
 =======
+=======
+>>>>>>> parent of 3318051... changed the lighting
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
 >>>>>>> matt
   m_LastSceneViewOrtho: 0
@@ -341,6 +421,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 0
     y: 495
     width: 801
@@ -355,6 +436,14 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
 >>>>>>> matt
+=======
+    x: 675
+    y: 0
+    width: 859
+    height: 650
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+>>>>>>> parent of 3318051... changed the lighting
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -379,7 +468,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 650
+<<<<<<< HEAD
     width: 1523
+=======
+    width: 1534
+>>>>>>> parent of 3318051... changed the lighting
     height: 297
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
@@ -410,9 +503,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 8
     y: 750
     width: 1521
+=======
+    x: 0
+    y: 742
+    width: 1532
+>>>>>>> parent of 3318051... changed the lighting
     height: 276
 --- !u!114 &10
 >>>>>>> matt
@@ -432,6 +531,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 801
     y: 0
     width: 290
@@ -445,11 +545,20 @@ MonoBehaviour:
     x: 1523
     y: 0
     width: 465
+=======
+    x: 1534
+    y: 0
+    width: 468
+>>>>>>> parent of 3318051... changed the lighting
     height: 947
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 726
+=======
+  controlID: 1928
+>>>>>>> parent of 3318051... changed the lighting
 --- !u!114 &11
 >>>>>>> matt
 MonoBehaviour:
@@ -468,6 +577,7 @@ MonoBehaviour:
     x: 0
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 290
     height: 326
   m_MinSize: {x: 204, y: 221}
@@ -475,6 +585,9 @@ MonoBehaviour:
   m_ActualView: {fileID: 9}
 =======
     width: 465
+=======
+    width: 468
+>>>>>>> parent of 3318051... changed the lighting
     height: 316
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
@@ -507,6 +620,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 803
     y: 93
     width: 286
@@ -527,6 +641,17 @@ MonoBehaviour:
     m_LastClickedID: 10406
     m_ExpandedIDs: 2af8ffff00000000
 >>>>>>> matt
+=======
+    x: 1536
+    y: 92
+    width: 464
+    height: 295
+  m_TreeViewState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 72070000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 1afcffff00000000
+>>>>>>> parent of 3318051... changed the lighting
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -572,7 +697,11 @@ MonoBehaviour:
   m_ActualView: {fileID: 11}
 =======
     y: 316
+<<<<<<< HEAD
     width: 465
+=======
+    width: 468
+>>>>>>> parent of 3318051... changed the lighting
     height: 631
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
@@ -605,6 +734,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 803
     y: 419
     width: 286
@@ -613,6 +743,11 @@ MonoBehaviour:
     x: 1533
     y: 416
     width: 461
+=======
+    x: 1536
+    y: 408
+    width: 464
+>>>>>>> parent of 3318051... changed the lighting
     height: 610
 >>>>>>> matt
   m_SearchFilter:
@@ -628,6 +763,7 @@ MonoBehaviour:
     m_SearchArea: 0
 <<<<<<< HEAD
     m_Folders:
+<<<<<<< HEAD
     - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 32
@@ -643,9 +779,13 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000d2070000cc260000e4260000ec260000ee260000fa2600005427000000ca9a3bffffff7f
 =======
     m_Folders: []
+=======
+    - Assets/Prefab
+>>>>>>> parent of 3318051... changed the lighting
   m_ViewMode: 0
   m_StartGridSize: 64
-  m_LastFolders: []
+  m_LastFolders:
+  - Assets/Prefab
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\goril\Documents\Unity\cs2010
   m_IsLocked: 0
@@ -653,8 +793,12 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b0260000
     m_LastClickedID: 9904
+<<<<<<< HEAD
     m_ExpandedIDs: 000000006a28000070280000842800008c28000090280000962800009c280000f6280000
 >>>>>>> matt
+=======
+    m_ExpandedIDs: 000000002626000032260000402600004c2600006226000064260000f8260000
+>>>>>>> parent of 3318051... changed the lighting
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Scene
@@ -680,6 +824,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: a6280000
     m_LastClickedID: 0
 <<<<<<< HEAD
@@ -687,6 +832,11 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 000000006a28000070280000842800008c28000090280000962800009c280000f6280000
 >>>>>>> matt
+=======
+    m_SelectedIDs: 72070000
+    m_LastClickedID: 1906
+    m_ExpandedIDs: 000000002626000032260000402600004c2600006226000064260000f8260000
+>>>>>>> parent of 3318051... changed the lighting
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -712,12 +862,17 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: c2070000
     m_LastClickedInstanceID: 1986
     m_HadKeyboardFocusLastEvent: 1
 =======
     m_SelectedInstanceIDs: a6280000
     m_LastClickedInstanceID: 10406
+=======
+    m_SelectedInstanceIDs: 72070000
+    m_LastClickedInstanceID: 1906
+>>>>>>> parent of 3318051... changed the lighting
     m_HadKeyboardFocusLastEvent: 0
 >>>>>>> matt
     m_ExpandedInstanceIDs: c6230000
@@ -762,6 +917,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1091
     y: 0
     width: 349
@@ -770,6 +926,11 @@ MonoBehaviour:
     x: 1988
     y: 0
     width: 556
+=======
+    x: 2002
+    y: 0
+    width: 558
+>>>>>>> parent of 3318051... changed the lighting
     height: 947
 >>>>>>> matt
   m_MinSize: {x: 277, y: 71}
@@ -802,6 +963,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1093
     y: 93
     width: 347
@@ -810,6 +972,11 @@ MonoBehaviour:
     x: 1998
     y: 100
     width: 554
+=======
+    x: 2004
+    y: 92
+    width: 556
+>>>>>>> parent of 3318051... changed the lighting
     height: 926
 >>>>>>> matt
   m_ScrollPosition: {x: 0, y: 0}
