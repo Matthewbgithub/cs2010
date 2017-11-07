@@ -21,8 +21,7 @@ public class PieceMakers : MonoBehaviour {
 		this.x = x;
 		this.y = y;
 	}
-	
-	
+
 	void OnMouseDown()
 	{
 		//if the current slot is empty

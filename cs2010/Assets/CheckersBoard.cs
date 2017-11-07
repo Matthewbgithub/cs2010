@@ -9,7 +9,7 @@ public class CheckersBoard : MonoBehaviour {
     public GameObject blackPiecePrefab;
 	public GameObject piecePlaceHolder;
 	private Vector3 boardOffset = new Vector3(-8.0f, 0, -8.0f);
-	private Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
+	private Vector3 pieceOffset = new Vector3(1.0f, 0, 1.0f);
     
 	
     private void Start()
