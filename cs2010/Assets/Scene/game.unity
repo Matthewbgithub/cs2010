@@ -39,10 +39,14 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 =======
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 >>>>>>> parent of 3318051... changed the lighting
+=======
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+>>>>>>> parent of ebac950... Merge branch 'matt' into li
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -139,6 +143,7 @@ Light:
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Intensity: 2
   m_Range: 80
   m_SpotAngle: 73.5
@@ -147,6 +152,11 @@ Light:
   m_Range: 10
   m_SpotAngle: 30
 >>>>>>> parent of 3318051... changed the lighting
+=======
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+>>>>>>> parent of ebac950... Merge branch 'matt' into li
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
