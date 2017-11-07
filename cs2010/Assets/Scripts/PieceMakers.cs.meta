@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 guid: b3f525cfb85f9044aa76a153a55a8cca
+<<<<<<< HEAD:cs2010/Assets/Scripts/PieceMakers.cs.meta
 timeCreated: 1510087126
 licenseType: Free
 MonoImporter:
@@ -9,6 +10,13 @@ MonoImporter:
       type: 2}
   - whitePiecePrefab: {fileID: 1231481668816966, guid: 2ac74e851ecc48e49a470a148a37d2e5,
       type: 2}
+=======
+timeCreated: 1509552261
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+>>>>>>> parent of c71c6c7... places white then black pieces:cs2010/Assets/PieceMakers.cs.meta
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

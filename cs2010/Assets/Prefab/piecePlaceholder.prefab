@@ -23,8 +23,11 @@ GameObject:
   - component: {fileID: 65759901752553168}
   - component: {fileID: 23064671291803642}
   - component: {fileID: 114225950389470694}
+<<<<<<< HEAD
   - component: {fileID: 114990863396949184}
   - component: {fileID: 114456869206095252}
+=======
+>>>>>>> parent of c71c6c7... places white then black pieces
   m_Layer: 0
   m_Name: piecePlaceholder
   m_TagString: Untagged
@@ -110,6 +113,7 @@ MonoBehaviour:
   material:
   - {fileID: 2100000, guid: e871216bc1372c24582ef8eb99ed2126, type: 2}
   - {fileID: 2100000, guid: ca6ee9140f369164b85125234a8c9647, type: 2}
+<<<<<<< HEAD
 --- !u!114 &114456869206095252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,3 +146,5 @@ MonoBehaviour:
   x: 0
   y: 0
 >>>>>>> matt
+=======
+>>>>>>> parent of c71c6c7... places white then black pieces
