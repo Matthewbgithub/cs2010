@@ -8,18 +8,21 @@ public class Clicking : MonoBehaviour {
 	private Renderer rend;
 	
 	void Start () {
+		//initializes the renderer, not quite sure what that is
 		rend = GetComponent<Renderer>();
+		//sets the placeholder material to be material 0, or the unselected one
 		rend.material = material[0];
 	}
 	 void OnMouseEnter()
 	 {
+		 //sets to material 1, selected
 		 rend.material = material[1];
 	 }
 	 void OnMouseExit()
 	 {
+		 //sets to material 0, unselected
 		 rend.material = material[0];
 	 }
-	
 	
 	
 	// Use this for initialization

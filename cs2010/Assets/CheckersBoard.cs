@@ -19,43 +19,26 @@ public class CheckersBoard : MonoBehaviour {
     
     private void GenerateBoard()
     {
-		/*
-        //Genrate white team
-        for(int y = 0; y < 3; y++)
-        {
-			bool oddRow = (y % 2 == 0);
-            for(int x = 0; x < 16; x+=2)
-            {
-                //Generate the piece
-                GeneratePiece((oddRow) ?x:x+1,y);
-            }
-        }
 		
-		//Genrate black team
-        for(int y = 15; y > 12; y--)
-        {
-			bool oddRow = (y % 2 == 0);
-            for(int x = 0; x < 16; x+=2)
-            {
-                //Generate the piece
-                GeneratePiece((oddRow) ?x:x+1,y);
-            }
-        }
-		*/
 		//generate them placeholders
 		for(int x = 0; x < 16; x++)
 		{
 			for(int y = 0; y < 16; y++)
 			{
-				GameObject ph = Instantiate(piecePlaceHolder) as GameObject;
-//				ph.transform.SetParent(transform);
-//				GameObject g = ph.GetComponent<GameObject>();
-//				Pieces[x,y] = g;
+				//places the placeholder
+				var ph = Instantiate(piecePlaceHolder);
+				//runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
+				ph.GetComponent<PieceMakers>().Initialize(x,y);
 				MovePlaceholder(ph, x, y);
 			}
 		}
     }
-    
+	private void MovePlaceholder( GameObject g, int x, int y)
+	{
+		g.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+	}
+	
+    /*
     private void GeneratePiece(int x, int y)
     {
 		bool isPieceWhite = (y > 3) ? false : true;
@@ -71,9 +54,6 @@ public class CheckersBoard : MonoBehaviour {
 		p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
 		
 	}
-	private void MovePlaceholder( GameObject g, int x, int y)
-	{
-		g.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
-	}
+	*/
 	
 }

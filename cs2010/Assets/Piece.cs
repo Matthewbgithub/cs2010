@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour {
 
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -14,8 +15,4 @@ public class Piece : MonoBehaviour {
 		
 	}
 	
-	void OnMouseOver()
-	{		
-		
-	}
 }
