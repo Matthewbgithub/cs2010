@@ -1,11 +1,11 @@
 # =============== #
 # Unity generated #
 # =============== #
-/cs2010/[Tt]emp/
-/cs2010/[Oo]bj/
-/cs2010/[Bb]uild
-/cs2010/[Bb]uilds/
-/cs2010/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild
+**/[Bb]uilds/
+**/[Ll]ibrary/
 sysinfo.txt
 *.stackdump
 cs2010/Assets/AssetStoreTools*
