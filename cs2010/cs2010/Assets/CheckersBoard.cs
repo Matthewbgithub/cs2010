@@ -9,8 +9,14 @@ public class CheckersBoard : MonoBehaviour {
   public GameObject blackPiecePrefab;
 	public GameObject piecePlaceHolder;
 	private Vector3 boardOffset = new Vector3(-8.0f, 0, -8.0f);
+<<<<<<< HEAD:cs2010/cs2010/Assets/CheckersBoard.cs
 
 
+=======
+	private Vector3 pieceOffset = new Vector3(1.0f, 0, 1.0f);
+    
+	
+>>>>>>> tim:cs2010/Assets/CheckersBoard.cs
     private void Start()
     {
         GenerateBoard();

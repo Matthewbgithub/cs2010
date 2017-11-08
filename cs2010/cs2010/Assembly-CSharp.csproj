@@ -55,7 +55,10 @@
      <Compile Include="Assets\Clicking.cs" />
      <Compile Include="Assets\Piece.cs" />
      <Compile Include="Assets\PieceMakers.cs" />
+<<<<<<< HEAD:cs2010/cs2010/Assembly-CSharp.csproj
      <Compile Include="Assets\stoneCounter.cs" />
+=======
+>>>>>>> tim:cs2010/Assembly-CSharp.csproj
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
