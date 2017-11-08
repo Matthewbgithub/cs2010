@@ -14,6 +14,9 @@ public class PieceMakers : MonoBehaviour {
 	private static int turns = 0;
 	//array of gameObjects, not sure if it stores the actual objects or just clones
 	private static GameObject[,] boardRecord = new GameObject[16,16];
+
+	private int blackPieces = 0;
+	private int whitePieces = 0;
 	
 	public void Initialize(int boardx, int boardy) 
 	{
@@ -54,7 +57,31 @@ public class PieceMakers : MonoBehaviour {
 		newPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
 		//adds to array
 		boardRecord[boardx,boardy] = newPiece;
+		countPieces ();
 	}
+
+	void countPieces(){
+		Debug.Log ("piece count function called");
+		for (int x = 0; x < 16; x++) {
+			for (int y = 0; y < 16; y++) {
+				//Debug.Log (boardRecord [x, y]);
+				if (boardRecord [x,y] != null) {
+					var thisPlace = boardRecord[x,y].GetComponent<Piece>().getColour();
+					if (thisPlace == "black") {
+						blackPieces += 1;
+					}
+					if (thisPlace == "white") {
+						whitePieces += 1;
+					}
+				}
+
+			}
+
+		}
+		Debug.Log ("there are " + blackPieces + " black pieces");
+		Debug.Log ("there are " + whitePieces + " white pieces");
+	}
+
 	void CheckForCaptures()
 	{
 		for(int x = 0; x < 16; x++)
