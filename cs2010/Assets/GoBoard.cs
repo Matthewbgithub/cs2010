@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckersBoard : MonoBehaviour {
+public class GoBoard : MonoBehaviour {
 
 	public Piece[,] Pieces = new Piece[16,16];
     public GameObject whitePiecePrefab;
@@ -37,23 +37,5 @@ public class CheckersBoard : MonoBehaviour {
 	{
 		g.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
 	}
-	
-    /*
-    private void GeneratePiece(int x, int y)
-    {
-		bool isPieceWhite = (y > 3) ? false : true;
-        GameObject go = Instantiate((isPieceWhite)?whitePiecePrefab:blackPiecePrefab) as GameObject;
-        go.transform.SetParent(transform);
-        Piece p = go.GetComponent<Piece>();
-        Pieces[x,y] = p;
-		MovePiece(p, x, y);
-    }
-	
-	private void MovePiece( Piece p, int x, int y)
-	{
-		p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
-		
-	}
-	*/
 	
 }

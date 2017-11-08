@@ -51,8 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CheckersBoard.cs" />
      <Compile Include="Assets\Clicking.cs" />
+     <Compile Include="Assets\GoBoard.cs" />
      <Compile Include="Assets\Piece.cs" />
      <Compile Include="Assets\PieceMakers.cs" />
  <Reference Include="UnityEngine.UI">
