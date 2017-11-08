@@ -1,14 +1,14 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-/[Bb]uilds/
-/[Ll]ibrary/**
+cs2010/[Tt]emp/
+cs2010/[Oo]bj/
+cs2010/[Bb]uild
+cs2010/[Bb]uilds/
+cs2010/[Ll]ibrary/
 sysinfo.txt
 *.stackdump
-/Assets/AssetStoreTools*
+cs2010/Assets/AssetStoreTools*
 *.apk
 *.unitypackage
  

@@ -32,7 +32,7 @@ public class PieceMakers : MonoBehaviour {
 			CheckForCaptures();
 		}else
 		{
-			Debug.Log("Already a piece there!!!");
+//			Debug.Log("Already a piece there!!!");
 		}
 		
 	}
@@ -87,9 +87,11 @@ public class PieceMakers : MonoBehaviour {
 		
 		foreach (int[] xy in xychange)
 		{
-
-			//xy[0] is the x and xy[1] is the y
-			//if board location has a piece
+			//check piece is not out of board
+			if(xy[0] >= 0 && xy[0] < 16 && xy[1] >= 0 && xy[1] < 16)
+			{
+				//xy[0] is the x and xy[1] is the y
+				//if board location has a piece
 				if(boardRecord[xy[0],xy[1]] != null)
 				{
 					//compare colour, should be opposite and not empty
@@ -102,7 +104,7 @@ public class PieceMakers : MonoBehaviour {
 				{
 					PieceCaptured = false;
 				}
-				
+			}
 		}
 		
 		if(PieceCaptured)
@@ -115,5 +117,6 @@ public class PieceMakers : MonoBehaviour {
 	{
 		boardRecord[x,y].GetComponent<Piece>().Destroy();
 		boardRecord[x,y] = null;
+		Debug.Log("piece removed");
 	}
 }
