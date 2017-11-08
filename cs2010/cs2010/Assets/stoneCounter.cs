@@ -7,6 +7,7 @@ public class stoneCounter : MonoBehaviour {
 
 	public Text blackCountText;
 	public Text whiteCountText;
+	public GameObject board;
 
 	private int bCount;
 	private int wCount;
@@ -21,8 +22,8 @@ public class stoneCounter : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		bCount++;
-		wCount++;
+		Debug.Log("clicking;.....");
+
 	}
 
 	void SetCountText()
