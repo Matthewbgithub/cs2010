@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour {
 
+	public int boardx;
+	public int boardy;
+	public bool isWhite;
 	
-	// Use this for initialization
-	void Start () {
-		
+	public void setup(int x, int y, bool isWhite)
+	{
+		this.boardx = x;
+		this.boardy = y;
+		this.isWhite = isWhite;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public int getX()
+	{
+		return this.boardx;
 	}
-	
+	public int getY()
+	{
+		return this.boardy;
+	}
+	public string getColour()
+	{
+		if(isWhite)
+		{
+			return "white";
+		}else
+		{
+			return "black";
+		}
+	}
+	public void Destroy()
+	{
+		Destroy(gameObject);
+	}
 }
