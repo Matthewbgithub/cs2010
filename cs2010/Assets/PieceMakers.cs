@@ -78,6 +78,7 @@ public class PieceMakers : MonoBehaviour {
 		//sets current colour
 		var ThisColour = boardRecord[x,y].GetComponent<Piece>().getColour();
 		bool PieceCaptured = true;
+		//array for , above below, left and right of the piece
 		int[][] xychange = new int[][] {
 			new int[] {x, y-1},
 			new int[] {x, y+1},
