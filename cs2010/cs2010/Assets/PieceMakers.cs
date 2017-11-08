@@ -15,35 +15,26 @@ public class PieceMakers : MonoBehaviour {
 	//array of gameObjects, not sure if it stores the actual objects or just clones
 	private static GameObject[,] boardRecord = new GameObject[16,16];
 
-<<<<<<< HEAD:cs2010/cs2010/Assets/PieceMakers.cs
-	public void Initialize(int x, int y)
-=======
 	private int blackPieces = 0;
 	private int whitePieces = 0;
 	
 	public void Initialize(int boardx, int boardy) 
->>>>>>> tim:cs2010/Assets/PieceMakers.cs
 	{
 		//sets this x and y when it is called inside of checkerboard
 		this.boardx = boardx;
 		this.boardy = boardy;
 	}
 
-<<<<<<< HEAD:cs2010/cs2010/Assets/PieceMakers.cs
-
-=======
->>>>>>> tim:cs2010/Assets/PieceMakers.cs
 	void OnMouseDown()
 	{
 		//if the current slot is empty
 		if(boardRecord[boardx,boardy]==null)
 		{
-<<<<<<< HEAD:cs2010/cs2010/Assets/PieceMakers.cs
 			//sets obj to black or white depending on turn
-			var obj = (turns % 2 == 0)?blackPiecePrefab:whitePiecePrefab;
+		var obj = (turns % 2 == 0)?blackPiecePrefab:whitePiecePrefab;
 
 			//adds to array
-			boardRecord[x,y] = obj;
+			boardRecord[boardx,boardy] = obj;
 			//increments turn
 			turns++;
 			var pos = this.transform.position;
@@ -53,11 +44,10 @@ public class PieceMakers : MonoBehaviour {
 			var rot = Quaternion.Euler(-90,0,0);
 			//places it in the scene
 			var newPiece = Instantiate(obj, pos, rot);
-=======
 			PlacePiece();
 			CheckForCaptures();
->>>>>>> tim:cs2010/Assets/PieceMakers.cs
-		}else
+		}
+		else
 		{
 			Debug.Log("Already a piece there!!!");
 		}

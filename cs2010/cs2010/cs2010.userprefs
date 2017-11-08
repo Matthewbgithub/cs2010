@@ -1,22 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-<<<<<<< HEAD:cs2010/cs2010/cs2010.userprefs
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PieceMakers.cs">
     <Files>
-<<<<<<< HEAD
-      <File FileName="Assets/stoneCounter.cs" Line="13" Column="21" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PieceMakers.cs">
-    <Files>
-      <File FileName="Assets/CheckersBoard.cs" Line="33" Column="5" />
-      <File FileName="Assets/Clicking.cs" Line="12" Column="35" />
-      <File FileName="Assets/Piece.cs" Line="1" Column="1" />
-      <File FileName="Assets/PieceMakers.cs" Line="42" Column="46" />
->>>>>>> tim:cs2010/cs2010.userprefs
-=======
-      <File FileName="Assets/PieceMakers.cs" Line="10" Column="2" />
->>>>>>> parent of 32c3908... maybe?
+      <File FileName="Assets/PieceMakers.cs" Line="18" Column="2" />
+      <File FileName="Assets/CheckersBoard.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
