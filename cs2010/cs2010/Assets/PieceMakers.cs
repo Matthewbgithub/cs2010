@@ -6,7 +6,7 @@ public class PieceMakers : MonoBehaviour {
 	//records what a white and black piece look like
 	public GameObject blackPiecePrefab;
 	public GameObject whitePiecePrefab;
-	
+
 	//records the location of this placeholder
 	public int x;
 	public int y;
@@ -14,15 +14,15 @@ public class PieceMakers : MonoBehaviour {
 	private static int turns = 0;
 	//array of gameObjects, not sure if it stores the actual objects or just clones
 	private static GameObject[,] boardRecord = new GameObject[16,16];
-	
-	public void Initialize(int x, int y) 
+
+	public void Initialize(int x, int y)
 	{
 		//sets this x and y when it is called inside of checkerboard
 		this.x = x;
 		this.y = y;
 	}
-	
-	
+
+
 	void OnMouseDown()
 	{
 		//if the current slot is empty
@@ -30,6 +30,7 @@ public class PieceMakers : MonoBehaviour {
 		{
 			//sets obj to black or white depending on turn
 			var obj = (turns % 2 == 0)?blackPiecePrefab:whitePiecePrefab;
+
 			//adds to array
 			boardRecord[x,y] = obj;
 			//increments turn
@@ -45,6 +46,6 @@ public class PieceMakers : MonoBehaviour {
 		{
 			Debug.Log("Already a piece there!!!");
 		}
-		
+
 	}
 }
