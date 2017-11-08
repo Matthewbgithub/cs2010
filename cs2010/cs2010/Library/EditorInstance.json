@@ -1,8 +1,12 @@
 {
+<<<<<<< HEAD
 <<<<<<< HEAD:cs2010/cs2010/Library/EditorInstance.json
 	"process_id" : 1840,
 =======
 	"process_id" : 1345,
 >>>>>>> tim:cs2010/Library/EditorInstance.json
+=======
+	"process_id" : 1227,
+>>>>>>> parent of 32c3908... maybe?
 	"version" : "2017.1.1f1"
 }
