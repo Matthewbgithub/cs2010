@@ -21,7 +21,8 @@ public class PieceMakers : MonoBehaviour {
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
 	private bool captureThisGroup = true;
-	
+	private bool[,] listOfCheckedPieces = new bool[16,16];
+	private static int countOfCaptureChecks = 0;
 	public void Initialize(int boardx, int boardy) 
 	{
 		//sets this x and y when it is called inside of checkerboard
@@ -89,12 +90,19 @@ public class PieceMakers : MonoBehaviour {
 
 	void CheckForCaptures()
 	{
+		//clear list of pieces checked before each press
+		resetPieceCheckedArray();
+		
+		//loops through board checking all pieces for captures
 		for(int x = 0; x < 16; x++)
 		{
 			for(int y = 0; y < 16; y++)
 			{
-				if(boardRecord[x,y]!=null)
+				//will not check if piece exists and not already checked
+				if(boardRecord[x,y]!=null && !isAlreadyChecked(x,y))
 				{
+					//add to list of items already checked as to avoid checking it again to increase game speed
+					addToCheckedList(x,y);
 					SearchNeighbours(x,y);
 					if(captureThisGroup)
 					{
@@ -108,19 +116,22 @@ public class PieceMakers : MonoBehaviour {
 					var piecex = boardRecord[x,y].GetComponent<Piece>().getX();
 					var piecey = boardRecord[x,y].GetComponent<Piece>().getY();
 					Debug.Log(colour + " piece at: " + piecex +", " + piecey);*/
-					}
+				}
 			}
 		}
 	}
 	//x and y of where to check and then where to move next if successful
 	private void check(int x, int y, int nextXMove, int nextYMove)
 	{
+		countOfCaptureChecks++;
+		Debug.Log(countOfCaptureChecks);
+
 		if(doesPieceExist(x,y))
 		{
 			//there is a piece
 			var OtherColour = "";
 			Debug.Log("checking " + x +"," +y);
-			
+
 			OtherColour = getColour(x,y);
 
 			//different action depending on the colour of piece
@@ -129,6 +140,7 @@ public class PieceMakers : MonoBehaviour {
 				Debug.Log("colour match");
 				//add to array of pieces that will all get removed if the block has been surrounded
 				addToCaptureGroup(x,y);
+				addToCheckedList(x,y);
 				//check next piece - this part needs to be changed for full traversal
 				check(x+nextXMove,y+nextYMove,nextXMove,nextYMove);
 			}
@@ -137,7 +149,7 @@ public class PieceMakers : MonoBehaviour {
 				//different colour and will stop searching on this piece
 				Debug.Log("different");
 			}
-			
+
 		}else
 		{
 			//a blank space has been found therefore the piece is not captured
@@ -145,6 +157,25 @@ public class PieceMakers : MonoBehaviour {
 			captureThisGroup=false;
 		}
 		
+	}
+	private void addToCheckedList(int x, int y)
+	{
+		listOfCheckedPieces[x,y] = true;
+	}
+	private bool isAlreadyChecked(int x, int y)
+	{
+		Debug.Log(x + ","+y+" is " +listOfCheckedPieces[x,y] +" ");
+		return listOfCheckedPieces[x,y];
+	}
+	private void resetPieceCheckedArray()
+	{
+		for(int x = 0; x < 16; x++)
+		{
+			for(int y = 0; y < 16; y++)
+			{
+				listOfCheckedPieces[x,y]=false;
+			}
+		}
 	}
 	private void removeCaptured()
 	{
@@ -155,10 +186,20 @@ public class PieceMakers : MonoBehaviour {
 			RemovePiece(xy[0],xy[1]);
 		}
 	}
+	private void checkUp(int x, int y)
+	{
+		//calls check on the piece one to the right instructing the check funtion to continue going right
+		check(x,y+1,0,1);
+	}
 	private void checkRight(int x, int y)
 	{
 		//calls check on the piece one to the right instructing the check funtion to continue going right
 		check(x+1,y,1,0);
+	}
+	private void checkDown(int x, int y)
+	{
+		//calls check on the piece one to the right instructing the check funtion to continue going right
+		check(x,y-1,0,-1);
 	}
 	private void checkLeft(int x, int y)
 	{
@@ -180,6 +221,8 @@ public class PieceMakers : MonoBehaviour {
 		
 		checkLeft(x,y);
 		checkRight(x,y);
+		checkUp(x,y);
+		checkDown(x,y);
 //		bool PieceCaptured = true;
 //		//array for , above below, left and right of the piece
 //		int[][] xychange = new int[][] {
