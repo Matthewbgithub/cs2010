@@ -22,6 +22,8 @@ public class PieceMakers : MonoBehaviour {
 	private ArrayList removeUsOnCapture = new ArrayList();
 	private bool captureThisGroup = true;
 	private bool[,] listOfCheckedPieces = new bool[16,16];
+	
+	private bool[,] listForGroupCapture = new bool[16,16];
 	private static int countOfCaptureChecks = 0;
 	public void Initialize(int boardx, int boardy) 
 	{
@@ -108,6 +110,7 @@ public class PieceMakers : MonoBehaviour {
 					{
 						removeCaptured();
 					}
+					resetGroupCheck();
 					//empty list of objects to be removed
 					removeUsOnCapture.Clear();
 					//set the flag back to true
@@ -121,11 +124,9 @@ public class PieceMakers : MonoBehaviour {
 		}
 	}
 	//x and y of where to check and then where to move next if successful
-	private void check(int x, int y, int nextXMove, int nextYMove)
+	private void check(int x, int y)
 	{
 		countOfCaptureChecks++;
-		Debug.Log(countOfCaptureChecks);
-
 		if(doesPieceExist(x,y))
 		{
 			//there is a piece
@@ -137,34 +138,31 @@ public class PieceMakers : MonoBehaviour {
 			//different action depending on the colour of piece
 			if(OtherColour == ThisColour)
 			{
-				Debug.Log("colour match");
 				//add to array of pieces that will all get removed if the block has been surrounded
 				addToCaptureGroup(x,y);
 				addToCheckedList(x,y);
 				//check next piece - this part needs to be changed for full traversal
-				check(x+nextXMove,y+nextYMove,nextXMove,nextYMove);
+				checkAllAngles(x,y);
 			}
 			else
 			{
 				//different colour and will stop searching on this piece
-				Debug.Log("different");
 			}
 
 		}else
 		{
 			//a blank space has been found therefore the piece is not captured
-			Debug.Log("group has not been captured");
 			captureThisGroup=false;
 		}
 		
 	}
+	//checks for the whole board checker
 	private void addToCheckedList(int x, int y)
 	{
 		listOfCheckedPieces[x,y] = true;
 	}
 	private bool isAlreadyChecked(int x, int y)
 	{
-		Debug.Log(x + ","+y+" is " +listOfCheckedPieces[x,y] +" ");
 		return listOfCheckedPieces[x,y];
 	}
 	private void resetPieceCheckedArray()
@@ -177,6 +175,25 @@ public class PieceMakers : MonoBehaviour {
 			}
 		}
 	}
+	//checks for the group checker
+	private void addToGroupList(int x, int y)
+	{
+		listForGroupCapture[x,y] = true;
+	}
+	private bool isAlreadyGroupChecked(int x, int y)
+	{
+		return listForGroupCapture[x,y];
+	}
+	private void resetGroupCheck()
+	{
+		for(int x = 0; x < 16; x++)
+		{
+			for(int y = 0; y < 16; y++)
+			{
+				listForGroupCapture[x,y]=false;
+			}
+		}
+	}
 	private void removeCaptured()
 	{
 		Debug.Log("Captured!");
@@ -186,26 +203,53 @@ public class PieceMakers : MonoBehaviour {
 			RemovePiece(xy[0],xy[1]);
 		}
 	}
-	private void checkUp(int x, int y)
+	private void checkAllAngles(int x, int y)
+	{
+		//right
+		if(!isAlreadyGroupChecked(x-1,y))
+		{
+			addToGroupList(x-1,y);
+			check(x-1,y);
+		}
+		//left
+		if(!isAlreadyGroupChecked(x+1,y))
+		{
+			addToGroupList(x+1,y);
+			check(x+1,y);
+		}
+		//up
+		if(!isAlreadyGroupChecked(x,y+1))
+		{
+			addToGroupList(x,y+1);
+			check(x,y+1);
+		}
+		//down
+		if(!isAlreadyGroupChecked(x,y-1))
+		{
+			addToGroupList(x,y-1);
+			check(x,y-1);
+		}
+	}
+	/*private void checkUp(int x, int y)
 	{
 		//calls check on the piece one to the right instructing the check funtion to continue going right
-		check(x,y+1,0,1);
+		check(x,y+1);
 	}
 	private void checkRight(int x, int y)
 	{
 		//calls check on the piece one to the right instructing the check funtion to continue going right
-		check(x+1,y,1,0);
+		check(x+1,y);
 	}
 	private void checkDown(int x, int y)
 	{
 		//calls check on the piece one to the right instructing the check funtion to continue going right
-		check(x,y-1,0,-1);
+		check(x,y-1);
 	}
 	private void checkLeft(int x, int y)
 	{
 		//calls check on the piece left, instructing the check function to carry on going left
-		check(x-1,y,-1,0);
-	}
+		check(x-1,y);
+	}*/
 	private void SearchNeighbours(int x, int y)
 	{
 		//---look at piece, move round checking neighbours if they they are empty or the same colour
@@ -216,13 +260,11 @@ public class PieceMakers : MonoBehaviour {
 		var EmptyOrOtherColourFound = false;
 		//checking the left one
 		Debug.Log("--------------");
-		//add current to list to be removed because if the group is removed it needs to go
+		//add current to list to be removed because if the group is removed it needs to go as well
 		addToCaptureGroup(x,y);
-		
-		checkLeft(x,y);
-		checkRight(x,y);
-		checkUp(x,y);
-		checkDown(x,y);
+		addToGroupList(x,y);
+		checkAllAngles(x,y);
+		Debug.Log("Piece checks at: "+countOfCaptureChecks);
 //		bool PieceCaptured = true;
 //		//array for , above below, left and right of the piece
 //		int[][] xychange = new int[][] {
@@ -280,8 +322,13 @@ public class PieceMakers : MonoBehaviour {
 	}
 	void RemovePiece(int x, int y)
 	{
-		boardRecord[x,y].GetComponent<Piece>().Destroy();
-		boardRecord[x,y] = null;
-		Debug.Log("piece removed");
+		if(boardRecord[x,y]!=null)
+		{
+			boardRecord[x,y].GetComponent<Piece>().Destroy();
+			boardRecord[x,y] = null;
+			Debug.Log("piece at "+x +","+ y+" removed");
+		}else{
+			Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!trynna delete @ "+x+","+y);
+		}
 	}
 }
