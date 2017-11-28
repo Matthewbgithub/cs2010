@@ -23,7 +23,6 @@ public class PieceMakers : MonoBehaviour {
 	private ArrayList removeUsOnCapture = new ArrayList();
 	private bool captureThisGroup = true;
 	private bool[,] listOfCheckedPieces = new bool[boardSize,boardSize];
-	
 	private bool[,] listForGroupCapture = new bool[boardSize,boardSize];
 	private static int countOfCaptureChecks = 0;
 	public void Initialize(int boardx, int boardy) 
@@ -39,12 +38,12 @@ public class PieceMakers : MonoBehaviour {
 		if(boardRecord[boardx,boardy]==null)
 		{
 			PlacePiece();
-			CheckForCaptures();
+			CheckForCaptures(boardx, boardy);
 			countPieces();
 		}
 		else
 		{
-//			Debug.Log("Already a piece there!!!");
+			Debug.Log("Already a piece there!!!");
 		}
 
 	}
@@ -91,22 +90,36 @@ public class PieceMakers : MonoBehaviour {
 //		Debug.Log ("there are " + whitePieces + " white pieces");
 	}
 
-	void CheckForCaptures()
+	void CheckForCaptures(int x, int y)
 	{
 		//clear list of pieces checked before each press
 		resetPieceCheckedArray();
-		
 		//loops through board checking all pieces for captures
-		for(int x = 0; x < boardSize; x++)
+		/*for(int x = 0; x < boardSize; x++)
 		{
 			for(int y = 0; y < boardSize; y++)
+			{*/
+		
+		//checks spaces around the one that has been placed and then the piece itself last
+		//re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
+		int[][] xychange = new int[][] {
+			new int[] {x  ,y-1},
+			new int[] {x  ,y+1},
+			new int[] {x-1,y  },
+			new int[] {x+1,y  },
+			new int[] {x  ,y  }
+		};
+		
+		foreach (int[] xy in xychange)
+		{
+			if(!isSpaceOffTheEdge(xy[0],xy[1]))
 			{
 				//will not check if piece exists and not already checked
-				if(boardRecord[x,y]!=null && !isAlreadyChecked(x,y))
+				if(boardRecord[xy[0],xy[1]]!=null && !isAlreadyChecked(xy[0],xy[1]))
 				{
 					//add to list of items already checked as to avoid checking it again to increase game speed
-					addToCheckedList(x,y);
-					SearchNeighbours(x,y);
+					addToCheckedList(xy[0],xy[1]);
+					SearchNeighbours(xy[0],xy[1]);
 					if(captureThisGroup)
 					{
 						removeCaptured();
