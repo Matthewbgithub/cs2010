@@ -103,11 +103,11 @@ public class PieceMakers : MonoBehaviour {
 		//checks spaces around the one that has been placed and then the piece itself last
 		//re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
 		int[][] xychange = new int[][] {
-			new int[] {x  ,y  },
 			new int[] {x  ,y-1},
 			new int[] {x  ,y+1},
 			new int[] {x-1,y  },
-			new int[] {x+1,y  }
+			new int[] {x+1,y  },
+			new int[] {x  ,y  }
 		};
 		
 		foreach (int[] xy in xychange)
