@@ -51,11 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Clicking.cs" />
-     <Compile Include="Assets\GoBoard.cs" />
-     <Compile Include="Assets\HUDScript.cs" />
-     <Compile Include="Assets\Piece.cs" />
-     <Compile Include="Assets\PieceMakers.cs" />
+     <Compile Include="Assets\Scripts\Clicking.cs" />
+     <Compile Include="Assets\Scripts\GoBoard.cs" />
+     <Compile Include="Assets\Scripts\HUDScript.cs" />
+     <Compile Include="Assets\Scripts\Piece.cs" />
+     <Compile Include="Assets\Scripts\PieceMakers.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
