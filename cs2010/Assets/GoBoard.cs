@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class GoBoard : MonoBehaviour {
 
 	public Piece[,] Pieces = new Piece[16,16];
     public GameObject whitePiecePrefab;
     public GameObject blackPiecePrefab;
 	public GameObject piecePlaceHolder;
+
 	private Vector3 boardOffset = new Vector3(-8.0f, 0, -8.0f);
 	private Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
     
@@ -16,7 +19,7 @@ public class GoBoard : MonoBehaviour {
     {
         GenerateBoard();
     }
-    
+
     private void GenerateBoard()
     {
 		

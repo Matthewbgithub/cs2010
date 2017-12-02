@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PieceMakers : MonoBehaviour {
@@ -15,9 +16,13 @@ public class PieceMakers : MonoBehaviour {
 	//array of gameObjects, not sure if it stores the actual objects or just clones
 	private static GameObject[,] boardRecord = new GameObject[16,16];
 
-	private int blackPieces = 0;
-	private int whitePieces = 0;
-	
+	public int blackPieces = 0;
+	public int whitePieces = 0;
+
+
+	public static int bCount = 0;
+	public static int wCount = 0;
+
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
 	private bool captureThisGroup = true;
@@ -25,6 +30,10 @@ public class PieceMakers : MonoBehaviour {
 	
 	private bool[,] listForGroupCapture = new bool[16,16];
 	private static int countOfCaptureChecks = 0;
+
+	public GameObject piecePlaceHolder;
+
+
 	public void Initialize(int boardx, int boardy) 
 	{
 		//sets this x and y when it is called inside of checkerboard
@@ -45,8 +54,8 @@ public class PieceMakers : MonoBehaviour {
 		{
 //			Debug.Log("Already a piece there!!!");
 		}
-
 	}
+
 	void PlacePiece()
 	{
 		//sets obj to black or white depending on turn
@@ -66,6 +75,11 @@ public class PieceMakers : MonoBehaviour {
 		newPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
 		//adds to array
 		boardRecord[boardx,boardy] = newPiece;
+		if (isWhite == true) {
+			wCount++;
+		} else {
+			bCount++;
+		}
 	}
 
 	void countPieces(){
@@ -77,6 +91,7 @@ public class PieceMakers : MonoBehaviour {
 					var thisPlace = getColour(x,y);
 					if (thisPlace == "black") {
 						blackPieces += 1;
+
 					}
 					if (thisPlace == "white") {
 						whitePieces += 1;
@@ -330,5 +345,6 @@ public class PieceMakers : MonoBehaviour {
 		}else{
 			Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!trynna delete @ "+x+","+y);
 		}
+
 	}
 }
