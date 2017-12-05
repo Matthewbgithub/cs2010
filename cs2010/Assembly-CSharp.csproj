@@ -54,7 +54,7 @@
      <Compile Include="Assets\Scripts\Clicking.cs" />
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScript.cs" />
-     <Compile Include="Assets\Scripts\LoadScene.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Piece.cs" />
      <Compile Include="Assets\Scripts\PieceMakers.cs" />
      <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
