@@ -22,8 +22,6 @@ public class PieceMakers : MonoBehaviour {
 
 	public static int bCount = 0;
 	public static int wCount = 0;
-	public static int bCaptured = 0;
-	public static int wCaptured = 0;
 
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
@@ -218,7 +216,6 @@ public class PieceMakers : MonoBehaviour {
 		foreach (int[] xy in removeUsOnCapture)
 		{
 			RemovePiece(xy[0],xy[1]);
-
 		}
 	}
 	private void checkAllAngles(int x, int y)
@@ -342,15 +339,9 @@ public class PieceMakers : MonoBehaviour {
 	{
 		if(boardRecord[x,y]!=null)
 		{
-			if (boardRecord [x, y].GetComponent<Piece> ().isWhite) {
-				wCaptured++;
-			} else {
-				bCaptured++;
-			}
 			boardRecord[x,y].GetComponent<Piece>().Destroy();
 			boardRecord[x,y] = null;
 			Debug.Log("piece at "+x +","+ y+" removed");
-
 		}else{
 			Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!!!!trynna delete @ "+x+","+y);
 		}

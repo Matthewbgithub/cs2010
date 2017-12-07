@@ -1,6 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="../HUDScript.cs">
+    <Files>
+      <File FileName="../GoBoard.cs" Line="1" Column="1" />
+      <File FileName="../PieceMakers.cs" Line="81" Column="13" />
+      <File FileName="../HUDScript.cs" Line="21" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

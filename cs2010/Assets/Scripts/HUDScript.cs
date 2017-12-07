@@ -8,14 +8,9 @@ public class HUDScript : MonoBehaviour {
 	public Text blackCountText;
 	public Text whiteCountText;
 
-	public Text blackCaptured;
-	public Text whiteCaptured;
-
-
 	// Use this for initialization
 	void Start () {
 		SetCountText ();
-
 	}
 	
 	// Update is called once per frame
@@ -27,9 +22,6 @@ public class HUDScript : MonoBehaviour {
 	void SetCountText() {
 		blackCountText.text = "Black Stones: " + PieceMakers.bCount;
 		whiteCountText.text = "White Stones: " + PieceMakers.wCount;
-
-		blackCaptured.text = "Captured: " + PieceMakers.wCaptured;
-		whiteCaptured.text = "Captured: " + PieceMakers.bCaptured;
 	}
 
 
