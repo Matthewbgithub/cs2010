@@ -110,7 +110,11 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 22
+=======
+  controlID: 1116
+>>>>>>> parent of ef913be... heheh
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 76
+  controlID: 1170
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -343,21 +347,25 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: a6fbffff00000000
+=======
+    m_ExpandedIDs: 6847feffd847feff1249feff1a49feffd64bfeff464cfeff804dfeff884dfeff5852feffc852feff0454feff0c54feff34b4feffa0b4feffe0b5feffecb5feffa6fbffff000000002628000064280000742800008a280000e2280000da36000084370000
+>>>>>>> parent of ef913be... heheh
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: QuitButton
+      m_OriginalName: QuitButton
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10356
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
@@ -414,7 +422,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b0260000
     m_LastClickedID: 9904
-    m_ExpandedIDs: 000000002e270000442700006c27000084270000f8280000fa280000fc280000fe28000000290000022900000429000006290000082900000a290000
+    m_ExpandedIDs: 000000002e2700006c270000122900001429000016290000182900001a2900001c2900001e290000202900002229000024290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -442,21 +450,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002e270000442700006c27000084270000f8280000fa280000fc280000fe28000000290000022900000429000006290000082900000a290000
+    m_ExpandedIDs: 000000002e270000442700006c27000086270000122900001429000016290000182900001a2900001c2900001e290000202900002229000024290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: LoadScene
+      m_OriginalName: LoadScene
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 14628
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
