@@ -1,27 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PieceMakers.cs">
     <Files>
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="13" Column="1" />
-=======
-=======
->>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PieceMakers.cs">
-    <Files>
-      <File FileName="Assets/PieceMakers.cs" Line="18" Column="2" />
-      <File FileName="Assets/CheckersBoard.cs" Line="1" Column="1" />
-<<<<<<< HEAD
->>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
-    <Files>
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="13" Column="1" />
->>>>>>> parent of ef913be... heheh
-=======
->>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+      <File FileName="Assets/Scripts/Managers/WindowManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PieceMakers.cs" Line="342" Column="3" />
+      <File FileName="Assets/Scripts/HUDScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
