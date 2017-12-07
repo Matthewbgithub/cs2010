@@ -21,9 +21,12 @@ MonoBehaviour:
     y: 30
     width: 1440
 <<<<<<< HEAD
+<<<<<<< HEAD
     height: 741
   m_MinSize: {x: 613, y: 492}
 =======
+=======
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
     height: 739
   m_MinSize: {x: 713, y: 492}
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
@@ -82,6 +85,9 @@ MonoBehaviour:
     m_HBaseRangeMax: 231.75
     m_VBaseRangeMin: -60.5
     m_VBaseRangeMax: 60.5
+<<<<<<< HEAD
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+=======
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
@@ -101,9 +107,15 @@ MonoBehaviour:
       y: 17
       width: 927
 <<<<<<< HEAD
+<<<<<<< HEAD
       height: 703
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 463.5, y: 351.5}
+=======
+      height: 242
+    m_Scale: {x: 2, y: 2}
+    m_Translation: {x: 463.5, y: 121}
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
 =======
       height: 242
     m_Scale: {x: 2, y: 2}
@@ -125,13 +137,20 @@ MonoBehaviour:
       y: -60.5
       width: 463.5
       height: 121
+<<<<<<< HEAD
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+=======
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 1854, y: 1440}
+=======
+  m_LastWindowPixelSize: {x: 1854, y: 518}
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
 =======
   m_LastWindowPixelSize: {x: 1854, y: 518}
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
@@ -170,6 +189,9 @@ MonoBehaviour:
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
   controlID: 99
+<<<<<<< HEAD
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+=======
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
 --- !u!114 &4
 MonoBehaviour:
@@ -193,6 +215,9 @@ MonoBehaviour:
 =======
     width: 929
     height: 459
+<<<<<<< HEAD
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+=======
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
@@ -422,6 +447,9 @@ MonoBehaviour:
     m_SelectedIDs: f4270000
     m_LastClickedID: 10228
     m_ExpandedIDs: a6fbffff00000000fe270000
+<<<<<<< HEAD
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+=======
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -461,6 +489,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 330
     width: 232
     height: 411
@@ -468,6 +497,8 @@ MonoBehaviour:
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 7}
 =======
+=======
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
     y: 281
     width: 234
     height: 458
@@ -511,6 +542,9 @@ MonoBehaviour:
     y: 374
     width: 230
     height: 437
+<<<<<<< HEAD
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
+=======
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
   m_SearchFilter:
     m_NameFilter: 
@@ -535,7 +569,11 @@ MonoBehaviour:
     m_SelectedIDs: b0260000
     m_LastClickedID: 9904
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002e2700006c270000122900001429000016290000182900001a2900001c2900001e290000202900002229000024290000
+=======
+    m_ExpandedIDs: 1427000050270000a4270000
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
 =======
     m_ExpandedIDs: 1427000050270000a4270000
 >>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
@@ -565,9 +603,15 @@ MonoBehaviour:
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 7ec3ffff
     m_LastClickedID: 0
     m_ExpandedIDs: 000000002e2700006c270000122900001429000016290000182900001a2900001c2900001e290000202900002229000024290000
+=======
+    m_SelectedIDs: f4270000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 1427000050270000a4270000
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
 =======
     m_SelectedIDs: f4270000
     m_LastClickedID: 0
@@ -598,8 +642,13 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 7ec3ffff
     m_LastClickedInstanceID: -15490
+=======
+    m_SelectedInstanceIDs: f4270000
+    m_LastClickedInstanceID: 10228
+>>>>>>> parent of c339dfb... HUD is up, though capture count will need further tweaking
 =======
     m_SelectedInstanceIDs: f4270000
     m_LastClickedInstanceID: 10228
