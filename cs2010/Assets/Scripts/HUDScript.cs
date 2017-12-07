@@ -25,8 +25,8 @@ public class HUDScript : MonoBehaviour {
 	void SetCountText() {
 		blackCountText.text = "Black Stones: " + PieceMakers.bCount;
 		whiteCountText.text = "White Stones: " + PieceMakers.wCount;
-		blackCaptureText.text = "Capture: " + PieceMakers.wCount;
-		whiteCaptureText.text = "Capture: " + PieceMakers.bCount;
+		blackCaptureText.text = "Capture: " + PieceMakers.bCapture;
+		whiteCaptureText.text = "Capture: " + PieceMakers.wCapture;
 	}
 
 

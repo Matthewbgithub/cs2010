@@ -23,6 +23,9 @@ public class PieceMakers : MonoBehaviour {
 	public static int bCount = 0;
 	public static int wCount = 0;
 
+	public static int bCapture = 0;
+	public static int wCapture = 0;
+
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
 	private bool captureThisGroup = true;
@@ -339,6 +342,12 @@ public class PieceMakers : MonoBehaviour {
 	{
 		if(boardRecord[x,y]!=null)
 		{
+			if(boardRecord[x,y].GetComponent<Piece>().isWhite){
+				bCapture++;
+			}
+			else{
+				wCapture++;
+			}
 			boardRecord[x,y].GetComponent<Piece>().Destroy();
 			boardRecord[x,y] = null;
 			Debug.Log("piece at "+x +","+ y+" removed");
