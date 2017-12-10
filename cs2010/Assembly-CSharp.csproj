@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scoreScript.cs" />
+     <Compile Include="Assets\Scripts\blackCount.cs" />
      <Compile Include="Assets\Scripts\Clicking.cs" />
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScript.cs" />
