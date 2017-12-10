@@ -55,13 +55,9 @@
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScript.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
-     <Compile Include="Assets\Scripts\Managers\WindowManager.cs" />
      <Compile Include="Assets\Scripts\Piece.cs" />
      <Compile Include="Assets\Scripts\PieceMakers.cs" />
      <Compile Include="Assets\Scripts\Slider.cs" />
-     <Compile Include="Assets\Scripts\Windows\GenericWindow.cs" />
-     <Compile Include="Assets\Scripts\Windows\OptionsWindow.cs" />
-     <Compile Include="Assets\Scripts\Windows\StartWindow.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />
