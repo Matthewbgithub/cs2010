@@ -19,13 +19,8 @@ MonoBehaviour:
     height: 786
   m_ShowMode: 4
   m_Title: 
-<<<<<<< HEAD
   m_RootView: {fileID: 2}
   m_MinSize: {x: 950, y: 300}
-=======
-  m_RootView: {fileID: 3}
-  m_MinSize: {x: 950, y: 521}
->>>>>>> origin/matt
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -35,36 +30,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
-=======
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 2026
-    y: 0
-    width: 534
-    height: 947
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 15}
-  m_Panes:
-  - {fileID: 15}
-  - {fileID: 18}
-  - {fileID: 19}
-  m_Selected: 0
-  m_LastSelected: 2
---- !u!114 &3
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
->>>>>>> origin/matt
   m_Script: {fileID: 12008, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -140,19 +105,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-<<<<<<< HEAD
     width: 1440
     height: 736
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
-=======
-    width: 2560
-    height: 947
-  m_MinSize: {x: 740, y: 471}
-  m_MaxSize: {x: 22010, y: 14021}
->>>>>>> origin/matt
   vertical: 0
-  controlID: 72
+  controlID: 22
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,26 +155,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 889
     y: 0
-<<<<<<< HEAD
     width: 274
     height: 736
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 73
+  controlID: 23
 --- !u!114 &8
-=======
-    width: 261
-    height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
-  m_Panes:
-  - {fileID: 14}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &9
->>>>>>> origin/matt
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -232,17 +177,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 274
     height: 352
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
-=======
-    width: 1076
-    height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
->>>>>>> origin/matt
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -477,9 +415,9 @@ MonoBehaviour:
     height: 331
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: d4060000
     m_LastClickedID: 0
-    m_ExpandedIDs: a0fbffff00000000
+    m_ExpandedIDs: 56fbffffa0fbffff0000000036340000dc340000e8340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -540,26 +478,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Area730/UpdateManager/Editor
+    - Assets/Area730
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Area730/UpdateManager/Editor
+  - Assets/Area730
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/LiKNHE/Desktop/Group Project/cs2010/cs2010
   m_IsLocked: 0
   m_FolderTreeState:
-<<<<<<< HEAD
-    scrollPos: {x: 0, y: 70}
-    m_SelectedIDs: 36290000
-    m_LastClickedID: 10550
-    m_ExpandedIDs: 000000002a2900007a2a00009e2c0000a42c0000b42c0000ae2d0000e42d0000d62e0000e22e000000300000a4350000a6350000a8350000aa350000ac350000ae350000b0350000b2350000ffffff7f
-=======
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b0260000
-    m_LastClickedID: 9904
-    m_ExpandedIDs: 000000002c26000052260000622600007c260000
->>>>>>> origin/matt
+    m_SelectedIDs: e42d0000
+    m_LastClickedID: 11748
+    m_ExpandedIDs: 000000002a2900007a2a00009e2c0000a42c0000ae2d0000e42d0000d62e0000e22e000000300000a4350000a6350000a8350000aa350000ac350000ae350000b0350000b2350000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -587,11 +518,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
     m_ExpandedIDs: 000000002a2900007a2a00009e2c0000a42c0000b42c0000ae2d0000e42d0000d62e0000e22e000000300000a4350000a6350000a8350000aa350000ac350000ae350000b0350000b2350000
-=======
-    m_ExpandedIDs: 000000002c26000052260000622600007c260000
->>>>>>> origin/matt
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -645,7 +572,7 @@ MonoBehaviour:
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
-  m_DirectoriesAreaWidth: 110
+  m_DirectoriesAreaWidth: 150
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -672,7 +599,7 @@ MonoBehaviour:
     y: 93
     width: 275
     height: 715
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 95.97656}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 268
