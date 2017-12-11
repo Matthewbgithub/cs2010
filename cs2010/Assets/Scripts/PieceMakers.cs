@@ -14,7 +14,8 @@ public class PieceMakers : MonoBehaviour {
 	//global variable of turns, used to determine if black or white turn
 	public static int turns = 0;
 	//array of gameObjects, not sure if it stores the actual objects or just clones
-	private static GameObject[,] boardRecord = new GameObject[16,16];
+	private static int boardSize = 19;
+	private static GameObject[,] boardRecord = new GameObject[boardSize,boardSize];
 
 	public int blackPieces = 0;
 	public int whitePieces = 0;
@@ -29,9 +30,8 @@ public class PieceMakers : MonoBehaviour {
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
 	private bool captureThisGroup = true;
-	private bool[,] listOfCheckedPieces = new bool[16,16];
-	
-	private bool[,] listForGroupCapture = new bool[16,16];
+	private bool[,] listOfCheckedPieces = new bool[boardSize,boardSize];
+	private bool[,] listForGroupCapture = new bool[boardSize,boardSize];
 	private static int countOfCaptureChecks = 0;
 
 	public GameObject piecePlaceHolder;
@@ -50,12 +50,12 @@ public class PieceMakers : MonoBehaviour {
 		if(boardRecord[boardx,boardy]==null)
 		{
 			PlacePiece();
-			CheckForCaptures();
+			CheckForCaptures(boardx, boardy);
 			countPieces();
 		}
 		else
 		{
-//			Debug.Log("Already a piece there!!!");
+			Debug.Log("Already a piece there!!!");
 		}
 	}
 
@@ -70,8 +70,8 @@ public class PieceMakers : MonoBehaviour {
 		var pos = this.transform.position;
 		//pushes the position of the new piece up a bit just to make it fit better
 		pos.y = 0.15f;
-		//rotates it to fit nicer
-		var rot = Quaternion.Euler(-90,0,0);
+		//allows for future rotation
+		var rot = Quaternion.Euler(0,0,0);
 		//places it in the scene
 		var newPiece = Instantiate(obj, pos, rot);
 		//tells the piece where it is on the board
@@ -86,9 +86,9 @@ public class PieceMakers : MonoBehaviour {
 	}
 
 	void countPieces(){
-//		Debug.Log ("piece count function called");
-		for (int x = 0; x < 16; x++) {
-			for (int y = 0; y < 16; y++) {
+		//		Debug.Log ("piece count function called");
+		for (int x = 0; x < boardSize; x++) {
+			for (int y = 0; y < boardSize; y++) {
 				//Debug.Log (boardRecord [x, y]);
 				if (boardRecord [x,y] != null) {
 					var thisPlace = getColour(x,y);
@@ -104,26 +104,40 @@ public class PieceMakers : MonoBehaviour {
 			}
 
 		}
-//		Debug.Log ("there are " + blackPieces + " black pieces");
-//		Debug.Log ("there are " + whitePieces + " white pieces");
+		//		Debug.Log ("there are " + blackPieces + " black pieces");
+		//		Debug.Log ("there are " + whitePieces + " white pieces");
 	}
 
-	void CheckForCaptures()
+	void CheckForCaptures(int x, int y)
 	{
 		//clear list of pieces checked before each press
 		resetPieceCheckedArray();
-		
 		//loops through board checking all pieces for captures
-		for(int x = 0; x < 16; x++)
+		/*for(int x = 0; x < boardSize; x++)
 		{
-			for(int y = 0; y < 16; y++)
+			for(int y = 0; y < boardSize; y++)
+			{*/
+
+		//checks spaces around the one that has been placed and then the piece itself last
+		//re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
+		int[][] xychange = new int[][] {
+			new int[] {x  ,y-1},
+			new int[] {x  ,y+1},
+			new int[] {x-1,y  },
+			new int[] {x+1,y  },
+			new int[] {x  ,y  }
+		};
+
+		foreach (int[] xy in xychange)
+		{
+			if(!isSpaceOffTheEdge(xy[0],xy[1]))
 			{
 				//will not check if piece exists and not already checked
-				if(boardRecord[x,y]!=null && !isAlreadyChecked(x,y))
+				if(boardRecord[xy[0],xy[1]]!=null && !isAlreadyChecked(xy[0],xy[1]))
 				{
 					//add to list of items already checked as to avoid checking it again to increase game speed
-					addToCheckedList(x,y);
-					SearchNeighbours(x,y);
+					addToCheckedList(xy[0],xy[1]);
+					SearchNeighbours(xy[0],xy[1]);
 					if(captureThisGroup)
 					{
 						removeCaptured();
@@ -145,34 +159,37 @@ public class PieceMakers : MonoBehaviour {
 	private void check(int x, int y)
 	{
 		countOfCaptureChecks++;
-		if(doesPieceExist(x,y))
+		//if space is off the edge do nothing which is the same action as an alternate colour piece
+		if(!isSpaceOffTheEdge(x,y))
 		{
-			//there is a piece
-			var OtherColour = "";
-			Debug.Log("checking " + x +"," +y);
-
-			OtherColour = getColour(x,y);
-
-			//different action depending on the colour of piece
-			if(OtherColour == ThisColour)
+			if(doesPieceExist(x,y))
 			{
-				//add to array of pieces that will all get removed if the block has been surrounded
-				addToCaptureGroup(x,y);
-				addToCheckedList(x,y);
-				//check next piece - this part needs to be changed for full traversal
-				checkAllAngles(x,y);
-			}
-			else
-			{
-				//different colour and will stop searching on this piece
-			}
+				//there is a piece
+				var OtherColour = "";
+				Debug.Log("checking " + x +"," +y);
 
-		}else
-		{
-			//a blank space has been found therefore the piece is not captured
-			captureThisGroup=false;
+				OtherColour = getColour(x,y);
+
+				//different action depending on the colour of piece
+				if(OtherColour == ThisColour)
+				{
+					//add to array of pieces that will all get removed if the block has been surrounded
+					addToCaptureGroup(x,y);
+					addToCheckedList(x,y);
+					//check next piece - this part needs to be changed for full traversal
+					checkAllAngles(x,y);
+				}
+				else
+				{
+					//different colour and will stop searching on this piece
+				}
+
+			}else
+			{
+				//a blank space has been found therefore the piece is not captured
+				captureThisGroup=false;
+			}
 		}
-		
 	}
 	//checks for the whole board checker
 	private void addToCheckedList(int x, int y)
@@ -185,9 +202,9 @@ public class PieceMakers : MonoBehaviour {
 	}
 	private void resetPieceCheckedArray()
 	{
-		for(int x = 0; x < 16; x++)
+		for(int x = 0; x < boardSize; x++)
 		{
-			for(int y = 0; y < 16; y++)
+			for(int y = 0; y < boardSize; y++)
 			{
 				listOfCheckedPieces[x,y]=false;
 			}
@@ -200,13 +217,20 @@ public class PieceMakers : MonoBehaviour {
 	}
 	private bool isAlreadyGroupChecked(int x, int y)
 	{
-		return listForGroupCapture[x,y];
+		//this method requires a check because it goes one to either side of a piece
+		if(!isSpaceOffTheEdge(x,y))
+		{
+			return listForGroupCapture[x,y];
+		}else{
+			//returns true as to not retry this piece
+			return true;
+		}
 	}
 	private void resetGroupCheck()
 	{
-		for(int x = 0; x < 16; x++)
+		for(int x = 0; x < boardSize; x++)
 		{
-			for(int y = 0; y < 16; y++)
+			for(int y = 0; y < boardSize; y++)
 			{
 				listForGroupCapture[x,y]=false;
 			}
@@ -224,9 +248,12 @@ public class PieceMakers : MonoBehaviour {
 	private void checkAllAngles(int x, int y)
 	{
 		//right
+		//has the piece to the right been checked in the capturing checker not the board checker
 		if(!isAlreadyGroupChecked(x-1,y))
 		{
+			//add to list of pieces checked for the check group to avoid infinite loops
 			addToGroupList(x-1,y);
+			//check it
 			check(x-1,y);
 		}
 		//left
@@ -248,26 +275,6 @@ public class PieceMakers : MonoBehaviour {
 			check(x,y-1);
 		}
 	}
-	/*private void checkUp(int x, int y)
-	{
-		//calls check on the piece one to the right instructing the check funtion to continue going right
-		check(x,y+1);
-	}
-	private void checkRight(int x, int y)
-	{
-		//calls check on the piece one to the right instructing the check funtion to continue going right
-		check(x+1,y);
-	}
-	private void checkDown(int x, int y)
-	{
-		//calls check on the piece one to the right instructing the check funtion to continue going right
-		check(x,y-1);
-	}
-	private void checkLeft(int x, int y)
-	{
-		//calls check on the piece left, instructing the check function to carry on going left
-		check(x-1,y);
-	}*/
 	private void SearchNeighbours(int x, int y)
 	{
 		//---look at piece, move round checking neighbours if they they are empty or the same colour
@@ -283,41 +290,6 @@ public class PieceMakers : MonoBehaviour {
 		addToGroupList(x,y);
 		checkAllAngles(x,y);
 		Debug.Log("Piece checks at: "+countOfCaptureChecks);
-//		bool PieceCaptured = true;
-//		//array for , above below, left and right of the piece
-//		int[][] xychange = new int[][] {
-//			new int[] {x, y-1},
-//			new int[] {x, y+1},
-//			new int[] {x-1, y},
-//			new int[] {x+1, y}
-//		};
-//		
-//		foreach (int[] xy in xychange)
-//		{
-//			//check piece is not out of board
-//			if(xy[0] >= 0 && xy[0] < 16 && xy[1] >= 0 && xy[1] < 16)
-//			{
-//				//xy[0] is the x and xy[1] is the y
-//				//if board location has a piece
-//				if(boardRecord[xy[0],xy[1]] != null)
-//				{
-//					//compare colour, should be opposite and not empty
-//					var NewColour = boardRecord[xy[0],xy[1]].GetComponent<Piece>().getColour();
-//					if( NewColour == ThisColour || NewColour == null)
-//					{
-//						PieceCaptured = false;
-//					}
-//				}else
-//				{
-//					PieceCaptured = false;
-//				}
-//			}
-//		}
-//		if(PieceCaptured)
-//		{
-//			//removes piece from board & array
-//			RemovePiece(x,y);
-//		}
 	}
 	private void addToCaptureGroup(int x, int y)
 	{
@@ -331,6 +303,17 @@ public class PieceMakers : MonoBehaviour {
 	private bool doesPieceExist(int x, int y)
 	{
 		if(boardRecord[x,y] != null)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+	//returns whether piece is off the border
+	private bool isSpaceOffTheEdge(int x, int y)
+	{
+		if(x < 0 || x >= boardSize || y < 0 || y >= boardSize)
 		{
 			return true;
 		}else

@@ -1,19 +1,17 @@
 fileFormatVersion: 2
 guid: b3f525cfb85f9044aa76a153a55a8cca
-timeCreated: 1512228670
+timeCreated: 1512999362
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - blackPiecePrefab: {fileID: 1877867875929936, guid: 1a491dbdabc8a664c8cc8450ec664991,
+  - blackPiecePrefab: {fileID: 1029747076033136, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68,
       type: 2}
-  - whitePiecePrefab: {fileID: 1231481668816966, guid: 2ac74e851ecc48e49a470a148a37d2e5,
+  - whitePiecePrefab: {fileID: 1368279913424332, guid: f54109f83994f49c99a5560fda854d3d,
       type: 2}
   - piecePlaceHolder: {fileID: 1842046783084788, guid: e045d20e15282a248a7456b3ca28332c,
       type: 2}
-  - blackCountText: {instanceID: 0}
-  - whiteCountText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

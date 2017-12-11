@@ -55,7 +55,6 @@
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\blackCapture.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\blackCounter.cs" />
-     <Compile Include="Assets\Scripts\HUDScripts\HUDScript.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\whiteCapture.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\whiteCounter.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
