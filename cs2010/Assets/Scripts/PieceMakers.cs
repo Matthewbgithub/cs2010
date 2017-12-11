@@ -20,12 +20,13 @@ public class PieceMakers : MonoBehaviour {
 	public int blackPieces = 0;
 	public int whitePieces = 0;
 
-
 	public static int bCount = 0;
 	public static int wCount = 0;
-
 	public static int bCapture = 0;
 	public static int wCapture = 0;
+
+	private bool gameOver;
+	private bool restartGame;
 
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
@@ -42,10 +43,22 @@ public class PieceMakers : MonoBehaviour {
 		//sets this x and y when it is called inside of checkerboard
 		this.boardx = boardx;
 		this.boardy = boardy;
+		gameOver = false;
+		restartGame = false;
+	}
+
+	void Update(){
+		if (gameOver) {
+			// game ends
+		}
+	
+		if (restartGame) {
+			// restart game
+		}
 	}
 
 	void OnMouseDown()
-	{
+	{	
 		//if the current slot is empty
 		if(boardRecord[boardx,boardy]==null)
 		{
