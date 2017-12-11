@@ -5,7 +5,7 @@ using TMPro;
 
 public class whiteCapture : MonoBehaviour {
 
-	public TextMeshProUGUI captureText;
+	private TextMeshProUGUI captureText;
 
 	// Use this for initialization
 	void Start () {
