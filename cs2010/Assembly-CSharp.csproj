@@ -51,16 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MenuLoader.cs" />
      <Compile Include="Assets\Scripts\Clicking.cs" />
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\blackCapture.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\blackCounter.cs" />
-     <Compile Include="Assets\Scripts\HUDScripts\EndGameScript.cs" />
+     <Compile Include="Assets\Scripts\HUDScripts\blackScore.cs" />
+     <Compile Include="Assets\Scripts\HUDScripts\EndScript.cs" />
+     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\restartButton.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\TurnScript.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\whiteCapture.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\whiteCounter.cs" />
+     <Compile Include="Assets\Scripts\HUDScripts\whiteScore.cs" />
+     <Compile Include="Assets\Scripts\HUDScripts\winnerScript.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
      <Compile Include="Assets\Scripts\Piece.cs" />
      <Compile Include="Assets\Scripts\PieceMakers.cs" />

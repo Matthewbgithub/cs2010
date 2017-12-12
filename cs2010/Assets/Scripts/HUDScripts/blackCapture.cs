@@ -14,7 +14,7 @@ public class blackCapture : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int score = PieceMakers.bCapture;
+		int score = PieceMakers.wCapture;
 		captureText.text = "Captured: " + score.ToString ();
 		
 	}
