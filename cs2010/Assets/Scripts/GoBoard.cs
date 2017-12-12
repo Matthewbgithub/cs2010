@@ -24,9 +24,9 @@ public class GoBoard : MonoBehaviour {
     {
 		
 		//generate them placeholders
-		for(int x = 0; x < 19; x++)
+		for(int x = 0; x < 16; x++)
 		{
-			for(int y = 0; y < 19; y++)
+			for(int y = 0; y < 16; y++)
 			{
 				//places the placeholder
 				var ph = Instantiate(piecePlaceHolder);
