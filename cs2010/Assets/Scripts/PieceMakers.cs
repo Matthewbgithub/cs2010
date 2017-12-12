@@ -14,7 +14,7 @@ public class PieceMakers : MonoBehaviour {
 	//global variable of turns, used to determine if black or white turn
 	public static int turns = 0;
 	//array of gameObjects, not sure if it stores the actual objects or just clones
-	private static int boardSize = 19;
+	private static int boardSize = 16;
 	private static GameObject[,] boardRecord = new GameObject[boardSize,boardSize];
 
 	public int blackPieces = 0;
