@@ -18,27 +18,32 @@ public class EndGameScript : MonoBehaviour {
 		blackScore = GetComponent<TextMeshProUGUI> ();
 		whiteScore = GetComponent<TextMeshProUGUI> ();
 		winnerText = GetComponent<TextMeshProUGUI> ();
+		endPopUp.SetActive (false);
 	}
 
 	// Update is called once per frame
-	void Update () {
-		
+	public void endGame()
+	{
+		Debug.Log("y");
 		// Decide when a game is won and display who wins
-		if (PieceMakers.gameOver == true) {
-			int score = PieceMakers.wCapture;
-			whiteScore.text = score.ToString ();
-			score = PieceMakers.bCapture;
-			blackScore.text = score.ToString ();
-			if(PieceMakers.wCapture > PieceMakers.bCapture){
-				winnerText.text = "White Win";
-			}
-			else{
-				winnerText.text = "Black Win";
-			}
-			endPopUp.SetActive (true);
+		int score = PieceMakers.wCapture;
+		whiteScore.text = score.ToString ();
+		score = PieceMakers.bCapture;
+		blackScore.text = score.ToString ();
+		
+		if(PieceMakers.wCapture > PieceMakers.bCapture)
+		{
+			winnerText.text = "White Win";
 		}
-		else {
+		else
+		{
+			winnerText.text = "Black Win";
+		}
+		endPopUp.SetActive (true);
+	}
+	public void startGame()
+	{
 			endPopUp.SetActive (false);
-		}
+
 	}
 }

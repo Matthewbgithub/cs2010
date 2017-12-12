@@ -8,6 +8,7 @@ public class PieceMakers : MonoBehaviour {
 	public GameObject blackPiecePrefab;
 	public GameObject whitePiecePrefab;
 
+	public GameObject endScene;
 	//records the location of this placeholder
 	public int boardx;
 	public int boardy;
@@ -48,9 +49,6 @@ public class PieceMakers : MonoBehaviour {
 	}
 
 	void Update(){
-		if (wCapture > 1) {
-			gameOver = true;
-		}
 	
 		if (restartGame) {
 			turns = 0;
@@ -71,13 +69,23 @@ public class PieceMakers : MonoBehaviour {
 			PlacePiece();
 			CheckForCaptures(boardx, boardy);
 			countPieces();
+			checkForEndGame();
 		}
 		else
 		{
 			Debug.Log("Already a piece there!!!");
 		}
 	}
-
+	void checkForEndGame()
+	{
+		if (wCapture > 1) {
+			gameOver = true;
+			this.GetComponent<EndGameScript>().endGame();
+		}else{
+			gameOver = false;
+			this.GetComponent<EndGameScript>().startGame();
+		}
+	}
 	void PlacePiece()
 	{
 		//sets obj to black or white depending on turn
