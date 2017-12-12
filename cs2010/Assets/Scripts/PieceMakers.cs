@@ -53,6 +53,7 @@ public class PieceMakers : MonoBehaviour {
 		}
 	
 		if (restartGame) {
+			turns = 0;
 			bCount = 0;
 			wCount = 0;
 			bCapture = 0;
