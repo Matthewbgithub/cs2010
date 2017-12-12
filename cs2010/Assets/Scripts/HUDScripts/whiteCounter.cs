@@ -14,7 +14,7 @@ public class whiteCounter : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		int score = PieceMakers.wCount;
+		int score = (PieceMakers.wCount - PieceMakers.bCapture);
 		whiteCount.text = "White Stones: " + score.ToString();
 	}
 }

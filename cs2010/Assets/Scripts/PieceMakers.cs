@@ -49,7 +49,8 @@ public class PieceMakers : MonoBehaviour {
 
 	void Update(){
 		if (gameOver) {
-			// game ends
+			
+			gameOver = true;
 		}
 	
 		if (restartGame) {

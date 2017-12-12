@@ -14,7 +14,7 @@ public class blackCounter : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		int score = PieceMakers.bCount;
+		int score = (PieceMakers.bCount - PieceMakers.wCapture);
 		blackCount.text = "Black Stones: " + score.ToString();
 	}
 }
