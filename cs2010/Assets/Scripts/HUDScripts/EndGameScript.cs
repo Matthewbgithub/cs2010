@@ -22,8 +22,9 @@ public class EndGameScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		// Decide when a game is won and display who wins
-		if (PieceMakers.gameOver) {
+		if (PieceMakers.gameOver == true) {
 			int score = PieceMakers.wCapture;
 			whiteScore.text = score.ToString ();
 			score = PieceMakers.bCapture;
@@ -38,5 +39,6 @@ public class EndGameScript : MonoBehaviour {
 		} else {
 			endPopUp.SetActive (false);
 		}
+
 	}
 }

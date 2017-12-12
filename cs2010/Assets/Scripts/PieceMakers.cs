@@ -48,8 +48,7 @@ public class PieceMakers : MonoBehaviour {
 	}
 
 	void Update(){
-		if (gameOver) {
-			
+		if (wCapture > 1) {
 			gameOver = true;
 		}
 	

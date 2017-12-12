@@ -16,7 +16,7 @@ public class MenuScript : MonoBehaviour {
 	}
 	
 	void TaskOnClick() {
-		PieceMakers.restartGame = true;
-		Application.LoadLevel ("Menu");
+		
+		//SceneManager.LoadScene (SceneManager.);
 	}
 }
