@@ -36,9 +36,9 @@ public class EndGameScript : MonoBehaviour {
 				winnerText.text = "Black Win";
 			}
 			endPopUp.SetActive (true);
-		} else {
+		}
+		else {
 			endPopUp.SetActive (false);
 		}
-
 	}
 }
