@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Clicking.cs" />
+     <Compile Include="Assets\Scripts\EndGameScript.cs" />
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\blackCapture.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\blackCounter.cs" />

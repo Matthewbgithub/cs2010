@@ -25,7 +25,7 @@ public class PieceMakers : MonoBehaviour {
 	public static int bCapture = 0;
 	public static int wCapture = 0;
 
-	private bool gameOver;
+	public static bool gameOver;
 	public static bool restartGame;
 
 	private string ThisColour = "";
@@ -57,6 +57,7 @@ public class PieceMakers : MonoBehaviour {
 			wCount = 0;
 			bCapture = 0;
 			wCapture = 0;
+			gameOver = false;
 			restartGame = false;
 		}
 	}
