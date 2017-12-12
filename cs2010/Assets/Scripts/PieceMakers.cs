@@ -25,7 +25,7 @@ public class PieceMakers : MonoBehaviour {
 	public static int bCapture = 0;
 	public static int wCapture = 0;
 
-	private bool gameOver;
+	public static bool gameOver;
 	public static bool restartGame;
 
 	private string ThisColour = "";
@@ -48,15 +48,16 @@ public class PieceMakers : MonoBehaviour {
 	}
 
 	void Update(){
-		if (gameOver) {
-			// game ends
+		if( turns > 5 && ((bCount-wCapture) < ((wCount-bCapture)*3)|| ((wCount-bCapture) < ((bCount-wCapture)*3)) )){
+			gameOver = true;
 		}
-	
+
 		if (restartGame) {
 			bCount = 0;
 			wCount = 0;
 			bCapture = 0;
 			wCapture = 0;
+			gameOver =false;
 			restartGame = false;
 		}
 	}
