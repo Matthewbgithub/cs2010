@@ -8,12 +8,13 @@ public class EndScript : MonoBehaviour {
 
 	public Canvas popUp;
 
-	public TextMeshProUGUI whiteScore;
+	public static bool reset;
 
 	// Use this for initialization
 	void Start () {
 		popUp = GetComponent<Canvas> ();
 		popUp.enabled = false;
+		reset = false;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +26,9 @@ public class EndScript : MonoBehaviour {
 		else{
 			popUp.enabled = false;
 		}
-			
+
+		if (reset == true) {
+			PieceMakers.restartGame = true;
+		}
 	}
 }
