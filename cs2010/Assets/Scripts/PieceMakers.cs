@@ -26,7 +26,7 @@ public class PieceMakers : MonoBehaviour {
 	public static int wCapture = 0;
 
 	private bool gameOver;
-	private bool restartGame;
+	public static bool restartGame;
 
 	private string ThisColour = "";
 	private ArrayList removeUsOnCapture = new ArrayList();
@@ -53,7 +53,11 @@ public class PieceMakers : MonoBehaviour {
 		}
 	
 		if (restartGame) {
-			// restart game
+			bCount = 0;
+			wCount = 0;
+			bCapture = 0;
+			wCapture = 0;
+			restartGame = false;
 		}
 	}
 
