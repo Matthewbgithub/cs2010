@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Button))]
-public class RestartButton : MonoBehaviour {
+public class restartButton : MonoBehaviour {
 
 	private Button button;
 
