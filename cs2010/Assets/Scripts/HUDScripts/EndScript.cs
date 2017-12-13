@@ -28,7 +28,9 @@ public class EndScript : MonoBehaviour {
 		}
 
 		if (reset == true) {
+			popUp.enabled = false;
 			PieceMakers.restartGame = true;
+
 		}
 	}
 }
