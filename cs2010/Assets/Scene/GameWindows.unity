@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 76615437}
   - component: {fileID: 76615436}
   - component: {fileID: 76615435}
-  - component: {fileID: 76615439}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -270,7 +269,7 @@ RectTransform:
   m_GameObject: {fileID: 76615434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.008710802, y: 0.008710802, z: 0.008710802}
+  m_LocalScale: {x: 0.015600624, y: 0.015600624, z: 0.015600624}
   m_Children:
   - {fileID: 1329426061}
   - {fileID: 429586839}
@@ -283,22 +282,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &76615439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 76615434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba4fe67ab023843d1b011f4a2419336a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  windows:
-  - {fileID: 1329426064}
-  - {fileID: 429586842}
-  CurrentWindowID: 0
-  defaultWindowID: 0
 --- !u!1 &132495194
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +487,6 @@ GameObject:
   - component: {fileID: 429586839}
   - component: {fileID: 429586841}
   - component: {fileID: 429586840}
-  - component: {fileID: 429586842}
   m_Layer: 5
   m_Name: OptionsWindow
   m_TagString: Untagged
@@ -568,19 +550,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429586838}
---- !u!114 &429586842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 429586838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaa569ed69fe74088b1e252b82674802, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSelected: {fileID: 2121831618}
-  backButton: {fileID: 2121831620}
 --- !u!1 &488535866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +2936,6 @@ GameObject:
   - component: {fileID: 1329426061}
   - component: {fileID: 1329426063}
   - component: {fileID: 1329426062}
-  - component: {fileID: 1329426064}
   - component: {fileID: 1329426065}
   m_Layer: 5
   m_Name: StartWindow
@@ -3028,19 +2996,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1329426060}
---- !u!114 &1329426064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1329426060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12b9f4fa42214cac92032bec7e9dc47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSelected: {fileID: 1656707361}
-  continueButton: {fileID: 1041762996}
 --- !u!114 &1329426065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4584,11 +4539,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
---- !u!1 &2121831618 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1152185079073678, guid: 166f505bb102a408d80e820e3a4536d2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1044207628}
 --- !u!114 &2121831620 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,

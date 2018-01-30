@@ -17,7 +17,7 @@ public class Clicking : MonoBehaviour {
 	 {
 		 //sets to material 1, selected
 		 rend.material = material[1];
-	 }
+	 }	
 	 void OnMouseExit()
 	 {
 		 //sets to material 0, unselected

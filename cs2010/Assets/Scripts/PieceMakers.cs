@@ -37,10 +37,15 @@ public class PieceMakers : MonoBehaviour {
 
 	public GameObject piecePlaceHolder;
 
+	//new shit
+	bool isPiece = false;
+	GameObject thisPiece;
+	GoBoard thisBoard;
 
-	public void Initialize(int boardx, int boardy) 
+	public void Initialize(int boardx, int boardy, GoBoard boardReference) 
 	{
 		//sets this x and y when it is called inside of checkerboard
+		thisBoard = boardReference;
 		this.boardx = boardx;
 		this.boardy = boardy;
 		gameOver = false;
@@ -66,28 +71,35 @@ public class PieceMakers : MonoBehaviour {
 			restartGame = false;
 		}
 	}
-
 	void OnMouseDown()
 	{	
-		//if the current slot is empty
-		if(boardRecord[boardx,boardy]==null)
-		{
-			PlacePiece();
-			CheckForCaptures(boardx, boardy);
-			countPieces();
+		Debug.Log("Place a piece called from piecemaker");
+		if(turns % 2 == 0){
+			thisBoard.PlacePiece(this.boardx, this.boardy, true);
+		}else{
+			thisBoard.PlacePiece(this.boardx, this.boardy, false);
 		}
-		else
-		{
-			Debug.Log("Already a piece there!!!");
-		}
+		turns++;
+//		//if the current slot is empty
+//		if(boardRecord[boardx,boardy]==null)
+//		{
+//			PlacePiece();
+//			CheckForCaptures(boardx, boardy);
+//			countPieces();
+//		}
+//		else
+//		{
+//			Debug.Log("Already a piece there!!!");
+//		}
 	}
-
-	void PlacePiece()
+	public bool IsEmpty(){
+		return !isPiece;
+	}
+	public void Place(bool isWhite)
 	{
+		isPiece = true;
 		//sets obj to black or white depending on turn
-		var obj = (turns % 2 == 0)?blackPiecePrefab:whitePiecePrefab;
-		//set whether piece is white or black
-		var isWhite = (turns % 2 == 0)?false:true;
+		var obj = (isWhite)?whitePiecePrefab:blackPiecePrefab;
 		//increments turn
 		turns++;
 		var pos = this.transform.position;
@@ -96,16 +108,28 @@ public class PieceMakers : MonoBehaviour {
 		//allows for future rotation
 		var rot = Quaternion.Euler(0,0,0);
 		//places it in the scene
-		var newPiece = Instantiate(obj, pos, rot);
+		thisPiece = Instantiate(obj, pos, rot);
 		//tells the piece where it is on the board
-		newPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
+		thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
 		//adds to array
-		boardRecord[boardx,boardy] = newPiece;
+		//boardRecord[boardx,boardy] = newPiece;
 		if (isWhite == true) {
 			wCount++;
 		} else {
 			bCount++;
 		}
+		//place a piece on me
+	}
+	public void removePiece()
+	{
+		isPiece = false;
+		thisPiece.GetComponent<Piece>().Destroy();
+		//TODO remove piece here pls
+		//delete current piece
+	}
+	private void PlacePiece()
+	{
+		
 	}
 
 	void countPieces(){

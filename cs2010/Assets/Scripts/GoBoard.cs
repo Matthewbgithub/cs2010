@@ -6,46 +6,80 @@ using UnityEngine;
 
 public class GoBoard : MonoBehaviour {
 
-	public Piece[,] Pieces;
-    public GameObject whitePiecePrefab;
-    public GameObject blackPiecePrefab;
-	public GameObject piecePlaceHolder;
+	//game data fields
+	public PieceMakers[,] board; //holds piecemaker objects
+	public PieceMakers piecePlaceHolder;
 
-	private Vector3 boardOffset = new Vector3(-8.0f, 0, -8.0f);
-	private Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
+	//generation fields
+	int boardXSize = 16;
+	int boardYSize = 16;
+	Vector3 boardOffset;
+	Vector3 pieceOffset;
     
+	//game control fields
+	bool gameOver = false;
+	int turns = 0;
+	int blackCount = 0;
+	int whiteCount = 0;
+	int blackCaptures = 0;
+	int whiteCaptures = 0;
 	
     private void Start()
     {
-		int boardXSize = 16;
-		int boardYSize = 16;
-		Pieces = new Piece[boardXSize,boardYSize];
+		boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
+		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
+		board = new PieceMakers[boardXSize,boardYSize];
         GenerateBoard();
     }
+	void Update(){
 
+		//win conditions here
+		if ((whiteCaptures + blackCaptures) >= 3) {
+			gameOver = true;
+		} else {
+			gameOver = false;
+		}
+	}
     private void GenerateBoard()
     {
-		
 		//generate them placeholders
-		for(int x = 0; x < 16; x++)
+		for(int x = 0; x < boardXSize; x++)
 		{
-			for(int y = 0; y < 16; y++)
+			for(int y = 0; y < boardYSize; y++)
 			{
 				//places the placeholder
 				var ph = Instantiate(piecePlaceHolder);
 				//runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
-				ph.GetComponent<PieceMakers>().Initialize(x,y);
+				ph.GetComponent<PieceMakers>().Initialize(x, y, this);
+				board[x,y] = ph;
 				MovePlaceholder(ph, x, y);
 			}
 		}
     }
-    private void MovePlaceholder(GameObject g, int x, int y)
+    private void MovePlaceholder(PieceMakers g, int x, int y)
     {
         g.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
     }
-    private void PlacePiece()
+	public void ResetBoard()
+	{
+		gameOver = false;
+		turns = 0;
+		blackCount = 0;
+		whiteCount = 0;
+		blackCaptures = 0;
+		whiteCaptures = 0;
+		//reset all the game values
+	}
+	//places piece on board and returns true if the space is empty
+    public bool PlacePiece(int x, int y, bool isWhite)
     {
-        //places piece on the board
+		Debug.Log(board[x,y].IsEmpty());
+        if(board[x,y].IsEmpty()){
+			board[x,y].Place(isWhite);
+			return true;
+		}else{
+			return false;
+		}
     }
     private void CheckForCaptures(int checkX, int checkY)
     {
@@ -54,13 +88,15 @@ public class GoBoard : MonoBehaviour {
         //this method will need some functionality from check method
     }
     //replace check method with two
-    private Boolean IsColourDifferent(int x, int y, PieceColour p)
+    private bool IsColourDifferent(int x, int y)
     {
         //checks whether the piece is different colour or same
+		return true;
     }
-    private Boolean IsPlaceEmpty(int x, int y)
+    private bool IsPlaceEmpty(int x, int y)
     {
         //return true if empty
+		return true;
     }
     //-------
     //whole board checker
@@ -68,9 +104,10 @@ public class GoBoard : MonoBehaviour {
     {
         //addtocheckedlist
     }
-    private Boolean IsBoardChecked(int x, int y)
+    private bool IsBoardChecked(int x, int y)
     {
         //is already checked
+		return true;
     }
     private void ResetBoardChecked()
     {
@@ -82,9 +119,10 @@ public class GoBoard : MonoBehaviour {
     {
         //addtocheckedlist
     }
-    private Boolean IsGroupChecked(int x, int y)
+    private bool IsGroupChecked(int x, int y)
     {
         //is already checked
+		return true;
     }
     private void ResetGroupChecked()
     {
@@ -104,7 +142,7 @@ public class GoBoard : MonoBehaviour {
     }
     private bool IsOffBoard(int x, int y)
     {
-        
+        return true;
     }
     private void Remove(int x, int y)
     {
