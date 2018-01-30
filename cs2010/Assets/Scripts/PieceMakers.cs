@@ -39,6 +39,7 @@ public class PieceMakers : MonoBehaviour {
 
 	//new shit
 	bool isPiece = false;
+	bool isWhite = false;
 	GameObject thisPiece;
 	GoBoard thisBoard;
 
@@ -53,7 +54,6 @@ public class PieceMakers : MonoBehaviour {
 	}
 
 	void Update(){
-
 
 		if ((wCapture + bCapture) >= 3) {
 			gameOver = true;
@@ -73,13 +73,11 @@ public class PieceMakers : MonoBehaviour {
 	}
 	void OnMouseDown()
 	{	
-		Debug.Log("Place a piece called from piecemaker");
 		if(turns % 2 == 0){
 			thisBoard.PlacePiece(this.boardx, this.boardy, true);
 		}else{
 			thisBoard.PlacePiece(this.boardx, this.boardy, false);
 		}
-		turns++;
 //		//if the current slot is empty
 //		if(boardRecord[boardx,boardy]==null)
 //		{
@@ -92,12 +90,18 @@ public class PieceMakers : MonoBehaviour {
 //			Debug.Log("Already a piece there!!!");
 //		}
 	}
-	public bool IsEmpty(){
+	public bool IsEmpty()
+	{
 		return !isPiece;
+	}
+	public bool IsWhite()
+	{
+		return this.isWhite;	
 	}
 	public void Place(bool isWhite)
 	{
 		isPiece = true;
+		this.isWhite = isWhite;
 		//sets obj to black or white depending on turn
 		var obj = (isWhite)?whitePiecePrefab:blackPiecePrefab;
 		//increments turn
@@ -105,33 +109,21 @@ public class PieceMakers : MonoBehaviour {
 		var pos = this.transform.position;
 		//pushes the position of the new piece up a bit just to make it fit better
 		pos.y = 0.15f;
-		//allows for future rotation
 		var rot = Quaternion.Euler(0,0,0);
 		//places it in the scene
 		thisPiece = Instantiate(obj, pos, rot);
 		//tells the piece where it is on the board
-		thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
-		//adds to array
-		//boardRecord[boardx,boardy] = newPiece;
-		if (isWhite == true) {
-			wCount++;
-		} else {
-			bCount++;
-		}
+		//thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
 		//place a piece on me
 	}
-	public void removePiece()
+	public void RemovePiece()
 	{
 		isPiece = false;
 		thisPiece.GetComponent<Piece>().Destroy();
 		//TODO remove piece here pls
 		//delete current piece
 	}
-	private void PlacePiece()
-	{
-		
-	}
-
+	
 	void countPieces(){
 		//		Debug.Log ("piece count function called");
 		for (int x = 0; x < boardSize; x++) {
@@ -154,16 +146,17 @@ public class PieceMakers : MonoBehaviour {
 		//		Debug.Log ("there are " + blackPieces + " black pieces");
 		//		Debug.Log ("there are " + whitePieces + " white pieces");
 	}
-
+/* stop stuff here from working
+---------------------------------------------------------
 	void CheckForCaptures(int x, int y)
 	{
 		//clear list of pieces checked before each press
 		resetPieceCheckedArray();
 		//loops through board checking all pieces for captures
-		/*for(int x = 0; x < boardSize; x++)
-		{
-			for(int y = 0; y < boardSize; y++)
-			{*/
+//		for(int x = 0; x < boardSize; x++)
+//		{
+//			for(int y = 0; y < boardSize; y++)
+//			{
 
 		//checks spaces around the one that has been placed and then the piece itself last
 		//re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
@@ -194,10 +187,10 @@ public class PieceMakers : MonoBehaviour {
 					removeUsOnCapture.Clear();
 					//set the flag back to true
 					captureThisGroup = true;
-					/*var colour = boardRecord[x,y].GetComponent<Piece>().getColour();
-					var piecex = boardRecord[x,y].GetComponent<Piece>().getX();
-					var piecey = boardRecord[x,y].GetComponent<Piece>().getY();
-					Debug.Log(colour + " piece at: " + piecex +", " + piecey);*/
+//					var colour = boardRecord[x,y].GetComponent<Piece>().getColour();
+//					var piecex = boardRecord[x,y].GetComponent<Piece>().getX();
+//					var piecey = boardRecord[x,y].GetComponent<Piece>().getY();
+//					Debug.Log(colour + " piece at: " + piecex +", " + piecey);
 				}
 			}
 		}
@@ -328,8 +321,7 @@ public class PieceMakers : MonoBehaviour {
 		//---search the piece if its the same colour, return a fail if its empty, stop checking the path if the other colour
 		//---success if all checkers come back with the opposite colour
 		//sets current colour
-		ThisColour = getColour(x,y);
-		var EmptyOrOtherColourFound = false;
+		//ThisColour = getColour(x,y);
 		//checking the left one
 		Debug.Log("--------------");
 		//add current to list to be removed because if the group is removed it needs to go as well
@@ -386,4 +378,5 @@ public class PieceMakers : MonoBehaviour {
 		}
 
 	}
+	*/
 }
