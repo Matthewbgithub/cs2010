@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class GoBoard : MonoBehaviour {
 
 	//game data fields
@@ -28,25 +26,93 @@ public class GoBoard : MonoBehaviour {
 	private bool captureThisGroup = true;
 	private bool isCheckingWhite = false;
 	private ArrayList removeOnCapture = new ArrayList();
-	private bool[,] checkedPieces = new bool[boardXSize,boardYSize];
-	private bool[,] groupCapture = new bool[boardXSize,boardYSize]; 
-	
+    private bool[,] checkedPieces;
+    private bool[,] groupCapture;
+
+    private int countOfCaptureChecks = 0;
+
     private void Start()
     {
-		boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
+        checkedPieces = new bool[boardXSize, boardYSize];
+        groupCapture = new bool[boardXSize, boardYSize];
+        boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[boardXSize,boardYSize];
         GenerateBoard();
     }
-	void Update(){
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            IncrementTurns();
+        }
+    }
+    public void IncrementTurns()
+    {
+        turns++;
+    }
+    public void ResetBoard()
+    {
+        gameOver = false;
+        turns = 0;
+        blackCount = 0;
+        whiteCount = 0;
+        blackCaptures = 0;
+        whiteCaptures = 0;
+        this.countOfCaptureChecks = 0;
+        //reset all the game values
+    }
+    public void TakeTurn(int x, int y)
+    {
+        Debug.Log("------------ turn " + turns + " --------------");
+        PlacePiece(x, y);
+        CheckForCaptures(x, y);
 
-		//win conditions here
-		if ((whiteCaptures + blackCaptures) >= 3) {
-			gameOver = true;
-		} else {
-			gameOver = false;
-		}
-	}
+        if ((whiteCaptures + blackCaptures) >= 3)
+        {
+            gameOver = true;
+        }
+        else
+        {
+            gameOver = false;
+        }
+    }
+    public int GetTurns()
+    {
+        return turns;
+    }
+    public int GetWhiteCaptures()
+    {
+        return whiteCaptures;
+    }
+    public int GetBlackCaptures()
+    {
+        return blackCaptures;
+    }
+    //places piece on board and returns true if the space is empty
+    private bool PlacePiece(int x, int y)
+    {
+        if (IsEmpty(x, y))
+        {
+            bool isWhite = (turns % 2 == 0);
+            //call the appropriate piecemaker to show a piece
+            board[x, y].Place(isWhite);
+            //increment counters
+            if (isWhite)
+            {
+                whiteCount++;
+            }
+            else
+            {
+                blackCount++;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void GenerateBoard()
     {
 		//generate them placeholders
@@ -59,43 +125,12 @@ public class GoBoard : MonoBehaviour {
 				//runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
 				ph.GetComponent<PieceMakers>().Initialize(x, y, this);
 				board[x,y] = ph;
-				MovePlaceholder(ph, x, y);
-			}
+                ph.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+            }
 		}
     }
-    private void MovePlaceholder(PieceMakers g, int x, int y)
-    {
-        g.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
-    }
-	public void ResetBoard()
-	{
-		gameOver = false;
-		turns = 0;
-		blackCount = 0;
-		whiteCount = 0;
-		blackCaptures = 0;
-		whiteCaptures = 0;
-		//reset all the game values
-	}
-	//places piece on board and returns true if the space is empty
-    public bool PlacePiece(int x, int y, bool isWhite)
-    {
-		Debug.Log(board[x,y].IsEmpty());
-        if(IsEmpty(x,y)){
-			//call the appropriate piecemaker to show a piece
-			board[x,y].Place(isWhite);
-			//increment counters
-			if(isWhite){
-				whiteCount++;
-			}else{
-				blackCount++;
-			}
-			return true;
-		}else{
-			return false;
-		}
-    }
-    private void CheckForCaptures(int x, int y	)
+    
+    private void CheckForCaptures(int x, int y)
     {
         //start at x and y and then scan about to find any big captures
 		ResetBoardChecked();
@@ -110,17 +145,17 @@ public class GoBoard : MonoBehaviour {
 			new int[] {x  ,y  }
 		};
 
-		foreach (int[] xy in xychange)
-		{
+        foreach (int[] xy in xychange)
+        { 
 			if(!IsOffBoard(xy[0],xy[1]))
 			{
-				//will not check if piece exists and not already checked
-				if(!GetBoard[xy[0],xy[1]].IsEmpty() && !IsBoardChecked(xy[0],xy[1]))
+                //Debug.Log("Checking " + xy[0] + ", " + xy[1]);
+                //will not check if piece exists and not already checked
+                if (!GetPieceOnBoard(xy[0],xy[1]).IsEmpty() && !IsBoardChecked(xy[0],xy[1]))
 				{
 					//add to list of items already checked as to avoid checking it again to increase game speed
 					SetBoardChecked(xy[0],xy[1]);
-					this.isCheckingWhite = GetBoard(x,y).IsWhite();
-					SearchFromHere(xy[0],xy[1]);
+                    SearchFromHere(xy[0],xy[1]);
 					if(captureThisGroup)
 					{
 						RemoveCaptured();
@@ -136,17 +171,17 @@ public class GoBoard : MonoBehaviour {
     }
 	private void check(int x, int y)
 	{
-		//if space is off the edge do nothing which is the same action as an alternate colour piece
-		if(!IsOffBoard(x,y))
+        countOfCaptureChecks++;
+        //if space is off the edge do nothing which is the same action as an alternate colour piece
+        if (!IsOffBoard(x,y))
 		{
-			if(!GetBoard(x,y).IsEmpty())
+			if(!GetPieceOnBoard(x,y).IsEmpty())
 			{
 				//there is a piece
-				Debug.Log("checking " + x +"," +y);
-				
+				//Debug.Log("checking " + x +"," +y);
 
 				//different action depending on the colour of piece
-				if(IsColourDifferent(x,y,isCheckingWhite))
+				if(!IsColourDifferent(x,y,isCheckingWhite))
 				{
 					//add to array of pieces that will all get removed if the block has been surrounded
 					SetCaptured(x,y);
@@ -162,14 +197,14 @@ public class GoBoard : MonoBehaviour {
 			}
 		}
 	}
-	private PieceMakers GetBoard(int x, int y)
+	private PieceMakers GetPieceOnBoard(int x, int y)
 	{
 		return board[x, y];
 	}
     //replace check method with two
     private bool IsColourDifferent(int x, int y, bool isWhite)
     {
-		if(isWhite == GetBoard(x,y).IsWhite())
+		if(isWhite == GetPieceOnBoard(x,y).IsWhite())
 		{
 			return false;
 		}else
@@ -195,20 +230,14 @@ public class GoBoard : MonoBehaviour {
     }
     private void ResetBoardChecked()
     {
-//        checkedPieces.Clear(checkedPieces, 0, checkedPieces.Length);
-		for(int x = 0; x < boardXSize; x++)
-		{
-			for(int y = 0; y < boardYSize; y++)
-			{
-				checkedPieces[x,y]=false;
-			}
-		}
+        //resetPieceCheckedArray()
+        checkedPieces = new bool[boardXSize, boardYSize];
     }
     //-------
     //group checker
     private void SetGroupChecked(int x, int y)
     {
-        groupChecked[x,y] = true;
+        groupCapture[x,y] = true;
     }
     private bool IsGroupChecked(int x, int y)
     {
@@ -223,14 +252,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void ResetGroupChecked()
     {
-//        groupCapture.Clear(groupCapture, 0, groupCapture.Length);
-		for(int x = 0; x < boardXSize; x++)
-		{
-			for(int y = 0; y < boardYSize; y++)
-			{
-				groupCapture[x,y]=false;
-			}
-		}
+        groupCapture  = new bool[boardXSize, boardYSize];
     }
     private void RemoveCaptured()
     {
@@ -272,13 +294,17 @@ public class GoBoard : MonoBehaviour {
     }
 	private void SearchFromHere(int x, int y)
 	{
-		//set current to checked in grand scheme
-		SetCaptured(x,y);
+        this.isCheckingWhite = GetPieceOnBoard(x, y).IsWhite();
+        Debug.Log("Check starting at: " + x + ", " + y + ". Colour is: " + this.isCheckingWhite + " " + GetPieceOnBoard(x, y).ToString());
+
+        //set current to checked in grand scheme
+        SetCaptured(x,y);
 		//set current to checked in group
-		SetGroupCaptured(x,y);
+		SetGroupChecked(x,y);
 		//initiate checking surrounding pieces
 		CheckSurrounding(x,y);
-	}
+        Debug.Log("Piece checks at: " + countOfCaptureChecks);
+    }
     private void SetCaptured(int x, int y)
     {
         int[] xy = new int[] {x,y};
@@ -296,6 +322,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void Remove(int x, int y)
     {
-		GetBoard(x,y).RemovePiece();
+        Debug.Log("Removing piece at " + x + ", " + y);
+		GetPieceOnBoard(x,y).RemovePiece();
     }
 }

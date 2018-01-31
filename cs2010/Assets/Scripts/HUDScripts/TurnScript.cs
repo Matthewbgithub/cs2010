@@ -12,6 +12,7 @@ public class TurnScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    /*
 	void Update () {
 		// Finds and display which players turn it is
 		if(PieceMakers.turns%2 == 0){
@@ -22,4 +23,5 @@ public class TurnScript : MonoBehaviour {
 		}
 
 	}
+    */
 }
