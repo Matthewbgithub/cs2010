@@ -38,9 +38,6 @@ public class GoBoard : MonoBehaviour {
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[boardXSize,boardYSize];
 		endCanvas = GameObject.Find ("EndCanvas"); // finds End Canvas object
-
-		EndScript endScript = endCanvas.GetComponent<EndScript>();
-		Debug.Log(endScript.ToString());
         GenerateBoard();
     }
     void Update()
@@ -64,7 +61,8 @@ public class GoBoard : MonoBehaviour {
         whiteCount = 0;
         this.countOfCaptureChecks = 0;
         //reset all the game values
-		//endScript.HideEndHUD ();
+		EndScript endScript = endCanvas.GetComponent<EndScript>();
+		endScript.CloseEndHUD ();
     }
 
     public void TakeTurn(int x, int y)
@@ -78,8 +76,8 @@ public class GoBoard : MonoBehaviour {
 	private void EndLogic()
 	{
 		if(turns == 5){
-			//endScript.DisplayEndHUD ();
-			end.DisplayEndHUD();
+			EndScript endScript = endCanvas.GetComponent<EndScript>();
+			endScript.OpenEndHUD ();
 		}
 	}
 

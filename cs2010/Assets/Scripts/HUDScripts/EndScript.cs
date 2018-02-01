@@ -14,14 +14,13 @@ public class EndScript : MonoBehaviour {
 		popUp.enabled = false;
 	}
 
-	public void DisplayEndHUD()
+	public void OpenEndHUD()
 	{
 		popUp.enabled = true;
 	}
 
-	public void HideEndHUD()
+	public void CloseEndHUD()
 	{
 		popUp.enabled = false;
 	}
-
 }
