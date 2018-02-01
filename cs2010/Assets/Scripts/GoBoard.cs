@@ -16,7 +16,6 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
     
 	//game control fields
-	private bool gameOver = false;
 	private int turns = 0;
 	private int blackCount = 0;
 	private int whiteCount = 0;
@@ -50,7 +49,6 @@ public class GoBoard : MonoBehaviour {
     public void IncrementTurns()
     {
         turns++;
-		Debug.Log (turns.ToString ());
     }
 
     public void ResetBoard()

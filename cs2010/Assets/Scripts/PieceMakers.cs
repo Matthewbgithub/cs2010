@@ -87,7 +87,9 @@ public class PieceMakers : MonoBehaviour {
         //TODO remove piece here pls
         //delete current piece
     }
-    public string ToString()
+
+
+    public override string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }

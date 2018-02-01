@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Clicking.cs" />
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\EndScript.cs" />
+     <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
