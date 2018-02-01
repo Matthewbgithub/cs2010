@@ -1,15 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TextMesh Pro/Examples/Scripts/TMP_DigitValidator.cs">
-    <Files>
-      <File FileName="Assets/Scripts/HUDScripts/HUDScript.cs" Line="8" Column="9" />
-      <File FileName="Assets/TextMesh Pro/Examples/Scripts/TMP_DigitValidator.cs" Line="12" Column="39" />
-      <File FileName="Assets/Scripts/HUDScripts/blackCounter.cs" Line="16" Column="18" NotebookId="1" />
-      <File FileName="Assets/Scripts/PieceMakers.cs" Line="1" Column="1" NotebookId="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/liknhe/Desktop/CS2010/cs2010/cs2010/Assets/Scripts/GoBoard.cs" line="113" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
