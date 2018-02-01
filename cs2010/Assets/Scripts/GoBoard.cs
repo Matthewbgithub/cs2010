@@ -101,7 +101,7 @@ public class GoBoard : MonoBehaviour {
                 blackCount++;
             }
             return true;
-        }
+		}
         else
         {
             return false;

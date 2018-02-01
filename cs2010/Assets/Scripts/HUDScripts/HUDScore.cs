@@ -4,15 +4,42 @@ using UnityEngine;
 using TMPro;
 
 public class HUDScore : MonoBehaviour {
-
-	public TextMeshProUGUI blackScore;
+	
+	private TextMeshProUGUI[] tmp;
+	private GameObject board;
 
 	void Start () {
-		blackScore = GetComponent<TextMeshProUGUI> ();
+		tmp = GetComponentsInChildren<TextMeshProUGUI> ();
+		ScoreUpdate ();
+		board = GameObject.Find ("Board");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		blackScore.text = "Hi";
+		ScoreUpdate ();
 	}
+
+	void ScoreUpdate(){
+		GoBoard boardScript = board.GetComponent<GoBoard> ();
+
+		foreach (TextMeshProUGUI text in tmp) {
+			
+			if (text.name == "blackCount") {
+				text.text = "Hi";
+			}
+
+			if (text.name == "whiteCount") {
+				text.text = "Bye";
+			}
+
+			if (text.name == "playerText") {
+				int turn = boardScript.GetTurns();
+				if ( turn % 2 == 0) {
+					text.text = "white move";
+				} else {
+					text.text = "black move";
+				}
+		}
+	}
+}
 }
