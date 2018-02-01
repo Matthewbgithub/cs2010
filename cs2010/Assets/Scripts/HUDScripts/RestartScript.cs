@@ -16,6 +16,9 @@ public class RestartScript : MonoBehaviour {
 
 	void TaskOnClick() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
+		GameObject board = GameObject.Find ("Board");
+		GoBoard script = board.GetComponent<GoBoard> ();
+		script.ResetBoard ();
 	}
 
 

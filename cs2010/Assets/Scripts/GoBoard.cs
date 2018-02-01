@@ -37,7 +37,6 @@ public class GoBoard : MonoBehaviour {
         boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[boardXSize,boardYSize];
-		endCanvas = GameObject.Find ("EndCanvas"); // finds End Canvas object
         GenerateBoard();
     }
     void Update()
