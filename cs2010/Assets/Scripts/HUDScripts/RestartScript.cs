@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Button))]
-public class restartButton : MonoBehaviour {
+public class RestartScript : MonoBehaviour {
 
 	private Button button;
 
@@ -16,8 +16,7 @@ public class restartButton : MonoBehaviour {
 
 	void TaskOnClick() {
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex);
-		PieceMakers.restartGame = true;
 	}
-		
-		
+
+
 } 

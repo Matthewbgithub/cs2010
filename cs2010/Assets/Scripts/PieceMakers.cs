@@ -15,17 +15,6 @@ public class PieceMakers : MonoBehaviour {
     private static int boardSize = 16;
     private static GameObject[,] boardRecord = new GameObject[boardSize, boardSize];
 
-    public int blackPieces = 0;
-    public int whitePieces = 0;
-
-    public static int bCount = 0;
-    public static int wCount = 0;
-    public static int bCapture = 0;
-    public static int wCapture = 0;
-
-    public static bool gameOver;
-    public static bool restartGame;
-
     private string ThisColour = "";
     private ArrayList removeUsOnCapture = new ArrayList();
     private bool captureThisGroup = true;

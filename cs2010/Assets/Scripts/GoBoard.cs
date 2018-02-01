@@ -7,6 +7,7 @@ public class GoBoard : MonoBehaviour {
 	//game data fields
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
+	public EndScript endScript;
 
 	//generation fields
 	private int boardXSize = 16;
@@ -19,8 +20,6 @@ public class GoBoard : MonoBehaviour {
 	private int turns = 0;
 	private int blackCount = 0;
 	private int whiteCount = 0;
-	private int blackCaptures = 0;
-	private int whiteCaptures = 0;
 	
 	//capture fields
 	private bool captureThisGroup = true;
@@ -47,48 +46,50 @@ public class GoBoard : MonoBehaviour {
             IncrementTurns();
         }
     }
+
     public void IncrementTurns()
     {
         turns++;
+		Debug.Log (turns.ToString ());
     }
+
     public void ResetBoard()
     {
         gameOver = false;
         turns = 0;
         blackCount = 0;
         whiteCount = 0;
-        blackCaptures = 0;
-        whiteCaptures = 0;
         this.countOfCaptureChecks = 0;
         //reset all the game values
     }
+
     public void TakeTurn(int x, int y)
     {
         Debug.Log("------------ turn " + turns + " --------------");
         PlacePiece(x, y);
         CheckForCaptures(x, y);
-
-        if ((whiteCaptures + blackCaptures) >= 3)
-        {
-            gameOver = true;
-        }
-        else
-        {
-            gameOver = false;
-        }
+		EndLogic ();
     }
+
+	private void EndLogic()
+	{
+		if(turns == 5){
+			EndGame ();
+		}
+	}
+
+	public void EndGame()
+	{
+		// when a player ressigns or game is completed
+		gameOver = true;
+		endScript.DisplayEndHUD ();
+	}	
+
     public int GetTurns()
     {
         return turns;
     }
-    public int GetWhiteCaptures()
-    {
-        return whiteCaptures;
-    }
-    public int GetBlackCaptures()
-    {
-        return blackCaptures;
-    }
+
     //places piece on board and returns true if the space is empty
     private bool PlacePiece(int x, int y)
     {
@@ -310,7 +311,8 @@ public class GoBoard : MonoBehaviour {
         int[] xy = new int[] {x,y};
 		removeOnCapture.Add(xy);
     }
-    private bool IsOffBoard(int x, int y)
+   
+	private bool IsOffBoard(int x, int y)
     {
         if(x < 0 || x >= boardXSize || y < 0 || y >= boardYSize)
 		{

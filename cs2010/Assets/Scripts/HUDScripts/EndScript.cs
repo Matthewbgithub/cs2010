@@ -6,31 +6,22 @@ using TMPro;
 
 public class EndScript : MonoBehaviour {
 
-	public Canvas popUp;
-
-	public static bool reset;
+	private Canvas popUp;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		popUp = GetComponent<Canvas> ();
 		popUp.enabled = false;
-		reset = false;
+	}
+
+	public void DisplayEndHUD()
+	{
+		popUp.enabled = true;
+	}
+
+	public void HideEndHUD()
+	{
+		popUp.enabled = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		// Decide when a game is won and display who wins
-		if (PieceMakers.gameOver == true) {
-			popUp.enabled = true;
-		}
-		else{
-			popUp.enabled = false;
-		}
-
-		if (reset == true) {
-			popUp.enabled = false;
-			PieceMakers.restartGame = true;
-
-		}
-	}
 }
