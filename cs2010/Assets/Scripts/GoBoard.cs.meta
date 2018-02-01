@@ -1,16 +1,14 @@
 fileFormatVersion: 2
 guid: 063f80008e830964aa0740b60f8a32d1
-timeCreated: 1512999383
+timeCreated: 1517488635
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - whitePiecePrefab: {fileID: 1368279913424332, guid: f54109f83994f49c99a5560fda854d3d,
-      type: 2}
-  - blackPiecePrefab: {fileID: 1029747076033136, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68,
-      type: 2}
   - piecePlaceHolder: {fileID: 1842046783084788, guid: e045d20e15282a248a7456b3ca28332c,
+      type: 2}
+  - endCanvas: {fileID: 1817007877129834, guid: c7dc3b2ae3033464095597c5b5bd41f8,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

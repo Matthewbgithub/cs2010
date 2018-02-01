@@ -7,7 +7,7 @@ public class GoBoard : MonoBehaviour {
 	//game data fields
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
-	public EndScript endScript;
+	public GameObject endCanvas;
 
 	//generation fields
 	private int boardXSize = 16;
@@ -37,6 +37,10 @@ public class GoBoard : MonoBehaviour {
         boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[boardXSize,boardYSize];
+		endCanvas = GameObject.Find ("EndCanvas"); // finds End Canvas object
+
+		EndScript endScript = endCanvas.GetComponent<EndScript>();
+		Debug.Log(endScript.ToString());
         GenerateBoard();
     }
     void Update()
@@ -55,12 +59,12 @@ public class GoBoard : MonoBehaviour {
 
     public void ResetBoard()
     {
-        gameOver = false;
         turns = 0;
         blackCount = 0;
         whiteCount = 0;
         this.countOfCaptureChecks = 0;
         //reset all the game values
+		//endScript.HideEndHUD ();
     }
 
     public void TakeTurn(int x, int y)
@@ -74,16 +78,10 @@ public class GoBoard : MonoBehaviour {
 	private void EndLogic()
 	{
 		if(turns == 5){
-			EndGame ();
+			//endScript.DisplayEndHUD ();
+			end.DisplayEndHUD();
 		}
 	}
-
-	public void EndGame()
-	{
-		// when a player ressigns or game is completed
-		gameOver = true;
-		endScript.DisplayEndHUD ();
-	}	
 
     public int GetTurns()
     {

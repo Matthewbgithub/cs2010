@@ -6,7 +6,7 @@ using TMPro;
 
 public class EndScript : MonoBehaviour {
 
-	private Canvas popUp;
+	public Canvas popUp;
 
 	// Use this for initialization
 	public void Start () {
@@ -23,5 +23,5 @@ public class EndScript : MonoBehaviour {
 	{
 		popUp.enabled = false;
 	}
-	
+
 }
