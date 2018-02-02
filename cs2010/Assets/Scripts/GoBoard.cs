@@ -9,6 +9,7 @@ public class GoBoard : MonoBehaviour {
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
 	public GameObject endCanvas;
+	private EndScript endScript;
 
 	//generation fields
 	private int boardXSize;
@@ -20,6 +21,7 @@ public class GoBoard : MonoBehaviour {
 	private int turns = 0;
 	private int blackCount = 0;
 	private int whiteCount = 0;
+	private string winner = null;
 	
 	//capture fields
 	private bool captureThisGroup = true;
@@ -75,8 +77,6 @@ public class GoBoard : MonoBehaviour {
 		//blackCount
 		//whiteCount
 		//boardSize
-
-
 	}
 
 	private void LoadGame()
@@ -96,6 +96,7 @@ public class GoBoard : MonoBehaviour {
         whiteCount = 0;
         this.countOfCaptureChecks = 0;
         //reset all the game values
+
 		EndScript endScript = endCanvas.GetComponent<EndScript>();
 		endScript.CloseEndHUD ();
     }
@@ -110,7 +111,9 @@ public class GoBoard : MonoBehaviour {
 
 	private void EndLogic()
 	{
-		if(turns == 5){
+		if(turns >= 50){
+			Debug.Log("ENDDDDDDDDD");
+
 			EndScript endScript = endCanvas.GetComponent<EndScript>();
 			endScript.OpenEndHUD ();
 		}
@@ -366,6 +369,11 @@ public class GoBoard : MonoBehaviour {
     private void Remove(int x, int y)
     {
         Debug.Log("Removing piece at " + x + ", " + y);
+		if (GetPieceOnBoard (x, y).IsWhite ()) {
+			whiteCount--;
+		} else {
+			blackCount--;
+		}
 		GetPieceOnBoard(x,y).RemovePiece();
     }
 }

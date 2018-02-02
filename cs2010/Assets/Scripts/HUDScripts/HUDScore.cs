@@ -5,7 +5,6 @@ using TMPro;
 
 public class HUDScore : MonoBehaviour
 {
-	
 	private TextMeshProUGUI[] tmp;
 	public GoBoard board;
 
@@ -13,7 +12,6 @@ public class HUDScore : MonoBehaviour
 	{
 		tmp = GetComponentsInChildren<TextMeshProUGUI> ();
 		ScoreUpdate();
-		//GameObject board = GameObject.Find ("Board");
 		board = board.GetComponent<GoBoard> ();
 	}
 	
@@ -21,7 +19,6 @@ public class HUDScore : MonoBehaviour
 	void Update ()
 	{
 		ScoreUpdate();
-		//Debug.Log (boardScript.name);
 	}
 
 	private void ScoreUpdate ()
