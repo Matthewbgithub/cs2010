@@ -32,7 +32,7 @@ public class GoBoard : MonoBehaviour {
 
     private void Start()
     {
-		Initialize (19);
+		Initialize (LoadScene.size);
     }
 
 	private void Initialize(int size)
