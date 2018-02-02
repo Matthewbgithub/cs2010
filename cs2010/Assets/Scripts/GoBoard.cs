@@ -5,13 +5,14 @@ using UnityEngine;
 public class GoBoard : MonoBehaviour {
 
 	//game data fields
+	[SerializeField]
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
 	public GameObject endCanvas;
 
 	//generation fields
-	private int boardXSize = 16;
-	private int boardYSize = 16;
+	private int boardXSize;
+	private int boardYSize;
 	private Vector3 boardOffset;
 	private Vector3 pieceOffset;
     
@@ -31,20 +32,57 @@ public class GoBoard : MonoBehaviour {
 
     private void Start()
     {
-        checkedPieces = new bool[boardXSize, boardYSize];
-        groupCapture = new bool[boardXSize, boardYSize];
-        boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
+		Initialize (19);
+    }
+
+	private void Initialize(int size)
+	{
+		boardXSize = size;
+		boardYSize = size;
+
+		checkedPieces = new bool[boardXSize, boardYSize];
+		groupCapture = new bool[boardXSize, boardYSize];
+		boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[boardXSize,boardYSize];
-        GenerateBoard();
-    }
+		GenerateBoard();
+	}
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             IncrementTurns();
         }
+
+		if (Input.GetKeyDown (KeyCode.S)) 
+		{
+			//save game
+			SaveGame();
+		}
+
+		if (Input.GetKeyDown (KeyCode.L)) 
+		{
+			//Load game
+			LoadGame ();
+		}
     }
+
+	private void SaveGame()
+	{
+		Debug.Log ("Saved");
+		//turns
+		//blackCount
+		//whiteCount
+		//boardSize
+
+
+	}
+
+	private void LoadGame()
+	{
+		Debug.Log ("Loaded");
+	}
 
     public void IncrementTurns()
     {
@@ -76,6 +114,16 @@ public class GoBoard : MonoBehaviour {
 			EndScript endScript = endCanvas.GetComponent<EndScript>();
 			endScript.OpenEndHUD ();
 		}
+	}
+
+	public int GetBlackCount()
+	{
+		return blackCount;
+	}
+
+	public int GetWhiteCount()
+	{
+		return whiteCount;
 	}
 
     public int GetTurns()
