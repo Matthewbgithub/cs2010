@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2017.2.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -226,17 +224,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Clicking.cs" />
     <Compile Include="Assets\Scripts\GoBoard.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\blackCapture.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\blackCounter.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\blackScore.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\EndScript.cs" />
+    <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\restartButton.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\TurnScript.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\whiteCapture.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\whiteCounter.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\whiteScore.cs" />
-    <Compile Include="Assets\Scripts\HUDScripts\winnerScript.cs" />
+    <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />

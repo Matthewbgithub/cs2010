@@ -12,7 +12,7 @@ public class PieceMakers : MonoBehaviour {
     public int boardx;
     public int boardy;
     //array of gameObjects, not sure if it stores the actual objects or just clones
-    private static int boardSize = 16;
+    private static int boardSize;
     private static GameObject[,] boardRecord = new GameObject[boardSize, boardSize];
 
     private string ThisColour = "";
@@ -33,6 +33,7 @@ public class PieceMakers : MonoBehaviour {
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
     {
         thisBoard = boardReference;
+        boardSize = thisBoard.GetBoardSize();
         this.boardx = boardx;
         this.boardy = boardy;
     }

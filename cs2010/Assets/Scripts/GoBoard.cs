@@ -14,6 +14,7 @@ public class GoBoard : MonoBehaviour {
 	//generation fields
 	private int boardXSize;
 	private int boardYSize;
+    private int boardPhysicalSize = 16;
 	private Vector3 boardOffset;
 	private Vector3 pieceOffset;
     
@@ -44,7 +45,7 @@ public class GoBoard : MonoBehaviour {
 
 		checkedPieces = new bool[boardXSize, boardYSize];
 		groupCapture = new bool[boardXSize, boardYSize];
-		boardOffset = new Vector3(-(boardXSize/2f), 0, -(boardYSize/2f));//center of board i think
+		boardOffset = new Vector3(-(boardPhysicalSize / 2f), 0, -(boardPhysicalSize/2f));//center of board i think
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[boardXSize,boardYSize];
 		GenerateBoard();
@@ -88,7 +89,10 @@ public class GoBoard : MonoBehaviour {
     {
         turns++;
     }
-
+    public int GetBoardSize()
+    {
+        return boardXSize;
+    }
     public void ResetBoard()
     {
         turns = 0;
@@ -160,8 +164,12 @@ public class GoBoard : MonoBehaviour {
     }
     private void GenerateBoard()
     {
-		//generate them placeholders
-		for(int x = 0; x < boardXSize; x++)
+        float bx = 0.0f;
+        float by = 0.0f;
+        float fy;
+        float fx;
+        //generate them placeholders
+        for (int x = 0; x < boardXSize; x++)
 		{
 			for(int y = 0; y < boardYSize; y++)
 			{
@@ -170,7 +178,26 @@ public class GoBoard : MonoBehaviour {
 				//runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
 				ph.GetComponent<PieceMakers>().Initialize(x, y, this);
 				board[x,y] = ph;
-                ph.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
+                fy = y;
+                fx = x;
+                if (x == 0)
+                {
+                    bx = 0;
+                }
+                else
+                {
+                    bx = (fx / boardXSize) * boardPhysicalSize;
+                }
+                if (y == 0)
+                {
+                    by = 0;
+                }
+                else
+                {
+                    by = (fy / boardYSize) * boardPhysicalSize;
+                }
+                ph.transform.position = (Vector3.right * bx) + (Vector3.forward * by) + boardOffset + pieceOffset;
+                ph.transform.localScale = new Vector3((16f/this.GetBoardSize()), 0.01f, (16f/this.GetBoardSize()));
             }
 		}
     }
