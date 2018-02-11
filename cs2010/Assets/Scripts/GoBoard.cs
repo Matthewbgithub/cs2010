@@ -69,8 +69,8 @@ public class GoBoard : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.L)) 
 		{
-			//Load game
-			LoadGame ();
+            //Load game
+            LoadGame (1);
 		}
     }
 
@@ -100,10 +100,10 @@ public class GoBoard : MonoBehaviour {
         SaveLoad.Unlock();
     }
 
-    private void LoadGame()
+    private void LoadGame(int SaveNumber)
     {
         SaveLoad.Lock();
-        state = SaveLoad.Load()[0];
+        state = SaveLoad.Load()[SaveNumber];
         do { } while (ResetScene() == null);
         //sets values from state
         this.turns = state.turns;
