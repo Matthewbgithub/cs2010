@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using UnityEngine.SceneManagement;
+
+[System.Serializable]
 public class GoBoard : MonoBehaviour {
 
 	//game data fields
-	[SerializeField]
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
 	public GameObject endCanvas;
 	private EndScript endScript;
 
 	//generation fields
-	private int boardXSize;
-	private int boardYSize;
+	private int boardSize;
     private int boardPhysicalSize = 16;
 	private Vector3 boardOffset;
 	private Vector3 pieceOffset;
@@ -31,7 +34,8 @@ public class GoBoard : MonoBehaviour {
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
 
-    private int countOfCaptureChecks = 0;
+    //saving
+    private GameState state = new GameState();
 
     private void Start()
     {
@@ -40,14 +44,13 @@ public class GoBoard : MonoBehaviour {
 
 	private void Initialize(int size)
 	{
-		boardXSize = size;
-		boardYSize = size;
+		boardSize = size;
 
-		checkedPieces = new bool[boardXSize, boardYSize];
-		groupCapture = new bool[boardXSize, boardYSize];
+		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
+		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
 		boardOffset = new Vector3(-(boardPhysicalSize / 2f), 0, -(boardPhysicalSize/2f));//center of board i think
 		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
-		board = new PieceMakers[boardXSize,boardYSize];
+		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
 		GenerateBoard();
 	}
 
@@ -73,32 +76,122 @@ public class GoBoard : MonoBehaviour {
 
 	private void SaveGame()
 	{
-		Debug.Log ("Saved");
-		//turns
-		//blackCount
-		//whiteCount
-		//boardSize
-	}
+        SaveLoad.Lock();
+        //recording variables
+        state.turns = this.turns;
+        state.whiteCount = this.whiteCount;
+        state.blackCount = this.blackCount;
+        state.SetBoardSize(this.GetBoardSize());
+        //recording board state
+        for (int x = 0; x < GetBoardSize(); x++)
+        {
+            for (int y = 0; y < GetBoardSize(); y++)
+            {
+                if (!GetPieceOnBoard(x, y).IsEmpty())
+                {
+                    state.isPiece[x, y] = true;
+                    state.isWhite[x, y] = GetPieceOnBoard(x, y).IsWhite();
+                }
+            }
+        }
+        //save to file
+        SaveLoad.Save(state);
+        Debug.Log("Saved");
+        SaveLoad.Unlock();
+    }
 
-	private void LoadGame()
-	{
-		Debug.Log ("Loaded");
-	}
-
+    private void LoadGame()
+    {
+        SaveLoad.Lock();
+        state = SaveLoad.Load()[0];
+        do { } while (ResetScene() == null);
+        //sets values from state
+        this.turns = state.turns;
+        this.whiteCount = state.whiteCount;
+        this.blackCount = state.blackCount;
+        //clears board
+        RemoveAllPieces();
+        //destroys piece creators
+        ResetBeforeInitialization();
+        //makes new board with correct size
+        Initialize(state.boardSize);
+        //places pieces according to the state
+        for (int x = 0; x < GetBoardSize(); x++)
+        {
+            for (int y = 0; y < GetBoardSize(); y++)
+            {
+                if (state.isPiece[x,y])
+                {
+                    GetPieceOnBoard(x, y).Place(state.isWhite[x, y]);
+                }
+            }
+        }
+        Debug.Log("Loaded");
+        SaveLoad.Unlock();
+    }
     public void IncrementTurns()
     {
         turns++;
     }
     public int GetBoardSize()
     {
-        return boardXSize;
+        return boardSize;
+    }
+    public int GetBlackCount()
+    {
+        return blackCount;
+    }
+    public string ToString()
+    {
+        return "Turn " + this.turns + ". B: " + this.blackCount + ". W: " + this.whiteCount;
+    }
+    public int GetWhiteCount()
+    {
+        return whiteCount;
+    }
+
+    public int GetTurns()
+    {
+        return turns;
+    }
+    private void RemoveAllPieces()
+    {
+        for (int x = 0; x < GetBoardSize(); x++)
+        {
+            for (int y = 0; y < GetBoardSize(); y++)
+            {
+                GetPieceOnBoard(x, y).RemovePiece();
+            }
+        }
+    }
+    
+    private IEnumerator ResetScene()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex
+       
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("game");
+
+        //Wait until the last operation fully loads to return anything
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+    private void ResetBeforeInitialization()
+    {
+        for (int x = 0; x < GetBoardSize(); x++)
+        {
+            for (int y = 0; y < GetBoardSize(); y++)
+            {
+                Destroy(GetPieceOnBoard(x,y).gameObject);
+            }
+        }
     }
     public void ResetBoard()
     {
         turns = 0;
         blackCount = 0;
         whiteCount = 0;
-        this.countOfCaptureChecks = 0;
         //reset all the game values
 
 		EndScript endScript = endCanvas.GetComponent<EndScript>();
@@ -113,31 +206,27 @@ public class GoBoard : MonoBehaviour {
 		EndLogic ();
     }
 
-	private void EndLogic()
-	{
-		if(turns >= 50){
-			Debug.Log("ENDDDDDDDDD");
-
-			EndScript endScript = endCanvas.GetComponent<EndScript>();
-			endScript.OpenEndHUD ();
-		}
-	}
-
-	public int GetBlackCount()
-	{
-		return blackCount;
-	}
-
-	public int GetWhiteCount()
-	{
-		return whiteCount;
-	}
-
-    public int GetTurns()
+    private void EndLogic()
     {
-        return turns;
-    }
+        if (this.IsGameOver())
+        {
+            Debug.Log("ENDDDDDDDDD");
 
+            EndScript endScript = endCanvas.GetComponent<EndScript>();
+            endScript.OpenEndHUD();
+        }
+    }
+    private bool IsGameOver()
+    {
+        if (turns >= 50)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     //places piece on board and returns true if the space is empty
     private bool PlacePiece(int x, int y)
     {
@@ -145,7 +234,7 @@ public class GoBoard : MonoBehaviour {
         {
             bool isWhite = (turns % 2 == 0);
             //call the appropriate piecemaker to show a piece
-            board[x, y].Place(isWhite);
+            GetPieceOnBoard(x,y).Place(isWhite);
             //increment counters
             if (isWhite)
             {
@@ -169,24 +258,29 @@ public class GoBoard : MonoBehaviour {
         float fy;
         float fx;
         //generate them placeholders
-        for (int x = 0; x < boardXSize; x++)
+        for (int x = 0; x < boardSize; x++)
 		{
-			for(int y = 0; y < boardYSize; y++)
+			for(int y = 0; y < boardSize; y++)
 			{
 				//places the placeholder
 				var ph = Instantiate(piecePlaceHolder);
 				//runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
 				ph.GetComponent<PieceMakers>().Initialize(x, y, this);
+                //add piece to board array
 				board[x,y] = ph;
+                //temps for x and y
                 fy = y;
                 fx = x;
+                //avoids x/0 errors
                 if (x == 0)
                 {
                     bx = 0;
                 }
                 else
                 {
-                    bx = (fx / boardXSize) * boardPhysicalSize;
+                    //new x value = ( old x / width ) x 16
+                    //scales x value down then back up to size of board
+                    bx = (fx / boardSize) * boardPhysicalSize;
                 }
                 if (y == 0)
                 {
@@ -194,9 +288,11 @@ public class GoBoard : MonoBehaviour {
                 }
                 else
                 {
-                    by = (fy / boardYSize) * boardPhysicalSize;
+                    by = (fy / boardSize) * boardPhysicalSize;
                 }
+                //move pieces to their position within scale
                 ph.transform.position = (Vector3.right * bx) + (Vector3.forward * by) + boardOffset + pieceOffset;
+                //scales the piece selectors
                 ph.transform.localScale = new Vector3((16f/this.GetBoardSize()), 0.01f, (16f/this.GetBoardSize()));
             }
 		}
@@ -243,7 +339,6 @@ public class GoBoard : MonoBehaviour {
     }
 	private void check(int x, int y)
 	{
-        countOfCaptureChecks++;
         //if space is off the edge do nothing which is the same action as an alternate colour piece
         if (!IsOffBoard(x,y))
 		{
@@ -303,7 +398,7 @@ public class GoBoard : MonoBehaviour {
     private void ResetBoardChecked()
     {
         //resetPieceCheckedArray()
-        checkedPieces = new bool[boardXSize, boardYSize];
+        checkedPieces = new bool[boardSize, boardSize];
     }
     //-------
     //group checker
@@ -324,7 +419,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void ResetGroupChecked()
     {
-        groupCapture  = new bool[boardXSize, boardYSize];
+        groupCapture  = new bool[boardSize, boardSize];
     }
     private void RemoveCaptured()
     {
@@ -367,7 +462,7 @@ public class GoBoard : MonoBehaviour {
 	private void SearchFromHere(int x, int y)
 	{
         this.isCheckingWhite = GetPieceOnBoard(x, y).IsWhite();
-        Debug.Log("Check starting at: " + x + ", " + y + ". Colour is: " + this.isCheckingWhite + " " + GetPieceOnBoard(x, y).ToString());
+        //Debug.Log("Check starting at: " + x + ", " + y + ". Colour is: " + this.isCheckingWhite + " " + GetPieceOnBoard(x, y).ToString());
 
         //set current to checked in grand scheme
         SetCaptured(x,y);
@@ -375,7 +470,6 @@ public class GoBoard : MonoBehaviour {
 		SetGroupChecked(x,y);
 		//initiate checking surrounding pieces
 		CheckSurrounding(x,y);
-        Debug.Log("Piece checks at: " + countOfCaptureChecks);
     }
     private void SetCaptured(int x, int y)
     {
@@ -385,7 +479,7 @@ public class GoBoard : MonoBehaviour {
    
 	private bool IsOffBoard(int x, int y)
     {
-        if(x < 0 || x >= boardXSize || y < 0 || y >= boardYSize)
+        if(x < 0 || x >= boardSize || y < 0 || y >= boardSize)
 		{
 			return true;
 		}else
@@ -402,5 +496,67 @@ public class GoBoard : MonoBehaviour {
 			blackCount--;
 		}
 		GetPieceOnBoard(x,y).RemovePiece();
+    }
+}
+public static class SaveLoad
+{
+    public static List<GameState> savedGames = new List<GameState>();
+
+    private static bool locked = false;
+
+    public static void Lock()
+    {
+        Debug.Log("locked");
+        locked = true;
+    }
+    public static void Unlock()
+    {
+        Debug.Log("unlocked");
+        locked = false;
+    }
+    public static bool Locked()
+    {
+        return locked;
+    }
+    public static void Save(GameState state)
+    {
+        savedGames.Add(state);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
+        bf.Serialize(file, SaveLoad.savedGames);
+        file.Close();
+    }
+    public static List<GameState> Load()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+            SaveLoad.savedGames = (List<GameState>)bf.Deserialize(file);
+            file.Close();
+            return savedGames;
+        }
+        else
+        {
+            return null;
+        }
+    }
+}
+[System.Serializable]
+ public class GameState
+{
+    public int turns;
+    public int blackCount;
+    public int whiteCount;
+    public int boardSize;
+    public bool[,] isPiece;
+    public bool[,] isWhite;
+
+    
+    public void SetBoardSize(int size)
+    {
+        this.boardSize = size;
+        isPiece = new bool[boardSize, boardSize];
+        isWhite = new bool[boardSize, boardSize];
     }
 }
