@@ -9,7 +9,6 @@ public class GoBoard : MonoBehaviour {
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
 	public GameObject endCanvas;
-	private EndScript endScript;
 
 	//generation fields
 	private int boardXSize;
@@ -19,23 +18,30 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
     
 	//game control fields
-	private int turns = 0;
-	private int blackCount = 0;
-	private int whiteCount = 0;
-	private string winner = null;
+	private int turns;
+	private int blackCount;
+	private int whiteCount;
+	private string winner;
 	
 	//capture fields
 	private bool captureThisGroup = true;
-	private bool isCheckingWhite = false;
+	private bool isCheckingWhite;
 	private ArrayList removeOnCapture = new ArrayList();
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
 
-    private int countOfCaptureChecks = 0;
+    private int countOfCaptureChecks;
 
-    private void Start()
+    public void Start()
     {
-		Initialize (LoadScene.size);
+        if (LoadScene.size == 0)
+        {
+            Initialize(19); //testing purposes
+        }
+        else
+        {
+            Initialize(LoadScene.size);
+        }
     }
 
 	private void Initialize(int size)
@@ -105,12 +111,13 @@ public class GoBoard : MonoBehaviour {
 		endScript.CloseEndHUD ();
     }
 
-    public void TakeTurn(int x, int y)
+    public bool TakeTurn(int x, int y)
     {
         Debug.Log("------------ turn " + turns + " --------------");
-        PlacePiece(x, y);
+        bool isPlaced = PlacePiece(x, y);
         CheckForCaptures(x, y);
 		EndLogic ();
+        return isPlaced;
     }
 
 	private void EndLogic()
@@ -209,7 +216,7 @@ public class GoBoard : MonoBehaviour {
 
 		//checks spaces around the one that has been placed and then the piece itself last
 		//re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
-		int[][] xychange = new int[][] {
+		int[][] xychange = {
 			new int[] {x  ,y-1},
 			new int[] {x  ,y+1},
 			new int[] {x-1,y  },
@@ -241,7 +248,7 @@ public class GoBoard : MonoBehaviour {
 			}
 		}
     }
-	private void check(int x, int y)
+    private void Check(int x, int y)
 	{
         countOfCaptureChecks++;
         //if space is off the edge do nothing which is the same action as an alternate colour piece
@@ -343,25 +350,25 @@ public class GoBoard : MonoBehaviour {
 			//add to list of pieces checked for the check group to avoid infinite loops
 			SetGroupChecked(x-1,y);
 			//check it
-			check(x-1,y);
+			Check(x-1,y);
 		}
 		//left
 		if(!IsGroupChecked(x+1,y))
 		{
 			SetGroupChecked(x+1,y);
-			check(x+1,y);
+			Check(x+1,y);
 		}
 		//up
 		if(!IsGroupChecked(x,y+1))
 		{
 			SetGroupChecked(x,y+1);
-			check(x,y+1);
+			Check(x,y+1);
 		}
 		//down
 		if(!IsGroupChecked(x,y-1))
 		{
 			SetGroupChecked(x,y-1);
-			check(x,y-1);
+			Check(x,y-1);
 		}
     }
 	private void SearchFromHere(int x, int y)
@@ -379,7 +386,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void SetCaptured(int x, int y)
     {
-        int[] xy = new int[] {x,y};
+        int[] xy = {x,y};
 		removeOnCapture.Add(xy);
     }
    

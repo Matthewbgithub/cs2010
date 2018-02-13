@@ -20,13 +20,13 @@ public class PieceMakers : MonoBehaviour {
     private bool captureThisGroup = true;
     private bool[,] listOfCheckedPieces = new bool[boardSize, boardSize];
     private bool[,] listForGroupCapture = new bool[boardSize, boardSize];
-    private static int countOfCaptureChecks = 0;
+    private static int countOfCaptureChecks;
 
     public GameObject piecePlaceHolder;
 
     //new stuff
-    bool isPiece = false;
-    bool isWhite = false;
+    bool isPiece;
+    bool isWhite;
     GameObject thisPiece;
     GoBoard thisBoard;
 
@@ -63,7 +63,7 @@ public class PieceMakers : MonoBehaviour {
     {
         return this.isWhite;
     }
-    public void Place(bool isWhite)
+    public bool Place(bool isWhite)
     {
         isPiece = true;
         this.isWhite = isWhite;
@@ -80,12 +80,13 @@ public class PieceMakers : MonoBehaviour {
         //tells the piece where it is on the board
         //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
         //place a piece on me
+
+        return true;
     }
     public void RemovePiece()
     {
         isPiece = false;
         thisPiece.GetComponent<Piece>().Destroy();
-        //TODO remove piece here pls
         //delete current piece
     }
 
