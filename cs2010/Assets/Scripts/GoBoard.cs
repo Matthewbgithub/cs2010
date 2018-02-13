@@ -33,12 +33,9 @@ public class GoBoard : MonoBehaviour {
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
 
-<<<<<<< HEAD
-    private int countOfCaptureChecks;
-=======
+
     //saving
     private GameState state = new GameState();
->>>>>>> matt
 
     public void Start()
     {

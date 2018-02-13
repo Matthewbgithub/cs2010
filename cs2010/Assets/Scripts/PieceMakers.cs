@@ -12,31 +12,11 @@ public class PieceMakers : MonoBehaviour {
     //records the location of this placeholder
     public int boardx;
     public int boardy;
-<<<<<<< HEAD
-    //array of gameObjects, not sure if it stores the actual objects or just clones
-    private static int boardSize;
-    private static GameObject[,] boardRecord = new GameObject[boardSize, boardSize];
 
-    private string ThisColour = "";
-    private ArrayList removeUsOnCapture = new ArrayList();
-    private bool captureThisGroup = true;
-    private bool[,] listOfCheckedPieces = new bool[boardSize, boardSize];
-    private bool[,] listForGroupCapture = new bool[boardSize, boardSize];
-    private static int countOfCaptureChecks;
-
-    public GameObject piecePlaceHolder;
-
-    //new stuff
-    bool isPiece;
-    bool isWhite;
-    GameObject thisPiece;
-=======
-
-    //records if it has a piece
+        //records if it has a piece
     bool isPiece = false;
     bool isWhite = false;
     public GameObject thisPiece;
->>>>>>> matt
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
@@ -96,24 +76,15 @@ public class PieceMakers : MonoBehaviour {
     }
     public void RemovePiece()
     {
-<<<<<<< HEAD
-        isPiece = false;
-        thisPiece.GetComponent<Piece>().Destroy();
-        //delete current piece
-    }
-=======
-        if(!IsEmpty())
-        { 
-            isPiece = false;
-            thisPiece.GetComponent<Piece>().Destroy();
-            //TODO remove piece here pls
-            //delete current piece
-         }
->>>>>>> matt
+		if(!IsEmpty())
+		{
+        	isPiece = false;
+        	thisPiece.GetComponent<Piece>().Destroy();
+        	//delete current piece
+		}
+	}	
 
-    }
-
-    public override string ToString()
+    public string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }
