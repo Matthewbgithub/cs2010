@@ -94,6 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454ec1f4649ae084693d103f25b1474c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardx: 0
-  boardy: 0
-  isWhite: 0
+  material:
+  - {fileID: 2100000, guid: c38f512ac4a584e819c324877a509bca, type: 2}
+  - {fileID: 2100000, guid: 9a1d2949677a44777acf4e47dcfbb22e, type: 2}
