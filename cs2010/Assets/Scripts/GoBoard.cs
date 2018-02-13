@@ -24,7 +24,6 @@ public class GoBoard : MonoBehaviour {
 	private int turns;
 	private int blackCount;
 	private int whiteCount;
-	private string winner;
 	
 	//capture fields
 	private bool captureThisGroup = true;
@@ -33,12 +32,9 @@ public class GoBoard : MonoBehaviour {
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
 
-<<<<<<< HEAD
-    private int countOfCaptureChecks;
-=======
     //saving
     private GameState state = new GameState();
->>>>>>> matt
+
 
     public void Start()
     {
@@ -151,7 +147,8 @@ public class GoBoard : MonoBehaviour {
     {
         return blackCount;
     }
-    public string ToString()
+
+    public override string ToString()
     {
         return "Turn " + this.turns + ". B: " + this.blackCount + ". W: " + this.whiteCount;
     }
