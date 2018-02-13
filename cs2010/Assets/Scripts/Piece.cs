@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Piece : MonoBehaviour {
 
+[System.Serializable]
+public class Piece : MonoBehaviour {
+    /*
 	public int boardx;
 	public int boardy;
 	public bool isWhite;
@@ -31,8 +33,8 @@ public class Piece : MonoBehaviour {
 		{
 			return "black";
 		}
-	}
-	public void Destroy()
+	}*/
+    public void Destroy()
 	{
 		Destroy(gameObject);
 	}

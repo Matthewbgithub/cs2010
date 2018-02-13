@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class PieceMakers : MonoBehaviour {
     //records what a white and black piece look like
     public GameObject blackPiecePrefab;
@@ -11,6 +12,7 @@ public class PieceMakers : MonoBehaviour {
     //records the location of this placeholder
     public int boardx;
     public int boardy;
+<<<<<<< HEAD
     //array of gameObjects, not sure if it stores the actual objects or just clones
     private static int boardSize;
     private static GameObject[,] boardRecord = new GameObject[boardSize, boardSize];
@@ -28,32 +30,41 @@ public class PieceMakers : MonoBehaviour {
     bool isPiece;
     bool isWhite;
     GameObject thisPiece;
+=======
+
+    //records if it has a piece
+    bool isPiece = false;
+    bool isWhite = false;
+    public GameObject thisPiece;
+>>>>>>> matt
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
     {
         thisBoard = boardReference;
-        boardSize = thisBoard.GetBoardSize();
         this.boardx = boardx;
         this.boardy = boardy;
     }
 
     void OnMouseDown()
     {
-        if(this.isPiece && Input.GetKey("a"))
+        if (!SaveLoad.Locked())
         {
-            //swap piece colour
-            RemovePiece();
-            this.Place(!this.isWhite);
+            if(this.isPiece && Input.GetKey("a"))
+            {
+                //swap piece colour
+                RemovePiece();
+                this.Place(!this.isWhite);
+            }
+            else if(Input.GetKey("d"))
+            { 
+                RemovePiece();
+            }else 
+            {
+                thisBoard.TakeTurn(this.boardx, this.boardy);
+            }
         }
-        else if(Input.GetKey("d"))
-        { 
-            RemovePiece();
-        }else 
-        {
-            thisBoard.TakeTurn(this.boardx, this.boardy);
-        }
-        
+
     }
     public bool IsEmpty()
     {
@@ -85,11 +96,22 @@ public class PieceMakers : MonoBehaviour {
     }
     public void RemovePiece()
     {
+<<<<<<< HEAD
         isPiece = false;
         thisPiece.GetComponent<Piece>().Destroy();
         //delete current piece
     }
+=======
+        if(!IsEmpty())
+        { 
+            isPiece = false;
+            thisPiece.GetComponent<Piece>().Destroy();
+            //TODO remove piece here pls
+            //delete current piece
+         }
+>>>>>>> matt
 
+    }
 
     public override string ToString()
     {
