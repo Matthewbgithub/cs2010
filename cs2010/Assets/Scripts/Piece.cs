@@ -2,38 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[System.Serializable]
 public class Piece : MonoBehaviour {
-    /*
-	public int boardx;
-	public int boardy;
-	public bool isWhite;
-	
-	public void setup(int x, int y, bool isWhite)
+    
+	public Material[] material;
+	private Renderer rend;
+		
+	public void Initialize(bool isWhite)
 	{
-		this.boardx = x;
-		this.boardy = y;
-		this.isWhite = isWhite;
-	}
-	public int getX()
-	{
-		return this.boardx;
-	}
-	public int getY()
-	{
-		return this.boardy;
-	}
-	public string getColour()
-	{
+		rend = GetComponent<Renderer>();
 		if(isWhite)
-		{
-			return "white";
-		}else
-		{
-			return "black";
+		{	
+			//white piece
+			this.rend.material = material[0];
 		}
-	}*/
+		else
+		{
+			//black piece
+			this.rend.material = material[1];
+		}
+	}
+	
     public void Destroy()
 	{
 		Destroy(gameObject);
