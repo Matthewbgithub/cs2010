@@ -55,8 +55,8 @@ public class GoBoard : MonoBehaviour {
 
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
-		boardOffset = new Vector3(-(boardPhysicalSize / 2f), 0, -(boardPhysicalSize/2f));//center of board i think
-		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
+        boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
+        pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
 		GenerateBoard();
 	}

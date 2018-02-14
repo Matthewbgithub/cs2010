@@ -43,10 +43,13 @@ public class Piece : MonoBehaviour {
         anim.Play("Remove Pebble");
     }
 
+    //called when the animation finishes
     public void AlertObservers(string message)
     {
+        //if the animation finish message is to remove the pebble then to do this
         if (message.Equals("RemovePebble"))
         {
+            //removes object then unlocks game
             Destroy(gameObject);
             SaveLoad.Unlock();
         }
