@@ -6,17 +6,22 @@ using System.Collections;
 
 public class GoBoardTests {
 
-	private GoBoard board;
+	private GameObject board;
+	private GoBoard script;
 
 	[SetUp]
 	public void Setup() {
-		// Incorrect way to invoke the GoBoard script. Need to create Board object then attach script to it.
-		board = new GoBoard();
+		// Create new GameObject for the board
+		board = new GameObject("Board");
+		// Attach GoBoard script as a component to newly created board GameObject
+		board.AddComponent<GoBoard> ();
+		// Fetch the component, which is the script that we want to test
+		script = board.GetComponent<GoBoard> ();
 	}
 
 	[Test]
 	public void TestBlackCounterInit() {
-		int blackCount = board.GetBlackCount();
+		int blackCount = script.GetBlackCount ();
 
 		// Black counter should initialise to 0
 		Assert.AreEqual(blackCount, 0);
@@ -24,9 +29,9 @@ public class GoBoardTests {
 
 	[Test]
 	public void TestWhiteCounterInit() {
-		int whiteCount = board.GetWhiteCount();
+		int whiteCount = script.GetWhiteCount ();
 
-		// Black counter should initialise to 0
+		// White counter should initialise to 0
 		Assert.AreEqual(whiteCount, 0);
 	}
 		
