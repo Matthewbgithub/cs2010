@@ -226,7 +226,7 @@ public class GoBoard : MonoBehaviour {
     }
     private bool IsGameOver()
     {
-        if (turns >= 50)
+        if (turns >= 500)
         {
             return true;
         }

@@ -78,7 +78,7 @@ public class PieceMakers : MonoBehaviour {
 		if(!IsEmpty())
 		{
         	isPiece = false;
-        	thisPiece.GetComponent<Piece>().Destroy();
+            thisPiece.GetComponent<Piece>().DestroyWithAnimation();
         	//delete current piece
 		}
 	}	
