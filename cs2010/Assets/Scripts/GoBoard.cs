@@ -37,6 +37,8 @@ public class GoBoard : MonoBehaviour {
     //saving
     private GameState state = new GameState();
 
+    private bool saving = false;
+    private bool loading = false;
     public void Start()
     {
         if (LoadScene.size == 0)
@@ -51,6 +53,8 @@ public class GoBoard : MonoBehaviour {
 
 	private void Initialize(int size)
 	{
+        SaveLoad.Init();
+        SaveLoad.Unlock();
 		boardSize = size;
 
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
@@ -68,27 +72,75 @@ public class GoBoard : MonoBehaviour {
             IncrementTurns();
         }
 
-		if (Input.GetKeyDown (KeyCode.S)) 
-		{
-			//save game
-			SaveGame();
-		}
+		if (Input.GetKeyDown (KeyCode.S))
+        {
+            saving = !saving;
+            Debug.Log("saving is " + saving);
+            //save game
+        }
 
-		if (Input.GetKeyDown (KeyCode.L)) 
-		{
+		if (Input.GetKeyDown (KeyCode.L))
+        {
+            loading = !loading;
+            Debug.Log("laoding is " + loading);
             //Load game
-            LoadGame (1);
-		}
+        }
+        if(Input.GetKeyDown("1"))
+        {
+            if (saving)
+            {
+                Debug.Log("saved in slot 1");
+                SaveGame(this.state, 0);
+                saving = false;
+            }
+            else if (loading)
+            {
+                Debug.Log("Loaded slot 1");
+                LoadGame(0);
+                loading = false;
+            }
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            if (saving)
+            {
+                Debug.Log("saved in slot 2");
+                SaveGame(this.state, 1);
+                saving = false;
+            }
+            else if (loading)
+            {
+                Debug.Log("Loaded slot 2");
+                LoadGame(1);
+                loading = false;
+            }
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            if (saving)
+            {
+                Debug.Log("saved in slot 3");
+                SaveGame(this.state, 2);
+                saving = false;
+            }
+            else if(loading)
+            {
+                Debug.Log("Loaded slot 3");
+                LoadGame(2);
+                loading = false;
+            }
+        }
+
     }
 
-	private void SaveGame()
+	private void SaveGame(GameState s, int slot)
 	{
         SaveLoad.Lock();
         //recording variables
-        state.turns = this.turns;
-        state.whiteCount = this.whiteCount;
-        state.blackCount = this.blackCount;
-        state.SetBoardSize(this.GetBoardSize());
+        s.turns = this.turns;
+        s.whiteCount = this.whiteCount;
+        s.blackCount = this.blackCount;
+        s.SetBoardSize(this.GetBoardSize());
         //recording board state
         for (int x = 0; x < GetBoardSize(); x++)
         {
@@ -96,44 +148,51 @@ public class GoBoard : MonoBehaviour {
             {
                 if (!GetPieceOnBoard(x, y).IsEmpty())
                 {
-                    state.isPiece[x, y] = true;
-                    state.isWhite[x, y] = GetPieceOnBoard(x, y).IsWhite();
+                    s.isPiece[x, y] = true;
+                    s.isWhite[x, y] = GetPieceOnBoard(x, y).IsWhite();
                 }
             }
         }
         //save to file
-        SaveLoad.Save(state);
+        SaveLoad.Save(s, slot);
         Debug.Log("Saved");
         SaveLoad.Unlock();
     }
 
-    private void LoadGame(int SaveNumber)
+    private void LoadGame(int saveNumber)
     {
         SaveLoad.Lock();
-        state = SaveLoad.Load()[SaveNumber];
-        do { } while (ResetScene() == null);
-        //sets values from state
-        this.turns = state.turns;
-        this.whiteCount = state.whiteCount;
-        this.blackCount = state.blackCount;
-        //clears board
-        RemoveAllPieces();
-        //destroys piece creators
-        ResetBeforeInitialization();
-        //makes new board with correct size
-        Initialize(state.boardSize);
-        //places pieces according to the state
-        for (int x = 0; x < GetBoardSize(); x++)
+        state = SaveLoad.LoadSlot(saveNumber);
+        if (state != null)
         {
-            for (int y = 0; y < GetBoardSize(); y++)
+            do { } while (ResetScene() == null);
+            //sets values from state
+            this.turns = state.turns;
+            this.whiteCount = state.whiteCount;
+            this.blackCount = state.blackCount;
+            //clears board
+            RemoveAllPieces();
+            //destroys piece creators
+            ResetBeforeInitialization();
+            //makes new board with correct size
+            Initialize(state.boardSize);
+            //places pieces according to the state
+            for (int x = 0; x < GetBoardSize(); x++)
             {
-                if (state.isPiece[x,y])
+                for (int y = 0; y < GetBoardSize(); y++)
                 {
-                    GetPieceOnBoard(x, y).Place(state.isWhite[x, y]);
+                    if (state.isPiece[x, y])
+                    {
+                        GetPieceOnBoard(x, y).Place(state.isWhite[x, y]);
+                    }
                 }
             }
+            Debug.Log("Loaded");
         }
-        Debug.Log("Loaded");
+        else
+        {
+            Debug.Log("Slot " + saveNumber + " is empty.");
+        }
         SaveLoad.Unlock();
     }
     public void IncrementTurns()
@@ -508,10 +567,14 @@ public class GoBoard : MonoBehaviour {
 }
 public static class SaveLoad
 {
-    public static List<GameState> savedGames = new List<GameState>();
-
+    public static GameState[] savedGames = new GameState[3];
+    
     private static bool locked = false;
 
+    public static void Init()
+    {
+        Load();
+    }
     public static void Lock()
     {
         Debug.Log("locked");
@@ -526,23 +589,27 @@ public static class SaveLoad
     {
         return locked;
     }
-    public static void Save(GameState state)
+    public static void Save(GameState state, int slot)
     {
-        savedGames.Add(state);
+        savedGames[slot] = state;
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
         bf.Serialize(file, SaveLoad.savedGames);
         file.Close();
     }
-    public static List<GameState> Load()
+    public static GameState LoadSlot(int slot)
+    {
+        return Load()[slot];
+    }
+    public static GameState[] Load()
     {
         if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            SaveLoad.savedGames = (List<GameState>)bf.Deserialize(file);
+            SaveLoad.savedGames = (GameState[])bf.Deserialize(file);
             file.Close();
-            return savedGames;
+            return SaveLoad.savedGames;
         }
         else
         {
@@ -560,6 +627,10 @@ public static class SaveLoad
     public bool[,] isPiece;
     public bool[,] isWhite;
 
+    public string ToString()
+    {
+        return "state with " + turns + " turns.";
+    }
     
     public void SetBoardSize(int size)
     {
