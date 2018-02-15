@@ -35,7 +35,6 @@ public class GoBoard : MonoBehaviour {
     //saving
     private GameState state = new GameState();
 
-
     public void Start()
     {
         if (LoadScene.size == 0)
@@ -54,8 +53,8 @@ public class GoBoard : MonoBehaviour {
 
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
-		boardOffset = new Vector3(-(boardPhysicalSize / 2f), 0, -(boardPhysicalSize/2f));//center of board i think
-		pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
+        boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
+        pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
 		GenerateBoard();
 	}
@@ -226,7 +225,7 @@ public class GoBoard : MonoBehaviour {
     }
     private bool IsGameOver()
     {
-        if (turns >= 50)
+        if (turns >= 500)
         {
             return true;
         }
@@ -236,7 +235,7 @@ public class GoBoard : MonoBehaviour {
         }
     }
     //places piece on board and returns true if the space is empty
-    private bool PlacePiece(int x, int y)
+    public bool PlacePiece(int x, int y)
     {
         if (IsEmpty(x, y))
         {
@@ -259,7 +258,7 @@ public class GoBoard : MonoBehaviour {
             return false;
         }
     }
-    private void GenerateBoard()
+    public void GenerateBoard()
     {
         float bx = 0.0f;
         float by = 0.0f;
@@ -306,7 +305,7 @@ public class GoBoard : MonoBehaviour {
 		}
     }
     
-    private void CheckForCaptures(int x, int y)
+    public void CheckForCaptures(int x, int y)
     {
         //start at x and y and then scan about to find any big captures
 		ResetBoardChecked();
@@ -495,7 +494,7 @@ public class GoBoard : MonoBehaviour {
 			return false;
 		}
     }
-    private void Remove(int x, int y)
+    public void Remove(int x, int y)
     {
         Debug.Log("Removing piece at " + x + ", " + y);
 		if (GetPieceOnBoard (x, y).IsWhite ()) {

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PieceMakers : MonoBehaviour {
     //records what a white and black piece look like
-    public GameObject blackPiecePrefab;
-    public GameObject whitePiecePrefab;
-
+    //public GameObject blackPiecePrefab;
+    //public GameObject whitePiecePrefab;
+	public GameObject pebble;
     //records the location of this placeholder
     public int boardx;
     public int boardy;
@@ -15,6 +15,7 @@ public class PieceMakers : MonoBehaviour {
     //records if it has a piece
     public bool isPiece;
     bool isWhite;
+
     public GameObject thisPiece;
     GoBoard thisBoard;
 
@@ -58,7 +59,6 @@ public class PieceMakers : MonoBehaviour {
         isPiece = true;
         this.isWhite = isWhite;
         //sets obj to black or white depending on turn
-        var obj = (isWhite) ? whitePiecePrefab : blackPiecePrefab;
         //increments turn
         thisBoard.IncrementTurns();
         var pos = this.transform.position;
@@ -66,15 +66,16 @@ public class PieceMakers : MonoBehaviour {
         pos.y = 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
-        thisPiece = Instantiate(obj, pos, rot);
+        this.thisPiece = Instantiate(this.pebble, pos, rot);
+		this.thisPiece.GetComponent<Piece>().Initialize(isWhite);
         //tells the piece where it is on the board
         //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
         //place a piece on me
-
         return true;
     }
     public void RemovePiece()
     {
+
         isPiece = false;
         thisPiece.GetComponent<Piece>().Destroy();
         //delete current piece

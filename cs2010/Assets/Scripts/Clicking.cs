@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Clicking : MonoBehaviour {
 
 	public Material[] material;
