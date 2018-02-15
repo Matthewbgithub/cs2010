@@ -48,7 +48,7 @@ public class GoBoard : MonoBehaviour {
         }
     }
 
-	private void Initialize(int size)
+	public void Initialize(int size)
 	{
 		boardSize = size;
 

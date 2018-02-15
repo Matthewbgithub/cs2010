@@ -1,19 +1,15 @@
 ﻿<Properties StartupConfiguration="{09E6D2C7-84A2-0E07-2E2F-4AB6E159DA5E}|">
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="cs2010" expanded="True">
-            <Node name="cs2010" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GoBoard.cs">
+    <Files>
+      <File FileName="Assets/Tests/Editor/GoboardTests.cs" Line="23" Column="24" />
+      <File FileName="Assets/Scripts/GoBoard.cs" Line="51" Column="7" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/liknhe/Desktop/CS2010/cs2010/cs2010/Assets/Scripts/GoBoard.cs" relfile="Assets/Scripts/GoBoard.cs" line="151" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
