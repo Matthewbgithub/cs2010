@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{09E6D2C7-84A2-0E07-2E2F-4AB6E159DA5E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GoBoard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/NewPlayModeTest.cs">
     <Files>
-      <File FileName="Assets/Tests/Editor/GoboardTests.cs" Line="23" Column="24" />
-      <File FileName="Assets/Scripts/GoBoard.cs" Line="51" Column="7" />
+      <File FileName="Assets/Scripts/GoBoard.cs" Line="61" Column="3" />
+      <File FileName="Assets/Resources/NewPlayModeTest.cs" Line="42" Column="22" />
+      <File FileName="Assets/Scripts/HUDScripts/HUDScore.cs" Line="15" Column="17" />
+      <File FileName="Assets/Scripts/PieceMakers.cs" Line="5" Column="1" />
+      <File FileName="Assets/Tests/Editor/GoboardTests.cs" Line="25" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/liknhe/Desktop/CS2010/cs2010/cs2010/Assets/Scripts/GoBoard.cs" relfile="Assets/Scripts/GoBoard.cs" line="151" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

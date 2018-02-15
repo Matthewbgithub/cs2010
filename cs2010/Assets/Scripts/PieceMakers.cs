@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-
 public class PieceMakers : MonoBehaviour {
     //records what a white and black piece look like
     public GameObject blackPiecePrefab;

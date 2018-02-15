@@ -10,6 +10,7 @@ public class GoBoardTests
     private GameObject board;
     private GoBoard script;
 
+
     [SetUp]
     public void Setup()
     {
@@ -20,6 +21,8 @@ public class GoBoardTests
         board.AddComponent<GoBoard>();
         // Fetch the component, which is the script that we want to test
         script = board.GetComponent<GoBoard>();
+
+        PieceMakers piecePlace = new PieceMakers();
         script.Initialize(19);
     }
 
