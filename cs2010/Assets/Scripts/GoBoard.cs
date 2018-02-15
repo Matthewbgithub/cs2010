@@ -10,8 +10,8 @@ using UnityEngine.SceneManagement;
 public class GoBoard : MonoBehaviour {
 
 	//game data fields
-	public PieceMakers[,] board; //holds piecemaker objects
-	public PieceMakers piecePlaceHolder;
+	private PieceMakers[,] board; //holds piecemaker objects
+	private PieceMakers piecePlaceHolder;
 	public GameObject endCanvas;
 
 	//generation fields
@@ -24,7 +24,6 @@ public class GoBoard : MonoBehaviour {
 	private int turns;
 	private int blackCount;
 	private int whiteCount;
-	private string winner;
 	
 	//capture fields
 	private bool captureThisGroup = true;
@@ -56,6 +55,7 @@ public class GoBoard : MonoBehaviour {
         SaveLoad.Init();
         SaveLoad.Unlock();
 		boardSize = size;
+        piecePlaceHolder = new GameObject().AddComponent<PieceMakers>();
 
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
