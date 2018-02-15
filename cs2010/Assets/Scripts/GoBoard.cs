@@ -599,7 +599,14 @@ public static class SaveLoad
     }
     public static GameState LoadSlot(int slot)
     {
-        return Load()[slot];
+        if(Load()!=null)
+        {
+            return Load()[slot];
+        }
+        else
+        {
+            return null;
+        }
     }
     public static GameState[] Load()
     {
@@ -620,10 +627,10 @@ public static class SaveLoad
 [System.Serializable]
  public class GameState
 {
-    public int turns;
-    public int blackCount;
-    public int whiteCount;
-    public int boardSize;
+    public int turns = 0;
+    public int blackCount = 0;
+    public int whiteCount = 0;
+    public int boardSize = 0;
     public bool[,] isPiece;
     public bool[,] isWhite;
 
