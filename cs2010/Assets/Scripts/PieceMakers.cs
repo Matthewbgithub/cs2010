@@ -7,7 +7,8 @@ public class PieceMakers : MonoBehaviour {
     //records what a white and black piece look like
     //public GameObject blackPiecePrefab;
     //public GameObject whitePiecePrefab;
-	public GameObject pebble;
+
+    public Piece pebble;
     //records the location of this placeholder
     public int boardx;
     public int boardy;
@@ -16,7 +17,7 @@ public class PieceMakers : MonoBehaviour {
     public bool isPiece;
     bool isWhite;
 
-    public GameObject thisPiece;
+    public Piece thisPiece;
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)

@@ -23,12 +23,12 @@ public class Piece : MonoBehaviour {
 		if(isWhite)
 		{	
 			//white piece
-			this.rend.material = material[0];
+			//this.rend.material = material[0];
 		}
 		else
 		{
 			//black piece
-			this.rend.material = material[1];
+			//this.rend.material = material[1];
 		}
 	}
 	
