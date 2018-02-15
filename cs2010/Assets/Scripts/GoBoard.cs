@@ -11,7 +11,7 @@ public class GoBoard : MonoBehaviour {
 
 	//game data fields
 	private PieceMakers[,] board; //holds piecemaker objects
-	private PieceMakers piecePlaceHolder;
+	public PieceMakers piecePlaceHolder;
 	public GameObject endCanvas;
 
 	//generation fields
@@ -55,7 +55,7 @@ public class GoBoard : MonoBehaviour {
         SaveLoad.Init();
         SaveLoad.Unlock();
 		boardSize = size;
-        piecePlaceHolder = new GameObject().AddComponent<PieceMakers>();
+        //piecePlaceHolder = new GameObject().AddComponent<PieceMakers>();
 
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
