@@ -38,6 +38,7 @@ public class GoBoard : MonoBehaviour {
 
     private bool saving = false;
     private bool loading = false;
+	
     public void Start()
     {
         if (LoadScene.size == 0)
