@@ -15,6 +15,7 @@ public class Piece : MonoBehaviour {
         //not sure why i've called these in the intializer and the start function it gets a bit sad if i dont
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
+		anim.Play("Place Pebble");
     }
     public void Initialize(bool isWhite)
 	{
