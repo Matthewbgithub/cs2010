@@ -38,7 +38,10 @@ public class GoBoard : MonoBehaviour {
 
     private bool saving = false;
     private bool loading = false;
-	
+    private bool incrementMode = true;
+    private int currentX;
+    private int currentY;
+
     public void Start()
     {
         if (LoadScene.size == 0)
@@ -70,10 +73,15 @@ public class GoBoard : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            IncrementTurns();
+            turns++;
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            incrementMode = !incrementMode;
+            Debug.Log("incrementing turns is "+ incrementMode);
         }
 
-		if (Input.GetKeyDown (KeyCode.S))
+        if (Input.GetKeyDown (KeyCode.S))
         {
             saving = !saving;
             Debug.Log("saving is " + saving);
@@ -198,7 +206,10 @@ public class GoBoard : MonoBehaviour {
     }
     public void IncrementTurns()
     {
-        turns++;
+        if (incrementMode)
+        {
+            turns++;
+        }
     }
     public int GetBoardSize()
     {
@@ -266,12 +277,19 @@ public class GoBoard : MonoBehaviour {
     }
 
     public bool TakeTurn(int x, int y)
-    {
+    { 
         Debug.Log("------------ turn " + turns + " --------------");
         bool isPlaced = PlacePiece(x, y);
-        CheckForCaptures(x, y);
-		EndLogic ();
+        //wait here until animation finishes
+        currentX = x;
+        currentY = y;
         return isPlaced;
+    }
+    public void TakeTurnPart2()
+    {
+        CheckForCaptures(currentX, currentY);
+        EndLogic();
+        SaveLoad.Unlock();
     }
 
     private void EndLogic()
@@ -299,7 +317,8 @@ public class GoBoard : MonoBehaviour {
     public bool PlacePiece(int x, int y)
     {
         if (IsEmpty(x, y))
-        {
+        { 
+            SaveLoad.Lock();
             bool isWhite = (turns % 2 == 0);
             //call the appropriate piecemaker to show a piece
             GetPieceOnBoard(x,y).Place(isWhite);
@@ -370,10 +389,9 @@ public class GoBoard : MonoBehaviour {
     {
         //start at x and y and then scan about to find any big captures
 		ResetBoardChecked();
-
-		//checks spaces around the one that has been placed and then the piece itself last
-		//re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
-		int[][] xychange = {
+        //checks spaces around the one that has been placed and then the piece itself last
+        //re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
+        int[][] xychange = {
 			new int[] {x  ,y-1},
 			new int[] {x  ,y+1},
 			new int[] {x-1,y  },
