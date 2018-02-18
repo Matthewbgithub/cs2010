@@ -60,7 +60,6 @@ public class PieceMakers : MonoBehaviour {
         this.isWhite = isWhite;
         //sets obj to black or white depending on turn
         //increments turn
-        thisBoard.IncrementTurns();
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
         pos.y = 0.15f;

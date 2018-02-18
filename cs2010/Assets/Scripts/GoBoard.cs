@@ -22,25 +22,28 @@ public class GoBoard : MonoBehaviour {
     
 	//game control fields
 	private int turns;
-	private int blackCount;
+    private bool isWhiteTurn;
+    private int currentX;
+    private int currentY;
+    private int blackCount;
 	private int whiteCount;
-	
-	//capture fields
-	private bool captureThisGroup = true;
+    private bool blackPass = false;
+    private bool whitePass = false;
+
+    //capture fields
+    private bool captureThisGroup = true;
 	private bool isCheckingWhite;
 	private ArrayList removeOnCapture = new ArrayList();
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
-
-
+    
     //saving
     private GameState state = new GameState();
-
     private bool saving = false;
     private bool loading = false;
+
+    //testing features
     private bool incrementMode = true;
-    private int currentX;
-    private int currentY;
 
     public void Start()
     {
@@ -59,8 +62,6 @@ public class GoBoard : MonoBehaviour {
         SaveLoad.Init();
         SaveLoad.Unlock();
 		boardSize = size;
-        //piecePlaceHolder = new GameObject().AddComponent<PieceMakers>();
-
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
@@ -73,7 +74,16 @@ public class GoBoard : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            turns++;
+            if(IsWhiteTurn())
+            {
+                WhitePass();
+            }
+            else
+            {
+                BlackPass();
+            }
+            EndLogic();
+            IncrementTurns();
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -204,10 +214,33 @@ public class GoBoard : MonoBehaviour {
         }
         SaveLoad.Unlock();
     }
+
+    public void BlackPass()
+    {
+        blackPass = true;
+    }
+    public void WhitePass()
+    {
+        whitePass = true;
+    }
+    public bool IsWhiteTurn()
+    { 
+        return isWhiteTurn;
+    }
+    //todo remove before prod
     public void IncrementTurns()
     {
+        isWhiteTurn = (turns % 2 == 0);
         if (incrementMode)
         {
+            if(IsWhiteTurn())
+            {
+                whitePass = false;
+            }
+            else
+            {
+                blackPass = false;
+            }
             turns++;
         }
     }
@@ -219,7 +252,7 @@ public class GoBoard : MonoBehaviour {
     {
         return blackCount;
     }
-    public string ToString()
+    public override string ToString()
     {
         return "Turn " + this.turns + ". B: " + this.blackCount + ". W: " + this.whiteCount;
     }
@@ -304,7 +337,7 @@ public class GoBoard : MonoBehaviour {
     }
     private bool IsGameOver()
     {
-        if (turns >= 500)
+        if (whitePass == true && blackPass == true)
         {
             return true;
         }
@@ -317,13 +350,14 @@ public class GoBoard : MonoBehaviour {
     public bool PlacePiece(int x, int y)
     {
         if (IsEmpty(x, y))
-        { 
+        {
+            Debug.Log("Piece placed at " + x + ", " + y);
             SaveLoad.Lock();
-            bool isWhite = (turns % 2 == 0);
+            IncrementTurns();
             //call the appropriate piecemaker to show a piece
-            GetPieceOnBoard(x,y).Place(isWhite);
+            GetPieceOnBoard(x, y).Place(IsWhiteTurn());
             //increment counters
-            if (isWhite)
+            if (IsWhiteTurn())
             {
                 whiteCount++;
             }
