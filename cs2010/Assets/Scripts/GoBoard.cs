@@ -484,7 +484,7 @@ public class GoBoard : MonoBehaviour {
 			}
 		}
 	}
-	private PieceMakers GetPieceOnBoard(int x, int y)
+	public PieceMakers GetPieceOnBoard(int x, int y)
 	{
 		return board[x, y];
 	}
@@ -500,7 +500,7 @@ public class GoBoard : MonoBehaviour {
 		}
         //checks whether the piece is different colour or same
     }
-    private bool IsEmpty(int x, int y)
+    public bool IsEmpty(int x, int y)
     {
 		return board[x,y].IsEmpty();
     }
