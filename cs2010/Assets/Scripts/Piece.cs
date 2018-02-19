@@ -3,37 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Piece : MonoBehaviour {
+    
+    //textures
+	public Material[] material;
+	private Renderer rend;
+    private PieceMakers theMaker;
 
-	public int boardx;
-	public int boardy;
-	public bool isWhite;
-	
-	public void setup(int x, int y, bool isWhite)
+    //animation
+    public Animator anim;
+    private void Start()
+    {
+        //not sure why i've called these in the intializer and the start function it gets a bit sad if i dont
+        anim = GetComponent<Animator>();
+        rend = GetComponent<Renderer>();
+    }
+    public void Initialize(bool isWhite, PieceMakers pm)
 	{
-		this.boardx = x;
-		this.boardy = y;
-		this.isWhite = isWhite;
-	}
-	public int getX()
-	{
-		return this.boardx;
-	}
-	public int getY()
-	{
-		return this.boardy;
-	}
-	public string getColour()
-	{
-		if(isWhite)
-		{
-			return "white";
-		}else
-		{
-			return "black";
+        theMaker = pm;
+        anim = GetComponent<Animator>();
+        rend = GetComponent<Renderer>();
+        if (isWhite)
+		{	
+			//white piece
+			this.rend.material = material[0];
 		}
-	}
-	public void Destroy()
+		else
+		{
+			//black piece
+			this.rend.material = material[1];
+		}
+        anim.Play("Place Pebble");
+    }
+	
+    public void Destroy()
 	{
-		Destroy(gameObject);
+        Destroy(gameObject);
 	}
+    public void DestroyWithAnimation()
+    {
+        //so you cant abuse the wait time of the animation
+        SaveLoad.Lock();
+        anim.Play("Remove Pebble");
+    }
+
+    //called when the animation finishes
+    public void AlertObservers(string message)
+    {
+        //if the animation finish message is to remove the pebble then to do this
+        if (message.Equals("RemovePebble"))
+        {
+            //removes object then unlocks game
+            Destroy(gameObject);
+            SaveLoad.Unlock();
+        }
+        else if(message.Equals("PlacePebble"))
+        {
+            theMaker.PlaceAnimationFinished();
+        }
+
+    }
 }

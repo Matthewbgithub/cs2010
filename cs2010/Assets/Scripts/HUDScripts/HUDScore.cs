@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+[System.Serializable]
 public class HUDScore : MonoBehaviour
 {
 	private TextMeshProUGUI[] tmp;

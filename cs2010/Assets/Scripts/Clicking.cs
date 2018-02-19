@@ -15,6 +15,7 @@ public class Clicking : MonoBehaviour {
 	}
 	 void OnMouseEnter()
 	 {
+        
 		 //sets to material 1, selected
 		 rend.material = material[1];
 	 }	

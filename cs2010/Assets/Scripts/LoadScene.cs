@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+
 public class LoadScene : MonoBehaviour {
 	
 	public static int size = 19;
@@ -28,6 +29,6 @@ public class LoadScene : MonoBehaviour {
 	private void SceneLoader()
 	{
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
-		Debug.Log (size);
+        Debug.Log (size);
 	}
 }

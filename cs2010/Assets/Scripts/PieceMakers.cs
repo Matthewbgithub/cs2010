@@ -3,57 +3,48 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class PieceMakers : MonoBehaviour {
     //records what a white and black piece look like
-    public GameObject blackPiecePrefab;
-    public GameObject whitePiecePrefab;
-
+    //public GameObject blackPiecePrefab;
+    //public GameObject whitePiecePrefab;
+	public GameObject pebble;
     //records the location of this placeholder
     public int boardx;
     public int boardy;
-    //array of gameObjects, not sure if it stores the actual objects or just clones
-    private static int boardSize;
-    private static GameObject[,] boardRecord = new GameObject[boardSize, boardSize];
 
-    private string ThisColour = "";
-    private ArrayList removeUsOnCapture = new ArrayList();
-    private bool captureThisGroup = true;
-    private bool[,] listOfCheckedPieces = new bool[boardSize, boardSize];
-    private bool[,] listForGroupCapture = new bool[boardSize, boardSize];
-    private static int countOfCaptureChecks = 0;
-
-    public GameObject piecePlaceHolder;
-
-    //new stuff
+        //records if it has a piece
     bool isPiece = false;
     bool isWhite = false;
-    GameObject thisPiece;
+    public GameObject thisPiece;
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
     {
         thisBoard = boardReference;
-        boardSize = thisBoard.GetBoardSize();
         this.boardx = boardx;
         this.boardy = boardy;
     }
 
     void OnMouseDown()
     {
-        if(this.isPiece && Input.GetKey("a"))
+        if (!SaveLoad.Locked())
         {
-            //swap piece colour
-            RemovePiece();
-            this.Place(!this.isWhite);
+            if(this.isPiece && Input.GetKey("a"))
+            {
+                //swap piece colour
+                RemovePiece();
+                this.Place(!this.isWhite);
+            }
+            else if(Input.GetKey("d"))
+            { 
+                RemovePiece();
+            }else 
+            {
+                thisBoard.TakeTurn(this.boardx, this.boardy);
+            }
         }
-        else if(Input.GetKey("d"))
-        { 
-            RemovePiece();
-        }else 
-        {
-            thisBoard.TakeTurn(this.boardx, this.boardy);
-        }
-        
+
     }
     public bool IsEmpty()
     {
@@ -63,34 +54,38 @@ public class PieceMakers : MonoBehaviour {
     {
         return this.isWhite;
     }
-    public void Place(bool isWhite)
+    public bool Place(bool isWhite)
     {
         isPiece = true;
         this.isWhite = isWhite;
         //sets obj to black or white depending on turn
-        var obj = (isWhite) ? whitePiecePrefab : blackPiecePrefab;
         //increments turn
-        thisBoard.IncrementTurns();
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
         pos.y = 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
-        thisPiece = Instantiate(obj, pos, rot);
+        this.thisPiece = Instantiate(this.pebble, pos, rot);
+		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
         //tells the piece where it is on the board
         //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
         //place a piece on me
+        return true;
     }
     public void RemovePiece()
     {
-        isPiece = false;
-        thisPiece.GetComponent<Piece>().Destroy();
-        //TODO remove piece here pls
-        //delete current piece
+		if(!IsEmpty())
+		{
+        	isPiece = false;
+            thisPiece.GetComponent<Piece>().DestroyWithAnimation();
+        	//delete current piece
+		}
+	}	
+    public void PlaceAnimationFinished()
+    {
+        thisBoard.TakeTurnPart2();
     }
-
-
-    public override string ToString()
+    public string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }
