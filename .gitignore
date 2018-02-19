@@ -45,7 +45,7 @@ Corridor/Library/ShaderCache/
 Corridor/Library/metadata/
 
 # Misc
-cs2010/ProjectSettings/*
-cs2010/Library/metadata/*
+cs2010/ProjectSettings/**
+cs2010/Library/metadata/**
 cs2010/cs2010.sln
 cs2010/cs2010.userprefs
