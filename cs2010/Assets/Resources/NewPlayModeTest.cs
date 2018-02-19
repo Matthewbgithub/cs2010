@@ -8,8 +8,8 @@ public class NewPlayModeTest
 {
 
     private GameObject goboard;
-    private GoBoard b;
-    private PieceMakers p;
+    private GoBoard board;
+    private PieceMakers pMaker;
     private Piece piece;
 
     // A UnityTest behaves like a coroutine in PlayMode
@@ -18,7 +18,7 @@ public class NewPlayModeTest
     public IEnumerator Test_Get_Board()
     {
         SetUpScene();
-        Assert.IsTrue(b.TakeTurn(2,2));
+        Assert.IsTrue(board.TakeTurn(2,2));
         yield return null;
     }
 
@@ -35,15 +35,15 @@ public class NewPlayModeTest
     public IEnumerator Test_For_Capture(){
         SetUpScene();
 
-        b.TakeTurn(2,2);//b
-        b.TakeTurn(2,3);//w
-        b.TakeTurn(1,3);//b
-        b.TakeTurn(9,9);//w
-        b.TakeTurn(2,4);//b
-        b.TakeTurn(5,5); //w
-        b.TakeTurn(3,3);
+        board.TakeTurn(2,2);//board
+        board.TakeTurn(2,3);//w
+        board.TakeTurn(1,3);//board
+        board.TakeTurn(9,9);//w
+        board.TakeTurn(2,4);//board
+        board.TakeTurn(5,5); //w
+        board.TakeTurn(3,3);
 
-        Assert.IsTrue(b.IsEmpty(2,3));
+        Assert.IsTrue(board.IsEmpty(2,3));
         yield return null;
     }
 
@@ -65,17 +65,48 @@ public class NewPlayModeTest
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator Test_Black_Counter_Init()
+    {
+        SetUpScene();
+        int blackCount = board.GetBlackCount();
+
+        // Black counter should initialise to 0
+        Assert.AreEqual(blackCount, 0);
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator Test_White_Counter_Init()
+    {
+        SetUpScene();
+        int whiteCount = board.GetWhiteCount();
+
+        // White counter should initialise to 0
+        Assert.AreEqual(whiteCount, 0);
+        yield return null;
+    }
+
+    [UnityTest]
+    public IEnumerator Test_Stone_Placement()
+    {
+        SetUpScene();
+        Assert.IsTrue(board.TakeTurn(2, 2));
+
+        yield return null;
+    }
 
     void SetUpScene()
     {
         goboard = (UnityEngine.GameObject)Resources.Load("Board");
         Debug.Log(goboard.name);
-        b = new GameObject().AddComponent<GoBoard>();
-        p = new GameObject().AddComponent<PieceMakers>();
+        board = new GameObject().AddComponent<GoBoard>();
+        pMaker = new GameObject().AddComponent<PieceMakers>();
         piece = new GameObject().AddComponent<Piece>();
-        p.pebble = piece;
-        b.piecePlaceHolder = p;
-        b.Initialize(19);
+        pMaker.pebble = piece;
+        board.piecePlaceHolder = pMaker;
+        board.Initialize(19);
+
         //MonoBehaviour.Instantiate(Resources.Load<GameObject>("room"));
     }
 }
