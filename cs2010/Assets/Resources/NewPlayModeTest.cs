@@ -15,7 +15,7 @@ public class NewPlayModeTest
     // A UnityTest behaves like a coroutine in PlayMode
     // and allows you to yield null to skip a frame in EditMode
     [UnityTest]
-    public IEnumerator Test_Get_Board()
+    public IEnumerator Test_For_Get_Board()
     {
         SetUpScene();
         Assert.IsTrue(board.TakeTurn(2,2));
@@ -51,7 +51,7 @@ public class NewPlayModeTest
     public IEnumerator Test_For_isEmpty(){
         SetUpScene();
 
-
+        Assert.IsTrue(board.IsEmpty(2, 3));
         yield return null;
     }
 
@@ -59,9 +59,9 @@ public class NewPlayModeTest
     public IEnumerator Test_For_isNotEmpty()
     {
         SetUpScene();
+        board.TakeTurn(2, 3);//w
 
-
-
+        Assert.IsFalse(board.IsEmpty(2, 3));
         yield return null;
     }
 
@@ -88,11 +88,20 @@ public class NewPlayModeTest
     }
 
     [UnityTest]
-    public IEnumerator Test_Stone_Placement()
+    public IEnumerator Test_For_Stone_Placement()
     {
         SetUpScene();
         Assert.IsTrue(board.TakeTurn(2, 2));
+        yield return null;
+    }
 
+    [UnityTest]
+    public IEnumerator Test_For_Turn_Increment()
+    {
+        SetUpScene();
+        Assert.AreEqual(board.GetTurns(), 0);
+        board.TakeTurn(2, 2);
+        Assert.AreEqual(board.GetTurns(),1);
         yield return null;
     }
 
