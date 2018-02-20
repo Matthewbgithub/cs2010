@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{09E6D2C7-84A2-0E07-2E2F-4AB6E159DA5E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PieceMakers.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/NewPlayModeTest.cs">
     <Files>
-      <File FileName="Assets/Resources/NewPlayModeTest.cs" Line="154" Column="26" />
-      <File FileName="Assets/Scripts/GoBoard.cs" Line="68" Column="18" />
-      <File FileName="Assets/Scripts/PieceMakers.cs" Line="11" Column="47" />
+      <File FileName="Assets/Resources/NewPlayModeTest.cs" Line="149" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
