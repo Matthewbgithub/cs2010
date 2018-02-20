@@ -13,7 +13,7 @@ public class GoBoard : MonoBehaviour {
 	//game data fields
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
-    public Canvas endCanvas;
+    public GameObject endCanvas;
 
 	//generation fields
 	private int boardSize;
@@ -57,7 +57,7 @@ public class GoBoard : MonoBehaviour {
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
-        endCanvas = GetComponent<Canvas>();
+        endCanvas = GameObject.Find("EndCanvas");
 		GenerateBoard();
 	}
 
