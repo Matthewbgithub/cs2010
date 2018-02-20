@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -12,7 +13,7 @@ public class GoBoard : MonoBehaviour {
 	//game data fields
 	public PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
-	public GameObject endCanvas;
+    public Canvas endCanvas;
 
 	//generation fields
 	private int boardSize;
@@ -21,7 +22,7 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
     
 	//game control fields
-	private int turns;
+	private int turns = 1;
 	private int blackCount;
 	private int whiteCount;
 	
@@ -56,6 +57,7 @@ public class GoBoard : MonoBehaviour {
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
+        endCanvas = GetComponent<Canvas>();
 		GenerateBoard();
 	}
 
@@ -195,7 +197,7 @@ public class GoBoard : MonoBehaviour {
     }
     public void ResetBoard()
     {
-        turns = 0;
+        turns = 1;
         blackCount = 0;
         whiteCount = 0;
         //reset all the game values
@@ -223,9 +225,10 @@ public class GoBoard : MonoBehaviour {
             endScript.OpenEndHUD();
         }
     }
+
     private bool IsGameOver()
     {
-        if (turns >= 500)
+        if (turns >= 8)
         {
             return true;
         }

@@ -1,17 +1,13 @@
 fileFormatVersion: 2
 guid: b3f525cfb85f9044aa76a153a55a8cca
-timeCreated: 1513117371
+timeCreated: 1519128268
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - blackPiecePrefab: {fileID: 1029747076033136, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68,
-      type: 2}
-  - whitePiecePrefab: {fileID: 1368279913424332, guid: f54109f83994f49c99a5560fda854d3d,
-      type: 2}
-  - endScene: {fileID: 1869874785735256, guid: 27e920e05445d486dac2b03053f45209, type: 2}
-  - piecePlaceHolder: {fileID: 1842046783084788, guid: e045d20e15282a248a7456b3ca28332c,
+  - pebble: {fileID: 114079715009754544, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68, type: 2}
+  - thisPiece: {fileID: 114079715009754544, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

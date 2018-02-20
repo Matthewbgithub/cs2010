@@ -4,11 +4,9 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class PieceMakers : MonoBehaviour {
-    //records what a white and black piece look like
-    //public GameObject blackPiecePrefab;
-    //public GameObject whitePiecePrefab;
 
     public Piece pebble;
+
     //records the location of this placeholder
     public int boardx;
     public int boardy;
