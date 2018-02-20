@@ -143,19 +143,6 @@ public class NewPlayModeTest
         yield return null;
     }
 
-    [UnityTest]
-    public IEnumerator Test_For_Scoring(){
-        //territory 
-        //empty spaces in groups
-        //komi 6.5
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator Test_For_End_Logic(){
-        yield return null;
-    }
-
     void SetUpScene()
     {
         goboard = (UnityEngine.GameObject)Resources.Load("Board");
