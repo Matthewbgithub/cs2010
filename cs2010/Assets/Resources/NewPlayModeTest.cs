@@ -34,7 +34,6 @@ public class NewPlayModeTest
     [UnityTest]
     public IEnumerator Test_For_Capture(){
         SetUpScene();
-
         board.TakeTurn(2,2);//b
         board.TakeTurn(2,3);//w
         board.TakeTurn(1,3);//b
@@ -128,10 +127,10 @@ public class NewPlayModeTest
     public IEnumerator Test_For_Turn_Increment()
     {
         SetUpScene();
-        Assert.AreEqual(board.GetTurns(), 0);
+        Assert.AreEqual(board.GetTurns(), 1);
 
         board.TakeTurn(2, 2);
-        Assert.AreEqual(board.GetTurns(),1);
+        Assert.AreEqual(board.GetTurns(),2);
         yield return null;
     }
 
@@ -148,9 +147,11 @@ public class NewPlayModeTest
     void SetUpScene()
     {
         goboard = (UnityEngine.GameObject)Resources.Load("Board");
+
         board = new GameObject().AddComponent<GoBoard>();
         pMaker = new GameObject().AddComponent<PieceMakers>();
         piece = new GameObject().AddComponent<Piece>();
+
         pMaker.pebble = piece;
         board.piecePlaceHolder = pMaker;
         board.Initialize(19);
