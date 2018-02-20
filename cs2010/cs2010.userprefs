@@ -1,17 +1,9 @@
 ﻿<Properties StartupConfiguration="{09E6D2C7-84A2-0E07-2E2F-4AB6E159DA5E}|">
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GoBoard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PieceMakers.cs">
     <Files>
-      <File FileName="Assets/Resources/NewPlayModeTest.cs" Line="82" Column="9" />
-      <File FileName="Assets/Scripts/GoBoard.cs" Line="224" Column="1" />
-=======
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tests/CaptureTests.cs">
-    <Files>
-      <File FileName="Assets/Scripts/GoBoard.cs" Line="114" Column="13" />
-      <File FileName="Assets/Scripts/PieceMakers.cs" Line="84" Column="20" />
-      <File FileName="Assets/Tests/CaptureTests.cs" Line="31" Column="9" NotebookId="1" />
->>>>>>> matt
+      <File FileName="Assets/Resources/NewPlayModeTest.cs" Line="154" Column="26" />
+      <File FileName="Assets/Scripts/GoBoard.cs" Line="68" Column="18" />
+      <File FileName="Assets/Scripts/PieceMakers.cs" Line="11" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

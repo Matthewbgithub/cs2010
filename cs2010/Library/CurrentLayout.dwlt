@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 850
-  m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 18008, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 18006, y: 14042}
   vertical: 0
-  controlID: 120
+  controlID: 22
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1130
     height: 850
-  m_MinSize: {x: 406, y: 492}
-  m_MaxSize: {x: 14006, y: 14042}
+  m_MinSize: {x: 402, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 121
+  controlID: 23
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -153,11 +153,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1130
-    height: 336
-  m_MinSize: {x: 406, y: 221}
-  m_MaxSize: {x: 8006, y: 4021}
+    height: 362
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 122
+  controlID: 150
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -175,9 +175,9 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 772
-    height: 336
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    height: 362
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -201,9 +201,9 @@ MonoBehaviour:
     x: 772
     y: 0
     width: 358
-    height: 336
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+    height: 362
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -226,13 +226,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 336
+    y: 362
     width: 1130
-    height: 514
-  m_MinSize: {x: 336, y: 271}
-  m_MaxSize: {x: 14006, y: 10021}
+    height: 488
+  m_MinSize: {x: 334, y: 271}
+  m_MaxSize: {x: 14004, y: 10021}
   vertical: 0
-  controlID: 59
+  controlID: 24
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -250,7 +250,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 796
-    height: 514
+    height: 488
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
@@ -276,7 +276,7 @@ MonoBehaviour:
     x: 796
     y: 0
     width: 334
-    height: 514
+    height: 488
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 19}
@@ -331,9 +331,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 19
+    y: 411
     width: 794
-    height: 493
+    height: 467
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TestTypeToolbarIndex: 0
   m_PlayModeTestListGUI:
@@ -342,9 +342,9 @@ MonoBehaviour:
     - id: '[cs2010][suite]'
       name: cs2010
       fullName: cs2010
-      resultStatus: 1
-      duration: 0.919882
-      messages: 
+      resultStatus: 2
+      duration: 0.935548
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -354,9 +354,9 @@ MonoBehaviour:
     - id: '[/Users/liknhe/Desktop/CS2010/cs2010/cs2010/Library/ScriptAssemblies/Assembly-CSharp.dll][suite]'
       name: Assembly-CSharp.dll
       fullName: /Users/liknhe/Desktop/CS2010/cs2010/cs2010/Library/ScriptAssemblies/Assembly-CSharp.dll
-      resultStatus: 1
-      duration: 0.883163
-      messages: 
+      resultStatus: 2
+      duration: 0.90511
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -366,9 +366,9 @@ MonoBehaviour:
     - id: '[Assembly-CSharp][NewPlayModeTest][suite]'
       name: NewPlayModeTest
       fullName: NewPlayModeTest
-      resultStatus: 1
-      duration: 0.851718
-      messages: 
+      resultStatus: 2
+      duration: 0.874881
+      messages: One or more child tests had errors
       output: 
       stacktrace: 
       notRunnable: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
       name: Test_Black_Counter_Init
       fullName: NewPlayModeTest.Test_Black_Counter_Init
       resultStatus: 1
-      duration: 0.053005
+      duration: 0.062567
       messages: 
       output: 
       stacktrace: 
@@ -391,7 +391,7 @@ MonoBehaviour:
       name: Test_Board_Size
       fullName: NewPlayModeTest.Test_Board_Size
       resultStatus: 1
-      duration: 0.038404
+      duration: 0.038006
       messages: 
       output: 
       stacktrace: 
@@ -402,29 +402,29 @@ MonoBehaviour:
     - id: '[Assembly-CSharp][NewPlayModeTest.Test_For_Black_Capture]'
       name: Test_For_Black_Capture
       fullName: NewPlayModeTest.Test_For_Black_Capture
-      resultStatus: 1
-      duration: 0.05452
-      messages: 
-      output: '------------ turn 0 --------------
+      resultStatus: 2
+      duration: 0.072495
+      messages: "Unhandled log message: '[Exception] AssertionException:   Expected:
+        2\n  But was:  4\n'. Use UnityEngine.TestTools.LogAssert.Expect"
+      output: "------------ turn 1 --------------\n------------ turn 2 --------------\n------------
+        turn 3 --------------\n------------ turn 4 --------------\n------------ turn
+        5 --------------\n------------ turn 6 --------------\n------------ turn 7
+        --------------\nCaptured!\nRemoving piece at 2, 3\nAssertionException:   Expected:
+        2\n  But was:  4\n\n"
+      stacktrace: 'NUnit.Framework.Assert.That[Object] (System.Object actual, IResolveConstraint
+        expression, System.String message, System.Object[] args)
 
-        ------------ turn 1 --------------
+        NUnit.Framework.Assert.AreEqual (System.Object expected, System.Object actual)
 
-        ------------ turn 2 --------------
+        NewPlayModeTest+<Test_For_Black_Capture>c__Iterator4.MoveNext () (at Assets/Resources/NewPlayModeTest.cs:83)
 
-        ------------ turn 3 --------------
+        UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr
+        returnValueAddress) (at /Users/builduser/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
-        ------------ turn 4 --------------
+        UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
 
-        ------------ turn 5 --------------
-
-        ------------ turn 6 --------------
-
-        Captured!
-
-        Removing piece at 2, 3
 
 '
-      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -433,11 +433,9 @@ MonoBehaviour:
       name: Test_For_Capture
       fullName: NewPlayModeTest.Test_For_Capture
       resultStatus: 1
-      duration: 0.045377
+      duration: 0.048137
       messages: 
-      output: '------------ turn 0 --------------
-
-        ------------ turn 1 --------------
+      output: '------------ turn 1 --------------
 
         ------------ turn 2 --------------
 
@@ -448,6 +446,8 @@ MonoBehaviour:
         ------------ turn 5 --------------
 
         ------------ turn 6 --------------
+
+        ------------ turn 7 --------------
 
         Captured!
 
@@ -463,9 +463,9 @@ MonoBehaviour:
       name: Test_For_Get_Board
       fullName: NewPlayModeTest.Test_For_Get_Board
       resultStatus: 1
-      duration: 0.038102
+      duration: 0.037229
       messages: 
-      output: '------------ turn 0 --------------
+      output: '------------ turn 1 --------------
 
 '
       stacktrace: 
@@ -477,7 +477,7 @@ MonoBehaviour:
       name: Test_For_Initial_HUDState
       fullName: NewPlayModeTest.Test_For_Initial_HUDState
       resultStatus: 1
-      duration: 0.0376
+      duration: 0.038533
       messages: 
       output: 
       stacktrace: 
@@ -489,7 +489,7 @@ MonoBehaviour:
       name: Test_For_isEmpty
       fullName: NewPlayModeTest.Test_For_isEmpty
       resultStatus: 1
-      duration: 0.034035
+      duration: 0.037965
       messages: 
       output: 
       stacktrace: 
@@ -501,9 +501,9 @@ MonoBehaviour:
       name: Test_For_isNotEmpty
       fullName: NewPlayModeTest.Test_For_isNotEmpty
       resultStatus: 1
-      duration: 0.038925
+      duration: 0.037954
       messages: 
-      output: '------------ turn 0 --------------
+      output: '------------ turn 1 --------------
 
 '
       stacktrace: 
@@ -515,9 +515,9 @@ MonoBehaviour:
       name: Test_For_Turn_Increment
       fullName: NewPlayModeTest.Test_For_Turn_Increment
       resultStatus: 1
-      duration: 0.037678
+      duration: 0.042058
       messages: 
-      output: '------------ turn 0 --------------
+      output: '------------ turn 1 --------------
 
 '
       stacktrace: 
@@ -528,29 +528,29 @@ MonoBehaviour:
     - id: '[Assembly-CSharp][NewPlayModeTest.Test_For_White_Capture]'
       name: Test_For_White_Capture
       fullName: NewPlayModeTest.Test_For_White_Capture
-      resultStatus: 1
-      duration: 0.046177
-      messages: 
-      output: '------------ turn 0 --------------
+      resultStatus: 2
+      duration: 0.050845
+      messages: "Unhandled log message: '[Exception] AssertionException:   Expected:
+        2\n  But was:  4\n'. Use UnityEngine.TestTools.LogAssert.Expect"
+      output: "------------ turn 1 --------------\n------------ turn 2 --------------\n------------
+        turn 3 --------------\n------------ turn 4 --------------\n------------ turn
+        5 --------------\n------------ turn 6 --------------\n------------ turn 7
+        --------------\nCaptured!\nRemoving piece at 2, 3\nAssertionException:   Expected:
+        2\n  But was:  4\n\n"
+      stacktrace: 'NUnit.Framework.Assert.That[Object] (System.Object actual, IResolveConstraint
+        expression, System.String message, System.Object[] args)
 
-        ------------ turn 1 --------------
+        NUnit.Framework.Assert.AreEqual (System.Object expected, System.Object actual)
 
-        ------------ turn 2 --------------
+        NewPlayModeTest+<Test_For_White_Capture>c__Iterator3.MoveNext () (at Assets/Resources/NewPlayModeTest.cs:65)
 
-        ------------ turn 3 --------------
+        UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr
+        returnValueAddress) (at /Users/builduser/buildslave/unity/build/Runtime/Export/Coroutines.cs:17)
 
-        ------------ turn 4 --------------
+        UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
 
-        ------------ turn 5 --------------
-
-        ------------ turn 6 --------------
-
-        Captured!
-
-        Removing piece at 2, 3
 
 '
-      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -559,7 +559,7 @@ MonoBehaviour:
       name: Test_White_Counter_Init
       fullName: NewPlayModeTest.Test_White_Counter_Init
       resultStatus: 1
-      duration: 0.045732
+      duration: 0.038354
       messages: 
       output: 
       stacktrace: 
@@ -567,32 +567,12 @@ MonoBehaviour:
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
-    m_ResultText: 'Test_For_White_Capture (0.046s)
-
-      ---
-
-      ------------ turn 0 --------------
-
-      ------------ turn 1 --------------
-
-      ------------ turn 2 --------------
-
-      ------------ turn 3 --------------
-
-      ------------ turn 4 --------------
-
-      ------------ turn 5 --------------
-
-      ------------ turn 6 --------------
-
-      Captured!
-
-      Removing piece at 2, 3'
+    m_ResultText: Test_For_isEmpty (0.038s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: fa21d7cd
-      m_LastClickedID: -841539078
+      m_SelectedIDs: c790bbd8
+      m_LastClickedID: -658796345
       m_ExpandedIDs: fb06408febd69abeb3c7c7e6ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -687,9 +667,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 19
+    y: 49
     width: 770
-    height: 315
+    height: 341
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
@@ -701,8 +681,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     m_HBaseRangeMin: -192.5
     m_HBaseRangeMax: 192.5
-    m_VBaseRangeMin: -74.5
-    m_VBaseRangeMax: 74.5
+    m_VBaseRangeMin: -81
+    m_VBaseRangeMax: 81
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -720,9 +700,9 @@ MonoBehaviour:
       x: 0
       y: 17
       width: 770
-      height: 298
+      height: 324
     m_Scale: {x: 2, y: 2}
-    m_Translation: {x: 385, y: 149}
+    m_Translation: {x: 385, y: 162}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -730,14 +710,14 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -192.5
-      y: -74.5
+      y: -81
       width: 385
-      height: 149
+      height: 162
     m_MinimalGUI: 1
   m_defaultScale: 2
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 1540, y: 630}
+  m_LastWindowPixelSize: {x: 1540, y: 682}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -764,9 +744,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 93
+    y: 49
     width: 770
-    height: 380
+    height: 551
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
   lastFramingTime: 0
@@ -774,9 +754,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.055149, y: -5.613097, z: 0.17453644}
+    m_Target: {x: -2.0327551, y: -5.613097, z: -0.8342707}
     speed: 2
-    m_Value: {x: -2.055149, y: -5.613097, z: 0.17453644}
+    m_Value: {x: -2.0327551, y: -5.613097, z: -0.8342707}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -843,13 +823,13 @@ MonoBehaviour:
     x: 774
     y: 19
     width: 354
-    height: 315
+    height: 341
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 3c8ef5ff608ef5fff24df6ffb451f6ffd851f6ffec11f7ff501bf7ff741bf7ff4adbf7ffdee0f7ff02e1f7ff0ea1f8ffa2acf8ffc6acf8ff8c6cf9fff674f9ff1a75f9fff234faff2c38faff5038faff12f8faff36fffaff5afffaff52bffbffd6edfbfffaedfbffb802fcff461efcff6a1efcff9cbbfcfff6c3fcff1ac4fcff0661fdff4c6bfdff706bfdff1cf7fdff70fbfdff94fbfdff4a87feffc89ffeffec9ffeffce2bffff9efbffff00000000
+    m_SelectedIDs: 3a1ff9ff
+    m_LastClickedID: -450758
+    m_ExpandedIDs: 4ea8faff52a8faff54a8faff78a8faff1a68fbffe66dfbff0a6efbffae2dfcffb835fcffdc35fcff82f5fcff50fdfcff74fdfcffbcbcfdff2ebffdff52bffdff967efeff9efbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -895,9 +875,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 494
+    y: 391
     width: 794
-    height: 298
+    height: 487
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &19
 MonoBehaviour:
@@ -922,9 +902,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 798
-    y: 19
+    y: 411
     width: 330
-    height: 493
+    height: 467
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -948,7 +928,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 7c2e0000
     m_LastClickedID: 11900
-    m_ExpandedIDs: 00000000262800002a28000064280000a0280000ba280000fa2800009a2900006e2a0000f82a0000fa2a00004e2e0000502e0000522e0000542e0000562e0000582e00005a2e00005c2e00005e2e0000602e0000622e0000642e0000662e0000682e0000
+    m_ExpandedIDs: 0000000020280000242800005e2800009a280000f228000092290000622a0000682a0000f22a0000462e0000482e00004a2e00004c2e00004e2e0000502e0000522e0000542e0000562e0000582e00005a2e00005c2e00005e2e0000602e0000622e0000642e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -973,24 +953,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 25}
+    scrollPos: {x: 0, y: 399.00183}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000262800002a28000064280000a0280000ba280000fa2800009a290000682a00006e2a0000f82a0000fa2a00004e2e0000502e0000522e0000542e0000562e0000582e00005a2e00005c2e00005e2e0000602e0000622e0000642e0000662e0000682e0000
+    m_ExpandedIDs: 0000000020280000242800005e280000f228000092290000a6290000622a0000682a0000f22a0000462e0000482e00004a2e00004c2e00004e2e0000502e0000522e0000542e0000562e0000582e00005a2e00005c2e00005e2e0000602e0000622e0000642e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: GoBoard
-      m_OriginalName: GoBoard
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 1502
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -1046,7 +1026,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Inspector
+    m_Text: Debug
     m_Image: {fileID: -6905738622615590433, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
@@ -1059,7 +1039,7 @@ MonoBehaviour:
     height: 829
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ScrollPosition: {x: 0, y: 0}
-  m_InspectorMode: 0
+  m_InspectorMode: 1
   m_PreviewResizer:
     m_CachedPref: -160
     m_ControlHash: -371814159

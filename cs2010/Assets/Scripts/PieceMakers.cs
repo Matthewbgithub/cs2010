@@ -5,16 +5,9 @@ using UnityEngine;
 
 
 public class PieceMakers : MonoBehaviour {
-<<<<<<< HEAD
 
     public Piece pebble;
 
-=======
-    //records what a white and black piece look like
-    //public GameObject blackPiecePrefab;
-    //public GameObject whitePiecePrefab;
-	public GameObject pebble;
->>>>>>> matt
     //records the location of this placeholder
     public int boardx;
     public int boardy;
@@ -22,7 +15,7 @@ public class PieceMakers : MonoBehaviour {
         //records if it has a piece
     bool isPiece = false;
     bool isWhite = false;
-    public GameObject thisPiece;
+    public Piece thisPiece;
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
@@ -91,7 +84,7 @@ public class PieceMakers : MonoBehaviour {
     {
         thisBoard.TakeTurnPart2();
     }
-    public string ToString()
+    public override string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }

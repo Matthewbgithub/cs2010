@@ -22,16 +22,12 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
     
 	//game control fields
-<<<<<<< HEAD
-	private int turns = 1;
-	private int blackCount;
-=======
+
 	private int turns;
     private bool isWhiteTurn;
     private int currentX;
     private int currentY;
     private int blackCount;
->>>>>>> matt
 	private int whiteCount;
     private bool blackPass = false;
     private bool whitePass = false;
@@ -63,7 +59,7 @@ public class GoBoard : MonoBehaviour {
         }
     }
 
-	private void Initialize(int size)
+	public void Initialize(int size)
 	{
         SaveLoad.Init();
         SaveLoad.Unlock();
@@ -237,7 +233,8 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
-        isWhiteTurn = (turns % 2 == 0);
+        isWhiteTurn = !(turns % 2 == 0);
+
         if (incrementMode)
         {
             if(IsWhiteTurn())
@@ -345,11 +342,7 @@ public class GoBoard : MonoBehaviour {
 
     private bool IsGameOver()
     {
-<<<<<<< HEAD
-        if (turns >= 50)
-=======
         if (whitePass == true && blackPass == true)
->>>>>>> matt
         {
             return true;
         }
@@ -512,7 +505,7 @@ public class GoBoard : MonoBehaviour {
 		}
         //checks whether the piece is different colour or same
     }
-    private bool IsEmpty(int x, int y)
+    public bool IsEmpty(int x, int y)
     {
 		return board[x,y].IsEmpty();
     }
@@ -699,7 +692,7 @@ public static class SaveLoad
     public bool[,] isPiece;
     public bool[,] isWhite;
 
-    public string ToString()
+    public override string ToString()
     {
         return "state with " + turns + " turns.";
     }

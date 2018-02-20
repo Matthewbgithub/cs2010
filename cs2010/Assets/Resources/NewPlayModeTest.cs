@@ -52,7 +52,6 @@ public class NewPlayModeTest
         SetUpScene();
 
         board.TakeTurn(2, 2);//b
-
         board.TakeTurn(2, 3);//w
         board.TakeTurn(1, 3);//b
         board.TakeTurn(9, 9);//w
