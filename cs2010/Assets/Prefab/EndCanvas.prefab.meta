@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:cs2010/Assets/Prefab/EndCanvas.prefab.meta
 guid: 8ed0d84ba714147d0abd2c495020f3c3
 timeCreated: 1519129113
+=======
+guid: d899efdbdc1e04f07b8fca1d698273d7
+folderAsset: yes
+timeCreated: 1517794901
+>>>>>>> matt:cs2010/Assets/Packages.meta
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}

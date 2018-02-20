@@ -7,6 +7,7 @@ public class Piece : MonoBehaviour {
     //textures
 	public Material[] material;
 	private Renderer rend;
+    private PieceMakers theMaker;
 
     //animation
     public Animator anim;
@@ -16,21 +17,23 @@ public class Piece : MonoBehaviour {
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
     }
-    public void Initialize(bool isWhite)
+    public void Initialize(bool isWhite, PieceMakers pm)
 	{
+        theMaker = pm;
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
-		if(isWhite)
+        if (isWhite)
 		{	
 			//white piece
-			//this.rend.material = material[0];
+			this.rend.material = material[0];
 		}
 		else
 		{
 			//black piece
-			//this.rend.material = material[1];
+			this.rend.material = material[1];
 		}
-	}
+        anim.Play("Place Pebble");
+    }
 	
     public void Destroy()
 	{
@@ -53,5 +56,10 @@ public class Piece : MonoBehaviour {
             Destroy(gameObject);
             SaveLoad.Unlock();
         }
+        else if(message.Equals("PlacePebble"))
+        {
+            theMaker.PlaceAnimationFinished();
+        }
+
     }
 }

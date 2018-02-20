@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class PieceMakers : MonoBehaviour {
+<<<<<<< HEAD
 
     public Piece pebble;
 
+=======
+    //records what a white and black piece look like
+    //public GameObject blackPiecePrefab;
+    //public GameObject whitePiecePrefab;
+	public GameObject pebble;
+>>>>>>> matt
     //records the location of this placeholder
     public int boardx;
     public int boardy;
 
-    //records if it has a piece
-    public bool isPiece;
-    bool isWhite;
-
-    public Piece thisPiece;
+        //records if it has a piece
+    bool isPiece = false;
+    bool isWhite = false;
+    public GameObject thisPiece;
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
@@ -59,14 +66,13 @@ public class PieceMakers : MonoBehaviour {
         this.isWhite = isWhite;
         //sets obj to black or white depending on turn
         //increments turn
-        thisBoard.IncrementTurns();
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
         pos.y = 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         this.thisPiece = Instantiate(this.pebble, pos, rot);
-		this.thisPiece.GetComponent<Piece>().Initialize(isWhite);
+		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
         //tells the piece where it is on the board
         //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
         //place a piece on me
@@ -74,20 +80,18 @@ public class PieceMakers : MonoBehaviour {
     }
     public void RemovePiece()
     {
-
-        isPiece = false;
-        thisPiece.GetComponent<Piece>().Destroy();
-        //delete current piece
-        if(!IsEmpty())
-        { 
-            isPiece = false;
-            thisPiece.GetComponent<Piece>().Destroy();
-            //delete current piece
-         }
-
+		if(!IsEmpty())
+		{
+        	isPiece = false;
+            thisPiece.GetComponent<Piece>().DestroyWithAnimation();
+        	//delete current piece
+		}
+	}	
+    public void PlaceAnimationFinished()
+    {
+        thisBoard.TakeTurnPart2();
     }
-
-    public override string ToString()
+    public string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }
