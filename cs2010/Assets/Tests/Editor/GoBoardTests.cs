@@ -23,6 +23,18 @@ public class GoBoardTests {
 		script.ResetBoard ();
 	}
 
+	private void PassTurnToBlack() {
+		// Pass the turn to the black pebble
+		script.WhitePass();
+		script.IncrementTurns ();
+	}
+
+	private void PassTurnToWhite() {
+		// Pass the turn to the white pebble
+		script.BlackPass();
+		script.IncrementTurns ();
+	}
+
 	[Test]
 	public void TestBlackCounterInit() {
 		int blackCount = script.GetBlackCount ();
@@ -85,8 +97,7 @@ public class GoBoardTests {
 		script.Start ();
 
 		// Pass the turn to the black counter
-		script.WhitePass();
-		script.IncrementTurns ();
+		PassTurnToBlack ();
 
 		// Check the PlacePiece() returns true. Operation is complete.
 		Assert.IsTrue (script.PlacePiece (5, 5), "PlacePiece() operation failed");
@@ -111,6 +122,102 @@ public class GoBoardTests {
 		Assert.IsFalse (script.IsEmpty(3, 3), "3, 3 should be occupied, thus return false");
 		// Check to see if IsEmpty returns true on an free space
 		Assert.IsTrue (script.IsEmpty(5, 5), "5, 5 should be empty, returning true");
+	}
+
+	[Test]
+	public void TestWhitePieceCapture() {
+		script.Start ();
+
+		// Place a white pebble at 5, 5
+		script.PlacePiece (5, 5);
+		// Surround with black pebbles
+		script.PlacePiece (5, 6);
+		PassTurnToBlack ();
+		script.PlacePiece (6, 5);
+		PassTurnToBlack ();
+		script.PlacePiece (5, 4);
+		PassTurnToBlack ();
+		script.PlacePiece (4, 5);
+
+		// Check for captured pebble
+		script.CheckForCaptures (5, 5);
+
+		// Assert the counts
+		Assert.AreEqual (4, script.GetBlackCount());
+		Assert.AreEqual (0, script.GetWhiteCount());
+
+		Assert.IsTrue (script.IsEmpty(5, 5), "The white pebble at 5, 5 was not removed when surrounded");
+	}
+
+	[Test]
+	public void TestBlackPieceCapture() {
+		script.Start ();
+		PassTurnToBlack ();
+
+		// Place a black pebble at 5, 5
+		script.PlacePiece (5, 5);
+		// Surround with white pebbles
+		script.PlacePiece (5, 6);
+		PassTurnToWhite ();
+		script.PlacePiece (6, 5);
+		PassTurnToWhite ();
+		script.PlacePiece (5, 4);
+		PassTurnToWhite ();
+		script.PlacePiece (4, 5);
+
+		// Check for captured pebble
+		script.CheckForCaptures (5, 5);
+
+		// Assert the counts
+		Assert.AreEqual (0, script.GetBlackCount());
+		Assert.AreEqual (4, script.GetWhiteCount());
+
+		Assert.IsTrue (script.IsEmpty(5, 5), "The black pebble at 5, 5 was not removed when surrounded");
+	}
+
+	[Test]
+	public void TestBlackPebbleDoesNotSelfCapture() {
+		script.Start ();
+		PassTurnToBlack ();
+
+		// Place a black pebble at 5, 5
+		script.PlacePiece (5, 5);
+		// Surround with black pebbles
+		PassTurnToBlack ();
+		script.PlacePiece (5, 6);
+		PassTurnToBlack ();
+		script.PlacePiece (6, 5);
+		PassTurnToBlack ();
+		script.PlacePiece (5, 4);
+		PassTurnToBlack ();
+		script.PlacePiece (4, 5);
+
+		// Check for captured pebble
+		script.CheckForCaptures (5, 5);
+
+		Assert.IsFalse (script.IsEmpty(5, 5), "The black pebble appears to have captured itself");
+	}
+
+	[Test]
+	public void TestWhitePebbleDoesNotSelfCapture() {
+		script.Start ();
+
+		// Place a white pebble at 5, 5
+		script.PlacePiece (5, 5);
+		// Surround with white pebbles
+		PassTurnToWhite ();
+		script.PlacePiece (5, 6);
+		PassTurnToWhite ();
+		script.PlacePiece (6, 5);
+		PassTurnToWhite ();
+		script.PlacePiece (5, 4);
+		PassTurnToWhite ();
+		script.PlacePiece (4, 5);
+
+		// Check for captured pebble
+		script.CheckForCaptures (5, 5);
+
+		Assert.IsFalse (script.IsEmpty(5, 5), "The white pebble appears to have captured itself");
 	}
 
 }
