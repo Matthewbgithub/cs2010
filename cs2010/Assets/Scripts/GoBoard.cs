@@ -22,7 +22,6 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
     
 	//game control fields
-
 	private int turns;
     private bool isWhiteTurn;
     private int currentX;
@@ -39,6 +38,8 @@ public class GoBoard : MonoBehaviour {
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
     
+	//territory here
+	
     //saving
     private GameState state = new GameState();
     private bool saving = false;
@@ -66,6 +67,9 @@ public class GoBoard : MonoBehaviour {
 		boardSize = size;
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
+		
+		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
+		
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
@@ -325,10 +329,120 @@ public class GoBoard : MonoBehaviour {
     public void TakeTurnPart2()
     {
         CheckForCaptures(currentX, currentY);
+		if(blackCount >= 1 && whiteCount >= 1)
+		{
+			SetTerritories();
+		}
         EndLogic();
         SaveLoad.Unlock();
     }
 
+	//territory fields
+	private bool[,] territoryChecked;
+	private bool[,] territory; //try not to use???
+	private bool isATerritory;
+	private int territorySize;
+	private int whiteTerritories;
+	private int blackTerritories;
+	private bool? isTerritoryWhite = null;
+	
+	//territory calculation methods-----------
+	private void SetTerritories()
+	{
+		//reset territories
+		whiteTerritories = 0;
+		blackTerritories = 0;
+		//so we need to check all the spaces to find areas that are surrounded by one colour only
+		//and then add up the amount
+		for (int x = 0; x < boardSize; x++)
+		{
+			for(int y = 0; y < boardSize; y++)
+			{
+				if(IsEmpty(x,y))
+				{
+					if(!territoryChecked[x,y])
+					{
+						isTerritoryWhite = null;
+						//checks surrounding
+						territorySize = 1;
+						isATerritory = true;
+						TerritoryCheckSurrounding(x,y);
+						if(isATerritory)
+						{
+							if(isTerritoryWhite.HasValue)
+							{
+								if((bool)isTerritoryWhite)
+								{
+									whiteTerritories += territorySize;
+								}
+								else
+								{
+									blackTerritories += territorySize;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ResetTerritoryCheck();
+		Debug.Log("White territory is: " + whiteTerritories);
+		Debug.Log("Black territory is: " + blackTerritories);
+		
+		Debug.Log("White score is: " + (whiteTerritories+whiteCount));
+		Debug.Log("Black score is: " + (blackTerritories+blackCount));
+	}
+	private void TerritoryCheckSurrounding(int x, int y)
+	{
+		territoryChecked[x,y] = true;
+		//if its not been checked then go there
+		if(!IsOffBoard(x-1,y) && !territoryChecked[x-1,y  ])
+		{
+			TerritoryCheck(x-1,y  );
+		}
+		if(!IsOffBoard(x+1,y) && !territoryChecked[x+1,y  ])
+		{
+			TerritoryCheck(x+1,y  );
+		}
+		if(!IsOffBoard(x ,y-1) && !territoryChecked[x  ,y-1])
+		{
+			TerritoryCheck(x  ,y-1);
+		}
+		if(!IsOffBoard(x ,y+1) && !territoryChecked[x  ,y+1])
+		{
+			TerritoryCheck(x  ,y+1);
+		}
+	}
+	private void TerritoryCheck(int x, int y)
+	{
+		
+		if(IsEmpty(x,y))
+		{
+			territoryChecked[x,y] = true;
+			territorySize++;
+			TerritoryCheckSurrounding(x,y);
+		}
+		else
+		{
+			if(isTerritoryWhite == null)
+			{
+				//decide that the current area is of which colour
+				isTerritoryWhite = GetPieceOnBoard(x,y).IsWhite();
+			}
+			else
+			{
+				if((bool)isTerritoryWhite != GetPieceOnBoard(x,y).IsWhite())
+				{
+					//piece is diff, capture group is not a group
+					isATerritory = false;
+				}
+			}
+		}
+	}
+	private void ResetTerritoryCheck()
+	{
+		territoryChecked = new bool[boardSize, boardSize];
+	}
     private void EndLogic()
     {
         if (this.IsGameOver())
@@ -635,12 +749,12 @@ public static class SaveLoad
     }
     public static void Lock()
     {
-        Debug.Log("locked");
+        //Debug.Log("locked");
         locked = true;
     }
     public static void Unlock()
     {
-        Debug.Log("unlocked");
+        //Debug.Log("unlocked");
         locked = false;
     }
     public static bool Locked()
