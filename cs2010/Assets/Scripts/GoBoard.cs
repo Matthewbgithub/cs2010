@@ -38,7 +38,13 @@ public class GoBoard : MonoBehaviour {
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
     
-	//territory here
+	//territory fields
+	private bool[,] territoryChecked;
+	private bool isATerritory;
+	private int territorySize;
+	private int whiteTerritories;
+	private int blackTerritories;
+	private bool? isTerritoryWhite = null;
 	
     //saving
     private GameState state = new GameState();
@@ -336,15 +342,6 @@ public class GoBoard : MonoBehaviour {
         EndLogic();
         SaveLoad.Unlock();
     }
-
-	//territory fields
-	private bool[,] territoryChecked;
-	private bool[,] territory; //try not to use???
-	private bool isATerritory;
-	private int territorySize;
-	private int whiteTerritories;
-	private int blackTerritories;
-	private bool? isTerritoryWhite = null;
 	
 	//territory calculation methods-----------
 	private void SetTerritories()
@@ -352,31 +349,39 @@ public class GoBoard : MonoBehaviour {
 		//reset territories
 		whiteTerritories = 0;
 		blackTerritories = 0;
-		//so we need to check all the spaces to find areas that are surrounded by one colour only
-		//and then add up the amount
-		for (int x = 0; x < boardSize; x++)
+		//so we need to check all the spaces to find areas that are surrounded by one colour only and then add up the amount
+		for (int x = 0; x < GetBoardSize(); x++)
 		{
-			for(int y = 0; y < boardSize; y++)
+			for(int y = 0; y < GetBoardSize(); y++)
 			{
+				//check every space
 				if(IsEmpty(x,y))
 				{
+					//find empty spaces
 					if(!territoryChecked[x,y])
 					{
+						//find unchecked spaces
+						//set colour to not set
 						isTerritoryWhite = null;
-						//checks surrounding
+						//because it is checking an unchecked, empty space, this space is part of the group therefore it starts at 1
 						territorySize = 1;
+						//only becomes false if its discovered not to be a group
 						isATerritory = true;
+						//begin recursive checking
 						TerritoryCheckSurrounding(x,y);
+						//when check is done, is it still a territory?
 						if(isATerritory)
 						{
 							if(isTerritoryWhite.HasValue)
 							{
 								if((bool)isTerritoryWhite)
 								{
+									//if white, add it to the white score
 									whiteTerritories += territorySize;
 								}
 								else
-								{
+								{	
+									//if black, add to the black score
 									blackTerritories += territorySize;
 								}
 							}
@@ -396,21 +401,21 @@ public class GoBoard : MonoBehaviour {
 	{
 		territoryChecked[x,y] = true;
 		//if its not been checked then go there
-		if(!IsOffBoard(x-1,y) && !territoryChecked[x-1,y  ])
-		{
-			TerritoryCheck(x-1,y  );
-		}
-		if(!IsOffBoard(x+1,y) && !territoryChecked[x+1,y  ])
-		{
-			TerritoryCheck(x+1,y  );
-		}
-		if(!IsOffBoard(x ,y-1) && !territoryChecked[x  ,y-1])
-		{
-			TerritoryCheck(x  ,y-1);
-		}
-		if(!IsOffBoard(x ,y+1) && !territoryChecked[x  ,y+1])
-		{
-			TerritoryCheck(x  ,y+1);
+		
+		int[][] xychange = {
+			new int[] {x  ,y-1},
+			new int[] {x  ,y+1},
+			new int[] {x-1,y  },
+			new int[] {x+1,y  }
+		};
+		
+		//checks down, up, left and right of the piece
+        foreach (int[] xy in xychange)
+        {
+			if(!IsOffBoard(xy[0],xy[1]) && !territoryChecked[xy[0],xy[1]])
+			{
+				TerritoryCheck(xy[0],xy[1]);
+			}
 		}
 	}
 	private void TerritoryCheck(int x, int y)
@@ -441,7 +446,7 @@ public class GoBoard : MonoBehaviour {
 	}
 	private void ResetTerritoryCheck()
 	{
-		territoryChecked = new bool[boardSize, boardSize];
+		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
 	}
     private void EndLogic()
     {
@@ -498,9 +503,9 @@ public class GoBoard : MonoBehaviour {
         float fy;
         float fx;
         //generate them placeholders
-        for (int x = 0; x < boardSize; x++)
+        for (int x = 0; x < GetBoardSize(); x++)
 		{
-			for(int y = 0; y < boardSize; y++)
+			for(int y = 0; y < GetBoardSize(); y++)
 			{
 				//places the placeholder
 				var ph = Instantiate(piecePlaceHolder);
@@ -520,7 +525,7 @@ public class GoBoard : MonoBehaviour {
                 {
                     //new x value = ( old x / width ) x 16
                     //scales x value down then back up to size of board
-                    bx = (fx / boardSize) * boardPhysicalSize;
+                    bx = (fx / GetBoardSize()) * boardPhysicalSize;
                 }
                 if (y == 0)
                 {
@@ -528,7 +533,7 @@ public class GoBoard : MonoBehaviour {
                 }
                 else
                 {
-                    by = (fy / boardSize) * boardPhysicalSize;
+                    by = (fy / GetBoardSize()) * boardPhysicalSize;
                 }
                 //move pieces to their position within scale
                 ph.transform.position = (Vector3.right * bx) + (Vector3.forward * by) + boardOffset + pieceOffset;
@@ -637,7 +642,7 @@ public class GoBoard : MonoBehaviour {
     private void ResetBoardChecked()
     {
         //resetPieceCheckedArray()
-        checkedPieces = new bool[boardSize, boardSize];
+        checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
     }
     //-------
     //group checker
@@ -658,7 +663,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void ResetGroupChecked()
     {
-        groupCapture  = new bool[boardSize, boardSize];
+        groupCapture  = new bool[GetBoardSize(), GetBoardSize()];
     }
     private void RemoveCaptured()
     {
@@ -718,7 +723,7 @@ public class GoBoard : MonoBehaviour {
    
 	private bool IsOffBoard(int x, int y)
     {
-        if(x < 0 || x >= boardSize || y < 0 || y >= boardSize)
+        if(x < 0 || x >= GetBoardSize() || y < 0 || y >= GetBoardSize())
 		{
 			return true;
 		}else

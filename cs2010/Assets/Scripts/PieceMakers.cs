@@ -12,7 +12,7 @@ public class PieceMakers : MonoBehaviour {
     public int boardx;
     public int boardy;
 
-        //records if it has a piece
+    //records if it has a piece
     bool isPiece = false;
     bool isWhite = false;
     public Piece thisPiece;
@@ -67,7 +67,7 @@ public class PieceMakers : MonoBehaviour {
         this.thisPiece = Instantiate(this.pebble, pos, rot);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
         //tells the piece where it is on the board
-        //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
+        this.thisPiece.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
         //place a piece on me
         return true;
     }
