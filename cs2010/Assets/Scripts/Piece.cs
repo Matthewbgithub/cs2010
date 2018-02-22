@@ -41,14 +41,14 @@ public class Piece : MonoBehaviour {
     {
         //so you cant abuse the wait time of the animation
         SaveLoad.Lock();
-        anim.Play("Remove Pebble");
+		anim.Play("Remove Pebble");
     }
 
     //called when the animation finishes
     public void AlertObservers(string message)
     {
         //if the animation finish message is to remove the pebble then to do this
-        if (message.Equals("RemovePebble"))
+		if (message.Equals("Remove Pebble"))
         {
             //removes object then unlocks game
             Destroy(gameObject);
