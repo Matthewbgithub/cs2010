@@ -7,6 +7,7 @@ public class Piece : MonoBehaviour {
     //textures
 	public Material[] material;
 	private Renderer rend;
+    private PieceMakers theMaker;
 
     //animation
     public Animator anim;
@@ -15,13 +16,13 @@ public class Piece : MonoBehaviour {
         //not sure why i've called these in the intializer and the start function it gets a bit sad if i dont
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
-		anim.Play("Place Pebble");
     }
-    public void Initialize(bool isWhite)
+    public void Initialize(bool isWhite, PieceMakers pm)
 	{
+        theMaker = pm;
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
-		if(isWhite)
+        if (isWhite)
 		{	
 			//white piece
 			this.rend.material = material[0];
@@ -31,7 +32,8 @@ public class Piece : MonoBehaviour {
 			//black piece
 			this.rend.material = material[1];
 		}
-	}
+        anim.Play("Place Pebble");
+    }
 	
     public void Destroy()
 	{
@@ -54,5 +56,10 @@ public class Piece : MonoBehaviour {
             Destroy(gameObject);
             SaveLoad.Unlock();
         }
+        else if(message.Equals("PlacePebble"))
+        {
+            theMaker.PlaceAnimationFinished();
+        }
+
     }
 }

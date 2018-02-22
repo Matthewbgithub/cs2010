@@ -60,14 +60,13 @@ public class PieceMakers : MonoBehaviour {
         this.isWhite = isWhite;
         //sets obj to black or white depending on turn
         //increments turn
-        thisBoard.IncrementTurns();
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
         pos.y = 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         this.thisPiece = Instantiate(this.pebble, pos, rot);
-		this.thisPiece.GetComponent<Piece>().Initialize(isWhite);
+		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
         //tells the piece where it is on the board
         //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
         //place a piece on me
@@ -82,7 +81,10 @@ public class PieceMakers : MonoBehaviour {
         	//delete current piece
 		}
 	}	
-
+    public void PlaceAnimationFinished()
+    {
+        thisBoard.TakeTurnPart2();
+    }
     public string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
