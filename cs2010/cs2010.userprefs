@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<Properties StartupConfiguration="{09E6D2C7-84A2-0E07-2E2F-4AB6E159DA5E}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Resources/NewPlayModeTest.cs">
     <Files>
@@ -5,6 +6,11 @@
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+=======
+﻿<Properties StartupConfiguration="{09E6D2C7-84A2-0E07-2E2F-4AB6E159DA5E}|" StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+>>>>>>> tom
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

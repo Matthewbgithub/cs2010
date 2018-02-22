@@ -1,7 +1,13 @@
 fileFormatVersion: 2
-guid: c4ae1ddcf2ea7d54fb7e9695f6dd2d67
+<<<<<<< HEAD:cs2010/Assets/Packages.meta
+guid: 10a2c8edaf2fd475d8f1946c0a0c2cb7
 folderAsset: yes
-timeCreated: 1519134968
+timeCreated: 1519131132
+=======
+guid: a237c99e417af488da827f520cd0e682
+folderAsset: yes
+timeCreated: 1519065358
+>>>>>>> tom:cs2010/Assets/Tests/Editor.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

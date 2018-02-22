@@ -611,7 +611,7 @@ public class GoBoard : MonoBehaviour {
 			}
 		}
 	}
-	private PieceMakers GetPieceOnBoard(int x, int y)
+	public PieceMakers GetPieceOnBoard(int x, int y)
 	{
 		return board[x, y];
 	}
