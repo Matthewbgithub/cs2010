@@ -5,18 +5,17 @@ using UnityEngine;
 
 
 public class PieceMakers : MonoBehaviour {
-    //records what a white and black piece look like
-    //public GameObject blackPiecePrefab;
-    //public GameObject whitePiecePrefab;
-	public GameObject pebble;
+
+    public Piece pebble;
+
     //records the location of this placeholder
     public int boardx;
     public int boardy;
 
-        //records if it has a piece
+    //records if it has a piece
     bool isPiece = false;
     bool isWhite = false;
-    public GameObject thisPiece;
+    public Piece thisPiece;
     GoBoard thisBoard;
 
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
@@ -68,7 +67,7 @@ public class PieceMakers : MonoBehaviour {
         this.thisPiece = Instantiate(this.pebble, pos, rot);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
         //tells the piece where it is on the board
-        //thisPiece.GetComponent<Piece>().setup(boardx,boardy,isWhite);
+        this.thisPiece.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
         //place a piece on me
         return true;
     }
@@ -85,7 +84,7 @@ public class PieceMakers : MonoBehaviour {
     {
         thisBoard.TakeTurnPart2();
     }
-    public string ToString()
+    public override string ToString()
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }

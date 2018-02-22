@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -12,7 +13,7 @@ public class GoBoard : MonoBehaviour {
 	//game data fields
 	private PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
-	public GameObject endCanvas;
+    public GameObject endCanvas;
 
 	//generation fields
 	private int boardSize;
@@ -37,6 +38,14 @@ public class GoBoard : MonoBehaviour {
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
     
+	//territory fields
+	private bool[,] territoryChecked;
+	private bool isATerritory;
+	private int territorySize;
+	private int whiteTerritories;
+	private int blackTerritories;
+	private bool? isTerritoryWhite = null;
+	
     //saving
     private GameState state = new GameState();
     private bool saving = false;
@@ -57,16 +66,20 @@ public class GoBoard : MonoBehaviour {
         }
     }
 
-	private void Initialize(int size)
+	public void Initialize(int size)
 	{
         SaveLoad.Init();
         SaveLoad.Unlock();
 		boardSize = size;
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
+		
+		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
+		
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
+        endCanvas = GameObject.Find("EndCanvas");
 		GenerateBoard();
 	}
 
@@ -74,16 +87,7 @@ public class GoBoard : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if(IsWhiteTurn())
-            {
-                WhitePass();
-            }
-            else
-            {
-                BlackPass();
-            }
-            EndLogic();
-            IncrementTurns();
+            PassTurn();
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -177,7 +181,19 @@ public class GoBoard : MonoBehaviour {
         Debug.Log("Saved");
         SaveLoad.Unlock();
     }
-
+	public void PassTurn()
+	{
+		if(IsWhiteTurn())
+		{
+			WhitePass();
+		}
+		else
+		{
+			BlackPass();
+		}
+		EndLogic();
+		IncrementTurns();
+	}
     private void LoadGame(int saveNumber)
     {
         SaveLoad.Lock();
@@ -230,7 +246,8 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
-        isWhiteTurn = (turns % 2 == 0);
+        isWhiteTurn = !(turns % 2 == 0);
+
         if (incrementMode)
         {
             if(IsWhiteTurn())
@@ -300,7 +317,7 @@ public class GoBoard : MonoBehaviour {
     }
     public void ResetBoard()
     {
-        turns = 0;
+        turns = 1;
         blackCount = 0;
         whiteCount = 0;
         //reset all the game values
@@ -321,10 +338,119 @@ public class GoBoard : MonoBehaviour {
     public void TakeTurnPart2()
     {
         CheckForCaptures(currentX, currentY);
+		if(blackCount >= 1 && whiteCount >= 1)
+		{
+			SetTerritories();
+		}
         EndLogic();
         SaveLoad.Unlock();
     }
-
+	
+	//territory calculation methods-----------
+	private void SetTerritories()
+	{
+		//reset territories
+		whiteTerritories = 0;
+		blackTerritories = 0;
+		//so we need to check all the spaces to find areas that are surrounded by one colour only and then add up the amount
+		for (int x = 0; x < GetBoardSize(); x++)
+		{
+			for(int y = 0; y < GetBoardSize(); y++)
+			{
+				//check every space
+				if(IsEmpty(x,y))
+				{
+					//find empty spaces
+					if(!territoryChecked[x,y])
+					{
+						//find unchecked spaces
+						//set colour to not set
+						isTerritoryWhite = null;
+						//because it is checking an unchecked, empty space, this space is part of the group therefore it starts at 1
+						territorySize = 1;
+						//only becomes false if its discovered not to be a group
+						isATerritory = true;
+						//begin recursive checking
+						TerritoryCheckSurrounding(x,y);
+						//when check is done, is it still a territory?
+						if(isATerritory)
+						{
+							if(isTerritoryWhite.HasValue)
+							{
+								if((bool)isTerritoryWhite)
+								{
+									//if white, add it to the white score
+									whiteTerritories += territorySize;
+								}
+								else
+								{	
+									//if black, add to the black score
+									blackTerritories += territorySize;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		ResetTerritoryCheck();
+		Debug.Log("White territory is: " + whiteTerritories);
+		Debug.Log("Black territory is: " + blackTerritories);
+		
+		Debug.Log("White score is: " + (whiteTerritories+whiteCount));
+		Debug.Log("Black score is: " + (blackTerritories+blackCount));
+	}
+	private void TerritoryCheckSurrounding(int x, int y)
+	{
+		territoryChecked[x,y] = true;
+		//if its not been checked then go there
+		
+		int[][] xychange = {
+			new int[] {x  ,y-1},
+			new int[] {x  ,y+1},
+			new int[] {x-1,y  },
+			new int[] {x+1,y  }
+		};
+		
+		//checks down, up, left and right of the piece
+        foreach (int[] xy in xychange)
+        {
+			if(!IsOffBoard(xy[0],xy[1]) && !territoryChecked[xy[0],xy[1]])
+			{
+				TerritoryCheck(xy[0],xy[1]);
+			}
+		}
+	}
+	private void TerritoryCheck(int x, int y)
+	{
+		
+		if(IsEmpty(x,y))
+		{
+			territoryChecked[x,y] = true;
+			territorySize++;
+			TerritoryCheckSurrounding(x,y);
+		}
+		else
+		{
+			if(isTerritoryWhite == null)
+			{
+				//decide that the current area is of which colour
+				isTerritoryWhite = GetPieceOnBoard(x,y).IsWhite();
+			}
+			else
+			{
+				if((bool)isTerritoryWhite != GetPieceOnBoard(x,y).IsWhite())
+				{
+					//piece is diff, capture group is not a group
+					isATerritory = false;
+				}
+			}
+		}
+	}
+	private void ResetTerritoryCheck()
+	{
+		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
+	}
     private void EndLogic()
     {
         if (this.IsGameOver())
@@ -335,6 +461,7 @@ public class GoBoard : MonoBehaviour {
             endScript.OpenEndHUD();
         }
     }
+
     private bool IsGameOver()
     {
         if (whitePass == true && blackPass == true)
@@ -379,9 +506,9 @@ public class GoBoard : MonoBehaviour {
         float fy;
         float fx;
         //generate them placeholders
-        for (int x = 0; x < boardSize; x++)
+        for (int x = 0; x < GetBoardSize(); x++)
 		{
-			for(int y = 0; y < boardSize; y++)
+			for(int y = 0; y < GetBoardSize(); y++)
 			{
 				//places the placeholder
 				var ph = Instantiate(piecePlaceHolder);
@@ -401,7 +528,7 @@ public class GoBoard : MonoBehaviour {
                 {
                     //new x value = ( old x / width ) x 16
                     //scales x value down then back up to size of board
-                    bx = (fx / boardSize) * boardPhysicalSize;
+                    bx = (fx / GetBoardSize()) * boardPhysicalSize;
                 }
                 if (y == 0)
                 {
@@ -409,7 +536,7 @@ public class GoBoard : MonoBehaviour {
                 }
                 else
                 {
-                    by = (fy / boardSize) * boardPhysicalSize;
+                    by = (fy / GetBoardSize()) * boardPhysicalSize;
                 }
                 //move pieces to their position within scale
                 ph.transform.position = (Vector3.right * bx) + (Vector3.forward * by) + boardOffset + pieceOffset;
@@ -484,7 +611,7 @@ public class GoBoard : MonoBehaviour {
 			}
 		}
 	}
-	private PieceMakers GetPieceOnBoard(int x, int y)
+	public PieceMakers GetPieceOnBoard(int x, int y)
 	{
 		return board[x, y];
 	}
@@ -500,7 +627,7 @@ public class GoBoard : MonoBehaviour {
 		}
         //checks whether the piece is different colour or same
     }
-    private bool IsEmpty(int x, int y)
+    public bool IsEmpty(int x, int y)
     {
 		return board[x,y].IsEmpty();
     }
@@ -518,7 +645,7 @@ public class GoBoard : MonoBehaviour {
     private void ResetBoardChecked()
     {
         //resetPieceCheckedArray()
-        checkedPieces = new bool[boardSize, boardSize];
+        checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
     }
     //-------
     //group checker
@@ -539,7 +666,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void ResetGroupChecked()
     {
-        groupCapture  = new bool[boardSize, boardSize];
+        groupCapture  = new bool[GetBoardSize(), GetBoardSize()];
     }
     private void RemoveCaptured()
     {
@@ -599,7 +726,7 @@ public class GoBoard : MonoBehaviour {
    
 	private bool IsOffBoard(int x, int y)
     {
-        if(x < 0 || x >= boardSize || y < 0 || y >= boardSize)
+        if(x < 0 || x >= GetBoardSize() || y < 0 || y >= GetBoardSize())
 		{
 			return true;
 		}else
@@ -630,12 +757,12 @@ public static class SaveLoad
     }
     public static void Lock()
     {
-        Debug.Log("locked");
+        //Debug.Log("locked");
         locked = true;
     }
     public static void Unlock()
     {
-        Debug.Log("unlocked");
+        //Debug.Log("unlocked");
         locked = false;
     }
     public static bool Locked()
@@ -687,7 +814,7 @@ public static class SaveLoad
     public bool[,] isPiece;
     public bool[,] isWhite;
 
-    public string ToString()
+    public override string ToString()
     {
         return "state with " + turns + " turns.";
     }

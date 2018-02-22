@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.TestTools;
-using NUnit.Framework;
+//using UnityEngine.TestTools;
+//using NUnit.Framework;
 using System.Collections;
 
 public class CaptureTests {
     
-    [Test]
+    /*[Test]
     public void Test_Stone_Placement()
     {
         GoBoard board = new GoBoard();
@@ -27,5 +27,5 @@ public class CaptureTests {
         //board.TakeTurn(2,2);//black
         //board.TakeTurn(2,3);//white
         //board.TakeTurn(1,3);//black
-    }
+    }*/
 }

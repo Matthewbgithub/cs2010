@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f525cfb85f9044aa76a153a55a8cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pebble: {fileID: 1029747076033136, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68, type: 2}
+  pebble: {fileID: 114079715009754544, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68, type: 2}
   boardx: 0
   boardy: 0
-  thisPiece: {fileID: 0}
+  isPiece: 0
+  thisPiece: {fileID: 114079715009754544, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68,
+    type: 2}
