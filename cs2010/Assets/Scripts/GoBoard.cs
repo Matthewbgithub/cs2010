@@ -87,16 +87,7 @@ public class GoBoard : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if(IsWhiteTurn())
-            {
-                WhitePass();
-            }
-            else
-            {
-                BlackPass();
-            }
-            EndLogic();
-            IncrementTurns();
+            PassTurn();
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -190,7 +181,19 @@ public class GoBoard : MonoBehaviour {
         Debug.Log("Saved");
         SaveLoad.Unlock();
     }
-
+	private void PassTurn()
+	{
+		if(IsWhiteTurn())
+		{
+			WhitePass();
+		}
+		else
+		{
+			BlackPass();
+		}
+		EndLogic();
+		IncrementTurns();
+	}
     private void LoadGame(int saveNumber)
     {
         SaveLoad.Lock();
