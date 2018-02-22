@@ -181,7 +181,7 @@ public class GoBoard : MonoBehaviour {
         Debug.Log("Saved");
         SaveLoad.Unlock();
     }
-	private void PassTurn()
+	public void PassTurn()
 	{
 		if(IsWhiteTurn())
 		{
