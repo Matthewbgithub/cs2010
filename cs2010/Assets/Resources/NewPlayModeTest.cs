@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.TestTools;
-using NUnit.Framework;
+//using UnityEngine.TestTools;
+//using NUnit.Framework;
 using System.Collections;
 using System;
 
 public class NewPlayModeTest
 {
-
+	/*
     private GameObject goboard;
     private GoBoard board;
     private PieceMakers pMaker;
@@ -169,4 +169,5 @@ public class NewPlayModeTest
         board.Initialize(19);
         //MonoBehaviour.Instantiate(Resources.Load<GameObject>("room"));
     }
+	*/
 }
