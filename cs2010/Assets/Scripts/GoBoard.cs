@@ -400,6 +400,7 @@ public class GoBoard : MonoBehaviour {
 		Debug.Log("White score is: " + (whiteTerritories+whiteCount));
 		Debug.Log("Black score is: " + (blackTerritories+blackCount));
 	}
+
 	private void TerritoryCheckSurrounding(int x, int y)
 	{
 		territoryChecked[x,y] = true;
@@ -473,6 +474,16 @@ public class GoBoard : MonoBehaviour {
             return false;
         }
     }
+
+    public int GetWhiteTerritories(){
+        return whiteTerritories;
+    }
+
+    public int GetBlackTerritories()
+    {
+        return blackTerritories;
+    }
+
     //places piece on board and returns true if the space is empty
     public bool PlacePiece(int x, int y)
     {
