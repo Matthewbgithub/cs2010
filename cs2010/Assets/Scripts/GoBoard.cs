@@ -14,6 +14,7 @@ public class GoBoard : MonoBehaviour {
 	private PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
     public GameObject endCanvas;
+    public GameObject hudCanvas;
 
 	//generation fields
 	private int boardSize;
@@ -78,6 +79,7 @@ public class GoBoard : MonoBehaviour {
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
         endCanvas = GameObject.Find("EndCanvas");
+        hudCanvas = GameObject.Find("HUDCanvas");
 		GenerateBoard();
 	}
 
@@ -91,6 +93,9 @@ public class GoBoard : MonoBehaviour {
         {
             incrementMode = !incrementMode;
             Debug.Log("incrementing turns is "+ incrementMode);
+        }
+        if(!hudCanvas.activeSelf){
+            SaveLoad.Lock();
         }
     }
 
