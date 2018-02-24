@@ -48,8 +48,6 @@ public class GoBoard : MonoBehaviour {
 	
     //saving
     private GameState state = new GameState();
-    private bool saving = false;
-    private bool loading = false;
 
     //testing features
     private bool incrementMode = true;
@@ -94,66 +92,18 @@ public class GoBoard : MonoBehaviour {
             incrementMode = !incrementMode;
             Debug.Log("incrementing turns is "+ incrementMode);
         }
+    }
 
-        if (Input.GetKeyDown (KeyCode.S))
-        {
-            saving = !saving;
-            Debug.Log("saving is " + saving);
-            //save game
+    public void SaveOrLoad(string name){
+        int val = (int)char.GetNumericValue(name[1]);
+        if(name[0]=='s'){
+            Debug.Log("saved in slot " + val);
+            SaveGame(this.state, val);
         }
-
-		if (Input.GetKeyDown (KeyCode.L))
-        {
-            loading = !loading;
-            Debug.Log("laoding is " + loading);
-            //Load game
+        else{
+            Debug.Log("loaded in slot " + val);
+            SaveGame(this.state, val);
         }
-        if(Input.GetKeyDown("1"))
-        {
-            if (saving)
-            {
-                Debug.Log("saved in slot 1");
-                SaveGame(this.state, 0);
-                saving = false;
-            }
-            else if (loading)
-            {
-                Debug.Log("Loaded slot 1");
-                LoadGame(0);
-                loading = false;
-            }
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            if (saving)
-            {
-                Debug.Log("saved in slot 2");
-                SaveGame(this.state, 1);
-                saving = false;
-            }
-            else if (loading)
-            {
-                Debug.Log("Loaded slot 2");
-                LoadGame(1);
-                loading = false;
-            }
-        }
-        if (Input.GetKeyDown("3"))
-        {
-            if (saving)
-            {
-                Debug.Log("saved in slot 3");
-                SaveGame(this.state, 2);
-                saving = false;
-            }
-            else if(loading)
-            {
-                Debug.Log("Loaded slot 3");
-                LoadGame(2);
-                loading = false;
-            }
-        }
-
     }
 
 	private void SaveGame(GameState s, int slot)
@@ -176,6 +126,7 @@ public class GoBoard : MonoBehaviour {
                 }
             }
         }
+
         //save to file
         SaveLoad.Save(s, slot);
         Debug.Log("Saved");
