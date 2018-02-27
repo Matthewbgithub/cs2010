@@ -273,7 +273,7 @@ public class GoBoard : MonoBehaviour {
     }
     public void ResetBoard()
     {
-        turns = 1;
+        turns = 0;
         blackCount = 0;
         whiteCount = 0;
         //reset all the game values
@@ -294,12 +294,12 @@ public class GoBoard : MonoBehaviour {
     public void TakeTurnPart2()
     {
         CheckForCaptures(currentX, currentY);
-		if(blackCount >= 1 && whiteCount >= 1)
+        SetRolloverColour();
+        if (blackCount >= 1 && whiteCount >= 1)
 		{
 			SetTerritories();
 		}
         EndLogic();
-        SetRolloverColour();
         SaveLoad.Unlock();
     }
 
@@ -311,10 +311,12 @@ public class GoBoard : MonoBehaviour {
             {
                 if (GetPieceOnBoard(x, y).IsEmpty())
                 {
+                    //sets rollover colour to whoevers turn it is
                     GetPieceOnBoard(x, y).SetRolloverWhite(this.IsWhiteTurn());
                 }
                 else
-                {
+                {   
+                    //sets rollover to red because you cant place a piece there
                     GetPieceOnBoard(x, y).SetRolloverIllegal();
                 }
 
