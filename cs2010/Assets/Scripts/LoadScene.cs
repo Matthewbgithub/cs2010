@@ -3,36 +3,46 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class LoadScene : MonoBehaviour
 {
 
-    public static int size = 19;
     public GameObject loadingScreen;
     public Slider slider;
-
     public TextMeshProUGUI loadText;
+
+    //Standard board size
+    public static int size = 19;
+    //State which safe file to load (1-3)
+    public static int LoadFromSaveFile;
+
+    public void LoadSaveFile(int fileNumber)
+    {
+        LoadFromSaveFile = fileNumber;
+        LoadGame(1);
+    }
 
     public void Grid9()
     {
         size = 9;
-        SceneLoader();
+        LoadGame(1);
     }
 
     public void Grid13()
     {
         size = 13;
-        SceneLoader();
+        LoadGame(1);
     }
 
     public void Grid19()
     {
-        SceneLoader();
+        LoadGame(1);
     }
 
-    private void SceneLoader()
+    public static void ResetSaveFileLoad()
     {
-        LoadGame(1);
+        LoadFromSaveFile = 0;
     }
 
     private void LoadGame(int sceneIndex)
@@ -50,7 +60,6 @@ public class LoadScene : MonoBehaviour
 
         while (!operation.isDone)
         {
-            // [0, 0.9] > [0, 1]
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             Debug.Log("Loading progress: " + (progress * 100) + "%");
             slider.value = progress;
@@ -60,10 +69,13 @@ public class LoadScene : MonoBehaviour
             {
                 loadText.text = "Smash space to smash";
                 if (Input.GetKeyDown(KeyCode.Space))
+                {
                     operation.allowSceneActivation = true;
+                }
             }
 
             yield return null;
         }
     }
+
 }

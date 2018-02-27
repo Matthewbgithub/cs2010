@@ -29,8 +29,8 @@ public class GoBoard : MonoBehaviour {
     private int currentY;
     private int blackCount;
 	private int whiteCount;
-    private bool blackPass = false;
-    private bool whitePass = false;
+    private bool blackPass;
+    private bool whitePass;
 
     //capture fields
     private bool captureThisGroup = true;
@@ -45,7 +45,7 @@ public class GoBoard : MonoBehaviour {
 	private int territorySize;
 	private int whiteTerritories;
 	private int blackTerritories;
-	private bool? isTerritoryWhite = null;
+	private bool? isTerritoryWhite;
 	
     //saving
     private GameState state = new GameState();
@@ -55,14 +55,12 @@ public class GoBoard : MonoBehaviour {
 
     public void Start()
     {
-        if (LoadScene.size == 0)
-        {
-            Initialize(19); //testing purposes
+        Initialize(LoadScene.size);
+
+        if(LoadScene.LoadFromSaveFile > 0){
+            LoadGame(LoadScene.LoadFromSaveFile);
         }
-        else
-        {
-            Initialize(LoadScene.size);
-        }
+        LoadScene.ResetSaveFileLoad();
     }
 
 	public void Initialize(int size)
@@ -100,7 +98,7 @@ public class GoBoard : MonoBehaviour {
     }
 
     public void SaveOrLoad(string name){
-        int val = (int)char.GetNumericValue(name[1]) - 1;
+        int val = (int)char.GetNumericValue(name[1]) -1;
         if(name[0]=='s'){
             Debug.Log("saved in slot " + val);
             SaveGame(this.state, val);
@@ -398,15 +396,9 @@ public class GoBoard : MonoBehaviour {
 				//decide that the current area is of which colour
 				isTerritoryWhite = GetPieceOnBoard(x,y).IsWhite();
 			}
-			else
-			{
-				if((bool)isTerritoryWhite != GetPieceOnBoard(x,y).IsWhite())
-				{
-					//piece is diff, capture group is not a group
-					isATerritory = false;
-				}
-			}
-		}
+            else
+                isATerritory &= (bool)isTerritoryWhite == GetPieceOnBoard(x, y).IsWhite();
+        }
 	}
 	private void ResetTerritoryCheck()
 	{
@@ -751,6 +743,7 @@ public static class SaveLoad
             if(LoadSlot(i) != null){
                 GameState temp = LoadSlot(i);
                 Debug.Log(temp.turns + "turns");
+                Debug.Log("====================");
                 saveFiles++;
             }
         }
