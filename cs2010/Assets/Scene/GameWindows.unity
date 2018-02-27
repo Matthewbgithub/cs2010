@@ -731,6 +731,12 @@ MonoBehaviour:
   loadingScreen: {fileID: 1397040019}
   slider: {fileID: 544307915}
   loadText: {fileID: 1753832908}
+--- !u!114 &316229391 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 316229386}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &353715585
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +884,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366456980
 MonoBehaviour:
@@ -4073,7 +4079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1329426061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4139,8 +4145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continueButton: {fileID: 1041762996}
   save1: {fileID: 1579803917}
-  save2: {fileID: 0}
-  save3: {fileID: 0}
+  save2: {fileID: 1965647225}
+  save3: {fileID: 316229391}
 --- !u!1 &1362951748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4180,7 +4186,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 155}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1362951750
 MonoBehaviour:
@@ -4496,7 +4502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1474708805
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6267,6 +6273,12 @@ MonoBehaviour:
   loadingScreen: {fileID: 1397040019}
   slider: {fileID: 544307915}
   loadText: {fileID: 1753832908}
+--- !u!114 &1965647225 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1965647220}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &2017076101
 GameObject:
   m_ObjectHideFlags: 0

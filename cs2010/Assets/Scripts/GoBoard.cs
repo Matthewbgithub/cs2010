@@ -808,6 +808,7 @@ public static class SaveLoad
 [System.Serializable]
 public class GameState
 {
+    public string fileName;
     public int turns = 0;
     public int blackCount = 0;
     public int whiteCount = 0;
