@@ -107,7 +107,7 @@ public class GoBoard : MonoBehaviour {
         }
         else{
             Debug.Log("loaded in slot " + val);
-            SaveGame(this.state, val);
+            LoadGame(val);
         }
     }
 
