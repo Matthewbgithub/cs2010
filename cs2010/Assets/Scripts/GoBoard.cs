@@ -299,6 +299,7 @@ public class GoBoard : MonoBehaviour {
 			SetTerritories();
 		}
         EndLogic();
+		SetRolloverColour();
         SaveLoad.Unlock();
     }
 	
@@ -407,6 +408,25 @@ public class GoBoard : MonoBehaviour {
 	private void ResetTerritoryCheck()
 	{
 		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
+	}
+	
+	private void SetRolloverColour()
+	{
+		for (int x = 0; x < GetBoardSize(); x++)
+		{
+			for(int y = 0; y < GetBoardSize(); y++)
+			{
+				if(GetPieceOnBoard(x,y).IsEmpty())
+				{
+					GetPieceOnBoard(x,y).SetRolloverWhite(this.IsWhiteTurn());
+				}
+				else
+				{
+					GetPieceOnBoard(x,y).SetRolloverIllegal();
+				}
+				
+			}
+		}
 	}
     private void EndLogic()
     {

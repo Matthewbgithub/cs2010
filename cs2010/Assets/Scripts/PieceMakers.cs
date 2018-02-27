@@ -5,7 +5,8 @@ using UnityEngine;
 
 
 public class PieceMakers : MonoBehaviour {
-
+	
+	//the pebble
     public Piece pebble;
 
     //records the location of this placeholder
@@ -18,13 +19,37 @@ public class PieceMakers : MonoBehaviour {
     public Piece thisPiece;
     GoBoard thisBoard;
 
+	//for the rollover
+	private Material[] material;
+	private Renderer rend;
+	
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
     {
         thisBoard = boardReference;
         this.boardx = boardx;
         this.boardy = boardy;
     }
-
+	
+	void Start () {
+		//initializes the renderer, not quite sure what that is
+		rend = GetComponent<Renderer>();
+		
+		material = new Material[2];
+		material[0] = Resources.Load("unselectedRollover", typeof(Material)) as Material;
+		material[1] = Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
+		//sets the placeholder material to be material 0, or the unselected one
+		rend.material = material[0];
+	}
+	 void OnMouseEnter()
+	 {
+		 //sets to material 1, selected
+		 rend.material = material[1];
+	 }	
+	 void OnMouseExit()
+	 {
+		 //sets to material 0, unselected
+		 rend.material = material[0];
+	 }
     void OnMouseDown()
     {
         if (!SaveLoad.Locked())
@@ -92,7 +117,14 @@ public class PieceMakers : MonoBehaviour {
     {
         return (this.IsWhite()) ? "white" : "black";
     }
-
+	public void SetRolloverIllegal()
+	{
+		material[1] = Resources.Load("illegalRollover", typeof(Material)) as Material;
+	}
+	public void SetRolloverWhite(bool isWhite)
+	{
+		material[1] = (!isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
+	}
     /*
     void countPieces(){
 		//		Debug.Log ("piece count function called");
