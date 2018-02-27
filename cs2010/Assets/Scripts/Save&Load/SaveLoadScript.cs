@@ -10,22 +10,19 @@ public class SaveLoadScript : MonoBehaviour {
 
 	void Start () {
         button = GetComponent<Button>();
-
         button.onClick.AddListener(TaskOnClick);
 	}
 
 	void TaskOnClick () {
         GameObject board = GameObject.Find("Board");
         GoBoard boardScript = board.GetComponent<GoBoard>();
-        Debug.Log(button.name);
-        Debug.Log(fileName);
-
-        while (fileName == null)
-        {
-            if (fileName != null) { 
-                Debug.Log(fileName);
-                boardScript.SaveOrLoad(button.name);
-            }
+        if(fileName != null){
+            //Save with filename
+            boardScript.SaveFile(button.name, fileName);
+        }
+        else{
+            //Loads
+            boardScript.LoadFile(button.name);
         }
 
         fileName = null;

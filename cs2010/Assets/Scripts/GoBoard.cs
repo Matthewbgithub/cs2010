@@ -83,36 +83,42 @@ public class GoBoard : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            PassTurn();
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            incrementMode = !incrementMode;
-            Debug.Log("incrementing turns is "+ incrementMode);
-        }
+       
         if(!hudCanvas.activeSelf){
             SaveLoad.Lock();
         }
-    }
-
-    public void SaveOrLoad(string name){
-        int val = (int)char.GetNumericValue(name[1]) -1;
-        if(name[0]=='s'){
-            Debug.Log("saved in slot " + val);
-            SaveGame(this.state, val);
-        }
         else{
-            Debug.Log("loaded in slot " + val);
-            LoadGame(val);
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                PassTurn();
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                incrementMode = !incrementMode;
+                Debug.Log("incrementing turns is " + incrementMode);
+            }
         }
     }
 
-	private void SaveGame(GameState s, int slot)
+    public void SaveFile(string name, string fileName){
+        int val = (int)char.GetNumericValue(name[1]) -1;
+        Debug.Log("saved in slot " + name[1]);
+        Debug.Log("file name: " + fileName);
+        SaveGame(this.state, fileName, val);
+    }
+
+    public void LoadFile(string name)
+    {
+        int val = (int)char.GetNumericValue(name[1]) - 1;
+        Debug.Log("loaded file from slot " + name[1]);
+        LoadGame(val);
+    }
+
+    private void SaveGame(GameState s, string fileName, int slot)
 	{
         SaveLoad.Lock();
         //recording variables
+        s.fileName = fileName;
         s.turns = this.turns;
         s.whiteCount = this.whiteCount;
         s.blackCount = this.blackCount;
@@ -818,7 +824,7 @@ public class GameState
 
     public override string ToString()
     {
-        return "state with " + turns + " turns.";
+        return "file name: " + fileName + ", state with " + turns + " turns.";
     }
 
     public void SetBoardSize(int size)
