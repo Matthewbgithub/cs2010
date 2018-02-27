@@ -1109,7 +1109,7 @@ MonoBehaviour:
   piecePlaceHolder: {fileID: 114990863396949184, guid: e045d20e15282a248a7456b3ca28332c,
     type: 2}
   endCanvas: {fileID: 213731707}
-  hudCanvas: {fileID: 0}
+  hudCanvas: {fileID: 1016689246}
 --- !u!1 &231281173
 GameObject:
   m_ObjectHideFlags: 0

@@ -261,6 +261,7 @@ public class GoBoard : MonoBehaviour {
             yield return null;
         }
     }
+
     private void ResetBeforeInitialization()
     {
         for (int x = 0; x < GetBoardSize(); x++)
@@ -271,6 +272,7 @@ public class GoBoard : MonoBehaviour {
             }
         }
     }
+
     public void ResetBoard()
     {
         turns = 1;
@@ -278,8 +280,8 @@ public class GoBoard : MonoBehaviour {
         whiteCount = 0;
         //reset all the game values
 
-		EndScript endScript = endCanvas.GetComponent<EndScript>();
-		endScript.CloseEndHUD ();
+		//EndScript endScript = endCanvas.GetComponent<EndScript>();
+		//endScript.CloseEndHUD ();
     }
 
     public bool TakeTurn(int x, int y)
@@ -712,11 +714,27 @@ public class GoBoard : MonoBehaviour {
 		GetPieceOnBoard(x,y).RemovePiece();
     }
 }
+
 public static class SaveLoad
 {
     public static GameState[] savedGames = new GameState[3];
     
     private static bool locked = false;
+
+
+    public static int CountSavedGames()
+    {
+        int saveFiles = 0;
+
+        for (int i = 0; i < savedGames.Length; i++)
+        {
+            //if (!savedGames[i])
+            //{
+            //    saveFiles++;
+            //}
+        }
+        return saveFiles;
+    }
 
     public static void Init()
     {
@@ -738,6 +756,7 @@ public static class SaveLoad
     }
     public static void Save(GameState state, int slot)
     {
+        //state.empty = false;
         savedGames[slot] = state;
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
@@ -770,7 +789,9 @@ public static class SaveLoad
             return null;
         }
     }
+
 }
+
 [System.Serializable]
  public class GameState
 {
@@ -780,6 +801,7 @@ public static class SaveLoad
     public int boardSize = 0;
     public bool[,] isPiece;
     public bool[,] isWhite;
+    public static bool empty = true;
 
     public override string ToString()
     {
