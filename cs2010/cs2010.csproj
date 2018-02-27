@@ -316,7 +316,6 @@
     <Compile Include="Assets\GameLoader.cs" />
     <Compile Include="Assets\LevelLoader.cs" />
     <Compile Include="Assets\Resources\NewPlayModeTest.cs" />
-    <Compile Include="Assets\Scripts\Clicking.cs" />
     <Compile Include="Assets\Scripts\GoBoard.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\EndScript.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />

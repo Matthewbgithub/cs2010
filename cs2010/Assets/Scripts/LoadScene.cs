@@ -17,7 +17,6 @@ public class LoadScene : MonoBehaviour
     {
         size = 9;
         SceneLoader();
-
     }
 
     public void Grid13()

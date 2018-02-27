@@ -100,7 +100,7 @@ public class GoBoard : MonoBehaviour {
     }
 
     public void SaveOrLoad(string name){
-        int val = (int)char.GetNumericValue(name[1]);
+        int val = (int)char.GetNumericValue(name[1]) - 1;
         if(name[0]=='s'){
             Debug.Log("saved in slot " + val);
             SaveGame(this.state, val);
@@ -119,6 +119,7 @@ public class GoBoard : MonoBehaviour {
         s.whiteCount = this.whiteCount;
         s.blackCount = this.blackCount;
         s.SetBoardSize(this.GetBoardSize());
+
         //recording board state
         for (int x = 0; x < GetBoardSize(); x++)
         {
@@ -738,9 +739,8 @@ public class GoBoard : MonoBehaviour {
 public static class SaveLoad
 {
     public static GameState[] savedGames = new GameState[3];
-    
-    private static bool locked = false;
 
+    private static bool locked = false;
 
     public static int CountSavedGames()
     {
@@ -748,18 +748,19 @@ public static class SaveLoad
 
         for (int i = 0; i < savedGames.Length; i++)
         {
-            //if (!savedGames[i])
-            //{
-            //    saveFiles++;
-            //}
+            if(LoadSlot(i) != null){
+                GameState temp = LoadSlot(i);
+                Debug.Log(temp.turns + "turns");
+                saveFiles++;
+            }
         }
         return saveFiles;
     }
-
     public static void Init()
     {
         Load();
     }
+
     public static void Lock()
     {
         //Debug.Log("locked");
@@ -776,7 +777,6 @@ public static class SaveLoad
     }
     public static void Save(GameState state, int slot)
     {
-        //state.empty = false;
         savedGames[slot] = state;
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd");
@@ -813,7 +813,7 @@ public static class SaveLoad
 }
 
 [System.Serializable]
- public class GameState
+public class GameState
 {
     public int turns = 0;
     public int blackCount = 0;
@@ -821,13 +821,12 @@ public static class SaveLoad
     public int boardSize = 0;
     public bool[,] isPiece;
     public bool[,] isWhite;
-    public static bool empty = true;
 
     public override string ToString()
     {
         return "state with " + turns + " turns.";
     }
-    
+
     public void SetBoardSize(int size)
     {
         this.boardSize = size;

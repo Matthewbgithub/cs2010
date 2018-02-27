@@ -9,6 +9,7 @@ public class ContinueScript : MonoBehaviour {
     private void Start()
     {
         continueButton.enabled = false;
+        SaveLoad.CountSavedGames();
     }
 
     // Update is called once per frame
@@ -16,7 +17,7 @@ public class ContinueScript : MonoBehaviour {
     {
         if(SaveLoad.CountSavedGames() > 0){
             continueButton.enabled = true;
-            Debug.Log(continueButton.enabled);
+            Debug.Log(SaveLoad.CountSavedGames());
         }
 	}
 }
