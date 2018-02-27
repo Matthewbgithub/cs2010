@@ -8,6 +8,7 @@ public class MenuLoader : MonoBehaviour {
 
 	public void SceneLoader()
 	{
+        Debug.Log("Loading menu");
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex - 1);
 	}
 }
