@@ -299,11 +299,30 @@ public class GoBoard : MonoBehaviour {
 			SetTerritories();
 		}
         EndLogic();
+        SetRolloverColour();
         SaveLoad.Unlock();
     }
-	
-	//territory calculation methods-----------
-	private void SetTerritories()
+
+    private void SetRolloverColour()
+    {
+        for (int x = 0; x < GetBoardSize(); x++)
+        {
+            for (int y = 0; y < GetBoardSize(); y++)
+            {
+                if (GetPieceOnBoard(x, y).IsEmpty())
+                {
+                    GetPieceOnBoard(x, y).SetRolloverWhite(this.IsWhiteTurn());
+                }
+                else
+                {
+                    GetPieceOnBoard(x, y).SetRolloverIllegal();
+                }
+
+            }
+        }
+    }
+    //territory calculation methods-----------
+    private void SetTerritories()
 	{
 		//reset territories
 		whiteTerritories = 0;
