@@ -33,10 +33,20 @@ public class HUDScore : MonoBehaviour
 				text.text = "white: " + board.GetWhiteCount ().ToString ();
 			}
 
+            if (text.name == "whiteTerritory")
+            {
+                text.text = "territory: " + board.GetWhiteTerritories().ToString();
+            }
+
+            if (text.name == "blackTerritory")
+            {
+                text.text = "territory: " + board.GetBlackTerritories().ToString();
+            }
+
 			if (text.name == "playerText") {
 				int turn = board.GetTurns ();
 
-				if (turn % 2 == 0) {
+                if (!(turn % 2 == 0)) {
 					text.text = "white move";
 				} else {
 					text.text = "black move";

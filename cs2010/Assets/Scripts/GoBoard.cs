@@ -14,6 +14,7 @@ public class GoBoard : MonoBehaviour {
 	private PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
     public GameObject endCanvas;
+    public GameObject hudCanvas;
 
 	//generation fields
 	private int boardSize;
@@ -48,8 +49,6 @@ public class GoBoard : MonoBehaviour {
 	
     //saving
     private GameState state = new GameState();
-    private bool saving = false;
-    private bool loading = false;
 
     //testing features
     private bool incrementMode = true;
@@ -80,6 +79,7 @@ public class GoBoard : MonoBehaviour {
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
         endCanvas = GameObject.Find("EndCanvas");
+        hudCanvas = GameObject.Find("HUDCanvas");
 		GenerateBoard();
 	}
 
@@ -94,66 +94,21 @@ public class GoBoard : MonoBehaviour {
             incrementMode = !incrementMode;
             Debug.Log("incrementing turns is "+ incrementMode);
         }
+        if(!hudCanvas.activeSelf){
+            SaveLoad.Lock();
+        }
+    }
 
-        if (Input.GetKeyDown (KeyCode.S))
-        {
-            saving = !saving;
-            Debug.Log("saving is " + saving);
-            //save game
+    public void SaveOrLoad(string name){
+        int val = (int)char.GetNumericValue(name[1]);
+        if(name[0]=='s'){
+            Debug.Log("saved in slot " + val);
+            SaveGame(this.state, val);
         }
-
-		if (Input.GetKeyDown (KeyCode.L))
-        {
-            loading = !loading;
-            Debug.Log("laoding is " + loading);
-            //Load game
+        else{
+            Debug.Log("loaded in slot " + val);
+            SaveGame(this.state, val);
         }
-        if(Input.GetKeyDown("1"))
-        {
-            if (saving)
-            {
-                Debug.Log("saved in slot 1");
-                SaveGame(this.state, 0);
-                saving = false;
-            }
-            else if (loading)
-            {
-                Debug.Log("Loaded slot 1");
-                LoadGame(0);
-                loading = false;
-            }
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            if (saving)
-            {
-                Debug.Log("saved in slot 2");
-                SaveGame(this.state, 1);
-                saving = false;
-            }
-            else if (loading)
-            {
-                Debug.Log("Loaded slot 2");
-                LoadGame(1);
-                loading = false;
-            }
-        }
-        if (Input.GetKeyDown("3"))
-        {
-            if (saving)
-            {
-                Debug.Log("saved in slot 3");
-                SaveGame(this.state, 2);
-                saving = false;
-            }
-            else if(loading)
-            {
-                Debug.Log("Loaded slot 3");
-                LoadGame(2);
-                loading = false;
-            }
-        }
-
     }
 
 	private void SaveGame(GameState s, int slot)
@@ -176,6 +131,7 @@ public class GoBoard : MonoBehaviour {
                 }
             }
         }
+
         //save to file
         SaveLoad.Save(s, slot);
         Debug.Log("Saved");
@@ -317,7 +273,7 @@ public class GoBoard : MonoBehaviour {
     }
     public void ResetBoard()
     {
-        turns = 1;
+        turns = 0;
         blackCount = 0;
         whiteCount = 0;
         //reset all the game values
@@ -338,16 +294,37 @@ public class GoBoard : MonoBehaviour {
     public void TakeTurnPart2()
     {
         CheckForCaptures(currentX, currentY);
-		if(blackCount >= 1 && whiteCount >= 1)
+        SetRolloverColour();
+        if (blackCount >= 1 && whiteCount >= 1)
 		{
 			SetTerritories();
 		}
         EndLogic();
         SaveLoad.Unlock();
     }
-	
-	//territory calculation methods-----------
-	private void SetTerritories()
+
+    private void SetRolloverColour()
+    {
+        for (int x = 0; x < GetBoardSize(); x++)
+        {
+            for (int y = 0; y < GetBoardSize(); y++)
+            {
+                if (GetPieceOnBoard(x, y).IsEmpty())
+                {
+                    //sets rollover colour to whoevers turn it is
+                    GetPieceOnBoard(x, y).SetRolloverWhite(this.IsWhiteTurn());
+                }
+                else
+                {   
+                    //sets rollover to red because you cant place a piece there
+                    GetPieceOnBoard(x, y).SetRolloverIllegal();
+                }
+
+            }
+        }
+    }
+    //territory calculation methods-----------
+    private void SetTerritories()
 	{
 		//reset territories
 		whiteTerritories = 0;
@@ -400,6 +377,7 @@ public class GoBoard : MonoBehaviour {
 		Debug.Log("White score is: " + (whiteTerritories+whiteCount));
 		Debug.Log("Black score is: " + (blackTerritories+blackCount));
 	}
+
 	private void TerritoryCheckSurrounding(int x, int y)
 	{
 		territoryChecked[x,y] = true;
@@ -473,6 +451,16 @@ public class GoBoard : MonoBehaviour {
             return false;
         }
     }
+
+    public int GetWhiteTerritories(){
+        return whiteTerritories;
+    }
+
+    public int GetBlackTerritories()
+    {
+        return blackTerritories;
+    }
+
     //places piece on board and returns true if the space is empty
     public bool PlacePiece(int x, int y)
     {
