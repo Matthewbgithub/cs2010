@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23811006507257334}
   - component: {fileID: 114079715009754544}
   - component: {fileID: 95930574378023178}
-  - component: {fileID: 114772053350099708}
   m_Layer: 0
   m_Name: Pebble
   m_TagString: stone
@@ -116,16 +115,4 @@ MonoBehaviour:
   material:
   - {fileID: 2100000, guid: c38f512ac4a584e819c324877a509bca, type: 2}
   - {fileID: 2100000, guid: 9a1d2949677a44777acf4e47dcfbb22e, type: 2}
-  anim: {fileID: 0}
---- !u!114 &114772053350099708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1029747076033136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061e4bb081294774fa38854c346d7e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   anim: {fileID: 0}
