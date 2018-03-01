@@ -326,7 +326,6 @@
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadFileNames.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
-    <Compile Include="Assets\stopcam.cs" />
     <Compile Include="Assets\Tests\CaptureTests.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
