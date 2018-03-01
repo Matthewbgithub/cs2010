@@ -280,7 +280,7 @@ public class GoBoard : MonoBehaviour {
 
     public void ResetBoard()
     {
-        turns = 1;
+        turns = 0;
         blackCount = 0;
         whiteCount = 0;
         //reset all the game values
