@@ -13,7 +13,7 @@ public class cameraScript : MonoBehaviour {
 	void Start () {
 		SaveLoad.Lock();
 		//hudCanvas = GameObject.Find("HUDCanvas");
-		Debug.Log("camer start");
+		Debug.Log("Camera Start");
         anim = GetComponent<Animator>();
 	}
 	

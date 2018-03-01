@@ -43,6 +43,18 @@ public class HUDScore : MonoBehaviour
                 text.text = "territory: " + board.GetBlackTerritories().ToString();
             }
 
+            if (text.name == "blackScore")
+            {
+                int val = board.GetBlackTerritories() + board.GetBlackCount();
+                text.text = "score: " + val.ToString();
+            }
+
+            if (text.name == "whiteScore")
+            {
+                int val = board.GetWhiteTerritories() + board.GetWhiteCount();
+                text.text = "score: " + val.ToString();
+            }
+
 			if (text.name == "playerText") {
 				int turn = board.GetTurns ();
 
