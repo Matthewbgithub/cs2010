@@ -51,21 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GameLoader.cs" />
+     <Compile Include="Assets\LevelLoader.cs" />
      <Compile Include="Assets\Resources\NewPlayModeTest.cs" />
-     <Compile Include="Assets\Scripts\ContinueScript.cs" />
-     <Compile Include="Assets\Scripts\GameLoader.cs" />
      <Compile Include="Assets\Scripts\GoBoard.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\EndScript.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
      <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
-     <Compile Include="Assets\Scripts\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
      <Compile Include="Assets\Scripts\Piece.cs" />
      <Compile Include="Assets\Scripts\PieceMakers.cs" />
-     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadFileNames.cs" />
      <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
-     <Compile Include="Assets\stopcam.cs" />
      <Compile Include="Assets\Tests\CaptureTests.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />

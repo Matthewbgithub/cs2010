@@ -301,8 +301,7 @@ public class GoBoard : MonoBehaviour {
     public void TakeTurnPart2()
     {
         CheckForCaptures(currentX, currentY);
-        SetRolloverColour();
-        if (blackCount >= 1 && whiteCount >= 1)
+		if(blackCount >= 1 && whiteCount >= 1)
 		{
 			SetTerritories();
 		}
@@ -310,29 +309,9 @@ public class GoBoard : MonoBehaviour {
 		SetRolloverColour();
         SaveLoad.Unlock();
     }
-
-    private void SetRolloverColour()
-    {
-        for (int x = 0; x < GetBoardSize(); x++)
-        {
-            for (int y = 0; y < GetBoardSize(); y++)
-            {
-                if (GetPieceOnBoard(x, y).IsEmpty())
-                {
-                    //sets rollover colour to whoevers turn it is
-                    GetPieceOnBoard(x, y).SetRolloverWhite(this.IsWhiteTurn());
-                }
-                else
-                {   
-                    //sets rollover to red because you cant place a piece there
-                    GetPieceOnBoard(x, y).SetRolloverIllegal();
-                }
-
-            }
-        }
-    }
-    //territory calculation methods-----------
-    private void SetTerritories()
+	
+	//territory calculation methods-----------
+	private void SetTerritories()
 	{
 		//reset territories
 		whiteTerritories = 0;
@@ -432,7 +411,24 @@ public class GoBoard : MonoBehaviour {
 		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
 	}
 	
-	
+	private void SetRolloverColour()
+	{
+		for (int x = 0; x < GetBoardSize(); x++)
+		{
+			for(int y = 0; y < GetBoardSize(); y++)
+			{
+				if(GetPieceOnBoard(x,y).IsEmpty())
+				{
+					GetPieceOnBoard(x,y).SetRolloverWhite(this.IsWhiteTurn());
+				}
+				else
+				{
+					GetPieceOnBoard(x,y).SetRolloverIllegal();
+				}
+				
+			}
+		}
+	}
     private void EndLogic()
     {
         if (this.IsGameOver())
