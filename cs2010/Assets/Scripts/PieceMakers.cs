@@ -94,6 +94,7 @@ public class PieceMakers : MonoBehaviour {
         this.thisPiece.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this, pos);
         Debug.Log("scaling-------" + thisPiece.transform.localScale);
+
         //tells the piece where it is on the board
         //place a piece on me
         return true;

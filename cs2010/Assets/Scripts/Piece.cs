@@ -29,7 +29,6 @@ public class Piece : MonoBehaviour {
     */
     void Update()
     { 
-
         //increment timer once per frame
         currentLerpTime += Time.deltaTime;
          if (currentLerpTime > lerpTime) {
@@ -38,6 +37,7 @@ public class Piece : MonoBehaviour {
 
         //animation curve, *2 is a speed modifier
         float perc = (currentLerpTime*animSpeed) / lerpTime;
+		//TODO make this an arc
         transform.position = Vector3.Lerp(startPoint, target, perc);
     }
     public void Initialize(bool isWhite, PieceMakers pm, Vector3 goToLocation)
@@ -45,6 +45,7 @@ public class Piece : MonoBehaviour {
         currentLerpTime = 0f;
         startPoint = transform.position;
         target = goToLocation;
+		
         theMaker = pm;
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
