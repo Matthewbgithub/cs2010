@@ -5,8 +5,7 @@ using UnityEngine;
 
 
 public class PieceMakers : MonoBehaviour {
-	
-	//the pebble
+
     public Piece pebble;
 
     //records the location of this placeholder
@@ -19,37 +18,13 @@ public class PieceMakers : MonoBehaviour {
     public Piece thisPiece;
     GoBoard thisBoard;
 
-	//for the rollover
-	private Material[] material;
-	private Renderer rend;
-	
     public void Initialize(int boardx, int boardy, GoBoard boardReference)
     {
         thisBoard = boardReference;
         this.boardx = boardx;
         this.boardy = boardy;
     }
-	
-	void Start () {
-		//initializes the renderer, not quite sure what that is
-		rend = GetComponent<Renderer>();
-		
-		material = new Material[2];
-		material[0] = Resources.Load("unselectedRollover", typeof(Material)) as Material;
-		material[1] = Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
-		//sets the placeholder material to be material 0, or the unselected one
-		rend.material = material[0];
-	}
-	 void OnMouseEnter()
-	 {
-		 //sets to material 1, selected
-		 rend.material = material[1];
-	 }	
-	 void OnMouseExit()
-	 {
-		 //sets to material 0, unselected
-		 rend.material = material[0];
-	 }
+
     void OnMouseDown()
     {
         if (!SaveLoad.Locked())
@@ -90,9 +65,9 @@ public class PieceMakers : MonoBehaviour {
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         this.thisPiece = Instantiate(this.pebble, pos, rot);
-        this.thisPiece.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
         //tells the piece where it is on the board
+        this.thisPiece.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
         //place a piece on me
         return true;
     }
@@ -117,12 +92,29 @@ public class PieceMakers : MonoBehaviour {
     {
         return (this.IsWhite()) ? "white" : "black";
     }
-	public void SetRolloverIllegal()
-	{
-		material[1] = Resources.Load("illegalRollover", typeof(Material)) as Material;
+
+    /*
+    void countPieces(){
+		//		Debug.Log ("piece count function called");
+		for (int x = 0; x < boardSize; x++) {
+			for (int y = 0; y < boardSize; y++) {
+				//Debug.Log (boardRecord [x, y]);
+				if (boardRecord [x,y] != null) {
+					var thisPlace = getColour(x,y);
+					if (thisPlace == "black") {
+						blackPieces += 1;
+
+					}
+					if (thisPlace == "white") {
+						whitePieces += 1;
+					}
+				}
+
+			}
+
+		}
+		//		Debug.Log ("there are " + blackPieces + " black pieces");
+		//		Debug.Log ("there are " + whitePieces + " white pieces");
 	}
-	public void SetRolloverWhite(bool isWhite)
-	{
-		material[1] = (!isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
-	}
+ */
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33262914263596624}
   - component: {fileID: 65759901752553168}
   - component: {fileID: 23064671291803642}
+  - component: {fileID: 114225950389470694}
   - component: {fileID: 114990863396949184}
   m_Layer: 0
   m_Name: piecePlaceholder
@@ -96,6 +97,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114225950389470694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1842046783084788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0148ad8e3156ba4a9f5e731ced1af2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: e871216bc1372c24582ef8eb99ed2126, type: 2}
+  - {fileID: 2100000, guid: ca6ee9140f369164b85125234a8c9647, type: 2}
 --- !u!114 &114990863396949184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,5 +125,6 @@ MonoBehaviour:
   pebble: {fileID: 114079715009754544, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68, type: 2}
   boardx: 0
   boardy: 0
+  isPiece: 0
   thisPiece: {fileID: 114079715009754544, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68,
     type: 2}
