@@ -15,11 +15,7 @@ public class ContinueScript : MonoBehaviour
         save1.enabled = false;
         save2.enabled = false;
         save3.enabled = false;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         int NumOfSaves = SaveLoad.CountSavedGames();
 
         if (NumOfSaves > 0)

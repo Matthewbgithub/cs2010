@@ -61,7 +61,6 @@ public class LoadScene : MonoBehaviour
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            Debug.Log("Loading progress: " + (progress * 100) + "%");
             slider.value = progress;
             loadText.text = "Loading progress: " + (progress * 100) + "%";
 
