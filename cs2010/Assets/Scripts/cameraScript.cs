@@ -9,6 +9,7 @@ public class cameraScript : MonoBehaviour {
     public Animator anim;
 	//hud init
 	public Canvas hudCanvas;
+
 	// Use this for initialization
 	void Start () {
 		SaveLoad.Lock();
@@ -22,5 +23,6 @@ public class cameraScript : MonoBehaviour {
 	{
 		SaveLoad.Unlock();
 		hudCanvas.gameObject.SetActive(true);
+        hudCanvas.enabled = true;
 	}
 }

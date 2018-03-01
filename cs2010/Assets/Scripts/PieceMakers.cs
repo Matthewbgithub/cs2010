@@ -86,6 +86,7 @@ public class PieceMakers : MonoBehaviour {
     }
     public bool Place(bool isWhite)
     {
+        
         isPiece = true;
         this.isWhite = isWhite;
         //sets obj to black or white depending on turn
@@ -94,12 +95,14 @@ public class PieceMakers : MonoBehaviour {
         //pushes the position of the new piece up a bit just to make it fit better
         pos.y = 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
+
         //places it in the scene
         var pot = (isWhite) ? new Vector3(-15, 0.2f, 0) : new Vector3(15, 0.2f, 0);
 		
         this.thisPiece = Instantiate(this.pebble, pot, rot);
         this.thisPiece.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this, pos);
+
         Debug.Log("scaling-------" + thisPiece.transform.localScale);
 
         //tells the piece where it is on the board

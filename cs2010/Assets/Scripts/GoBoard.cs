@@ -786,6 +786,7 @@ public static class SaveLoad
         bf.Serialize(file, SaveLoad.savedGames);
         file.Close();
     }
+
     public static GameState LoadSlot(int slot)
     {
         if(Load()!=null)
