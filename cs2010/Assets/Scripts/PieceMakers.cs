@@ -89,17 +89,9 @@ public class PieceMakers : MonoBehaviour {
         pos.y = 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
-<<<<<<< HEAD
         this.thisPiece = Instantiate(this.pebble, pos, rot);
         this.thisPiece.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this);
-=======
-        var pot = (isWhite) ? new Vector3(-15, 0.2f, 0) : new Vector3(15, 0.2f, 0);
-        this.thisPiece = Instantiate(this.pebble, pot, rot);
-        this.thisPiece.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this, pos);
-        Debug.Log("scaling-------" + thisPiece.transform.localScale);
->>>>>>> ec82e155ae2aac2e248ebc17e99e6e7c1dd67c39
         //tells the piece where it is on the board
         //place a piece on me
         return true;
