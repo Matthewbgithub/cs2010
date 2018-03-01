@@ -66,7 +66,7 @@ public class GoBoard : MonoBehaviour {
 	public void Initialize(int size)
 	{
         SaveLoad.Init();
-        SaveLoad.Unlock();
+        //SaveLoad.Unlock();
 		boardSize = size;
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
@@ -76,8 +76,8 @@ public class GoBoard : MonoBehaviour {
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
         pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
-        endCanvas = GameObject.Find("EndCanvas");
-        hudCanvas = GameObject.Find("HUDCanvas");
+        //endCanvas = GameObject.Find("EndCanvas");
+        //hudCanvas = GameObject.Find("HUDCanvas");
 		GenerateBoard();
 	}
 
@@ -379,11 +379,11 @@ public class GoBoard : MonoBehaviour {
 			}
 		}
 		ResetTerritoryCheck();
-		Debug.Log("White territory is: " + whiteTerritories);
-		Debug.Log("Black territory is: " + blackTerritories);
+		//Debug.Log("White territory is: " + whiteTerritories);
+		//Debug.Log("Black territory is: " + blackTerritories);
 		
-		Debug.Log("White score is: " + (whiteTerritories+whiteCount));
-		Debug.Log("Black score is: " + (blackTerritories+blackCount));
+		//Debug.Log("White score is: " + (whiteTerritories+whiteCount));
+		//Debug.Log("Black score is: " + (blackTerritories+blackCount));
 	}
 
 	private void TerritoryCheckSurrounding(int x, int y)
@@ -766,12 +766,12 @@ public static class SaveLoad
 
     public static void Lock()
     {
-        //Debug.Log("locked");
+        Debug.Log("locked");
         locked = true;
     }
     public static void Unlock()
     {
-        //Debug.Log("unlocked");
+        Debug.Log("unlocked");
         locked = false;
     }
     public static bool Locked()

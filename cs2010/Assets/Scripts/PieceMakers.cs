@@ -43,12 +43,18 @@ public class PieceMakers : MonoBehaviour {
 	 void OnMouseEnter()
 	 {
 		 //sets to material 1, selected
-		 rend.material = material[1];
+		 if(!SaveLoad.Locked())
+		 {
+		 	rend.material = material[1]; 
+		 }
 	 }	
 	 void OnMouseExit()
 	 {
 		 //sets to material 0, unselected
-		 rend.material = material[0];
+		if(!SaveLoad.Locked())
+		 {
+		 	rend.material = material[0]; 
+		 }
 	 }
     void OnMouseDown()
     {
@@ -90,6 +96,7 @@ public class PieceMakers : MonoBehaviour {
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         var pot = (isWhite) ? new Vector3(-15, 0.2f, 0) : new Vector3(15, 0.2f, 0);
+		
         this.thisPiece = Instantiate(this.pebble, pot, rot);
         this.thisPiece.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this, pos);
