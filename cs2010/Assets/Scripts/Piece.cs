@@ -11,14 +11,41 @@ public class Piece : MonoBehaviour {
 
     //animation
     public Animator anim;
-    private void Start()
+
+    //enter animation
+    public AnimationCurve moveCurve;
+    private Vector3 target;
+    private Vector3 startPoint;
+    private float currentLerpTime = 0f;
+    private float lerpTime = 1f;
+    private float animSpeed = 2.5f;
+
+    /*private void Start()
     {
         //not sure why i've called these in the intializer and the start function it gets a bit sad if i dont
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
     }
-    public void Initialize(bool isWhite, PieceMakers pm)
+    */
+    void Update()
+    { 
+        //increment timer once per frame
+        currentLerpTime += Time.deltaTime;
+         if (currentLerpTime > lerpTime) {
+             currentLerpTime = lerpTime;
+         }
+
+        //animation curve, *2 is a speed modifier
+        float perc = (currentLerpTime*animSpeed) / lerpTime;
+		//TODO make this an arc
+        transform.position = Vector3.Lerp(startPoint, target, perc);
+    }
+    public void Initialize(bool isWhite, PieceMakers pm, Vector3 goToLocation)
 	{
+        currentLerpTime = 0f;
+        startPoint = transform.position;
+        target = goToLocation;
+		
         theMaker = pm;
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
