@@ -36,7 +36,8 @@ public class Piece : MonoBehaviour {
          }
 
         //animation curve, *2 is a speed modifier
-        float perc = (currentLerpTime*animSpeed) / lerpTime;
+        float perc = (currentLerpTime) / lerpTime;
+        Debug.Log(perc);
 		//TODO make this an arc
         transform.position = Vector3.Lerp(startPoint, target, perc);
     }
