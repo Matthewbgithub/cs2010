@@ -368,7 +368,7 @@ public class GoBoard : MonoBehaviour {
 						{
 							if(isTerritoryWhite.HasValue)
 							{
-								if((bool)isTerritoryWhite)
+                                if ((bool)isTerritoryWhite)
 								{
 									//if white, add it to the white score
 									whiteTerritories += territorySize;
@@ -415,22 +415,23 @@ public class GoBoard : MonoBehaviour {
 	}
 	private void TerritoryCheck(int x, int y)
 	{
-		
-		if(IsEmpty(x,y))
+        if (IsEmpty(x,y))
 		{
-			territoryChecked[x,y] = true;
+            territoryChecked[x,y] = true;
 			territorySize++;
 			TerritoryCheckSurrounding(x,y);
 		}
 		else
 		{
-			if(isTerritoryWhite == null)
-			{
-				//decide that the current area is of which colour
-				isTerritoryWhite = GetPieceOnBoard(x,y).IsWhite();
-			}
+            if (isTerritoryWhite == null)
+            {
+                //decide that the current area is of which colour
+                isTerritoryWhite = GetPieceOnBoard(x, y).IsWhite();
+            }
             else
+            {
                 isATerritory &= (bool)isTerritoryWhite == GetPieceOnBoard(x, y).IsWhite();
+            }
         }
 	}
 	private void ResetTerritoryCheck()
@@ -598,8 +599,8 @@ public class GoBoard : MonoBehaviour {
 				//different action depending on the colour of piece
 				if(!IsColourDifferent(x,y,isCheckingWhite))
 				{
-					//add to array of pieces that will all get removed if the block has been surrounded
-					SetCaptured(x,y);
+                    //add to array of pieces that will all get removed if the block has been surrounded
+                    SetCaptured(x,y);
 					SetBoardChecked(x,y);
 					//check next piece - this part needs to be changed for full traversal
 					CheckSurrounding(x,y);
@@ -619,7 +620,7 @@ public class GoBoard : MonoBehaviour {
     //replace check method with two
     private bool IsColourDifferent(int x, int y, bool isWhite)
     {
-		if(isWhite == GetPieceOnBoard(x,y).IsWhite())
+        if (isWhite == GetPieceOnBoard(x,y).IsWhite())
 		{
 			return false;
 		}else
@@ -744,6 +745,11 @@ public class GoBoard : MonoBehaviour {
 			blackCount--;
 		}
 		GetPieceOnBoard(x,y).RemovePiece();
+    }
+    
+    public void Alert(int x, int y)
+    {
+        GetPieceOnBoard(x, y).Alert();
     }
 }
 
