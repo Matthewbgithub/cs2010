@@ -19,8 +19,9 @@ public class EndScript : MonoBehaviour {
 
 	public void OpenEndHUD()
 	{
-		popUp.enabled = true;
-		tmp = GetComponentsInChildren<TextMeshProUGUI> ();
+        popUp.gameObject.SetActive(true);
+        popUp.enabled = true;
+        tmp = GetComponentsInChildren<TextMeshProUGUI> ();
 
         int blackScore = board.GetBlackCount() + board.GetBlackTerritories();
         int whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories();

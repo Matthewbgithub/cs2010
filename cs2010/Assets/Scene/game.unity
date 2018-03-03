@@ -475,7 +475,7 @@ Light:
   m_GameObject: {fileID: 120873785}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 2
   m_Range: 100
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063f80008e830964aa0740b60f8a32d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecePlaceHolder: {fileID: 114990863396949184, guid: e045d20e15282a248a7456b3ca28332c,
+  piecePlaceHolder: {fileID: 114115424471066706, guid: e045d20e15282a248a7456b3ca28332c,
     type: 2}
   endCanvas: {fileID: 213731707}
   hudCanvas: {fileID: 1312679879964688, guid: d9a933c5282e1413d9322046d2373df9, type: 2}
@@ -7432,7 +7432,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4150700662576002, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4150700662576002, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
       propertyPath: m_LocalPosition.z
@@ -7473,6 +7473,10 @@ Prefab:
     - target: {fileID: 4150700662576002, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
       propertyPath: m_LocalScale.z
       value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964505148757592, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.0076
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
@@ -10245,7 +10249,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

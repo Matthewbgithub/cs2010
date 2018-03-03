@@ -14,7 +14,7 @@ public class GoBoard : MonoBehaviour {
 	private PieceMakers[,] board; //holds piecemaker objects
 	public PieceMakers piecePlaceHolder;
     public GameObject endCanvas;
-    public GameObject hudCanvas;
+    public Canvas hudCanvas;
 
 	//generation fields
 	private int boardSize;
@@ -73,8 +73,7 @@ public class GoBoard : MonoBehaviour {
 		
 		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
 		
-        boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0, -(boardPhysicalSize/2.0f));//center of board i think
-        pieceOffset = new Vector3(0.5f, 0, 0.5f);//move piece back to center of spaces
+        boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0.3f, -(boardPhysicalSize/2.0f));//center of board i think
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
         //endCanvas = GameObject.Find("EndCanvas");
         //hudCanvas = GameObject.Find("HUDCanvas");
@@ -83,11 +82,11 @@ public class GoBoard : MonoBehaviour {
 
     void Update()
     {
-       
-        if(!hudCanvas.activeSelf){
+        if(!hudCanvas.enabled == false){
             SaveLoad.Lock();
         }
-        else{
+        else
+        {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 PassTurn();
@@ -144,16 +143,19 @@ public class GoBoard : MonoBehaviour {
     }
 	public void PassTurn()
 	{
-		if(IsWhiteTurn())
-		{
-			WhitePass();
-		}
-		else
-		{
-			BlackPass();
-		}
-		EndLogic();
-		IncrementTurns();
+        if (!SaveLoad.Locked())
+        {
+            if (IsWhiteTurn())
+            {
+                WhitePass();
+            }
+            else
+            {
+                BlackPass();
+            }
+            EndLogic();
+            IncrementTurns();
+        }
 	}
     private void LoadGame(int saveNumber)
     {
@@ -305,9 +307,13 @@ public class GoBoard : MonoBehaviour {
         if (blackCount >= 1 && whiteCount >= 1)
 		{
 			SetTerritories();
-		}
+        }
+        else
+        {
+            whiteTerritories = 0;
+            blackTerritories = 0;
+        }
         EndLogic();
-		SetRolloverColour();
         SaveLoad.Unlock();
     }
 
@@ -456,7 +462,8 @@ public class GoBoard : MonoBehaviour {
         }
     }
 
-    public int GetWhiteTerritories(){
+    public int GetWhiteTerritories()
+    {
         return whiteTerritories;
     }
 
@@ -497,6 +504,8 @@ public class GoBoard : MonoBehaviour {
         float by = 0.0f;
         float fy;
         float fx;
+        Vector3 scale = new Vector3((16f / this.GetBoardSize()), 1f, (16f / this.GetBoardSize()));
+        pieceOffset = new Vector3(8f / this.GetBoardSize(), 0f, 8f / this.GetBoardSize());//move piece back to center of spaces
         //generate them placeholders
         for (int x = 0; x < GetBoardSize(); x++)
 		{
@@ -504,8 +513,10 @@ public class GoBoard : MonoBehaviour {
 			{
 				//places the placeholder
 				var ph = Instantiate(piecePlaceHolder);
-				//runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
-				ph.GetComponent<PieceMakers>().Initialize(x, y, this);
+                ph.transform.localScale = scale;
+                ph.transform.SetParent(this.transform);
+                //runs the initialize function, note that PieceMakers is the name of the script, that took me ages to figure out
+                ph.GetComponent<PieceMakers>().Initialize(x, y, this);
                 //add piece to board array
 				board[x,y] = ph;
                 //temps for x and y
@@ -532,10 +543,8 @@ public class GoBoard : MonoBehaviour {
                 }
                 //move pieces to their position within scale
                 ph.transform.position = (Vector3.right * bx) + (Vector3.forward * by) + boardOffset + pieceOffset;
-                //scales the piece selectors
-                ph.transform.localScale = new Vector3((16f/this.GetBoardSize()), 0.01f, (16f/this.GetBoardSize()));
             }
-		}
+        }
     }
     
     public void CheckForCaptures(int x, int y)
@@ -766,12 +775,12 @@ public static class SaveLoad
 
     public static void Lock()
     {
-        Debug.Log("locked");
+        //Debug.Log("locked");
         locked = true;
     }
     public static void Unlock()
     {
-        Debug.Log("unlocked");
+        //Debug.Log("unlocked");
         locked = false;
     }
     public static bool Locked()

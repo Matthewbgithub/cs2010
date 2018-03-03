@@ -90,11 +90,13 @@ public class PieceMakers : MonoBehaviour {
         //increments turn
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
-        pos.y = 0.15f;
+        pos.y += 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         var pot = (isWhite) ? new Vector3(-15, 0.2f, 0) : new Vector3(15, 0.2f, 0);
         this.thisPiece = Instantiate(this.pebble, pot, rot);
+        this.thisPiece.transform.SetParent(this.transform);
+        this.thisPiece.transform.localScale = new Vector3(0.9f, 0.4f, 0.9f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this, pos);
         return true;
     }

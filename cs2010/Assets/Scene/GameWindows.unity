@@ -2552,7 +2552,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1292902428}
+      objectReference: {fileID: 0}
     - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -3759,7 +3759,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -4048,7 +4047,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1292902429}
-  - component: {fileID: 1292902428}
   m_Layer: 0
   m_Name: GameLoader
   m_TagString: Untagged
@@ -4056,17 +4054,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1292902428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1292902427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f8c3ed4a92d462a87e17eb19f54d50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1292902429
 Transform:
   m_ObjectHideFlags: 0
