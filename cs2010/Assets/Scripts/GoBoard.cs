@@ -21,7 +21,7 @@ public class GoBoard : MonoBehaviour {
     private int boardPhysicalSize = 16;
 	private Vector3 boardOffset;
 	private Vector3 pieceOffset;
-    
+
 	//game control fields
 	private int turns;
     private bool isWhiteTurn;
@@ -31,7 +31,7 @@ public class GoBoard : MonoBehaviour {
 	private int whiteCount;
     private bool blackPass;
     private bool whitePass;
-    public readonly float komi = 3.5f;
+	public readonly float komi = 3.5f;
 
     //capture fields
     private bool captureThisGroup = true;
@@ -39,7 +39,7 @@ public class GoBoard : MonoBehaviour {
 	private ArrayList removeOnCapture = new ArrayList();
     private bool[,] checkedPieces;
     private bool[,] groupCapture;
-    
+
 	//territory fields
 	private bool[,] territoryChecked;
 	private bool isATerritory;
@@ -47,7 +47,7 @@ public class GoBoard : MonoBehaviour {
 	private int whiteTerritories;
 	private int blackTerritories;
 	private bool? isTerritoryWhite;
-	
+
     //saving
     private GameState state = new GameState();
 
@@ -71,9 +71,9 @@ public class GoBoard : MonoBehaviour {
 		boardSize = size;
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
-		
+
 		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
-		
+
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0.3f, -(boardPhysicalSize/2.0f));//center of board i think
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
         //endCanvas = GameObject.Find("EndCanvas");
@@ -204,7 +204,7 @@ public class GoBoard : MonoBehaviour {
         whitePass = true;
     }
     public bool IsWhiteTurn()
-    { 
+    {
         return isWhiteTurn;
     }
     //todo remove before prod
@@ -256,11 +256,11 @@ public class GoBoard : MonoBehaviour {
             }
         }
     }
-    
+
     private IEnumerator ResetScene()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex
-       
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("game");
 
         //Wait until the last operation fully loads to return anything
@@ -293,7 +293,7 @@ public class GoBoard : MonoBehaviour {
     }
 
     public bool TakeTurn(int x, int y)
-    { 
+    {
         Debug.Log("------------ turn " + turns + " --------------");
         bool isPlaced = PlacePiece(x, y);
         //wait here until animation finishes
@@ -330,7 +330,7 @@ public class GoBoard : MonoBehaviour {
                     GetPieceOnBoard(x, y).SetRolloverWhite(this.IsWhiteTurn());
                 }
                 else
-                {   
+                {
                     //sets rollover to red because you cant place a piece there
                     GetPieceOnBoard(x, y).SetRolloverIllegal();
                 }
@@ -375,7 +375,7 @@ public class GoBoard : MonoBehaviour {
 									whiteTerritories += territorySize;
 								}
 								else
-								{	
+								{
 									//if black, add to the black score
 									blackTerritories += territorySize;
 								}
@@ -388,7 +388,7 @@ public class GoBoard : MonoBehaviour {
 		ResetTerritoryCheck();
 		//Debug.Log("White territory is: " + whiteTerritories);
 		//Debug.Log("Black territory is: " + blackTerritories);
-		
+
 		//Debug.Log("White score is: " + (whiteTerritories+whiteCount));
 		//Debug.Log("Black score is: " + (blackTerritories+blackCount));
 	}
@@ -397,14 +397,14 @@ public class GoBoard : MonoBehaviour {
 	{
 		territoryChecked[x,y] = true;
 		//if its not been checked then go there
-		
+
 		int[][] xychange = {
 			new int[] {x  ,y-1},
 			new int[] {x  ,y+1},
 			new int[] {x-1,y  },
 			new int[] {x+1,y  }
 		};
-		
+
 		//checks down, up, left and right of the piece
         foreach (int[] xy in xychange)
         {
@@ -439,8 +439,8 @@ public class GoBoard : MonoBehaviour {
 	{
 		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
 	}
-	
-	
+
+
     private void EndLogic()
     {
         if (this.IsGameOver())
@@ -548,7 +548,7 @@ public class GoBoard : MonoBehaviour {
             }
         }
     }
-    
+
     public void CheckForCaptures(int x, int y)
     {
         //start at x and y and then scan about to find any big captures
@@ -564,7 +564,7 @@ public class GoBoard : MonoBehaviour {
 		};
 
         foreach (int[] xy in xychange)
-        { 
+        {
 			if(!IsOffBoard(xy[0],xy[1]))
 			{
                 //Debug.Log("Checking " + xy[0] + ", " + xy[1]);
@@ -660,7 +660,7 @@ public class GoBoard : MonoBehaviour {
     {
 		if(!IsOffBoard(x,y))
 		{
-			return groupCapture[x,y];			
+			return groupCapture[x,y];
 		}else
 		{
 			//returns true if space is off the edge to avoid trying to check it
@@ -673,7 +673,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void RemoveCaptured()
     {
-		//removes all pieces in the array holding the pieces to be 
+		//removes all pieces in the array holding the pieces to be
 		foreach (int[] xy in removeOnCapture)
 		{
 			Remove(xy[0],xy[1]);
@@ -725,7 +725,7 @@ public class GoBoard : MonoBehaviour {
         int[] xy = {x,y};
 		removeOnCapture.Add(xy);
     }
-   
+
 	private bool IsOffBoard(int x, int y)
     {
         if(x < 0 || x >= GetBoardSize() || y < 0 || y >= GetBoardSize())
@@ -747,7 +747,7 @@ public class GoBoard : MonoBehaviour {
 		}
 		GetPieceOnBoard(x,y).RemovePiece();
     }
-    
+
     public void Alert(int x, int y)
     {
         GetPieceOnBoard(x, y).Alert();
