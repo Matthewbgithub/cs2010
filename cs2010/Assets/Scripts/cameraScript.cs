@@ -15,16 +15,13 @@ public class cameraScript : MonoBehaviour {
     {
 		SaveLoad.Lock();
 		//hudCanvas = GameObject.Find("HUDCanvas");
-		Debug.Log("Camera Start");
         anim = GetComponent<Animator>();
 	}
 	
 	public void CameraPanFinish()
     {
-        Debug.Log("---------------------" + hudCanvas.gameObject.activeSelf);
         hudCanvas.gameObject.SetActive(true);
         hudCanvas.enabled = true;
-        Debug.Log(hudCanvas.gameObject.activeSelf);
         SaveLoad.Unlock();
     }
 }

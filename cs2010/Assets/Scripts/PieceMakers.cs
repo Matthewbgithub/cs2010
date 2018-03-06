@@ -118,7 +118,7 @@ public class PieceMakers : MonoBehaviour {
     {
         return this.GetColour() + " piece at " + this.boardx + ", " + this.boardy + ".";
     }
-    private string GetColour()
+    public string GetColour()
     {
         return (this.IsWhite()) ? "white" : "black";
     }
