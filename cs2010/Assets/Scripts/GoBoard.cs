@@ -31,7 +31,7 @@ public class GoBoard : MonoBehaviour {
 	private int whiteCount;
     private bool blackPass;
     private bool whitePass;
-	private readonly float komi = 3.5f;
+	public readonly float komi = 3.5f;
 
     //capture fields
     private bool captureThisGroup = true;

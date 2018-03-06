@@ -30,7 +30,7 @@ public class HUDScore : MonoBehaviour
 			}
 
 			if (text.name == "whiteCount") {
-				text.text = "white: " + board.GetWhiteCount ().ToString ();
+				text.text = "white: " + (board.GetWhiteCount() + board.komi);
 			}
 
             if (text.name == "whiteTerritory")
