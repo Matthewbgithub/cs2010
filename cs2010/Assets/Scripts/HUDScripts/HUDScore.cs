@@ -6,13 +6,15 @@ using TMPro;
 public class HUDScore : MonoBehaviour
 {
 	private TextMeshProUGUI[] tmp;
+    public RectTransform blackPanel;
+    public RectTransform whitePanel;
 	public GoBoard board;
 
 	void Start ()
 	{
 		tmp = GetComponentsInChildren<TextMeshProUGUI> ();
-		ScoreUpdate();
 		board = board.GetComponent<GoBoard> ();
+       
 	}
 	
 	// Update is called once per frame
@@ -31,11 +33,13 @@ public class HUDScore : MonoBehaviour
 
 			if (text.name == "whiteCount") {
 				text.text = "white: " + board.GetWhiteCount ().ToString ();
+                text.faceColor = new Color32(0, 0, 0, 255);
 			}
 
             if (text.name == "whiteTerritory")
             {
                 text.text = "territory: " + board.GetWhiteTerritories().ToString();
+                text.faceColor = new Color32(0, 0, 0, 255);
             }
 
             if (text.name == "blackTerritory")
@@ -53,6 +57,7 @@ public class HUDScore : MonoBehaviour
             {
                 int val = board.GetWhiteTerritories() + board.GetWhiteCount();
                 text.text = "score: " + val.ToString();
+                text.faceColor = new Color32(0, 0, 0, 255);
             }
 
 			if (text.name == "playerText") {
@@ -60,8 +65,13 @@ public class HUDScore : MonoBehaviour
 
                 if (!(turn % 2 == 0)) {
 					text.text = "white move";
+                    whitePanel.sizeDelta = new Vector2(4000, whitePanel.sizeDelta.y);
+                    blackPanel.sizeDelta = new Vector2(500, blackPanel.sizeDelta.y);
+                    text.faceColor = new Color32(0, 0, 0, 255);
 				} else {
 					text.text = "black move";
+                    blackPanel.sizeDelta = new Vector2(1000, blackPanel.sizeDelta.y);
+                    text.faceColor = new Color32(255, 255, 255, 255);
 				}
 	
 			}
