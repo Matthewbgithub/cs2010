@@ -63,14 +63,14 @@ public class HUDScore : MonoBehaviour
 			if (text.name == "playerText") {
 				int turn = board.GetTurns ();
 
-                if (!(turn % 2 == 0)) {
+                if (board.IsWhiteTurn()) {
 					text.text = "white move";
                     whitePanel.sizeDelta = new Vector2(4000, whitePanel.sizeDelta.y);
-                    blackPanel.sizeDelta = new Vector2(500, blackPanel.sizeDelta.y);
+                    blackPanel.sizeDelta = new Vector2(Screen.width / 3 , blackPanel.sizeDelta.y);
                     text.faceColor = new Color32(0, 0, 0, 255);
 				} else {
 					text.text = "black move";
-                    blackPanel.sizeDelta = new Vector2(1000, blackPanel.sizeDelta.y);
+                    blackPanel.sizeDelta = new Vector2((Screen.width / 3)*2, blackPanel.sizeDelta.y);
                     text.faceColor = new Color32(255, 255, 255, 255);
 				}
 	
