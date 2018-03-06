@@ -31,6 +31,7 @@ public class GoBoard : MonoBehaviour {
 	private int whiteCount;
     private bool blackPass;
     private bool whitePass;
+	private readonly float komi = 3.5f;
 
     //capture fields
     private bool captureThisGroup = true;
@@ -672,8 +673,7 @@ public class GoBoard : MonoBehaviour {
     }
     private void RemoveCaptured()
     {
-        Debug.Log("Captured!");
-		//removes all pieces in the array holding the pieces to be removed
+		//removes all pieces in the array holding the pieces to be 
 		foreach (int[] xy in removeOnCapture)
 		{
 			Remove(xy[0],xy[1]);
@@ -738,7 +738,8 @@ public class GoBoard : MonoBehaviour {
     }
     public void Remove(int x, int y)
     {
-        Debug.Log("Removing piece at " + x + ", " + y);
+        Debug.Log(GetPieceOnBoard(x,y).GetColour() +" piece at " + x + ", " + y + " has been removed.");
+		Alert(x,y);
 		if (GetPieceOnBoard (x, y).IsWhite ()) {
 			whiteCount--;
 		} else {
