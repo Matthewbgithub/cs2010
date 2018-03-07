@@ -14,7 +14,6 @@ public class cameraScript : MonoBehaviour {
 	void Start ()
     {
 		SaveLoad.Lock();
-		//hudCanvas = GameObject.Find("HUDCanvas");
         anim = GetComponent<Animator>();
 	}
 	

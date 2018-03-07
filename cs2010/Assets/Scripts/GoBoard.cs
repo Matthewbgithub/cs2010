@@ -98,6 +98,15 @@ public class GoBoard : MonoBehaviour {
                 Debug.Log("incrementing turns is " + incrementMode);
             }
         }
+
+    }
+
+    public void PauseButtonLock(){
+        SaveLoad.Lock();
+    }
+
+    public void PauseButtonUnlock(){
+        SaveLoad.Unlock();
     }
 
     public void SaveFile(string name, string fileName){
