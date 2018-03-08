@@ -19,6 +19,7 @@ public class EndScript : MonoBehaviour {
 
 	public void OpenEndHUD()
 	{
+        Debug.Log("we ending rn dudes");
         popUp.gameObject.SetActive(true);
         popUp.enabled = true;
         tmp = GetComponentsInChildren<TextMeshProUGUI> ();
