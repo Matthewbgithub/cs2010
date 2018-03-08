@@ -23,8 +23,8 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
     
 	//game control fields
-	private int turns;
-    private bool isWhiteTurn;
+	private int turns = 1;
+    private bool isWhiteTurn = false;
     private int currentX;
     private int currentY;
     private int blackCount;
@@ -210,8 +210,6 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
-        isWhiteTurn = !(turns % 2 == 0);
-
         if (incrementMode)
         {
             if(IsWhiteTurn())
@@ -223,6 +221,7 @@ public class GoBoard : MonoBehaviour {
                 blackPass = false;
             }
             turns++;
+            isWhiteTurn = (turns % 2 == 0);
         }
     }
     public int GetBoardSize()
@@ -283,7 +282,7 @@ public class GoBoard : MonoBehaviour {
 
     public void ResetBoard()
     {
-        turns = 0;
+        turns = 1;
         blackCount = 0;
         whiteCount = 0;
         //reset all the game values
@@ -481,9 +480,10 @@ public class GoBoard : MonoBehaviour {
         {
             Debug.Log("Piece placed at " + x + ", " + y);
             SaveLoad.Lock();
-            IncrementTurns();
+            
             //call the appropriate piecemaker to show a piece
             GetPieceOnBoard(x, y).Place(IsWhiteTurn());
+            IncrementTurns();
             //increment counters
             if (IsWhiteTurn())
             {
