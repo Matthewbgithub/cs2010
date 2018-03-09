@@ -19,7 +19,7 @@ public class LoadScene : MonoBehaviour
 
     public void LoadSaveFile(int fileNumber)
     {
-        LoadFromSaveFile = fileNumber;
+        LoadFromSaveFile = fileNumber - 1;
         LoadGame(1);
     }
 
@@ -53,17 +53,14 @@ public class LoadScene : MonoBehaviour
 
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
-
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         operation.allowSceneActivation = false;
         loadingScreen.SetActive(true);
-
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             slider.value = progress;
             loadText.text = "Loading progress: " + (progress * 100) + "%";
-
             if (operation.progress == 0.9f)
             {
                 loadText.text = "Smash space to smash";
@@ -72,7 +69,6 @@ public class LoadScene : MonoBehaviour
                     operation.allowSceneActivation = true;
                 }
             }
-
             yield return null;
         }
 
