@@ -498,7 +498,7 @@ public class GoBoard : MonoBehaviour {
             SaveLoad.Lock();
             //call the appropriate piecemaker to show a piece
             GetPieceOnBoard(x, y).Place(IsWhiteTurn());
-			IncrementTurns();
+			
             //increment counters
             if (IsWhiteTurn())
             {
@@ -508,6 +508,7 @@ public class GoBoard : MonoBehaviour {
             {
                 blackCount++;
             }
+			IncrementTurns();
             return true;
 		}
         else
