@@ -77,6 +77,17 @@ public class HUDScore : MonoBehaviour
 				}
 	
 			}
+
+            if (text.name == "timerText")
+            {
+                if (board.IsWhiteTurn())
+                { 
+                    text.faceColor = new Color32(0, 0, 0, 255);
+                }else{
+                    text.faceColor = new Color32(255, 255, 255, 255);
+                }
+
+            }
 		}
 
 	}

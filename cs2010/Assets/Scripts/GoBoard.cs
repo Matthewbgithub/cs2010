@@ -15,6 +15,8 @@ public class GoBoard : MonoBehaviour {
 	public PieceMakers piecePlaceHolder;
     public GameObject endCanvas;
     public Canvas hudCanvas;
+    public bool blitzMode;
+    public int playerTimer;
 
 	//generation fields
 	private int boardSize;
@@ -67,7 +69,6 @@ public class GoBoard : MonoBehaviour {
 	public void Initialize(int size)
 	{
         SaveLoad.Init();
-        //SaveLoad.Unlock();
 		boardSize = size;
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
@@ -76,8 +77,6 @@ public class GoBoard : MonoBehaviour {
 
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0.3f, -(boardPhysicalSize/2.0f));//center of board i think
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
-        //endCanvas = GameObject.Find("EndCanvas");
-        //hudCanvas = GameObject.Find("HUDCanvas");
 		GenerateBoard();
 	}
 
@@ -99,6 +98,9 @@ public class GoBoard : MonoBehaviour {
             }
         }
 
+        float time = 0.0f;
+        time += Time.deltaTime;
+        int seconds = Convert.ToInt32(time % 60);
     }
 
     public void PauseButtonLock(){
