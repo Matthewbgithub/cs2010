@@ -15,9 +15,12 @@ public class GoBoard : MonoBehaviour {
 	public PieceMakers piecePlaceHolder;
     public GameObject endCanvas;
     public Canvas hudCanvas;
-    public bool blitzMode;
+
+    //blitz mode
+    public Canvas blitzHudCanvas;
+    public static bool blitzMode;
     public int playerTimer;
-    public float time;
+    private float time;
 
 	//generation fields
 	private int boardSize;
@@ -83,6 +86,7 @@ public class GoBoard : MonoBehaviour {
 
     void Update()
     {
+        
         if(!hudCanvas.enabled == false){
             SaveLoad.Lock();
         }
@@ -99,9 +103,16 @@ public class GoBoard : MonoBehaviour {
             }
         }
 
-        time += Time.deltaTime;
-        int seconds = (int)time % 60;
-        Debug.Log(seconds);
+        //if (SaveLoad.Locked() == false)
+        //{
+        //    time += Time.deltaTime;
+        //    playerTimer = (int)time % 60;
+        //    Debug.Log(playerTimer);
+        //}
+    }
+
+    public int GetPlayerTimer(){
+        return playerTimer;
     }
 
     public void PauseButtonLock(){
