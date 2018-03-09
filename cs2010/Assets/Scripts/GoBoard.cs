@@ -123,6 +123,12 @@ public class GoBoard : MonoBehaviour {
         LoadGame(val);
     }
 
+    public void LoadTutoialFiles(string name){
+        int val = (int)char.GetNumericValue(name[1]) + 2;
+        Debug.Log("loaded tutorial from slot " + name[1]);
+        LoadGame(val);
+    }
+
     private void SaveGame(GameState s, string fileName, int slot)
 	{
         SaveLoad.Lock();
