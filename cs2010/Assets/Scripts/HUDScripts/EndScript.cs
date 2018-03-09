@@ -9,23 +9,22 @@ public class EndScript : MonoBehaviour {
 	public Canvas popUp;
 	private TextMeshProUGUI[] tmp;
     public GoBoard board;
-    private bool jim;
 
 	// Use this for initialization
 	public void Start () {
 		popUp = GetComponent<Canvas> ();
+		popUp.enabled = false;
         board = board.GetComponent<GoBoard>();
 	}
 
-    public void OpenEndHUD()
+	public void OpenEndHUD()
 	{
         popUp.gameObject.SetActive(true);
-        this.GetComponent<Canvas>().enabled = true;
-        Debug.Log(popUp.enabled);
+        popUp.enabled = true;
         tmp = GetComponentsInChildren<TextMeshProUGUI> ();
 
         int blackScore = board.GetBlackCount() + board.GetBlackTerritories();
-        float whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories() + board.komi;
+        int whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories();
 
         foreach (TextMeshProUGUI text in tmp)
         {
@@ -56,7 +55,7 @@ public class EndScript : MonoBehaviour {
 
             }
         }
-    }
+	}
 
 	public void CloseEndHUD()
 	{

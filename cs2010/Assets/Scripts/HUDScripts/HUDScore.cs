@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 [System.Serializable]
 public class HUDScore : MonoBehaviour
 {
@@ -55,8 +56,9 @@ public class HUDScore : MonoBehaviour
 
             if (text.name == "whiteScore")
             {
-                float val = board.GetWhiteTerritories() + board.GetWhiteCount() + board.komi;
+                float val = (board.GetWhiteTerritories() + board.GetWhiteCount() + board.komi);
                 text.text = "score: " + val.ToString();
+
                 text.faceColor = new Color32(0, 0, 0, 255);
             }
 
