@@ -2266,8 +2266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2888fa08d9e904cb89917a5470e702fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUp: {fileID: 213731710}
-  board: {fileID: 221342194}
+  popUp: {fileID: 0}
+  board: {fileID: 0}
 --- !u!1 &221342193 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1567626439837788, guid: f5670e41ce0c866429125fa08dd03dca,
@@ -2287,8 +2287,9 @@ MonoBehaviour:
   piecePlaceHolder: {fileID: 114115424471066706, guid: e045d20e15282a248a7456b3ca28332c,
     type: 2}
   endCanvas: {fileID: 213731707}
-  hudCanvas: {fileID: 223901690575515564, guid: d9a933c5282e1413d9322046d2373df9,
-    type: 2}
+  hudCanvas: {fileID: 1016689249}
+  blitzHudCanvas: {fileID: 0}
+  playerTimer: 0
 --- !u!1 &231281173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2935,11 +2936,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4087,11 +4088,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5376,11 +5377,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -5534,11 +5535,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8018,11 +8019,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8325,11 +8326,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -8685,7 +8686,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1105691003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8917,11 +8918,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -9805,11 +9806,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -13160,11 +13161,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -13748,9 +13749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c18dec2cff9d4e588326ef647122827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot1: {fileID: 422099473}
-  slot2: {fileID: 1260515195}
-  slot3: {fileID: 611337938}
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
+  slot3: {fileID: 0}
 --- !u!1 &1864565860
 GameObject:
   m_ObjectHideFlags: 0
@@ -14012,6 +14013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   hudCanvas: {fileID: 1016689249}
+  blitzHudCanvas: {fileID: 1105691006}
 --- !u!1 &1897980056
 GameObject:
   m_ObjectHideFlags: 0
@@ -14125,9 +14127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c18dec2cff9d4e588326ef647122827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot1: {fileID: 1726178747}
-  slot2: {fileID: 364437151}
-  slot3: {fileID: 840592060}
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
+  slot3: {fileID: 0}
 --- !u!1 &1914732841
 GameObject:
   m_ObjectHideFlags: 0

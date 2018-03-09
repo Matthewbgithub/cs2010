@@ -87,7 +87,7 @@ public class GoBoard : MonoBehaviour {
     void Update()
     {
         
-        if(!hudCanvas.enabled == false){
+        if(!hudCanvas.enabled){
             SaveLoad.Lock();
         }
         else
@@ -103,12 +103,12 @@ public class GoBoard : MonoBehaviour {
             }
         }
 
-        //if (SaveLoad.Locked() == false)
-        //{
-        //    time += Time.deltaTime;
-        //    playerTimer = (int)time % 60;
-        //    Debug.Log(playerTimer);
-        //}
+        if (SaveLoad.Locked() == false)
+        {
+            time += Time.deltaTime;
+            playerTimer = (int)time % 60;
+            Debug.Log(playerTimer);
+        }
     }
 
     public int GetPlayerTimer(){
