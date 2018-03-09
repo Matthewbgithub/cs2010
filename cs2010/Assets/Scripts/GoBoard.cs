@@ -17,6 +17,7 @@ public class GoBoard : MonoBehaviour {
     public Canvas hudCanvas;
     public bool blitzMode;
     public int playerTimer;
+    public float time;
 
 	//generation fields
 	private int boardSize;
@@ -98,9 +99,9 @@ public class GoBoard : MonoBehaviour {
             }
         }
 
-        float time = 0.0f;
         time += Time.deltaTime;
-        int seconds = Convert.ToInt32(time % 60);
+        int seconds = (int)time % 60;
+        Debug.Log(seconds);
     }
 
     public void PauseButtonLock(){
