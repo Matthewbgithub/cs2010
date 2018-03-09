@@ -55,7 +55,7 @@ public class HUDScore : MonoBehaviour
 
             if (text.name == "whiteScore")
             {
-                int val = board.GetWhiteTerritories() + board.GetWhiteCount();
+                float val = board.GetWhiteTerritories() + board.GetWhiteCount() + board.komi;
                 text.text = "score: " + val.ToString();
                 text.faceColor = new Color32(0, 0, 0, 255);
             }
