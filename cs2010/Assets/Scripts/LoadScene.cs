@@ -14,12 +14,15 @@ public class LoadScene : MonoBehaviour
 
     //Standard board size
     public static int size = 19;
+
     //State which safe file to load (1-3)
-    public static int LoadFromSaveFile;
+    public static int LoadFromSaveFile = 0;
 
     public void LoadSaveFile(int fileNumber)
     {
+        Debug.Log(fileNumber);
         LoadFromSaveFile = fileNumber;
+        Debug.Log(LoadFromSaveFile);
         LoadGame(1);
     }
 

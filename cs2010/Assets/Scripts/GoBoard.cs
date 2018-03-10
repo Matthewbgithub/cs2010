@@ -70,7 +70,7 @@ public class GoBoard : MonoBehaviour {
     {
         Initialize(LoadScene.size);
 
-        if(LoadScene.LoadFromSaveFile > 0){
+        if(LoadScene.LoadFromSaveFile >= 0){
             LoadGame(LoadScene.LoadFromSaveFile);
         }
         LoadScene.ResetSaveFileLoad();
@@ -194,12 +194,6 @@ public class GoBoard : MonoBehaviour {
         LoadGame(val);
     }
 
-    public void LoadTutoialFiles(string name){
-        int val = (int)char.GetNumericValue(name[1]) + 2;
-        Debug.Log("loaded tutorial from slot " + name[1]);
-        LoadGame(val);
-    }
-
     private void SaveGame(GameState s, string fileName, int slot)
 	{
         SaveLoad.Lock();
@@ -248,7 +242,9 @@ public class GoBoard : MonoBehaviour {
     private void LoadGame(int saveNumber)
     {
         SaveLoad.Lock();
+        Debug.Log(saveNumber + "load from this slot !!!!!!!!!!!!!!!");
         state = SaveLoad.LoadSlot(saveNumber);
+
         if (state != null)
         {
             do { } while (ResetScene() == null);
@@ -861,7 +857,6 @@ public static class SaveLoad
             if(LoadSlot(i) != null){
                 GameState temp = LoadSlot(i);
                 Debug.Log(temp.turns + "turns");
-                Debug.Log("====================");
                 saveFiles++;
             }
         }
