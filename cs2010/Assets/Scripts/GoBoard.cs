@@ -105,7 +105,7 @@ public class GoBoard : MonoBehaviour {
 
         if (!hudCanvas.enabled)
         {
-            SaveLoad.boardLock();
+            SaveLoad.BoardLock();
         }
         else
         {
@@ -173,11 +173,11 @@ public class GoBoard : MonoBehaviour {
     }
 
     public void PauseButtonLock(){
-        SaveLoad.boardLock();
+        SaveLoad.BoardLock();
     }
 
     public void PauseButtonUnlock(){
-        SaveLoad.boardUnlock();
+        SaveLoad.BoardUnlock();
     }
 
     public void SaveFile(string name, string fileName){
@@ -196,7 +196,7 @@ public class GoBoard : MonoBehaviour {
 
     private void SaveGame(GameState s, string fileName, int slot)
 	{
-        SaveLoad.boardLock();
+        SaveLoad.BoardLock();
         //recording variables
         s.fileName = fileName;
         s.turns = this.turns;
@@ -220,7 +220,7 @@ public class GoBoard : MonoBehaviour {
         //save to file
         SaveLoad.Save(s, slot);
         Debug.Log("Saved");
-        SaveLoad.boardUnlock();
+        SaveLoad.BoardUnlock();
     }
 	public void PassTurn()
 	{
@@ -241,7 +241,7 @@ public class GoBoard : MonoBehaviour {
 	}
     private void LoadGame(int saveNumber)
     {
-        SaveLoad.boardLock();
+        SaveLoad.BoardLock();
         Debug.Log(saveNumber + "load from this slot !!!!!!!!!!!!!!!");
         state = SaveLoad.LoadSlot(saveNumber);
 
@@ -276,7 +276,7 @@ public class GoBoard : MonoBehaviour {
         {
             Debug.Log("Slot " + saveNumber + " is empty.");
         }
-        SaveLoad.boardUnlock();
+        SaveLoad.BoardUnlock();
     }
 
     public void BlackPass()
@@ -403,7 +403,7 @@ public class GoBoard : MonoBehaviour {
             blackTerritories = 0;
         }
         EndLogic();
-        SaveLoad.boardUnlock();
+        SaveLoad.BoardUnlock();
     }
 
     private void SetRolloverColour()
@@ -568,7 +568,7 @@ public class GoBoard : MonoBehaviour {
         if (IsEmpty(x, y))
         {
             Debug.Log("Piece placed at " + x + ", " + y);
-            SaveLoad.boardLock();
+            SaveLoad.BoardLock();
             //call the appropriate piecemaker to show a piece
             GetPieceOnBoard(x, y).Place(IsWhiteTurn());
             //increment counters
@@ -846,8 +846,8 @@ public static class SaveLoad
 {
     public static GameState[] savedGames = new GameState[3];
 
-    private static bool animLocked = true;
-    private static bool boardLocked = true;
+    private static bool animLocked = false;
+    private static bool boardLocked = false;
 
     public static int CountSavedGames()
     {
@@ -879,12 +879,12 @@ public static class SaveLoad
         animLocked = false;
     }
 
-    public static void boardLock()
+    public static void BoardLock()
     {
         //Debug.Log("locked");
         boardLocked = true;
     }
-    public static void boardUnlock()
+    public static void BoardUnlock()
     {
         //Debug.Log("unlocked");
         boardLocked = false;

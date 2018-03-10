@@ -13,7 +13,6 @@ public class EndScript : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		popUp = GetComponent<Canvas> ();
-		popUp.enabled = false;
         board = board.GetComponent<GoBoard>();
 	}
 
