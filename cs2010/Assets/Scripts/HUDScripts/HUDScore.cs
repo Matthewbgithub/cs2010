@@ -82,8 +82,15 @@ public class HUDScore : MonoBehaviour
             if(GoBoard.blitzMode){
                 if (text.name == "timerText")
                 {
-                    saveButton.enabled = false;
-                    loadButton.enabled = false;
+
+                    saveButton.interactable = false;
+                    //ColorBlock cb = saveButton.colors;
+                    //cb.disabledColor = colour;
+                    //saveButton.colors = cb;
+                    loadButton.interactable = false;
+                    //cb = loadButton.colors;
+                    //cb.disabledColor = colour;
+                    //loadButton.colors = cb;
 
                     int time = 15 - board.GetPlayerTimer();
                     if (board.IsWhiteTurn())
