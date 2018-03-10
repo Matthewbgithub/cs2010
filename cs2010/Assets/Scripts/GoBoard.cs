@@ -93,7 +93,6 @@ public class GoBoard : MonoBehaviour {
 
     void Update()
     {
-        
         if(blitzMode){
             if (SaveLoad.Locked() == false)
             {
@@ -255,6 +254,7 @@ public class GoBoard : MonoBehaviour {
             do { } while (ResetScene() == null);
             //sets values from state
             this.turns = state.turns;
+            this.isWhiteTurn = (this.turns % 2 == 0);
             this.whiteCount = state.whiteCount;
             this.blackCount = state.blackCount;
             //clears board
@@ -298,6 +298,7 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
+        Debug.Log("turns is: " + turns + " it is " + IsWhiteTurn() + "'s turn. Before.");
         if (incrementMode)
         {
             if(IsWhiteTurn())
@@ -311,6 +312,7 @@ public class GoBoard : MonoBehaviour {
             turns++;
             isWhiteTurn = (turns % 2 == 0);
         }
+        Debug.Log("turns is: " + turns + " it is " + IsWhiteTurn() + "'s turn. After.");
     }
     public int GetBoardSize()
     {
