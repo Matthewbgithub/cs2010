@@ -14,7 +14,7 @@ public class cameraScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-		SaveLoad.AnimLock();
+		SaveLoad.BoardLock();
         anim = GetComponent<Animator>();
 	}
 	
@@ -27,7 +27,6 @@ public class cameraScript : MonoBehaviour {
             hudCanvas.gameObject.SetActive(true);
             hudCanvas.enabled = true;
         }
-
-        SaveLoad.AnimUnlock();
+        SaveLoad.BoardUnlock();
     }
 }

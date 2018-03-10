@@ -124,7 +124,7 @@ public class GoBoard : MonoBehaviour {
     {
         if (GetBoardSize() == 9)
         {
-            Debug.Log("loaded the 9 model called " + model9.name);
+            //Debug.Log("loaded the 9 model called " + model9.name);
             boardModel = Instantiate(model9, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = false;
             //model19.GetComponent<Renderer>().enabled = false;
@@ -132,7 +132,7 @@ public class GoBoard : MonoBehaviour {
         }
         else if (GetBoardSize() == 13)
         {
-            Debug.Log("loaded the 13 model called " + model13.name);
+            //Debug.Log("loaded the 13 model called " + model13.name);
             boardModel = Instantiate(model13, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = true;
             //model19.GetComponent<Renderer>().enabled = false;
@@ -140,7 +140,7 @@ public class GoBoard : MonoBehaviour {
         }
         else
         {
-            Debug.Log("loaded the 19 model called " + model19.name);
+            //Debug.Log("loaded the 19 model called " + model19.name);
             boardModel = Instantiate(model19, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = false;
             //model19.GetComponent<Renderer>().enabled = true;
@@ -294,7 +294,6 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
-        Debug.Log("turns is: " + turns + " it is " + IsWhiteTurn() + "'s turn. Before.");
         if (incrementMode)
         {
             if(IsWhiteTurn())
@@ -308,7 +307,6 @@ public class GoBoard : MonoBehaviour {
             turns++;
             isWhiteTurn = (turns % 2 == 0);
         }
-        Debug.Log("turns is: " + turns + " it is " + IsWhiteTurn() + "'s turn. After.");
     }
     public int GetBoardSize()
     {
@@ -403,7 +401,7 @@ public class GoBoard : MonoBehaviour {
             blackTerritories = 0;
         }
         EndLogic();
-        SaveLoad.BoardUnlock();
+        SaveLoad.AnimUnlock();
     }
 
     private void SetRolloverColour()
@@ -568,7 +566,7 @@ public class GoBoard : MonoBehaviour {
         if (IsEmpty(x, y))
         {
             Debug.Log("Piece placed at " + x + ", " + y);
-            SaveLoad.BoardLock();
+            SaveLoad.AnimLock();
             //call the appropriate piecemaker to show a piece
             GetPieceOnBoard(x, y).Place(IsWhiteTurn());
             //increment counters
@@ -846,8 +844,8 @@ public static class SaveLoad
 {
     public static GameState[] savedGames = new GameState[3];
 
-    private static bool animLocked = false;
-    private static bool boardLocked = false;
+    public static bool animLocked = false;
+    public static bool boardLocked = false;
 
     public static int CountSavedGames()
     {

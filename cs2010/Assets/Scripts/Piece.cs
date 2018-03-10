@@ -115,7 +115,7 @@ public class Piece : MonoBehaviour {
     }
 
     //called when the animation finishes
-    public void AlertObservers(string message)
+    /*public void AlertObservers(string message)
     {
         //if the animation finish message is to remove the pebble then to do this
         if (message.Equals("RemovePebble"))
@@ -128,6 +128,5 @@ public class Piece : MonoBehaviour {
         {
             theMaker.PlaceAnimationFinished();
         }
-
-    }
+    }*/
 }
