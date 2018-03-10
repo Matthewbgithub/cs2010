@@ -15,9 +15,9 @@ public class HUDScore : MonoBehaviour
 	{
 		tmp = GetComponentsInChildren<TextMeshProUGUI> ();
 		board = board.GetComponent<GoBoard> ();
-
+       
 	}
-
+	
 	// Update is called once per frame
 	void Update ()
 	{
@@ -27,7 +27,7 @@ public class HUDScore : MonoBehaviour
 	private void ScoreUpdate ()
 	{
 		foreach (TextMeshProUGUI text in tmp) {
-
+			
 			if (text.name == "blackCount") {
 				text.text = "black: " + board.GetBlackCount ().ToString ();
 			}
@@ -63,7 +63,6 @@ public class HUDScore : MonoBehaviour
             }
 
 			if (text.name == "playerText") {
-
                 if (board.IsWhiteTurn()) {
 					text.text = "white move";
                     whitePanel.sizeDelta = new Vector2(4000, whitePanel.sizeDelta.y);
@@ -74,7 +73,7 @@ public class HUDScore : MonoBehaviour
                     blackPanel.sizeDelta = new Vector2((Screen.width / 3)*2, blackPanel.sizeDelta.y);
                     text.faceColor = new Color32(255, 255, 255, 255);
 				}
-
+	
 			}
 
             if (text.name == "timerText")
