@@ -78,12 +78,22 @@ public class HUDScore : MonoBehaviour
 
             if (text.name == "timerText")
             {
+                int time = board.GetPlayerTimer();
+                string timer = null;
+
+                if(time < 10){
+                    timer = "0" + time.ToString();
+                }
+                else{
+                    timer = time.ToString();
+                }
+
                 if (board.IsWhiteTurn())
                 {
-                    text.text = board.GetPlayerTimer().ToString();
+                    text.text = "00:" + timer;
                     text.faceColor = new Color32(0, 0, 0, 255);
                 }else{
-                    text.text = board.GetPlayerTimer().ToString();
+                    text.text = "00:" + timer;
                     text.faceColor = new Color32(255, 255, 255, 255);
                 }
 

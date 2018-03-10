@@ -93,7 +93,7 @@ public class GoBoard : MonoBehaviour {
                 time += Time.deltaTime;
                 playerTimer = (int)time % 60;
             }
-
+            BlitzModeLogic();
         }
         else if (!hudCanvas.enabled)
         {
@@ -110,6 +110,14 @@ public class GoBoard : MonoBehaviour {
                 incrementMode = !incrementMode;
                 Debug.Log("incrementing turns is " + incrementMode);
             }
+        }
+    }
+
+    private void BlitzModeLogic(){
+        if(playerTimer == 15){
+            time = 0;
+            playerTimer = 0;
+            PassTurn();
         }
     }
 
@@ -327,6 +335,10 @@ public class GoBoard : MonoBehaviour {
         //wait here until animation finishes
         currentX = x;
         currentY = y;
+        if(isPlaced){
+            time = 0;
+            playerTimer = 0;
+        }
         return isPlaced;
     }
     public void TakeTurnPart2()
