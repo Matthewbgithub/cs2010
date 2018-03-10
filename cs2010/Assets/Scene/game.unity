@@ -2290,6 +2290,9 @@ MonoBehaviour:
   hudCanvas: {fileID: 1016689249}
   blitzHudCanvas: {fileID: 0}
   playerTimer: 0
+  model9: {fileID: 1054291121300840, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
+  model13: {fileID: 1054291121300840, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
+  model19: {fileID: 1054291121300840, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
 --- !u!1 &231281173
 GameObject:
   m_ObjectHideFlags: 0
@@ -13749,9 +13752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c18dec2cff9d4e588326ef647122827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
+  slot1: {fileID: 422099473}
+  slot2: {fileID: 1260515195}
+  slot3: {fileID: 611337938}
 --- !u!1 &1864565860
 GameObject:
   m_ObjectHideFlags: 0
@@ -13964,7 +13967,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -14127,9 +14129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c18dec2cff9d4e588326ef647122827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
+  slot1: {fileID: 1726178747}
+  slot2: {fileID: 364437151}
+  slot3: {fileID: 840592060}
 --- !u!1 &1914732841
 GameObject:
   m_ObjectHideFlags: 0

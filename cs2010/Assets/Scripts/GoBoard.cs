@@ -122,6 +122,7 @@ public class GoBoard : MonoBehaviour {
     {
         if (GetBoardSize() == 9)
         {
+            Debug.Log("loaded the 9 model called " + model9.name);
             model9 = Instantiate(model9, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = false;
             //model19.GetComponent<Renderer>().enabled = false;
@@ -129,6 +130,7 @@ public class GoBoard : MonoBehaviour {
         }
         else if (GetBoardSize() == 13)
         {
+            Debug.Log("loaded the 13 model called " + model13.name);
             model13 = Instantiate(model13, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = true;
             //model19.GetComponent<Renderer>().enabled = false;
@@ -136,6 +138,7 @@ public class GoBoard : MonoBehaviour {
         }
         else
         {
+            Debug.Log("loaded the 19 model called " + model19.name);
             model19 = Instantiate(model19, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = false;
             //model19.GetComponent<Renderer>().enabled = true;
