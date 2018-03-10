@@ -13,7 +13,7 @@ public class EndScript : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		popUp = GetComponent<Canvas> ();
-		popUp.enabled = false;
+		//popUp.enabled = false;
         board = board.GetComponent<GoBoard>();
 	}
 
@@ -22,26 +22,20 @@ public class EndScript : MonoBehaviour {
         popUp.gameObject.SetActive(true);
         popUp.enabled = true;
         tmp = GetComponentsInChildren<TextMeshProUGUI> ();
-
+		
         int blackScore = board.GetBlackCount() + board.GetBlackTerritories();
-        int whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories();
-
+        float whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories() + board.komi;
+		
         foreach (TextMeshProUGUI text in tmp)
         {
-
-
             if (text.name == "blackScore")
             {
-
                 text.text = blackScore.ToString();
             }
-
             if (text.name == "whiteScore")
             {
-
                 text.text = whiteScore.ToString();
             }
-
             if (text.name == "winnerText")
             {
                 if (blackScore > whiteScore)
@@ -52,11 +46,10 @@ public class EndScript : MonoBehaviour {
                 {
                     text.text = "winner white";
                 }
-
             }
         }
 	}
-
+	
 	public void CloseEndHUD()
 	{
 		popUp.enabled = false;
