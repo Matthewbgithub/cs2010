@@ -82,8 +82,6 @@ public class HUDScore : MonoBehaviour
             if(GoBoard.blitzMode){
                 if (text.name == "timerText")
                 {
-                    saveButton.gameObject.SetActive(false);
-                    loadButton.gameObject.SetActive(false);
                     saveButton.enabled = false;
                     loadButton.enabled = false;
 
