@@ -51,6 +51,11 @@ public class GoBoard : MonoBehaviour {
     //saving
     private GameState state = new GameState();
 
+    //visuals
+    public GameObject model9;
+    public GameObject model13;
+    public GameObject model19;
+
     //testing features
     private bool incrementMode = true;
 
@@ -69,6 +74,7 @@ public class GoBoard : MonoBehaviour {
         SaveLoad.Init();
         //SaveLoad.Unlock();
 		boardSize = size;
+        ModelSwitch();
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
 
@@ -99,6 +105,35 @@ public class GoBoard : MonoBehaviour {
             }
         }
 
+    }
+
+    void ModelSwitch()
+    {
+        
+        
+        
+
+        if (GetBoardSize() == 9)
+        {
+            model9 = Instantiate(model9, transform.position, transform.rotation) as GameObject;
+            //model13.GetComponent<Renderer>().enabled = false;
+            //model19.GetComponent<Renderer>().enabled = false;
+            //model9.GetComponent<Renderer>().enabled = true;
+        }
+        else if (GetBoardSize() == 13)
+        {
+            model13 = Instantiate(model13, transform.position, transform.rotation) as GameObject;
+            //model13.GetComponent<Renderer>().enabled = true;
+            //model19.GetComponent<Renderer>().enabled = false;
+            //model9.GetComponent<Renderer>().enabled = false;
+        }
+        else
+        {
+            model19 = Instantiate(model19, transform.position, transform.rotation) as GameObject;
+            //model13.GetComponent<Renderer>().enabled = false;
+            //model19.GetComponent<Renderer>().enabled = true;
+            //model9.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     public void PauseButtonLock(){
@@ -293,6 +328,19 @@ public class GoBoard : MonoBehaviour {
             {
                 Destroy(GetPieceOnBoard(x,y).gameObject);
             }
+        }
+        //todo change to loops
+        if (GameObject.Find(model9.name) != null)
+        {
+            Destroy(model9);
+        }
+        if (GameObject.Find(model13.name) != null)
+        {
+            Destroy(model13);
+        }
+        if (GameObject.Find(model19.name) != null)
+        {
+            Destroy(model19);
         }
     }
 
