@@ -20,7 +20,7 @@ public class Piece : MonoBehaviour {
     private Vector3 startPoint;
     private float currentLerpTime = 0f;
     private float lerpTime = 1f;
-    private float animSpeed = 2.5f;
+    private float animSpeed = 1.5f;
 
     private void Start()
     {
