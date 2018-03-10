@@ -128,7 +128,7 @@ public class PieceMakers : MonoBehaviour {
 	}
 	public void SetRolloverWhite(bool isWhite)
 	{
-		material[1] = (isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
+		material[1] = (!isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
 	}
     public void Alert()
     {

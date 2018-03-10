@@ -63,7 +63,6 @@ public class HUDScore : MonoBehaviour
             }
 
 			if (text.name == "playerText") {
-
                 if (board.IsWhiteTurn()) {
 					text.text = "white move";
                     whitePanel.sizeDelta = new Vector2(4000, whitePanel.sizeDelta.y);
@@ -76,6 +75,19 @@ public class HUDScore : MonoBehaviour
 				}
 	
 			}
+
+            if (text.name == "timerText")
+            {
+                if (board.IsWhiteTurn())
+                {
+                    text.text = board.GetPlayerTimer().ToString();
+                    text.faceColor = new Color32(0, 0, 0, 255);
+                }else{
+                    text.text = board.GetPlayerTimer().ToString();
+                    text.faceColor = new Color32(255, 255, 255, 255);
+                }
+
+            }
 		}
 
 	}

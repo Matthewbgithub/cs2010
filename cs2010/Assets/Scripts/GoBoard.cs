@@ -16,6 +16,12 @@ public class GoBoard : MonoBehaviour {
     public GameObject endCanvas;
     public Canvas hudCanvas;
 
+    //blitz mode
+    public Canvas blitzHudCanvas;
+    public static bool blitzMode;
+    public int playerTimer;
+    private float time;
+
 	//generation fields
 	private int boardSize;
     private int boardPhysicalSize = 16;
@@ -23,8 +29,8 @@ public class GoBoard : MonoBehaviour {
 	private Vector3 pieceOffset;
 
 	//game control fields
-	private int turns = 1;
-    private bool isWhiteTurn = false;
+	private int turns;
+    private bool isWhiteTurn;
     private int currentX;
     private int currentY;
     private int blackCount;
@@ -51,11 +57,6 @@ public class GoBoard : MonoBehaviour {
     //saving
     private GameState state = new GameState();
 
-    //visuals
-    public GameObject model9;
-    public GameObject model13;
-    public GameObject model19;
-
     //testing features
     private bool incrementMode = true;
 
@@ -72,9 +73,7 @@ public class GoBoard : MonoBehaviour {
 	public void Initialize(int size)
 	{
         SaveLoad.Init();
-        //SaveLoad.Unlock();
 		boardSize = size;
-        ModelSwitch();
 		checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
 
@@ -82,14 +81,22 @@ public class GoBoard : MonoBehaviour {
 
         boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0.3f, -(boardPhysicalSize/2.0f));//center of board i think
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
-        //endCanvas = GameObject.Find("EndCanvas");
-        //hudCanvas = GameObject.Find("HUDCanvas");
 		GenerateBoard();
 	}
 
     void Update()
     {
-        if(!hudCanvas.enabled == false){
+        
+        if(blitzMode){
+            if (SaveLoad.Locked() == false)
+            {
+                time += Time.deltaTime;
+                playerTimer = (int)time % 60;
+            }
+
+        }
+        else if (!hudCanvas.enabled)
+        {
             SaveLoad.Lock();
         }
         else
@@ -104,36 +111,10 @@ public class GoBoard : MonoBehaviour {
                 Debug.Log("incrementing turns is " + incrementMode);
             }
         }
-
     }
 
-    void ModelSwitch()
-    {
-        
-        
-        
-
-        if (GetBoardSize() == 9)
-        {
-            model9 = Instantiate(model9, transform.position, transform.rotation) as GameObject;
-            //model13.GetComponent<Renderer>().enabled = false;
-            //model19.GetComponent<Renderer>().enabled = false;
-            //model9.GetComponent<Renderer>().enabled = true;
-        }
-        else if (GetBoardSize() == 13)
-        {
-            model13 = Instantiate(model13, transform.position, transform.rotation) as GameObject;
-            //model13.GetComponent<Renderer>().enabled = true;
-            //model19.GetComponent<Renderer>().enabled = false;
-            //model9.GetComponent<Renderer>().enabled = false;
-        }
-        else
-        {
-            model19 = Instantiate(model19, transform.position, transform.rotation) as GameObject;
-            //model13.GetComponent<Renderer>().enabled = false;
-            //model19.GetComponent<Renderer>().enabled = true;
-            //model9.GetComponent<Renderer>().enabled = false;
-        }
+    public int GetPlayerTimer(){
+        return playerTimer;
     }
 
     public void PauseButtonLock(){
@@ -205,8 +186,7 @@ public class GoBoard : MonoBehaviour {
                 BlackPass();
             }
             EndLogic();
-            turns++;
-			isWhiteTurn = (turns % 2 == 0);
+            IncrementTurns();
         }
 	}
     private void LoadGame(int saveNumber)
@@ -261,6 +241,8 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
+        isWhiteTurn = !(turns % 2 == 0);
+
         if (incrementMode)
         {
             if(IsWhiteTurn())
@@ -272,7 +254,6 @@ public class GoBoard : MonoBehaviour {
                 blackPass = false;
             }
             turns++;
-			isWhiteTurn = (turns % 2 == 0);
         }
     }
     public int GetBoardSize()
@@ -312,7 +293,6 @@ public class GoBoard : MonoBehaviour {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("game");
-
         //Wait until the last operation fully loads to return anything
         while (!asyncLoad.isDone)
         {
@@ -329,30 +309,15 @@ public class GoBoard : MonoBehaviour {
                 Destroy(GetPieceOnBoard(x,y).gameObject);
             }
         }
-        //todo change to loops
-        if (GameObject.Find(model9.name) != null)
-        {
-            Destroy(model9);
-        }
-        if (GameObject.Find(model13.name) != null)
-        {
-            Destroy(model13);
-        }
-        if (GameObject.Find(model19.name) != null)
-        {
-            Destroy(model19);
-        }
     }
 
     public void ResetBoard()
     {
-        turns = 1;
+        turns = 0;
         blackCount = 0;
         whiteCount = 0;
-        //reset all the game values
-
-		//EndScript endScript = endCanvas.GetComponent<EndScript>();
-		//endScript.CloseEndHUD ();
+        time = 0;
+        playerTimer = 0;
     }
 
     public bool TakeTurn(int x, int y)
@@ -544,9 +509,9 @@ public class GoBoard : MonoBehaviour {
         {
             Debug.Log("Piece placed at " + x + ", " + y);
             SaveLoad.Lock();
+            IncrementTurns();
             //call the appropriate piecemaker to show a piece
             GetPieceOnBoard(x, y).Place(IsWhiteTurn());
-			
             //increment counters
             if (IsWhiteTurn())
             {
@@ -556,7 +521,6 @@ public class GoBoard : MonoBehaviour {
             {
                 blackCount++;
             }
-			IncrementTurns();
             return true;
 		}
         else

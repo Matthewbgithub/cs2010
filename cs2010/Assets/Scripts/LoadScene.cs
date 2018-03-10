@@ -40,6 +40,11 @@ public class LoadScene : MonoBehaviour
         LoadGame(1);
     }
 
+    public void BlitzGame(){
+        GoBoard.blitzMode = true;
+        LoadGame(1);
+    }
+
     public static void ResetSaveFileLoad()
     {
         LoadFromSaveFile = 0;

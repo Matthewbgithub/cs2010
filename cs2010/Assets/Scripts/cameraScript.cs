@@ -9,6 +9,7 @@ public class cameraScript : MonoBehaviour {
     public Animator anim;
 	//hud init
 	public Canvas hudCanvas;
+    public Canvas blitzHudCanvas;
 
 	// Use this for initialization
 	void Start ()
@@ -19,8 +20,14 @@ public class cameraScript : MonoBehaviour {
 	
 	public void CameraPanFinish()
     {
-        hudCanvas.gameObject.SetActive(true);
-        hudCanvas.enabled = true;
+        if(GoBoard.blitzMode){
+            blitzHudCanvas.gameObject.SetActive(true);
+            blitzHudCanvas.enabled = true;
+        }else{
+            hudCanvas.gameObject.SetActive(true);
+            hudCanvas.enabled = true;
+        }
+
         SaveLoad.Unlock();
     }
 }
