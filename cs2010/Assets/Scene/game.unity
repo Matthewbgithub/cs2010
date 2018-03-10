@@ -2289,9 +2289,9 @@ MonoBehaviour:
   endCanvas: {fileID: 213731707}
   hudCanvas: {fileID: 223901690575515564, guid: d9a933c5282e1413d9322046d2373df9,
     type: 2}
-  model9: {fileID: 1029747076033136, guid: bdf1b4a8a7dd6425eb4bbd41a5ae6f68, type: 2}
-  model13: {fileID: 1842046783084788, guid: e045d20e15282a248a7456b3ca28332c, type: 2}
-  model19: {fileID: 1054291121300840, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
+  model9: {fileID: 100004, guid: a01ef38082b6364488ad820120e3b8d1, type: 3}
+  model13: {fileID: 100006, guid: 9fb88edd0637df446a5b7ea7d468afdd, type: 3}
+  model19: {fileID: 100006, guid: 671a9c3c4043b0d43afbc3989499b48d, type: 3}
 --- !u!1 &231281173
 GameObject:
   m_ObjectHideFlags: 0
