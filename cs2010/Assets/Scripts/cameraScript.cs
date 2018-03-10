@@ -14,7 +14,7 @@ public class cameraScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-		SaveLoad.Lock();
+		SaveLoad.AnimLock();
         anim = GetComponent<Animator>();
 	}
 	
@@ -28,6 +28,6 @@ public class cameraScript : MonoBehaviour {
             hudCanvas.enabled = true;
         }
 
-        SaveLoad.Unlock();
+        SaveLoad.AnimUnlock();
     }
 }

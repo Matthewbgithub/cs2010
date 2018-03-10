@@ -74,7 +74,7 @@ public class Piece : MonoBehaviour {
             if (currentLerpTime >= 1.0f)
             {
                 //leaving is complete
-                SaveLoad.Unlock();
+                SaveLoad.AnimUnlock();
                 leaveAnimating = false;
                 this.Destroy();
             }
@@ -110,7 +110,7 @@ public class Piece : MonoBehaviour {
     public void DestroyWithAnimation()
     {
         //so you cant abuse the wait time of the animation
-        SaveLoad.Lock();
+        SaveLoad.AnimLock();
         leaveAnimating = true;
     }
 
@@ -122,7 +122,7 @@ public class Piece : MonoBehaviour {
         {
             //removes object then unlocks game
             Destroy(gameObject);
-            SaveLoad.Unlock();
+            SaveLoad.AnimUnlock();
         }
         else if(message.Equals("PlacePebble"))
         {
