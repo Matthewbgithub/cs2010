@@ -2266,8 +2266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2888fa08d9e904cb89917a5470e702fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUp: {fileID: 0}
-  board: {fileID: 0}
+  popUp: {fileID: 213731710}
+  board: {fileID: 221342194}
 --- !u!1 &221342193 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1567626439837788, guid: f5670e41ce0c866429125fa08dd03dca,
@@ -2288,7 +2288,7 @@ MonoBehaviour:
     type: 2}
   endCanvas: {fileID: 213731707}
   hudCanvas: {fileID: 1016689249}
-  blitzHudCanvas: {fileID: 0}
+  blitzHudCanvas: {fileID: 1105691006}
   playerTimer: 0
   model9: {fileID: 1054291121300840, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
   model13: {fileID: 1054291121300840, guid: f5670e41ce0c866429125fa08dd03dca, type: 2}
@@ -13967,6 +13967,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

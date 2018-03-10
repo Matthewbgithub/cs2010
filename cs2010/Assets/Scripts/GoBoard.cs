@@ -100,6 +100,7 @@ public class GoBoard : MonoBehaviour {
                 playerTimer = (int)time % 60;
             }
             BlitzModeLogic();
+            EndLogic();
         }
         else if (!hudCanvas.enabled)
         {
