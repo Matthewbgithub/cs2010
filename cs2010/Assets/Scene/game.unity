@@ -7751,6 +7751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackPanel: {fileID: 1249669925}
   whitePanel: {fileID: 1713005113}
+  saveButton: {fileID: 1728575322}
+  loadButton: {fileID: 2078288128}
   board: {fileID: 221342194}
 --- !u!1 &1018272003
 GameObject:
@@ -8704,6 +8706,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackPanel: {fileID: 861342137}
   whitePanel: {fileID: 1625513781}
+  saveButton: {fileID: 1728575322}
+  loadButton: {fileID: 2078288128}
   board: {fileID: 221342194}
 --- !u!114 &1105691004
 MonoBehaviour:

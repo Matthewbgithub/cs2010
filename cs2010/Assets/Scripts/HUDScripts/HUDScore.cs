@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
@@ -9,6 +10,8 @@ public class HUDScore : MonoBehaviour
 	private TextMeshProUGUI[] tmp;
     public RectTransform blackPanel;
     public RectTransform whitePanel;
+    public Button saveButton;
+    public Button loadButton;
 	public GoBoard board;
 
 	void Start ()
@@ -76,19 +79,31 @@ public class HUDScore : MonoBehaviour
 	
 			}
 
-            if (text.name == "timerText")
-            {
-                int time = 15 - board.GetPlayerTimer();
-                if (board.IsWhiteTurn())
+            if(GoBoard.blitzMode){
+                if (text.name == "timerText")
                 {
-                    text.text = time.ToString();
-                    text.faceColor = new Color32(0, 0, 0, 255);
-                }else{
-                    text.text = time.ToString();
-                    text.faceColor = new Color32(255, 255, 255, 255);
+                    saveButton.gameObject.SetActive(false);
+                    loadButton.gameObject.SetActive(false);
+                    saveButton.enabled = false;
+                    loadButton.enabled = false;
+
+                    int time = 15 - board.GetPlayerTimer();
+                    if (board.IsWhiteTurn())
+                    {
+                        text.text = time.ToString();
+                        text.faceColor = new Color32(0, 0, 0, 255);
+                    }
+                    else
+                    {
+                        text.text = time.ToString();
+                        text.faceColor = new Color32(255, 255, 255, 255);
+                    }
+
                 }
 
+
             }
+
 		}
 
 	}

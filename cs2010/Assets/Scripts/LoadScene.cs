@@ -19,7 +19,7 @@ public class LoadScene : MonoBehaviour
 
     public void LoadSaveFile(int fileNumber)
     {
-        LoadFromSaveFile = fileNumber - 1;
+        LoadFromSaveFile = fileNumber;
         LoadGame(1);
     }
 
