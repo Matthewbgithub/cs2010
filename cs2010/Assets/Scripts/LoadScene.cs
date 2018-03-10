@@ -16,7 +16,7 @@ public class LoadScene : MonoBehaviour
     public static int size = 19;
 
     //State which safe file to load (1-3)
-    public static int LoadFromSaveFile = 0;
+    public static int LoadFromSaveFile = -1;
 
     public void LoadSaveFile(int fileNumber)
     {
@@ -50,7 +50,7 @@ public class LoadScene : MonoBehaviour
 
     public static void ResetSaveFileLoad()
     {
-        LoadFromSaveFile = 0;
+        LoadFromSaveFile = -1;
     }
 
     private void LoadGame(int sceneIndex)
