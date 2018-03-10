@@ -20,16 +20,13 @@ public class cameraScript : MonoBehaviour {
 	
 	public void CameraPanFinish()
     {
-        //if(GoBoard.blitzMode){
-        //    blitzHudCanvas.gameObject.SetActive(true);
-        //    blitzHudCanvas.enabled = true;
-        //}else{
-        //    hudCanvas.gameObject.SetActive(true);
-        //    hudCanvas.enabled = true;
-        //}
-
-        hudCanvas.gameObject.SetActive(true);
-        hudCanvas.enabled = true;
+        if(GoBoard.blitzMode){
+            blitzHudCanvas.gameObject.SetActive(true);
+            blitzHudCanvas.enabled = true;
+        }else{
+            hudCanvas.gameObject.SetActive(true);
+            hudCanvas.enabled = true;
+        }
 
         SaveLoad.Unlock();
     }

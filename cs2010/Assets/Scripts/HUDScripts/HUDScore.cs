@@ -63,8 +63,6 @@ public class HUDScore : MonoBehaviour
             }
 
 			if (text.name == "playerText") {
-				int turn = board.GetTurns ();
-
                 if (board.IsWhiteTurn()) {
 					text.text = "white move";
                     whitePanel.sizeDelta = new Vector2(4000, whitePanel.sizeDelta.y);

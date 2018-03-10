@@ -87,7 +87,16 @@ public class GoBoard : MonoBehaviour {
     void Update()
     {
         
-        if(!hudCanvas.enabled){
+        if(blitzMode){
+            if (SaveLoad.Locked() == false)
+            {
+                time += Time.deltaTime;
+                playerTimer = (int)time % 60;
+            }
+
+        }
+        else if (!hudCanvas.enabled)
+        {
             SaveLoad.Lock();
         }
         else
@@ -101,13 +110,6 @@ public class GoBoard : MonoBehaviour {
                 incrementMode = !incrementMode;
                 Debug.Log("incrementing turns is " + incrementMode);
             }
-        }
-
-        if (SaveLoad.Locked() == false)
-        {
-            time += Time.deltaTime;
-            playerTimer = (int)time % 60;
-            Debug.Log(playerTimer);
         }
     }
 
@@ -291,7 +293,6 @@ public class GoBoard : MonoBehaviour {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("game");
-
         //Wait until the last operation fully loads to return anything
         while (!asyncLoad.isDone)
         {
@@ -315,10 +316,8 @@ public class GoBoard : MonoBehaviour {
         turns = 0;
         blackCount = 0;
         whiteCount = 0;
-        //reset all the game values
-
-		//EndScript endScript = endCanvas.GetComponent<EndScript>();
-		//endScript.CloseEndHUD ();
+        time = 0;
+        playerTimer = 0;
     }
 
     public bool TakeTurn(int x, int y)
