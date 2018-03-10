@@ -61,6 +61,7 @@ public class GoBoard : MonoBehaviour {
     public GameObject model9;
     public GameObject model13;
     public GameObject model19;
+    private GameObject boardModel;
 
     //testing features
     private bool incrementMode = true;
@@ -124,7 +125,7 @@ public class GoBoard : MonoBehaviour {
         if (GetBoardSize() == 9)
         {
             Debug.Log("loaded the 9 model called " + model9.name);
-            model9 = Instantiate(model9, transform.position, transform.rotation) as GameObject;
+            boardModel = Instantiate(model9, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = false;
             //model19.GetComponent<Renderer>().enabled = false;
             //model9.GetComponent<Renderer>().enabled = true;
@@ -132,7 +133,7 @@ public class GoBoard : MonoBehaviour {
         else if (GetBoardSize() == 13)
         {
             Debug.Log("loaded the 13 model called " + model13.name);
-            model13 = Instantiate(model13, transform.position, transform.rotation) as GameObject;
+            boardModel = Instantiate(model13, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = true;
             //model19.GetComponent<Renderer>().enabled = false;
             //model9.GetComponent<Renderer>().enabled = false;
@@ -140,7 +141,7 @@ public class GoBoard : MonoBehaviour {
         else
         {
             Debug.Log("loaded the 19 model called " + model19.name);
-            model19 = Instantiate(model19, transform.position, transform.rotation) as GameObject;
+            boardModel = Instantiate(model19, transform.position, transform.rotation) as GameObject;
             //model13.GetComponent<Renderer>().enabled = false;
             //model19.GetComponent<Renderer>().enabled = true;
             //model9.GetComponent<Renderer>().enabled = false;
@@ -351,19 +352,8 @@ public class GoBoard : MonoBehaviour {
                 Destroy(GetPieceOnBoard(x,y).gameObject);
             }
         }
-        //todo change to loops
-        if (GameObject.Find(model9.name) != null)
-        {
-            Destroy(model9);
-        }
-        if (GameObject.Find(model13.name) != null)
-        {
-            Destroy(model13);
-        }
-        if (GameObject.Find(model19.name) != null)
-        {
-            Destroy(model19);
-        }
+        //removes the current board model
+        Destroy(boardModel.gameObject);
     }
 
     public void ResetBoard()
