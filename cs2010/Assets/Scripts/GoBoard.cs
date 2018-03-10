@@ -102,7 +102,8 @@ public class GoBoard : MonoBehaviour {
             BlitzModeLogic();
             EndLogic();
         }
-        else if (!hudCanvas.enabled)
+
+        if (!hudCanvas.enabled)
         {
             SaveLoad.Lock();
         }
@@ -152,6 +153,18 @@ public class GoBoard : MonoBehaviour {
             time = 0;
             playerTimer = 0;
             PassTurn();
+        }
+    }
+
+    public void ActivateCanvas(){
+         if(blitzMode){
+            blitzHudCanvas.gameObject.SetActive(true);
+            blitzHudCanvas.enabled = true;
+        }
+        else
+        {
+            hudCanvas.gameObject.SetActive(true);
+            hudCanvas.enabled = true;
         }
     }
 
