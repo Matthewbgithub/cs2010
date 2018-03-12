@@ -320,6 +320,7 @@
     <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
+    <Compile Include="Assets\Scripts\HUDScripts\TextPromptScript.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
