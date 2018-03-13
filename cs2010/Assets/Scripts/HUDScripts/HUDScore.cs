@@ -18,7 +18,6 @@ public class HUDScore : MonoBehaviour
 	{
 		tmp = GetComponentsInChildren<TextMeshProUGUI> ();
 		board = board.GetComponent<GoBoard> ();
-       
 	}
 	
 	// Update is called once per frame
@@ -82,7 +81,6 @@ public class HUDScore : MonoBehaviour
             if(GoBoard.blitzMode){
                 if (text.name == "timerText")
                 {
-
                     saveButton.interactable = false;
                     loadButton.interactable = false;
 
@@ -99,8 +97,6 @@ public class HUDScore : MonoBehaviour
                     }
 
                 }
-
-
             }
 
 		}

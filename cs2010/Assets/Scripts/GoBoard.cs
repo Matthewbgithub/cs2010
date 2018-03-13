@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -21,6 +22,8 @@ public class GoBoard : MonoBehaviour {
     public static bool blitzMode;
     public int playerTimer;
     private float time;
+
+    public TextMeshProUGUI passText;
 
 	//generation fields
 	private int boardSize;
@@ -222,23 +225,33 @@ public class GoBoard : MonoBehaviour {
         Debug.Log("Saved");
         SaveLoad.BoardUnlock();
     }
+
 	public void PassTurn()
 	{
         if (!SaveLoad.Locked())
         {
+            passText.gameObject.SetActive(true);
             if (IsWhiteTurn())
             {
                 WhitePass();
+                passText.text = "white passed";
             }
             else
             {
                 BlackPass();
+                passText.text = "black passed";
             }
+            Invoke("DeactivatePassText", 1);
             EndLogic();
             turns++;
             isWhiteTurn = (turns % 2 == 0);
         }
 	}
+
+    void DeactivatePassText(){
+        passText.gameObject.SetActive(false);
+    }
+
     private void LoadGame(int saveNumber)
     {
         SaveLoad.BoardLock();
