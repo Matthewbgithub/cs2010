@@ -23,6 +23,7 @@ public class GoBoard : MonoBehaviour {
     public int playerTimer;
     private float time;
 
+    //text
     public TextMeshProUGUI passText;
 
 	//generation fields
