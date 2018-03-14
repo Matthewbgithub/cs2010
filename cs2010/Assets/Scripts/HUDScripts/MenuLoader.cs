@@ -9,6 +9,7 @@ public class MenuLoader : MonoBehaviour {
 	public void SceneLoader()
 	{
         Debug.Log("Loading menu");
-		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex - 1);
+        GoBoard.blitzMode = false;
+        SceneManager.LoadScene(0);
 	}
 }

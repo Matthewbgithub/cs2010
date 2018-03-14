@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class cameraScript : MonoBehaviour {
 
@@ -9,22 +10,37 @@ public class cameraScript : MonoBehaviour {
     public Animator anim;
 	//hud init
 	public Canvas hudCanvas;
+    public Canvas blitzHudCanvas;
+    //welcome text
+    public TextMeshProUGUI blitzText;
+    public TextMeshProUGUI goText;
 
 	// Use this for initialization
 	void Start ()
     {
-		SaveLoad.Lock();
-		//hudCanvas = GameObject.Find("HUDCanvas");
-		Debug.Log("Camera Start");
+		SaveLoad.BoardLock();
         anim = GetComponent<Animator>();
+        if (GoBoard.blitzMode)
+        {
+            blitzText.gameObject.SetActive(true);
+        }
+        else{
+            goText.gameObject.SetActive(true);
+        }
 	}
 	
 	public void CameraPanFinish()
     {
-        Debug.Log("---------------------" + hudCanvas.gameObject.activeSelf);
-        hudCanvas.gameObject.SetActive(true);
-        hudCanvas.enabled = true;
-        Debug.Log(hudCanvas.gameObject.activeSelf);
-        SaveLoad.Unlock();
+        if(GoBoard.blitzMode){
+            blitzHudCanvas.gameObject.SetActive(true);
+            blitzHudCanvas.enabled = true;
+            blitzText.gameObject.SetActive(false);
+        }else{
+            hudCanvas.gameObject.SetActive(true);
+            hudCanvas.enabled = true;
+            goText.gameObject.SetActive(false);
+        }
+        SaveLoad.BoardUnlock();
     }
+
 }

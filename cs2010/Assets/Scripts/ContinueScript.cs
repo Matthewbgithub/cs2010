@@ -32,15 +32,12 @@ public class ContinueScript : MonoBehaviour
                 {
                     case 1:
                         save1.enabled = true;
-                        Debug.Log("Save 1 activate");
                         break;
                     case 2:
                         save2.enabled = true;
-                        Debug.Log("Save 2 activate");
                         break;
                     case 3:
                         save3.enabled = true;
-                        Debug.Log("Save 3 activate");
                         break;
                     default:
                         Debug.Log("No save data");

@@ -13,7 +13,6 @@ public class EndScript : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		popUp = GetComponent<Canvas> ();
-		popUp.enabled = false;
         board = board.GetComponent<GoBoard>();
 	}
 
@@ -24,7 +23,7 @@ public class EndScript : MonoBehaviour {
         tmp = GetComponentsInChildren<TextMeshProUGUI> ();
 
         int blackScore = board.GetBlackCount() + board.GetBlackTerritories();
-        int whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories();
+        float whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories() + board.komi;
 
         foreach (TextMeshProUGUI text in tmp)
         {

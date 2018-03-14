@@ -14,12 +14,15 @@ public class LoadScene : MonoBehaviour
 
     //Standard board size
     public static int size = 19;
+
     //State which safe file to load (1-3)
-    public static int LoadFromSaveFile;
+    public static int LoadFromSaveFile = -1;
 
     public void LoadSaveFile(int fileNumber)
     {
+        Debug.Log(fileNumber);
         LoadFromSaveFile = fileNumber;
+        Debug.Log(LoadFromSaveFile);
         LoadGame(1);
     }
 
@@ -40,9 +43,14 @@ public class LoadScene : MonoBehaviour
         LoadGame(1);
     }
 
+    public void BlitzGame(){
+        GoBoard.blitzMode = true;
+        LoadGame(1);
+    }
+
     public static void ResetSaveFileLoad()
     {
-        LoadFromSaveFile = 0;
+        LoadFromSaveFile = -1;
     }
 
     private void LoadGame(int sceneIndex)
@@ -53,17 +61,14 @@ public class LoadScene : MonoBehaviour
 
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
-
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         operation.allowSceneActivation = false;
         loadingScreen.SetActive(true);
-
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             slider.value = progress;
             loadText.text = "Loading progress: " + (progress * 100) + "%";
-
             if (operation.progress == 0.9f)
             {
                 loadText.text = "Smash space to smash";
@@ -72,7 +77,6 @@ public class LoadScene : MonoBehaviour
                     operation.allowSceneActivation = true;
                 }
             }
-
             yield return null;
         }
 
