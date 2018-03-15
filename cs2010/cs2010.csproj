@@ -320,11 +320,14 @@
     <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
+    <Compile Include="Assets\Scripts\HUDScripts\TutorialEventManager.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadFileNames.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\Instruction.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\InstructionPool.cs" />
     <Compile Include="Assets\Tests\CaptureTests.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
@@ -362,6 +365,7 @@
   <ItemGroup>
     <None Include="Assets\Fonts\manga\original\Font License.txt" />
     <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
+    <None Include="Assets\Scripts\Tutorial\Tutorial.xml" />
     <None Include="Assets\TextMesh Pro\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />

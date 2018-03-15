@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.IO;
+using TMPro;
 
 public class TutorialEventManager : MonoBehaviour {
 
@@ -11,7 +13,10 @@ public class TutorialEventManager : MonoBehaviour {
 	private GameObject board;
 
 	[SerializeField]
-	private Text tutorialSubtitle;
+    private Text tutorialSubtitle;
+
+    [SerializeField]
+    private TextMeshProUGUI buttonText;
 
 	[SerializeField]
 	private AudioSource VoiceOver;
@@ -37,6 +42,12 @@ public class TutorialEventManager : MonoBehaviour {
 	}
 
 	public void NextInstruction() {
+        if (buttonText.text == "Finish")
+        {
+            GoBoard.blitzMode = false;
+            SceneManager.LoadScene(0);
+        }
+
 		if (instructionCounter < (insPool.InstructionCount ())) {
 			// Fetch current instruction according to counter
 			currentInstruction = insPool.GetInstruction (instructionCounter);
@@ -48,7 +59,6 @@ public class TutorialEventManager : MonoBehaviour {
 		if (instructionCounter == (insPool.InstructionCount ())) {
 			EndTutorial ();
 		}
-
 	}
 
 	private void RunInstruction(Instruction instruction) {
@@ -72,7 +82,6 @@ public class TutorialEventManager : MonoBehaviour {
 
 	private void EndTutorial() {
 		SaveLoad.BoardLock ();
-		Text buttonText = gameObject.GetComponent<Button> ().GetComponentInChildren<Text> ();
 		buttonText.text = "Finish";
 	}
 
