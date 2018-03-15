@@ -133,7 +133,6 @@ public class PieceMakers : MonoBehaviour {
     public void Alert()
     {
         rend.material = Resources.Load("illegalRollover", typeof(Material)) as Material;
-        StartCoroutine(AlertWait(0.5f));
     }
     private IEnumerator AlertWait(float time)
     {

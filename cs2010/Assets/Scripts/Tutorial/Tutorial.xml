@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Instructions>
+	<Instruction>
+		<Body>Welcome to Go, an interactive board game developed by team 13. Whether complete beginner or seasoned professional, this step-by-step tutorial aims to familiarize you with playing Go on your device. All players are advised to review the rules on our website, particularly due to the small modifications we have made for our own version of the game.
+
+So, let's get started!</Body>
+        <VoiceOver>1</VoiceOver>
+	</Instruction>
+	<Instruction>
+		<Body>The HUD at the top of the screen displays all relevant game information. Currently, it is the black pebble turn, which you can see displayed in the center of the hud.</Body>
+		<VoiceOver>2</VoiceOver>
+	</Instruction>
+	<Instruction>
+		<Body>Let’s place a black pebble at the coordinates 5,5. For the purposes of this tutorial, the red marker indicates where you should place the pebble. Click next once you have placed the pebble.</Body>
+        <VoiceOver>3</VoiceOver>
+		<Pos>
+			<X>5</X>
+			<Y>5</Y>
+		</Pos>
+	</Instruction>
+	<Instruction>
+		<Body>Now that you have placed a black pebble, the score and pebble count on the left side of the HUD are updated. It is now the turn of the white pebble. Let’s take a look at piece capture.</Body>
+        <VoiceOver>4</VoiceOver>
+	</Instruction>
+	<Instruction>
+		<Body>Place a white pebble at the coordinates 5,6, one position above the black pebble. The HUD information will update for the white pebble. You can pass your turn by pressing the 'Pass Turn' button located in the lower right of the screen.</Body>
+        <VoiceOver>5</VoiceOver>
+		<Pos>
+			<X>5</X>
+			<Y>6</Y>
+		</Pos>
+	</Instruction>
+	<Instruction>
+		<Body>It is now the black pebble turn. As we want to demonstrate piece taking, we need to surround the black pebble with white pebbles. Using the pass turn button exlained in the previous step, pass the turn to the white pebble and place it at the marker in coordinates 6,5</Body>
+        <VoiceOver>6</VoiceOver>
+		<Pos>
+			<X>6</X>
+			<Y>5</Y>
+		</Pos>
+	</Instruction>
+	<Instruction>
+		<Body>Repeat the previous step, this time placing the white pebble at the coordinates 5,4, directly below the black counter.</Body>
+        <VoiceOver>7</VoiceOver>
+		<Pos>
+			<X>5</X>
+			<Y>4</Y>
+		</Pos>
+	</Instruction>
+	<Instruction>
+		<Body>Finally, repeat the previous step one last time to surround the black pebble. The white pebble should be placed to the left of the black pebble, at coordinates 4,5. The black pebble has now been captured, removing it from the board.</Body>
+        <VoiceOver>8</VoiceOver>
+		<Pos>
+			<X>4</X>
+			<Y>5</Y>
+		</Pos>
+	</Instruction>
+    <Instruction>
+		<Body>Click anywhere on the board to place a black pebble again. The HUD has updated to show that the white pebble has one territory. This is due to the white pebbles surrounding the position 5,5, preventing the black pebble from being placed within this space.</Body>
+        <VoiceOver>9</VoiceOver>
+	</Instruction>
+    <Instruction>
+		<Body>This concludes the basic introductory tutorial of Go. In the bottom right corner of the screen, you can access the options window at any time during gameplay. That’s all for now, click finish to return to the main menu.</Body>
+        <VoiceOver>10</VoiceOver>
+	</Instruction>
+</Instructions>
