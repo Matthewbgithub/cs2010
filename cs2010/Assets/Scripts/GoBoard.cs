@@ -842,7 +842,7 @@ public class GoBoard : MonoBehaviour {
     public void Remove(int x, int y)
     {
         Debug.Log(GetPieceOnBoard(x,y).GetColour() +" piece at " + x + ", " + y + " has been removed.");
-		Alert(x,y);
+		AlertWithTimeout(x,y);
 		if (GetPieceOnBoard (x, y).IsWhite ()) {
 			whiteCount--;
 		} else {
@@ -855,6 +855,10 @@ public class GoBoard : MonoBehaviour {
     {
         GetPieceOnBoard(x, y).Alert();
     }
+	private void AlertWithTimeout(int x, int y)
+	{
+		GetPieceOnBoard(x,y).AlertWithTimeout();
+	}
 }
 
 public static class SaveLoad

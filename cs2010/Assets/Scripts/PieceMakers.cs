@@ -130,9 +130,14 @@ public class PieceMakers : MonoBehaviour {
 	{
 		material[1] = (isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
 	}
-    public void Alert()
+    public void AlertWithTimeout()
     {
-        rend.material = Resources.Load("illegalRollover", typeof(Material)) as Material;
+        Alert();
+		StartCoroutine(AlertWait(1f));
+    }
+	public void Alert()
+    {
+     	rend.material = Resources.Load("illegalRollover", typeof(Material)) as Material;   
     }
     private IEnumerator AlertWait(float time)
     {
