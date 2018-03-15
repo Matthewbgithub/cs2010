@@ -40,10 +40,20 @@ public class PieceMakers : MonoBehaviour {
 		//sets the placeholder material to be material 0, or the unselected one
 		rend.material = material[0];
 	}
-	 void OnMouseEnter()
+	void Update()
+	{
+		if(!SaveLoad.Locked())
+		{
+		rend.enabled = true;
+		}
+		else
+		{
+		rend.enabled = false;	 
+		}
+	}
+	 void OnMouseOver()
 	 {
-		 //sets to material 1, selected
-		 if(!SaveLoad.Locked())
+		 if(rend)
 		 {
 		 	rend.material = material[1]; 
 		 }
@@ -125,6 +135,7 @@ public class PieceMakers : MonoBehaviour {
 	public void SetRolloverIllegal()
 	{
 		material[1] = Resources.Load("illegalRollover", typeof(Material)) as Material;
+		
 	}
 	public void SetRolloverWhite(bool isWhite)
 	{
