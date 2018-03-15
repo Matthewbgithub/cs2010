@@ -761,7 +761,7 @@ Prefab:
     - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224993658950410788, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
@@ -917,7 +917,7 @@ Prefab:
     - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
@@ -932,11 +932,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1329426060}
+      objectReference: {fileID: 1535032539}
     - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: TutorialGame
       objectReference: {fileID: 0}
     - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
         type: 2}
@@ -987,6 +987,11 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114777522082506274, guid: 166f505bb102a408d80e820e3a4536d2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 166f505bb102a408d80e820e3a4536d2, type: 2}
@@ -5689,6 +5694,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1524979559}
+--- !u!1 &1535032538 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1152185079073678, guid: 166f505bb102a408d80e820e3a4536d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 277465733}
+--- !u!114 &1535032539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535032538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aeadfdda5e5844498e374b6340a2da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 1397040019}
+  slider: {fileID: 544307915}
+  loadText: {fileID: 1753832908}
 --- !u!1001 &1579803915
 Prefab:
   m_ObjectHideFlags: 0

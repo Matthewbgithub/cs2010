@@ -10,6 +10,7 @@ public class MenuLoader : MonoBehaviour {
 	{
         Debug.Log("Loading menu");
         GoBoard.blitzMode = false;
+        GoBoard.tutMode = false;
         SceneManager.LoadScene(0);
 	}
 }

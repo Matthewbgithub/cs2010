@@ -23,6 +23,9 @@ public class GoBoard : MonoBehaviour {
     public int playerTimer;
     private float time;
 
+    //tutorial mode
+    public static bool tutMode;
+
     //text
     public TextMeshProUGUI passText;
 
