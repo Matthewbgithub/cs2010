@@ -11,6 +11,7 @@ public class cameraScript : MonoBehaviour {
 	//hud init
 	public Canvas hudCanvas;
     public Canvas blitzHudCanvas;
+    public Canvas tutCanvas;
     //welcome text
     public TextMeshProUGUI blitzText;
     public TextMeshProUGUI goText;
@@ -25,6 +26,10 @@ public class cameraScript : MonoBehaviour {
             blitzText.gameObject.SetActive(true);
         }
         else{
+            if (GoBoard.tutMode)
+            {
+                tutCanvas.gameObject.SetActive(true);
+            }
             goText.gameObject.SetActive(true);
         }
 	}
@@ -35,11 +40,13 @@ public class cameraScript : MonoBehaviour {
             blitzHudCanvas.gameObject.SetActive(true);
             blitzHudCanvas.enabled = true;
             blitzText.gameObject.SetActive(false);
-        }else{
+        }
+        else{
             hudCanvas.gameObject.SetActive(true);
             hudCanvas.enabled = true;
             goText.gameObject.SetActive(false);
         }
+
         SaveLoad.BoardUnlock();
     }
 

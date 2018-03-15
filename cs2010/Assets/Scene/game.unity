@@ -15910,6 +15910,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   hudCanvas: {fileID: 1016689249}
   blitzHudCanvas: {fileID: 1105691006}
+  tutCanvas: {fileID: 713311317}
   blitzText: {fileID: 544839890}
   goText: {fileID: 1415038886}
 --- !u!1 &1897980056

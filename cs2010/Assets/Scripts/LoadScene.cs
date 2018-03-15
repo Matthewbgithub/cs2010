@@ -48,6 +48,11 @@ public class LoadScene : MonoBehaviour
         LoadGame(1);
     }
 
+    public void TutorialGame(){
+        GoBoard.tutMode = true;
+        LoadGame(1);
+    }
+
     public static void ResetSaveFileLoad()
     {
         LoadFromSaveFile = -1;
