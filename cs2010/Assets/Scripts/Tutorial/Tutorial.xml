@@ -31,7 +31,7 @@ So, let's get started!</Body>
 		</Pos>
 	</Instruction>
 	<Instruction>
-		<Body>It is now the black pebble turn. As we want to demonstrate piece taking, we need to surround the black pebble with white pebbles. Using the pass turn button exlained in the previous step, pass the turn to the white pebble and place it at the marker in coordinates 6,5</Body>
+		<Body>It is now the black pebble turn. As we want to demonstrate piece taking, we need to surround the black pebble with white pebbles. Using the pass turn button explained in the previous step, pass the turn to the white pebble and place it at the marker in coordinates 6,5</Body>
         <VoiceOver>6</VoiceOver>
 		<Pos>
 			<X>6</X>

@@ -89,7 +89,7 @@ public class TutorialEventManager : MonoBehaviour {
 	{
 		SaveLoad.BoardLock();
 		SaveLoad.AnimLock ();
-		gameObject.GetComponent<Button>().interactable = false;
+		//gameObject.GetComponent<Button>().interactable = false;
 		yield return new WaitForSeconds (seconds);
 		SaveLoad.BoardUnlock ();
 		SaveLoad.AnimUnlock ();
