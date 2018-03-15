@@ -249,6 +249,7 @@ public class GoBoard : MonoBehaviour {
             EndLogic();
             turns++;
             isWhiteTurn = (turns % 2 == 0);
+			SetRolloverColour();
         }
 	}
 
