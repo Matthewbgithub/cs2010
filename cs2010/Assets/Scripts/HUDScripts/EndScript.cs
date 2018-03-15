@@ -4,26 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class EndScript : MonoBehaviour {
+public class EndScript : MonoBehaviour
+{
 
-	public Canvas popUp;
-	private TextMeshProUGUI[] tmp;
+    public Canvas popUp;
+    public Image panel;
+    private TextMeshProUGUI[] tmp;
     public GoBoard board;
 
-	// Use this for initialization
-	public void Start () {
-		popUp = GetComponent<Canvas> ();
+    // Use this for initialization
+    public void Start()
+    {
+        popUp = GetComponent<Canvas>();
         board = board.GetComponent<GoBoard>();
-	}
+    }
 
-	public void OpenEndHUD()
-	{
+    public void OpenEndHUD()
+    {
         popUp.gameObject.SetActive(true);
         popUp.enabled = true;
-        tmp = GetComponentsInChildren<TextMeshProUGUI> ();
+        tmp = GetComponentsInChildren<TextMeshProUGUI>();
 
         int blackScore = board.GetBlackCount() + board.GetBlackTerritories();
         float whiteScore = board.GetWhiteCount() + board.GetWhiteTerritories() + board.komi;
+
+
+        if (blackScore > whiteScore)
+        {
+            panel.color = Color.black;
+        }
+        else
+        {
+            panel.color = Color.white;
+        }
 
         foreach (TextMeshProUGUI text in tmp)
         {
@@ -33,6 +46,7 @@ public class EndScript : MonoBehaviour {
             }
             else
             {
+
                 text.faceColor = new Color32(0, 0, 0, 255);
             }
 
@@ -63,10 +77,10 @@ public class EndScript : MonoBehaviour {
 
 
         }
-	}
+    }
 
-	public void CloseEndHUD()
-	{
-		popUp.enabled = false;
-	}
+    public void CloseEndHUD()
+    {
+        popUp.enabled = false;
+    }
 }
