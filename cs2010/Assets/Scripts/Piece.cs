@@ -13,6 +13,8 @@ public class Piece : MonoBehaviour {
     public Animator anim;
     private bool enterAnimating;
     private bool leaveAnimating;
+    private float heightAdder;
+    private float heightOfAnimation = 5f;
 
     //enter animation
     public AnimationCurve moveCurve;
@@ -45,9 +47,10 @@ public class Piece : MonoBehaviour {
             }
             
             float perc = currentLerpTime / lerpTime;
-            //TODO make this an arc
-            transform.position = Vector3.Lerp(startPoint, target, perc);
-            if(currentLerpTime >= 1.0f)
+            heightAdder = Mathf.Sin((perc * Mathf.PI)) * heightOfAnimation;
+            transform.position = new Vector3(0, heightAdder, 0) + Vector3.Lerp(startPoint, target, perc);
+            //Debug.Log("y:" + transform.position.y);
+            if (currentLerpTime >= 1.0f)
             {
                 //animation is complete at this point
                 theMaker.PlaceAnimationFinished();
@@ -69,8 +72,8 @@ public class Piece : MonoBehaviour {
             }
 
             float perc = currentLerpTime / lerpTime;
-            //TODO make this an arc
-            transform.position = Vector3.Lerp(startPoint, target, perc);
+            heightAdder = Mathf.Sin((perc * Mathf.PI)) * heightOfAnimation;
+            transform.position = new Vector3(0, heightAdder, 0) + Vector3.Lerp(startPoint, target, perc);
             if (currentLerpTime >= 1.0f)
             {
                 //leaving is complete
