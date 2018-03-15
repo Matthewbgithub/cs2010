@@ -49,6 +49,7 @@ public class Piece : MonoBehaviour {
             float perc = currentLerpTime / lerpTime;
             heightAdder = Mathf.Sin((perc * Mathf.PI)) * heightOfAnimation;
             transform.position = new Vector3(0, heightAdder, 0) + Vector3.Lerp(startPoint, target, perc);
+            transform.Rotate(Vector3.left*Time.deltaTime, 45);
             //Debug.Log("y:" + transform.position.y);
             if (currentLerpTime >= 1.0f)
             {
@@ -63,6 +64,7 @@ public class Piece : MonoBehaviour {
                 startPoint = this.transform.position;
             }
         }
+
         if(leaveAnimating && currentLerpTime < 1.0f)
         {
             currentLerpTime += (animSpeed * Time.deltaTime);
