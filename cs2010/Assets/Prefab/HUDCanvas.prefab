@@ -252,6 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1ac5c3888147bea169eae9e3215a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackPanel: {fileID: 0}
+  whitePanel: {fileID: 0}
+  saveButton: {fileID: 0}
+  loadButton: {fileID: 0}
   board: {fileID: 0}
 --- !u!114 &114614464667114216
 MonoBehaviour:
