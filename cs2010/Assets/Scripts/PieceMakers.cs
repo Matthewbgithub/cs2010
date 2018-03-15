@@ -42,10 +42,19 @@ public class PieceMakers : MonoBehaviour {
 	}
 	 void OnMouseEnter()
 	 {
-		 //sets to material 1, selected
-		 if(!SaveLoad.Locked())
+		 if(rend)
 		 {
 		 	rend.material = material[1]; 
+		 
+			 //sets to material 1, selected
+			 if(!SaveLoad.Locked())
+			 {
+				rend.enabled = true;
+			 }
+			 else
+			 {
+				rend.enabled = false;	 
+			 }
 		 }
 	 }	
 	 void OnMouseExit()
