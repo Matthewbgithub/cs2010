@@ -27,18 +27,13 @@ public class EndScript : MonoBehaviour {
 
         foreach (TextMeshProUGUI text in tmp)
         {
-
-
-            if (text.name == "blackScore")
+            if (blackScore > whiteScore)
             {
-
-                text.text = blackScore.ToString();
+                text.faceColor = new Color32(255, 255, 255, 255);
             }
-
-            if (text.name == "whiteScore")
+            else
             {
-
-                text.text = whiteScore.ToString();
+                text.faceColor = new Color32(0, 0, 0, 255);
             }
 
             if (text.name == "winnerText")
@@ -53,6 +48,20 @@ public class EndScript : MonoBehaviour {
                 }
 
             }
+
+            if (text.name == "blackScore")
+            {
+
+                text.text = blackScore.ToString();
+            }
+
+            if (text.name == "whiteScore")
+            {
+
+                text.text = whiteScore.ToString();
+            }
+
+
         }
 	}
 
