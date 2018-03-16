@@ -596,6 +596,7 @@ public class GoBoard : MonoBehaviour {
             {
                 blackCount++;
             }
+
             IncrementTurns();
             return true;
 		}
