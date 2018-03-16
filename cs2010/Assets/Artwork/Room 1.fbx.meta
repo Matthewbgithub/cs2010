@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 08791290891fe714db961dad0ec95b30
+timeCreated: 1521231812
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: AXEL1
+    100002: AXEL2
+    100004: AXEL3
+    100006: carpet1
+    100008: Circle1
+    100010: Circle_001_1
+    100012: Circle_002_1
+    100014: Component1
+    100016: Component2
+    100018: Component3
+    100020: Component_1_1
+    100022: Composant_1_1
+    100024: F_R_A_N_C_E1
+    100026: F_R_A_N_C_E2
+    100028: F_R_A_N_C_E3
+    100030: G_1_2_3_4_5_6_1
+    100032: G_1_2_3_4_5_6_2
+    100034: G_1_2_3_4_5_6_3
+    100036: G_2012_1
+    100038: G_2012_2
+    100040: G_2012_3
+    100042: G_72VIVS3D_44020100_000015_1_1
+    100044: G_72VIVS3D__000016_1_1
+    100046: Hal__Wood__1_1
+    100048: Logo_Samsung_en_3D1
+    100050: Mesh1
+    100052: Mesh10
+    100054: Mesh11
+    100056: Mesh12
+    100058: Mesh13
+    100060: Mesh14
+    100062: Mesh15
+    100064: Mesh16
+    100066: Mesh17
+    100068: Mesh18
+    100070: Mesh19
+    100072: Mesh2
+    100074: Mesh20
+    100076: Mesh21
+    100078: Mesh22
+    100080: Mesh23
+    100082: Mesh24
+    100084: Mesh25
+    100086: Mesh26
+    100088: Mesh27
+    100090: Mesh28
+    100092: Mesh29
+    100094: Mesh3
+    100096: Mesh30
+    100098: Mesh31
+    100100: Mesh32
+    100102: Mesh33
+    100104: Mesh34
+    100106: Mesh35
+    100108: Mesh36
+    100110: Mesh37
+    100112: Mesh38
+    100114: Mesh4
+    100116: Mesh5
+    100118: Mesh6
+    100120: Mesh7
+    100122: Mesh8
+    100124: Mesh9
+    100126: OB__000000_1
+    100128: OB__000001_1
+    100130: OB__000002_1
+    100132: OB__000003_1
+    100134: OB__000004_1
+    100136: OB__000005_1
+    100138: OB__000006_1
+    100140: OB__000007_1
+    100142: OB__000008_1
+    100144: OB__000008_2
+    100146: OB__000008_3
+    100148: OB__000008_4
+    100150: OB__000009_1
+    100152: OB__000010_1
+    100154: OB__000011_1
+    100156: OB__000012_1
+    100158: OB__000013_1
+    100160: OB__000014_1_1
+    100162: Paris_France1
+    100164: Paris_France2
+    100166: Paris_France3
+    100168: pen_barrel1
+    100170: pen_barrel2
+    100172: //RootNode
+    100174: skp168E1
+    100176: Table1
+    100178: Wood_Pen1
+    400000: AXEL1
+    400002: AXEL2
+    400004: AXEL3
+    400006: carpet1
+    400008: Circle1
+    400010: Circle_001_1
+    400012: Circle_002_1
+    400014: Component1
+    400016: Component2
+    400018: Component3
+    400020: Component_1_1
+    400022: Composant_1_1
+    400024: F_R_A_N_C_E1
+    400026: F_R_A_N_C_E2
+    400028: F_R_A_N_C_E3
+    400030: G_1_2_3_4_5_6_1
+    400032: G_1_2_3_4_5_6_2
+    400034: G_1_2_3_4_5_6_3
+    400036: G_2012_1
+    400038: G_2012_2
+    400040: G_2012_3
+    400042: G_72VIVS3D_44020100_000015_1_1
+    400044: G_72VIVS3D__000016_1_1
+    400046: Hal__Wood__1_1
+    400048: Logo_Samsung_en_3D1
+    400050: Mesh1
+    400052: Mesh10
+    400054: Mesh11
+    400056: Mesh12
+    400058: Mesh13
+    400060: Mesh14
+    400062: Mesh15
+    400064: Mesh16
+    400066: Mesh17
+    400068: Mesh18
+    400070: Mesh19
+    400072: Mesh2
+    400074: Mesh20
+    400076: Mesh21
+    400078: Mesh22
+    400080: Mesh23
+    400082: Mesh24
+    400084: Mesh25
+    400086: Mesh26
+    400088: Mesh27
+    400090: Mesh28
+    400092: Mesh29
+    400094: Mesh3
+    400096: Mesh30
+    400098: Mesh31
+    400100: Mesh32
+    400102: Mesh33
+    400104: Mesh34
+    400106: Mesh35
+    400108: Mesh36
+    400110: Mesh37
+    400112: Mesh38
+    400114: Mesh4
+    400116: Mesh5
+    400118: Mesh6
+    400120: Mesh7
+    400122: Mesh8
+    400124: Mesh9
+    400126: OB__000000_1
+    400128: OB__000001_1
+    400130: OB__000002_1
+    400132: OB__000003_1
+    400134: OB__000004_1
+    400136: OB__000005_1
+    400138: OB__000006_1
+    400140: OB__000007_1
+    400142: OB__000008_1
+    400144: OB__000008_2
+    400146: OB__000008_3
+    400148: OB__000008_4
+    400150: OB__000009_1
+    400152: OB__000010_1
+    400154: OB__000011_1
+    400156: OB__000012_1
+    400158: OB__000013_1
+    400160: OB__000014_1_1
+    400162: Paris_France1
+    400164: Paris_France2
+    400166: Paris_France3
+    400168: pen_barrel1
+    400170: pen_barrel2
+    400172: //RootNode
+    400174: skp168E1
+    400176: Table1
+    400178: Wood_Pen1
+    2300000: Mesh1
+    2300002: Mesh10
+    2300004: Mesh11
+    2300006: Mesh12
+    2300008: Mesh13
+    2300010: Mesh14
+    2300012: Mesh15
+    2300014: Mesh16
+    2300016: Mesh17
+    2300018: Mesh18
+    2300020: Mesh19
+    2300022: Mesh2
+    2300024: Mesh20
+    2300026: Mesh21
+    2300028: Mesh22
+    2300030: Mesh23
+    2300032: Mesh24
+    2300034: Mesh25
+    2300036: Mesh26
+    2300038: Mesh27
+    2300040: Mesh28
+    2300042: Mesh29
+    2300044: Mesh3
+    2300046: Mesh30
+    2300048: Mesh31
+    2300050: Mesh32
+    2300052: Mesh33
+    2300054: Mesh34
+    2300056: Mesh35
+    2300058: Mesh36
+    2300060: Mesh37
+    2300062: Mesh38
+    2300064: Mesh4
+    2300066: Mesh5
+    2300068: Mesh6
+    2300070: Mesh7
+    2300072: Mesh8
+    2300074: Mesh9
+    3300000: Mesh1
+    3300002: Mesh10
+    3300004: Mesh11
+    3300006: Mesh12
+    3300008: Mesh13
+    3300010: Mesh14
+    3300012: Mesh15
+    3300014: Mesh16
+    3300016: Mesh17
+    3300018: Mesh18
+    3300020: Mesh19
+    3300022: Mesh2
+    3300024: Mesh20
+    3300026: Mesh21
+    3300028: Mesh22
+    3300030: Mesh23
+    3300032: Mesh24
+    3300034: Mesh25
+    3300036: Mesh26
+    3300038: Mesh27
+    3300040: Mesh28
+    3300042: Mesh29
+    3300044: Mesh3
+    3300046: Mesh30
+    3300048: Mesh31
+    3300050: Mesh32
+    3300052: Mesh33
+    3300054: Mesh34
+    3300056: Mesh35
+    3300058: Mesh36
+    3300060: Mesh37
+    3300062: Mesh38
+    3300064: Mesh4
+    3300066: Mesh5
+    3300068: Mesh6
+    3300070: Mesh7
+    3300072: Mesh8
+    3300074: Mesh9
+    4300000: Mesh1
+    4300002: Mesh2
+    4300004: Mesh3
+    4300006: Mesh4
+    4300008: Mesh5
+    4300010: Mesh6
+    4300012: Mesh7
+    4300014: Mesh8
+    4300016: Mesh9
+    4300018: Mesh10
+    4300020: Mesh11
+    4300022: Mesh12
+    4300024: Mesh13
+    4300026: Mesh14
+    4300028: Mesh15
+    4300030: Mesh16
+    4300032: Mesh17
+    4300034: Mesh18
+    4300036: Mesh19
+    4300038: Mesh20
+    4300040: Mesh21
+    4300042: Mesh22
+    4300044: Mesh23
+    4300046: Mesh24
+    4300048: Mesh25
+    4300050: Mesh26
+    4300052: Mesh27
+    4300054: Mesh28
+    4300056: Mesh29
+    4300058: Mesh30
+    4300060: Mesh31
+    4300062: Mesh32
+    4300064: Mesh33
+    4300066: Mesh34
+    4300068: Mesh35
+    4300070: Mesh36
+    4300072: Mesh37
+    4300074: Mesh38
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blinds_Wood_White
+    second: {fileID: 2100000, guid: aef6015f98a0e5f4db3056034a187b34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carpet_Loop_Pattern
+    second: {fileID: 2100000, guid: 6e26ef1191ea35440aa1e5c733d99f33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_002
+    second: {fileID: 2100000, guid: 7839500edd7ad3e409f16ec210a7826d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_003
+    second: {fileID: 2100000, guid: 1b61a5c0675594f458d0b878c7cd7fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_005
+    second: {fileID: 2100000, guid: d911566d2d26db14dab44479fcd32ca6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_008
+    second: {fileID: 2100000, guid: b03c90e271285494ab33bfb7d4375113, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_009
+    second: {fileID: 2100000, guid: 09e63aa7ebf2139418ffdd4116f4221f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_A05
+    second: {fileID: 2100000, guid: a1499bc687b9ecc4bab2d80a41088e48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_A08
+    second: {fileID: 2100000, guid: 2d0732f78abb04a418c4cdd08be7fb9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_C02
+    second: {fileID: 2100000, guid: 23a0c1e2fc038064f9f5c14a355fec7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_C10
+    second: {fileID: 2100000, guid: 0916f12d2723a774d94aeb8b954462de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_C12
+    second: {fileID: 2100000, guid: fead45e6172326b42b2adda8d861ca59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_D04
+    second: {fileID: 2100000, guid: abb1924c2bda0ed4aa9c26565633b5fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_D09
+    second: {fileID: 2100000, guid: c1a0c646715796a40ab463af4d6ed52b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_E08
+    second: {fileID: 2100000, guid: 787c9dad2623fa44f9b5bfc2284ab292, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_E12
+    second: {fileID: 2100000, guid: 8033d517b214ab64c95436f0031dda2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrontColor
+    second: {fileID: 2100000, guid: de9a3f443b67f5540aea9a7ad32d5558, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Go_logo
+    second: {fileID: 2100000, guid: f8e4dea4f5b45b84a880e4795a201bba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JavaJacket1
+    second: {fileID: 2100000, guid: d65fa406a632b2949b2179a546cb939e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light_Blue
+    second: {fileID: 2100000, guid: 6d1564d101e56184b93ee8396e1b00f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_0045_Goldenrod
+    second: {fileID: 2100000, guid: c90f7a870b563b9458d3a807b2a97eff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_0128_White
+    second: {fileID: 2100000, guid: 37174c068eb115a4a8094f89f3eb6561, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper1
+    second: {fileID: 2100000, guid: 4b92686baf7f24c438ed37263094286e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sketchy_Lines_Wavy_45_A
+    second: {fileID: 2100000, guid: cf841802e82d92b409a38be57f7bad55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: e7fbeaa2a26f1c140a5c2149876d871d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_Floor
+    second: {fileID: 2100000, guid: 9844e9e88d16705428d65601178adc9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood_Floor_Dark
+    second: {fileID: 2100000, guid: ced0a4c1cd5e6034bbac69c1f7c5c8bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _0136_Charcoal_1
+    second: {fileID: 2100000, guid: fac87c6f6e8aa7d4386daaf741268b74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Charcoal_
+    second: {fileID: 2100000, guid: 3422d54373f1e1b4c920b7d1f369c850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Color_000_1
+    second: {fileID: 2100000, guid: 8db130655be91b34ea744dc118ebed04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Color_008_1
+    second: {fileID: 2100000, guid: 90b546f3d666ae64e80f67a9672e22fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Metal_Corrogated_Shiny_3
+    second: {fileID: 2100000, guid: e9803e1874d1773478c6323e6b4f3e21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Metal_Corrogated_Shiny_4
+    second: {fileID: 2100000, guid: 17efc875d7735c84f8c37ddbfdf0738b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: film_2
+    second: {fileID: 2100000, guid: 5f5251a1fa3007640abeafc8d00791db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: oak_large2
+    second: {fileID: 2100000, guid: bb66ee7f535ff2e41b46422168723ed9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: small_wood_pattern_purple_heart_
+    second: {fileID: 2100000, guid: f145157cb953d584b9893bcc72410aef, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
