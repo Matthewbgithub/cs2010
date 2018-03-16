@@ -155,10 +155,11 @@ public class GoBoard : MonoBehaviour {
         }
     }
 
-    private void BlitzModeLogic(){
-        if(playerTimer == 15){
+    public void BlitzModeLogic(){
+        if(playerTimer >= 15){
             time = 0;
             playerTimer = 0;
+            turns++;
             PassTurn();
         }
     }
@@ -248,7 +249,6 @@ public class GoBoard : MonoBehaviour {
             Invoke("DeactivatePassText", 1);
             EndLogic();
             turns++;
-            isWhiteTurn = (turns % 2 == 0);
 			SetRolloverColour();
         }
 	}
@@ -307,7 +307,7 @@ public class GoBoard : MonoBehaviour {
     }
     public bool IsWhiteTurn()
     {
-        return isWhiteTurn;
+        return (turns % 2 == 0);
     }
     //todo remove before prod
     public void IncrementTurns()
@@ -323,7 +323,6 @@ public class GoBoard : MonoBehaviour {
                 blackPass = false;
             }
             turns++;
-            isWhiteTurn = (turns % 2 == 0);
         }
     }
     public int GetBoardSize()

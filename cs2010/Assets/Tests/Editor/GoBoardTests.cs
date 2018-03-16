@@ -38,7 +38,6 @@ public class GoBoardTests {
 	[Test]
 	public void TestBlackCounterInit() {
 		int blackCount = script.GetBlackCount ();
-
 		// Black counter should initialise to 0
 		Assert.AreEqual (0, blackCount, "blackCount did not initialize to 0");
 	}
@@ -46,7 +45,6 @@ public class GoBoardTests {
 	[Test]
 	public void TestWhiteCounterInit() {
 		int whiteCount = script.GetWhiteCount ();
-
 		// White counter should initialise to 0
 		Assert.AreEqual (0, whiteCount, "whiteCount did not initialize to 0");
 	}
@@ -219,4 +217,34 @@ public class GoBoardTests {
 		Assert.IsFalse (script.IsEmpty(5, 5), "The white pebble appears to have captured itself");
 	}
 
+    [Test]
+    public void TestEndScore(){
+        script.Start();
+
+        script.PassTurn();
+        script.PassTurn();
+
+        // 0
+        int blackScore = script.GetBlackCount() + script.GetBlackTerritories();
+        // 3.5
+        float whiteScore = script.GetWhiteCount() + script.GetWhiteTerritories() + script.komi;
+
+        Assert.AreEqual(0, blackScore ,"Black score is not 0");
+        Assert.AreEqual(3.5, whiteScore, "white score is not 3.5");
+        Assert.Greater(whiteScore, blackScore, "white score is less than black score" );
+    }
+
+    [Test]
+    public void TestTimerCountDown(){
+        script.Start();
+
+        GoBoard.blitzMode = true;
+        Assert.IsFalse(script.IsWhiteTurn(), "It should be black turn");
+
+        script.playerTimer = 15;
+        script.BlitzModeLogic();
+
+        Assert.IsTrue(script.IsWhiteTurn(), "It should be white turn");
+
+    }
 }
