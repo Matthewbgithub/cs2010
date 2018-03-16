@@ -93,7 +93,7 @@ public class GoBoard : MonoBehaviour {
 
 		territoryChecked = new bool[GetBoardSize(), GetBoardSize()];
 
-        boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0.3f, -(boardPhysicalSize/2.0f));//center of board i think
+        boardOffset = new Vector3(-(boardPhysicalSize / 2.0f), 0.6f, -(boardPhysicalSize/2.0f));//center of board i think
 		board = new PieceMakers[GetBoardSize(), GetBoardSize()];
 		GenerateBoard();
 	}
