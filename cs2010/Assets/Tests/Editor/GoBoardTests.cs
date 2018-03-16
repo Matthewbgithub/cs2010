@@ -222,7 +222,6 @@ public class GoBoardTests {
         script.Start();
 
         script.PassTurn();
-        script.PassTurn();
 
         // 0
         int blackScore = script.GetBlackCount() + script.GetBlackTerritories();
@@ -246,5 +245,37 @@ public class GoBoardTests {
 
         Assert.IsTrue(script.IsWhiteTurn(), "It should be white turn");
 
+    }
+
+    [Test]
+    public void TestTerritoryCount(){
+        script.Start();
+
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(1,0);
+        //white
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(9, 9);
+        //script.PassTurn();
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(1,1);
+        //white
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(10, 10);
+        //script.PassTurn();
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(1, 2);
+        //white
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(7,7);
+        //script.PassTurn();
+        Debug.Log(script.GetTurns().ToString());
+        script.PlacePiece(0,3);
+       
+        script.TakeTurnPart2();
+        //Debug.Log(script.GetTurns().ToString());
+        //script.PlacePiece(7, 8);
+        //script.PlacePiece(7, 9);
+        Assert.AreEqual(3,script.GetBlackTerritories(),"black territory is not 3");
     }
 }
