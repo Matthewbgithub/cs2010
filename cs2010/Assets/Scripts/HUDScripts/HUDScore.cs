@@ -26,11 +26,11 @@ public class HUDScore : MonoBehaviour
 		foreach (TextMeshProUGUI text in tmp) {
 			
 			if (text.name == "blackCount") {
-				text.text = "black: " + board.GetBlackCount ().ToString ();
+				text.text = "Moves: " + board.GetBlackCount ().ToString ();
 			}
 
 			if (text.name == "whiteCount") {
-				text.text = "white: " + board.GetWhiteCount ().ToString ();
+				text.text = "Moves: " + board.GetWhiteCount ().ToString ();
 			}
 
             if (text.name == "whiteTerritory")
