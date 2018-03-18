@@ -7,6 +7,7 @@ using TMPro;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System;
 
 [System.Serializable]
 public class GoBoard : MonoBehaviour {
@@ -356,6 +357,7 @@ public class GoBoard : MonoBehaviour {
             }
         }
     }
+    
 
     private IEnumerator ResetScene()
     {
@@ -655,15 +657,17 @@ public class GoBoard : MonoBehaviour {
 
     public void CheckForCaptures(int x, int y)
     {
+
+        
         //start at x and y and then scan about to find any big captures
-		ResetBoardChecked();
+        ResetBoardChecked();
         //checks spaces around the one that has been placed and then the piece itself last
         //re-ordering this so that the just {x,y} line is at the bottom means that the piece you place takes priority, having it at the top of the list gives other pieces priority
         int[][] xychange = {
-			new int[] {x  ,y-1},
+			new int[] {x+1,y  },
 			new int[] {x  ,y+1},
 			new int[] {x-1,y  },
-			new int[] {x+1,y  },
+			new int[] {x  ,y-1},
 			new int[] {x  ,y  }
 		};
 
@@ -675,18 +679,19 @@ public class GoBoard : MonoBehaviour {
                 //will not check if piece exists and not already checked
                 if (!GetPieceOnBoard(xy[0],xy[1]).IsEmpty() && !IsBoardChecked(xy[0],xy[1]))
 				{
-					//add to list of items already checked as to avoid checking it again to increase game speed
-					SetBoardChecked(xy[0],xy[1]);
+
+                    //add to list of items already checked as to avoid checking it again to increase game speed
+                    SetBoardChecked(xy[0],xy[1]);
                     SearchFromHere(xy[0],xy[1]);
 					if(captureThisGroup)
 					{
-						RemoveCaptured();
+                        //SaveLoad.CaptureLock();
+                        RemoveCaptured();
 					}
-					ResetGroupChecked();
-					//empty list of objects to be removed
-					removeOnCapture.Clear();
-					//set the flag back to true
-					captureThisGroup = true;
+                    ResetGroupChecked();
+                    removeOnCapture.Clear();
+                    //set the flag back to true
+                    captureThisGroup = true;
 				}
 			}
 		}
@@ -775,35 +780,75 @@ public class GoBoard : MonoBehaviour {
     {
         groupCapture  = new bool[GetBoardSize(), GetBoardSize()];
     }
+    
     private void RemoveCaptured()
     {
-		//removes all pieces in the array holding the pieces to be
-		foreach (int[] xy in removeOnCapture)
-		{
-			Remove(xy[0],xy[1]);
-		}
+        //lock at the start of the capture
+        SaveLoad.CaptureLock();
+        //start the timer
+        Piece.captureOrder = 0;
+        //removes all pieces in the array holding the pieces to be
+        foreach (int[] xy in removeOnCapture)
+        {
+            //if it is the last piece to be removed
+            if (removeOnCapture.IndexOf(xy) == removeOnCapture.Count - 1)
+            {
+                //the long bit at the end calculates the time that the whole animation should have finished by
+                //capture order will be time that the last piece is initiated to be removed
+                //the bit after is the length of the animation - a small buffer so it happens before it ends
+                Invoke("unlockafterCapture", (Piece.captureOrder + (1/Piece.animSpeed) - 0.1f));
+            }
+            //remove piece
+            Remove(xy[0], xy[1]);
+        }
+        
     }
+    private void unlockafterCapture()
+    {
+        SaveLoad.CaptureUnlock();
+    }
+    /*
+    int whereAmICapturing = 0;
+    private void RemoveCaptured()
+    {
+        whereAmICapturing = 0;
+        InvokeRepeating("RemoveNextCaptured", 0.01f, 0.1f);
+    }
+    private void RemoveNextCaptured()
+    {
+        Debug.Log("remove called" + whereAmICapturing);
+        Debug.Log(removeOnCapture[whereAmICapturing]);
+        int[] xy = (int[]) removeOnCapture[whereAmICapturing];
+        Remove(xy[0], xy[1]);
+        removeOnCapture.Remove(whereAmICapturing);
+        whereAmICapturing++;
+        if (whereAmICapturing >= removeOnCapture.Count)
+        {
+            CancelInvoke();
+            SaveLoad.CaptureUnlock();
+        }
+    }*/
     private void CheckSurrounding(int x, int y)
     {
-        //think you should merge this with search neighbours perhaps
-		if(!IsGroupChecked(x-1,y))
+        //up
+        if (!IsGroupChecked(x, y + 1))
+        {
+            //add to list of pieces checked for the check group to avoid infinite loops
+            SetGroupChecked(x, y + 1);
+            //check it
+            Check(x, y + 1);
+        }
+        //right
+        if (!IsGroupChecked(x + 1, y))
+        {
+            SetGroupChecked(x + 1, y);
+            Check(x + 1, y);
+        }
+        //left
+        if (!IsGroupChecked(x-1,y))
 		{
-			//add to list of pieces checked for the check group to avoid infinite loops
 			SetGroupChecked(x-1,y);
-			//check it
 			Check(x-1,y);
-		}
-		//left
-		if(!IsGroupChecked(x+1,y))
-		{
-			SetGroupChecked(x+1,y);
-			Check(x+1,y);
-		}
-		//up
-		if(!IsGroupChecked(x,y+1))
-		{
-			SetGroupChecked(x,y+1);
-			Check(x,y+1);
 		}
 		//down
 		if(!IsGroupChecked(x,y-1))
@@ -843,7 +888,7 @@ public class GoBoard : MonoBehaviour {
     public void Remove(int x, int y)
     {
         Debug.Log(GetPieceOnBoard(x,y).GetColour() +" piece at " + x + ", " + y + " has been removed.");
-		AlertWithTimeout(x,y);
+		//AlertWithTimeout(x,y);
 		if (GetPieceOnBoard (x, y).IsWhite ()) {
 			whiteCount--;
 		} else {
@@ -868,6 +913,7 @@ public static class SaveLoad
 
     public static bool animLocked = false;
     public static bool boardLocked = false;
+    public static bool captureLocked = false;
 
     public static int CountSavedGames()
     {
@@ -909,10 +955,20 @@ public static class SaveLoad
         //Debug.Log("unlocked");
         boardLocked = false;
     }
+    public static void CaptureLock()
+    {
+        //Debug.Log("locked");
+        captureLocked = true;
+    }
+    public static void CaptureUnlock()
+    {
+        //Debug.Log("unlocked");
+        captureLocked = false;
+    }
 
     public static bool Locked()
     {
-        return animLocked || boardLocked;
+        return animLocked || boardLocked || captureLocked;
     }
 
     public static void Save(GameState state, int slot)

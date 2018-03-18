@@ -116,9 +116,11 @@ public class PieceMakers : MonoBehaviour {
 		if(!IsEmpty())
 		{
         	isPiece = false;
-            thisPiece.GetComponent<Piece>().DestroyWithAnimation();
-        	//delete current piece
-		}
+            //thisPiece.GetComponent<Piece>().DestroyWithAnimation();
+
+            //removes pieces and adds a timing to it to remove in a nice looking way
+            thisPiece.GetComponent<Piece>().DestroyWithTiming();
+        }
 	}	
     public void PlaceAnimationFinished()
     {
