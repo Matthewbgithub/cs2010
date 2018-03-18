@@ -31,11 +31,10 @@ public class InstructionPool
 		return instructions.Count;
 	}
 
-	public void SetupInstructions() {
+	public void SetupInstructions(string XmlPath) {
 		// Load the XML file
 		try {
-		var path = "/Scripts/Tutorial/";
-		instructionSet.Load (Path.Combine(Application.dataPath + path, "Tutorial.xml"));
+			instructionSet.Load (XmlPath);
 		}
 		catch (FileNotFoundException e) {
 			Debug.LogError ("Reverting back to main menu due to: " + e);

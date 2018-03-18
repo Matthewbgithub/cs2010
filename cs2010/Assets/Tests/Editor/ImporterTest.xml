@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Instructions>
+	<Instruction>
+		<Body>Body from the first instruction</Body>
+        <VoiceOver>1</VoiceOver>
+	</Instruction>
+	<Instruction>
+		<Body>Body from the second instruction</Body>
+        <VoiceOver>2</VoiceOver>
+		<Pos>
+			<X>1</X>
+			<Y>2</Y>
+		</Pos>
+	</Instruction>
+</Instructions>
