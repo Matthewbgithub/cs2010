@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUp: {fileID: 213731710}
-  panel: {fileID: 0}
+  panel: {fileID: 238243925}
   board: {fileID: 221342194}
 --- !u!1 &221342193 stripped
 GameObject:
@@ -10001,10 +10001,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1ac5c3888147bea169eae9e3215a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackPanel: {fileID: 0}
-  whitePanel: {fileID: 0}
-  saveButton: {fileID: 0}
-  loadButton: {fileID: 0}
+  blackPanel: {fileID: 861342137}
+  whitePanel: {fileID: 1625513781}
+  saveButton: {fileID: 1728575322}
+  loadButton: {fileID: 2078288128}
   board: {fileID: 221342194}
 --- !u!114 &1105691004
 MonoBehaviour:
@@ -14528,7 +14528,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: b72ef7591b84b964da4f6efee9e995e1, type: 2}
     - target: {fileID: 33894443375993528, guid: f5670e41ce0c866429125fa08dd03dca,
         type: 2}
       propertyPath: m_Mesh
