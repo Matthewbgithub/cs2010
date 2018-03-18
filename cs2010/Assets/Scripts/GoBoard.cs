@@ -844,18 +844,19 @@ public class GoBoard : MonoBehaviour {
             SetGroupChecked(x + 1, y);
             Check(x + 1, y);
         }
+        //down
+        if (!IsGroupChecked(x, y - 1))
+        {
+            SetGroupChecked(x, y - 1);
+            Check(x, y - 1);
+        }
         //left
         if (!IsGroupChecked(x-1,y))
 		{
 			SetGroupChecked(x-1,y);
 			Check(x-1,y);
 		}
-		//down
-		if(!IsGroupChecked(x,y-1))
-		{
-			SetGroupChecked(x,y-1);
-			Check(x,y-1);
-		}
+		
     }
 	private void SearchFromHere(int x, int y)
 	{
