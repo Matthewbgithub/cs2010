@@ -2425,12 +2425,12 @@ MonoBehaviour:
     type: 2}
   endCanvas: {fileID: 213731707}
   hudCanvas: {fileID: 1016689249}
-  blitzHudCanvas: {fileID: 0}
+  blitzHudCanvas: {fileID: 1105691006}
   playerTimer: 0
-  passText: {fileID: 0}
-  model9: {fileID: 0}
-  model13: {fileID: 0}
-  model19: {fileID: 0}
+  passText: {fileID: 1715883238}
+  model9: {fileID: 100000, guid: f934fc1bcb617f548bf2e8e6afdb0b11, type: 3}
+  model13: {fileID: 100000, guid: 3fda2b77545d3264b8e087aae338e85e, type: 3}
+  model19: {fileID: 100000, guid: 076bc605671518847bf1bb7443999d66, type: 3}
 --- !u!1 &231281173
 GameObject:
   m_ObjectHideFlags: 0
@@ -8926,10 +8926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66c1ac5c3888147bea169eae9e3215a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackPanel: {fileID: 0}
-  whitePanel: {fileID: 0}
-  saveButton: {fileID: 0}
-  loadButton: {fileID: 0}
+  blackPanel: {fileID: 1249669925}
+  whitePanel: {fileID: 1713005113}
+  saveButton: {fileID: 1728575322}
+  loadButton: {fileID: 2078288128}
   board: {fileID: 221342194}
 --- !u!1 &1018272003
 GameObject:
@@ -17546,10 +17546,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   hudCanvas: {fileID: 1016689249}
-  blitzHudCanvas: {fileID: 0}
-  tutCanvas: {fileID: 0}
-  blitzText: {fileID: 0}
-  goText: {fileID: 0}
+  blitzHudCanvas: {fileID: 1105691006}
+  tutCanvas: {fileID: 713311317}
+  blitzText: {fileID: 544839890}
+  goText: {fileID: 1415038886}
 --- !u!1 &1897980056
 GameObject:
   m_ObjectHideFlags: 0
