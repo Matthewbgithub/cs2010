@@ -43,12 +43,15 @@ public class PieceMakers : MonoBehaviour {
 	 void OnMouseEnter()
 	 {
 		 //sets to material 1, selected
-		 rend.material = material[1];
+		 if(!SaveLoad.Locked())
+		 {
+		 	rend.material = material[1]; 
+		 }
 	 }	
 	 void OnMouseExit()
 	 {
 		 //sets to material 0, unselected
-		 rend.material = material[0];
+		 rend.material = material[0]; 
 	 }
     void OnMouseDown()
     {
@@ -78,6 +81,7 @@ public class PieceMakers : MonoBehaviour {
     {
         return this.isWhite;
     }
+
     public bool Place(bool isWhite)
     {
         isPiece = true;
@@ -86,18 +90,17 @@ public class PieceMakers : MonoBehaviour {
         //increments turn
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
-        pos.y = 0.15f;
+        pos.y += 0.15f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         var pot = (isWhite) ? new Vector3(-15, 0.2f, 0) : new Vector3(15, 0.2f, 0);
         this.thisPiece = Instantiate(this.pebble, pot, rot);
-        this.thisPiece.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        this.thisPiece.transform.SetParent(this.transform);
+        this.thisPiece.transform.localScale = new Vector3(0.9f, 0.4f, 0.9f);
 		this.thisPiece.GetComponent<Piece>().Initialize(isWhite, this, pos);
-        Debug.Log("scaling-------" + thisPiece.transform.localScale);
-        //tells the piece where it is on the board
-        //place a piece on me
         return true;
     }
+
     public void RemovePiece()
     {
 		if(!IsEmpty())
@@ -127,4 +130,14 @@ public class PieceMakers : MonoBehaviour {
 	{
 		material[1] = (!isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
 	}
+    public void Alert()
+    {
+        rend.material = Resources.Load("illegalRollover", typeof(Material)) as Material;
+        StartCoroutine(AlertWait(0.5f));
+    }
+    private IEnumerator AlertWait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        rend.material = material[0];
+    }
 }

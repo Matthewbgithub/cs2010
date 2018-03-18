@@ -223,6 +223,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Resources\NewPlayModeTest.cs" />
+    <Compile Include="Assets\Scripts\cameraScript.cs" />
+    <Compile Include="Assets\Scripts\ContinueScript.cs" />
     <Compile Include="Assets\Scripts\GoBoard.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\EndScript.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
+    <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadFileNames.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
     <Compile Include="Assets\Tests\CaptureTests.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />

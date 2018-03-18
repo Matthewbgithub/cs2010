@@ -78,6 +78,8 @@ public class GoBoardTests {
 	public void TestWhitePiecePlacement() {
 		script.Start ();
 
+        script.PlacePiece(0,0);
+
 		// Check the PlacePiece() returns true. Operation is complete.
 		Assert.IsTrue (script.PlacePiece (5, 5), "PlacePiece() operation failed");
 		 
@@ -85,7 +87,6 @@ public class GoBoardTests {
 		 * Complete further checks to ensure white piece exists at 5, 5.
 		 * Can't trust PlacePiece() method completely.
 		 **/
-
 		// Is there a piece at 5, 5 that is white?
 		Assert.IsTrue (script.GetPieceOnBoard(5, 5).IsWhite(), "No white piece found at 5, 5");
 		// Is the white counter incrementing?
@@ -95,9 +96,6 @@ public class GoBoardTests {
 	[Test]
 	public void TestBlackPiecePlacement() {
 		script.Start ();
-
-		// Pass the turn to the black counter
-		PassTurnToBlack ();
 
 		// Check the PlacePiece() returns true. Operation is complete.
 		Assert.IsTrue (script.PlacePiece (5, 5), "PlacePiece() operation failed");
@@ -127,6 +125,7 @@ public class GoBoardTests {
 	[Test]
 	public void TestWhitePieceCapture() {
 		script.Start ();
+        PassTurnToWhite();
 
 		// Place a white pebble at 5, 5
 		script.PlacePiece (5, 5);
@@ -152,7 +151,6 @@ public class GoBoardTests {
 	[Test]
 	public void TestBlackPieceCapture() {
 		script.Start ();
-		PassTurnToBlack ();
 
 		// Place a black pebble at 5, 5
 		script.PlacePiece (5, 5);

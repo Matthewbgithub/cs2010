@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 063f80008e830964aa0740b60f8a32d1
-timeCreated: 1519129122
+timeCreated: 1519736394
 licenseType: Free
 MonoImporter:
   externalObjects: {}
@@ -9,6 +9,8 @@ MonoImporter:
   - piecePlaceHolder: {fileID: 1842046783084788, guid: e045d20e15282a248a7456b3ca28332c,
       type: 2}
   - endCanvas: {fileID: 223970515704711930, guid: 8ed0d84ba714147d0abd2c495020f3c3,
+      type: 2}
+  - hudCanvas: {fileID: 1312679879964688, guid: d9a933c5282e1413d9322046d2373df9,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

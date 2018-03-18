@@ -11,6 +11,8 @@ public class Piece : MonoBehaviour {
 
     //animation
     public Animator anim;
+    private bool enterAnimating;
+    private bool leaveAnimating;
 
     //enter animation
     public AnimationCurve moveCurve;
@@ -20,31 +22,71 @@ public class Piece : MonoBehaviour {
     private float lerpTime = 1f;
     private float animSpeed = 2.5f;
 
-    /*private void Start()
+    private void Start()
     {
         //not sure why i've called these in the intializer and the start function it gets a bit sad if i dont
-        anim = GetComponent<Animator>();
-        rend = GetComponent<Renderer>();
+        //anim = GetComponent<Animator>();
+        //rend = GetComponent<Renderer>();
+        currentLerpTime = 0f;
+        enterAnimating = true;
+        leaveAnimating = false;
     }
-    */
+    
     void Update()
-    { 
-
+    {
+        //Debug.Log("current: " + currentLerpTime + " lerptime: " + lerpTime);
         //increment timer once per frame
-        currentLerpTime += Time.deltaTime;
-         if (currentLerpTime > lerpTime) {
-             currentLerpTime = lerpTime;
-         }
+        if (enterAnimating && currentLerpTime < 1.0f)
+        {
+            currentLerpTime += (animSpeed * Time.deltaTime);
+            if (currentLerpTime > lerpTime)
+            {
+                currentLerpTime = lerpTime;
+            }
+            
+            float perc = currentLerpTime / lerpTime;
+            //TODO make this an arc
+            transform.position = Vector3.Lerp(startPoint, target, perc);
+            if(currentLerpTime >= 1.0f)
+            {
+                //animation is complete at this point
+                theMaker.PlaceAnimationFinished();
+                enterAnimating = false;
+                //reset values to prep for removal animation
+                currentLerpTime = 0f;
+                lerpTime = 1f;
 
-        //animation curve, *2 is a speed modifier
-        float perc = (currentLerpTime*animSpeed) / lerpTime;
-        transform.position = Vector3.Lerp(startPoint, target, perc);
+                target = startPoint;
+                startPoint = this.transform.position;
+            }
+        }
+        if(leaveAnimating && currentLerpTime < 1.0f)
+        {
+            currentLerpTime += (animSpeed * Time.deltaTime);
+            if (currentLerpTime > lerpTime)
+            {
+                currentLerpTime = lerpTime;
+            }
+
+            float perc = currentLerpTime / lerpTime;
+            //TODO make this an arc
+            transform.position = Vector3.Lerp(startPoint, target, perc);
+            if (currentLerpTime >= 1.0f)
+            {
+                //leaving is complete
+                SaveLoad.Unlock();
+                leaveAnimating = false;
+                this.Destroy();
+            }
+        }
     }
+
     public void Initialize(bool isWhite, PieceMakers pm, Vector3 goToLocation)
 	{
         currentLerpTime = 0f;
         startPoint = transform.position;
         target = goToLocation;
+		
         theMaker = pm;
         anim = GetComponent<Animator>();
         rend = GetComponent<Renderer>();
@@ -69,7 +111,7 @@ public class Piece : MonoBehaviour {
     {
         //so you cant abuse the wait time of the animation
         SaveLoad.Lock();
-        anim.Play("Remove Pebble");
+        leaveAnimating = true;
     }
 
     //called when the animation finishes

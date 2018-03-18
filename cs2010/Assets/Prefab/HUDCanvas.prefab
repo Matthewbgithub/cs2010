@@ -99,8 +99,13 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 1
 --- !u!1 &1551745055452096
+=======
+  m_IsActive: 0
+--- !u!1 &1774300249771998
+>>>>>>> c172469c1346149194b824d1c9ef223198767220
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -441,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 0}
+<<<<<<< HEAD
 --- !u!114 &114438647336863348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,6 +501,8 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+=======
+>>>>>>> c172469c1346149194b824d1c9ef223198767220
 --- !u!114 &114614464667114216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1340,7 +1348,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1312679879964688}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
