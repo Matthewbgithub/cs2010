@@ -238,13 +238,13 @@ public class GoBoardTests {
     public void TestTimerCountDown(){
         script.Start();
 
-        GoBoard.blitzMode = true;
         Debug.Log(script.GetTurns().ToString());
         Assert.IsFalse(script.IsWhiteTurn(), "It should be black turn");
 
         script.playerTimer = 15;
         Debug.Log(script.GetTurns().ToString());
         script.BlitzModeLogic();
+
 
         Debug.Log(script.GetTurns().ToString());
         Assert.IsTrue(script.IsWhiteTurn(), "It should be white turn");

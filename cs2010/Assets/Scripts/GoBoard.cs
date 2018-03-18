@@ -159,7 +159,6 @@ public class GoBoard : MonoBehaviour {
         if(playerTimer >= 15){
             time = 0;
             playerTimer = 0;
-            turns++;
             PassTurn();
         }
     }
