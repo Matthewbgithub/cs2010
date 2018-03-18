@@ -7,11 +7,18 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Mesh1
+    100004: Group1
+    100006: Mesh2
     400000: //RootNode
     400002: Mesh1
+    400004: Group1
+    400006: Mesh2
     2300000: Mesh1
+    2300002: Mesh2
     3300000: Mesh1
+    3300002: Mesh2
     4300000: Mesh1
+    4300002: Mesh2
   externalObjects:
   - first:
       type: UnityEngine:Material

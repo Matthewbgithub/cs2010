@@ -7,8 +7,10 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Mesh1
+    100004: Group1
     400000: //RootNode
     400002: Mesh1
+    400004: Group1
     2300000: Mesh1
     3300000: Mesh1
     4300000: Mesh1

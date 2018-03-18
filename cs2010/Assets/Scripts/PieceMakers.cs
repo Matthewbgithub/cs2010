@@ -134,12 +134,17 @@ public class PieceMakers : MonoBehaviour {
     }
 	public void SetRolloverIllegal()
 	{
-		material[1] = Resources.Load("illegalRollover", typeof(Material)) as Material;
-		
+        if (rend)
+        {
+            material[1] = Resources.Load("illegalRollover", typeof(Material)) as Material;
+        }
 	}
 	public void SetRolloverWhite(bool isWhite)
 	{
-		material[1] = (isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
+        if (rend)
+        {
+            material[1] = (isWhite) ? Resources.Load("whiteSelectedRollover", typeof(Material)) as Material : Resources.Load("blackSelectedRollover", typeof(Material)) as Material;
+        }
 	}
     public void AlertWithTimeout()
     {
@@ -148,11 +153,17 @@ public class PieceMakers : MonoBehaviour {
     }
 	public void Alert()
     {
-     	rend.material = Resources.Load("illegalRollover", typeof(Material)) as Material;   
+        if (rend)
+        {
+            rend.material = Resources.Load("illegalRollover", typeof(Material)) as Material;
+        }
     }
     private IEnumerator AlertWait(float time)
     {
         yield return new WaitForSeconds(time);
-        rend.material = material[0];
+        if (rend)
+        {
+            rend.material = material[0];
+        }
     }
 }

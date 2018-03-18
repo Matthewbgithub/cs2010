@@ -174,6 +174,7 @@ public class GoBoardTests {
 	[Test]
 	public void TestBlackPebbleDoesNotSelfCapture() {
 		script.Start ();
+        script.GetPieceOnBoard(5, 5).Alert();
 		PassTurnToBlack ();
 
 		// Place a black pebble at 5, 5
