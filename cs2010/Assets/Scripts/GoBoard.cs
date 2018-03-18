@@ -37,7 +37,6 @@ public class GoBoard : MonoBehaviour {
 
     //game control fields
     private int turns = 1;
-    private bool isWhiteTurn = false;
     private int currentX;
     private int currentY;
     private int blackCount;
@@ -159,7 +158,6 @@ public class GoBoard : MonoBehaviour {
         if(playerTimer >= 15){
             time = 0;
             playerTimer = 0;
-            turns++;
             PassTurn();
         }
     }
@@ -268,7 +266,6 @@ public class GoBoard : MonoBehaviour {
             do { } while (ResetScene() == null);
             //sets values from state
             this.turns = state.turns;
-            this.isWhiteTurn = (this.turns % 2 == 0);
             this.whiteCount = state.whiteCount;
             this.blackCount = state.blackCount;
             //clears board
