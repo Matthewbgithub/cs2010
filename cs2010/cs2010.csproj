@@ -312,7 +312,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\QuitScript.cs" />
     <Compile Include="Assets\Resources\NewPlayModeTest.cs" />
     <Compile Include="Assets\Scripts\cameraScript.cs" />
     <Compile Include="Assets\Scripts\ContinueScript.cs" />
@@ -325,6 +324,7 @@
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
+    <Compile Include="Assets\Scripts\QuitScript.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadFileNames.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
     <Compile Include="Assets\Scripts\Tutorial\Instruction.cs" />
