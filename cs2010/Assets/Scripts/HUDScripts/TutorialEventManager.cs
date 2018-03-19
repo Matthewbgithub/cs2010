@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
@@ -35,13 +34,15 @@ public class TutorialEventManager : MonoBehaviour {
 		boardScript = board.GetComponent<GoBoard>();
 
 		// Generate instruction pool from XML file
-		insPool.SetupInstructions ();
+		var path = "/Scripts/Tutorial/";
+		insPool.SetupInstructions (Path.Combine(Application.dataPath + path, "Tutorial.xml"));
 
 		// Run the very first instruction upon start
 		RunInstruction (insPool.GetInstruction(0));
 	}
 
 	public void NextInstruction() {
+		// Don't need this. Should be done in the EndTutorial()
         if (buttonText.text == "Finish")
         {
             GoBoard.blitzMode = false;
@@ -89,6 +90,7 @@ public class TutorialEventManager : MonoBehaviour {
 	{
 		SaveLoad.BoardLock();
 		SaveLoad.AnimLock ();
+		// WHY???
 		//gameObject.GetComponent<Button>().interactable = false;
 		yield return new WaitForSeconds (seconds);
 		SaveLoad.BoardUnlock ();
