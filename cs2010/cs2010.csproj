@@ -321,6 +321,7 @@
     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\TutorialEventManager.cs" />
+    <Compile Include="Assets\Scripts\LoadingScript.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
