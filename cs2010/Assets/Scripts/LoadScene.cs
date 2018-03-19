@@ -13,16 +13,14 @@ public class LoadScene : MonoBehaviour
     public TextMeshProUGUI loadText;
 
     //Standard board size
-    public static int size = 19;
+    public static int size = 9;
 
     //State which safe file to load (1-3)
     public static int LoadFromSaveFile = -1;
 
     public void LoadSaveFile(int fileNumber)
     {
-        Debug.Log(fileNumber);
         LoadFromSaveFile = fileNumber;
-        Debug.Log(LoadFromSaveFile);
         LoadGame(1);
     }
 

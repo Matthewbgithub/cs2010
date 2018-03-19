@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 222213656606426052}
   - component: {fileID: 114737664192130968}
   - component: {fileID: 114965360186532168}
-  - component: {fileID: 114822370877281276}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -366,20 +365,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114822370877281276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1117489099838026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 335290d9aee5b491f87e978bd7e43c7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  board: {fileID: 0}
-  tutorialSubtitle: {fileID: 114711868827435814}
-  VoiceOver: {fileID: 82688473299292824}
 --- !u!114 &114965360186532168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,7 +403,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114737664192130968}
   m_OnClick:
     m_PersistentCalls:
+<<<<<<< HEAD
       m_Calls: []
+=======
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+>>>>>>> matt
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &222213656606426052
