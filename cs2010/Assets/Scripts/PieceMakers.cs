@@ -100,7 +100,7 @@ public class PieceMakers : MonoBehaviour {
         //increments turn
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
-        pos.y += 0.15f;
+        pos.y += 0.2f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         var pot = (isWhite) ? new Vector3(-15, 1f, 0) : new Vector3(15, 1f, 0);
