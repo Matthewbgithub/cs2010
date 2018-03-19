@@ -67,7 +67,6 @@
      <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
      <Compile Include="Assets\Scripts\Tutorial\Instruction.cs" />
      <Compile Include="Assets\Scripts\Tutorial\InstructionPool.cs" />
-     <Compile Include="Assets\Tests\CaptureTests.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />

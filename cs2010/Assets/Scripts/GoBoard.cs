@@ -261,7 +261,6 @@ public class GoBoard : MonoBehaviour {
     private void LoadGame(int saveNumber)
     {
         SaveLoad.BoardLock();
-        Debug.Log(saveNumber + "load from this slot !!!!!!!!!!!!!!!");
         state = SaveLoad.LoadSlot(saveNumber);
 
         if (state != null)
@@ -923,8 +922,7 @@ public static class SaveLoad
         for (int i = 0; i < savedGames.Length; i++)
         {
             if(LoadSlot(i) != null){
-                GameState temp = LoadSlot(i);
-                Debug.Log(temp.turns + "turns");
+                //GameState temp = LoadSlot(i);
                 saveFiles++;
             }
         }

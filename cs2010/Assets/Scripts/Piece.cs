@@ -81,12 +81,7 @@ public class Piece : MonoBehaviour {
                 //leaving is complete
                 if (!SaveLoad.captureLocked)
                 {
-                    Debug.Log("just unlocked didnt i");
                     SaveLoad.AnimUnlock();
-                }
-                else
-                {
-                    Debug.Log("sorry dad");
                 }
                 leaveAnimating = false;
                 this.Destroy();

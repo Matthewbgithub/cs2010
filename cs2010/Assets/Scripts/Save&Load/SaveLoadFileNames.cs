@@ -33,7 +33,7 @@ public class SaveLoadFileNames : MonoBehaviour {
                         slot3.text = SaveLoad.LoadSlot(i).fileName;
                         break;
                     default:
-                        Debug.Log("Outta range nug nug");
+                        Debug.Log("Save slot out of range.");
                         break;
                 }
             }
