@@ -78,7 +78,7 @@ public class HUDScore : MonoBehaviour
 	
 			}
 
-            if(GoBoard.blitzMode){
+            if(GoBoard.blitzMode || GoBoard.tutMode){
                 if (text.name == "timerText")
                 {
                     saveButton.interactable = false;

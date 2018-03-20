@@ -100,7 +100,7 @@ public class PieceMakers : MonoBehaviour {
         //increments turn
         var pos = this.transform.position;
         //pushes the position of the new piece up a bit just to make it fit better
-        pos.y += 0.15f;
+        pos.y += 0.2f;
         var rot = Quaternion.Euler(0, 0, 0);
         //places it in the scene
         var pot = (isWhite) ? new Vector3(-15, 1f, 0) : new Vector3(15, 1f, 0);
@@ -116,9 +116,11 @@ public class PieceMakers : MonoBehaviour {
 		if(!IsEmpty())
 		{
         	isPiece = false;
-            thisPiece.GetComponent<Piece>().DestroyWithAnimation();
-        	//delete current piece
-		}
+            //thisPiece.GetComponent<Piece>().DestroyWithAnimation();
+
+            //removes pieces and adds a timing to it to remove in a nice looking way
+            thisPiece.GetComponent<Piece>().DestroyWithTiming();
+        }
 	}	
     public void PlaceAnimationFinished()
     {

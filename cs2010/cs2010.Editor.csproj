@@ -324,7 +324,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\manga\original\Font License.txt" />
-    <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Scripts\Tutorial\Tutorial.xml" />
     <None Include="Assets\Tests\Editor\ImporterTest.xml" />
     <None Include="Assets\TextMesh Pro\Fonts\Anton OFL.txt" />

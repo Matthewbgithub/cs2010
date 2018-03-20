@@ -312,8 +312,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\QuitScript.cs" />
+    <Compile Include="Assets\AudioManager.cs" />
+    <Compile Include="Assets\buttonOnClick.cs" />
     <Compile Include="Assets\Resources\NewPlayModeTest.cs" />
+    <Compile Include="Assets\Scene\Sound.cs" />
     <Compile Include="Assets\Scripts\cameraScript.cs" />
     <Compile Include="Assets\Scripts\ContinueScript.cs" />
     <Compile Include="Assets\Scripts\GoBoard.cs" />
@@ -322,9 +324,11 @@
     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\TutorialEventManager.cs" />
+    <Compile Include="Assets\Scripts\LoadingScript.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Piece.cs" />
     <Compile Include="Assets\Scripts\PieceMakers.cs" />
+    <Compile Include="Assets\Scripts\QuitScript.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadFileNames.cs" />
     <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoadScript.cs" />
     <Compile Include="Assets\Scripts\Tutorial\Instruction.cs" />
@@ -364,7 +368,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\manga\original\Font License.txt" />
-    <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Scripts\Tutorial\Tutorial.xml" />
     <None Include="Assets\Tests\Editor\ImporterTest.xml" />
     <None Include="Assets\TextMesh Pro\Fonts\Anton OFL.txt" />

@@ -22,7 +22,7 @@ public class Piece : MonoBehaviour {
     private Vector3 startPoint;
     private float currentLerpTime = 0f;
     private float lerpTime = 1f;
-    private float animSpeed = 1.5f;
+    public static float animSpeed = 1.5f;
 
     private void Start()
     {
@@ -79,7 +79,10 @@ public class Piece : MonoBehaviour {
             if (currentLerpTime >= 1.0f)
             {
                 //leaving is complete
-                SaveLoad.AnimUnlock();
+                if (!SaveLoad.captureLocked)
+                {
+                    SaveLoad.AnimUnlock();
+                }
                 leaveAnimating = false;
                 this.Destroy();
             }
@@ -112,6 +115,17 @@ public class Piece : MonoBehaviour {
 	{
         Destroy(gameObject);
 	}
+
+    public static float captureOrder = 0;
+    private float pieceAnimationSpacing = 0.05f;
+
+    public void DestroyWithTiming()
+    {
+        //starts animation in the future
+        Invoke("DestroyWithAnimation", captureOrder);
+        //adds a value to the timer so the next time this is called it will happen a bit further in the future
+        captureOrder += pieceAnimationSpacing;
+    }
     public void DestroyWithAnimation()
     {
         //so you cant abuse the wait time of the animation
