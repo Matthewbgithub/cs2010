@@ -1343,9 +1343,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221342194}
+        m_MethodName: ActivateCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 221342194}
+        m_MethodName: PauseButtonUnlock
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1675,7 +1686,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -10, y: 10}
-  m_SizeDelta: {x: 135.52002, y: 25.410004}
+  m_SizeDelta: {x: 127, y: 23}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &231281175
 MonoBehaviour:
@@ -2961,12 +2972,12 @@ Prefab:
     - target: {fileID: 114688447204395700, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114157402088922314, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224775013321034098, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
@@ -3339,7 +3350,7 @@ Prefab:
     - target: {fileID: 114688447204395700, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114688447204395700, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
@@ -3370,16 +3381,16 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 945533189}
+      objectReference: {fileID: 507767391}
     - target: {fileID: 114157402088922314, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 114157402088922314, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114157402088922314, guid: 1239870ec7a6b471f8b188d802c06f3a,
         type: 2}
@@ -3391,6 +3402,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114688447204395700, guid: 1239870ec7a6b471f8b188d802c06f3a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 507767391}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1239870ec7a6b471f8b188d802c06f3a, type: 2}
   m_IsPrefabParent: 0
@@ -5988,7 +6004,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -10, y: 40}
-  m_SizeDelta: {x: 135.52002, y: 135.52}
+  m_SizeDelta: {x: 127, y: 127}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &874667034
 MonoBehaviour:
@@ -6126,7 +6142,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -10, y: 10}
-  m_SizeDelta: {x: 135.52002, y: 25.410004}
+  m_SizeDelta: {x: 127, y: 23}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &920852425
 MonoBehaviour:
@@ -6716,11 +6732,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943035975}
---- !u!1 &945533189 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1224642877506464, guid: 1239870ec7a6b471f8b188d802c06f3a,
-    type: 2}
-  m_PrefabInternal: {fileID: 507767390}
 --- !u!1 &947679303
 GameObject:
   m_ObjectHideFlags: 0
@@ -7434,9 +7445,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221342194}
+        m_MethodName: ActivateCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 221342194}
+        m_MethodName: PauseButtonUnlock
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8841,17 +8863,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1312679879964688, guid: d9a933c5282e1413d9322046d2373df9,
-          type: 2}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221342194}
+        m_MethodName: ActivateCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 221342194}
+        m_MethodName: PauseButtonUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -9239,7 +9271,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -10, y: 40}
-  m_SizeDelta: {x: 135.52002, y: 135.52}
+  m_SizeDelta: {x: 127, y: 127}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1147090085
 MonoBehaviour:
@@ -12205,16 +12237,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1016689246}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221342194}
+        m_MethodName: ActivateCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 221342194}
+        m_MethodName: PauseButtonUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -12610,9 +12653,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221342194}
+        m_MethodName: ActivateCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 221342194}
+        m_MethodName: PauseButtonUnlock
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16057,17 +16111,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1312679879964688, guid: d9a933c5282e1413d9322046d2373df9,
-          type: 2}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 221342194}
+        m_MethodName: ActivateCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 221342194}
+        m_MethodName: PauseButtonUnlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
