@@ -118,7 +118,7 @@ public class Piece : MonoBehaviour {
 	}
 
     public static float captureOrder = 0;
-    private float pieceAnimationSpacing = 0.05f;
+    private float pieceAnimationSpacing = 0.2f;
 
     public void DestroyWithTiming()
     {
