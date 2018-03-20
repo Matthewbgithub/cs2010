@@ -51,6 +51,7 @@ public class Piece : MonoBehaviour {
             transform.position = new Vector3(0, heightAdder, 0) + Vector3.Lerp(startPoint, target, perc);
             //transform.Rotate(Vector3.left*Time.deltaTime, 45);
             //Debug.Log("y:" + transform.position.y);
+
             if (currentLerpTime >= 1.0f)
             {
                 //animation is complete at this point

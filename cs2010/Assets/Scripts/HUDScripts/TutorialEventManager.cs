@@ -34,8 +34,7 @@ public class TutorialEventManager : MonoBehaviour {
 		boardScript = board.GetComponent<GoBoard>();
 
 		// Generate instruction pool from XML file
-		var path = "/Scripts/Tutorial/";
-		insPool.SetupInstructions (Path.Combine(Application.dataPath + path, "Tutorial.xml"));
+        insPool.SetupInstructions("Tutorial");
 
 		// Run the very first instruction upon start
 		RunInstruction (insPool.GetInstruction(0));

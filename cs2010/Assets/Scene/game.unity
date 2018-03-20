@@ -12870,8 +12870,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is a really long piece of text. I hope you can read this and I really
-    hope that the text flows to the next line which it does. Happy days :)
+  m_Text: not being reset if you see this
 --- !u!222 &1357128926
 CanvasRenderer:
   m_ObjectHideFlags: 0
