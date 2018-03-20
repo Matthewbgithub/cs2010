@@ -38,11 +38,13 @@ public class LoadScene : MonoBehaviour
 
     public void Grid19()
     {
+		size = 19;
         LoadGame(1);
     }
 
     public void BlitzGame(){
         GoBoard.blitzMode = true;
+		size = 13;
         LoadGame(1);
     }
 
