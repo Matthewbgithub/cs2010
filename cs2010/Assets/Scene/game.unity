@@ -3181,7 +3181,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100058, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3502,6 +3502,22 @@ Prefab:
     - target: {fileID: 100012, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
+      propertyPath: m_Name
+      value: JapaneseRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 100158, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
+      propertyPath: m_Name
+      value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 100156, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
+      propertyPath: m_Name
+      value: Tatami
+      objectReference: {fileID: 0}
+    - target: {fileID: 100142, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
+      propertyPath: m_Name
+      value: Room
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a02391c6149eca42b3e9df6314ce02b, type: 3}
@@ -4040,7 +4056,7 @@ GameObject:
   - component: {fileID: 384998787}
   - component: {fileID: 384998788}
   m_Layer: 0
-  m_Name: Directional light (2)
+  m_Name: CeilingLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14075,7 +14091,7 @@ GameObject:
   - component: {fileID: 1507808315}
   - component: {fileID: 1507808316}
   m_Layer: 0
-  m_Name: Directional light
+  m_Name: CeilingLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14761,7 +14777,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100176, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100140, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15130,6 +15146,50 @@ Prefab:
     - target: {fileID: 100152, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100176, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: ClassicRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 100182, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Pen
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Book1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Book2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Book3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Cup
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: TV
+      objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 100116, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 100180, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
+      propertyPath: m_Name
+      value: Table
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
@@ -18237,7 +18297,7 @@ GameObject:
   - component: {fileID: 1884238050}
   - component: {fileID: 1884238051}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18295,6 +18355,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -18904,7 +18965,7 @@ GameObject:
   - component: {fileID: 2018168174}
   - component: {fileID: 2018168175}
   m_Layer: 0
-  m_Name: Directional light (1)
+  m_Name: WallLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
