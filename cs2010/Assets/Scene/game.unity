@@ -3172,6 +3172,10 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -0.88
       objectReference: {fileID: 0}
+    - target: {fileID: 1587971782352016, guid: 3b1f1127a2eb94b1b934f647ccf3da00, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b1f1127a2eb94b1b934f647ccf3da00, type: 2}
   m_IsPrefabParent: 0
@@ -14519,7 +14523,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100176, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100140, guid: 317b8d7be093177448e73f521bbf52f1, type: 3}
       propertyPath: m_StaticEditorFlags
