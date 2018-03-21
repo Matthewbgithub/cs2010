@@ -86,6 +86,7 @@ public class GoBoard : MonoBehaviour {
 	public void Initialize(int size)
 	{
         SaveLoad.Init();
+        SaveLoad.AnimUnlock();
 		boardSize = size;
         ModelSwitch();
         checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
@@ -119,6 +120,10 @@ public class GoBoard : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 PassTurn();
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Debug.Log("anim:"+ SaveLoad.animLocked + " board: " + SaveLoad.boardLocked + " capture: " + SaveLoad.captureLocked);
             }
             if (Input.GetKeyDown(KeyCode.I))
             {
