@@ -76,7 +76,7 @@ public class LoadScene : MonoBehaviour
             loadText.text = "Loading progress: " + (progress * 100) + "%";
             if (operation.progress == 0.9f)
             {
-                loadText.text = "Smash space to smash";
+                loadText.text = "press space to continue";
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     operation.allowSceneActivation = true;
