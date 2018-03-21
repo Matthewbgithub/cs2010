@@ -69,6 +69,9 @@ public class GoBoard : MonoBehaviour {
     public GameObject model13;
     public GameObject model19;
     private GameObject boardModel;
+	public GameObject[,] roomArray;
+	private GameObject roomModel;
+	public static int themeSelect = 0;
 
     //testing features
     private bool incrementMode = true;
@@ -86,8 +89,10 @@ public class GoBoard : MonoBehaviour {
 	public void Initialize(int size)
 	{
         SaveLoad.Init();
+        SaveLoad.AnimUnlock();
 		boardSize = size;
         ModelSwitch();
+		RoomSwitch();
         checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
 
@@ -120,6 +125,10 @@ public class GoBoard : MonoBehaviour {
             {
                 PassTurn();
             }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                Debug.Log("anim:"+ SaveLoad.animLocked + " board: " + SaveLoad.boardLocked + " capture: " + SaveLoad.captureLocked);
+            }
             if (Input.GetKeyDown(KeyCode.I))
             {
                 incrementMode = !incrementMode;
@@ -127,6 +136,10 @@ public class GoBoard : MonoBehaviour {
             }
         }
     }
+	private void RoomSwitch()
+	{
+		
+	}
     void ModelSwitch()
     {
         if (GetBoardSize() == 9)
