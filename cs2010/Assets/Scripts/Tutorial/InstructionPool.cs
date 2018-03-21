@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InstructionPool
 {
@@ -38,6 +39,7 @@ public class InstructionPool
 		}
 		catch (FileNotFoundException e) {
 			Debug.LogError ("Reverting back to main menu due to: " + e);
+			SceneManager.LoadScene(0);
 		}
 
 		// Get all the instruction nodes
@@ -73,6 +75,7 @@ public class InstructionPool
 			catch (NullReferenceException) {
 				Debug.LogError ("A required attribute was missing from the tutorial XML file");
 				// Revert to main menu
+				SceneManager.LoadScene(0);
 			}
 				
 		}

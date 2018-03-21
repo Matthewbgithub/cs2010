@@ -46,8 +46,8 @@ public class TutorialEventManager : MonoBehaviour {
 		// Don't need this. Should be done in the EndTutorial()
         if (buttonText.text == "Finish")
         {
-            GoBoard.blitzMode = false;
-            SceneManager.LoadScene(0);
+			GoBoard.blitzMode = false;
+			SceneManager.LoadScene(0);
         }
 
 		if (instructionCounter < (insPool.InstructionCount ())) {
