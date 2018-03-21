@@ -24,6 +24,16 @@ public class Piece : MonoBehaviour {
     private float lerpTime = 1f;
     public static float animSpeed = 1.5f;
 
+    //consecutive piece removal animation
+    public static float captureOrder = 0;
+    private float pieceAnimationSpacing = 0.2f;
+
+    //audio
+    private AudioSource piecePlace;
+    private AudioSource pieceCapture;
+    public AudioClip place;
+    public AudioClip capture;
+
     private void Start()
     {
         //not sure why i've called these in the intializer and the start function it gets a bit sad if i dont
@@ -32,6 +42,9 @@ public class Piece : MonoBehaviour {
         currentLerpTime = 0f;
         enterAnimating = true;
         leaveAnimating = false;
+
+        pieceCapture = Resources.Load("pieceRemoveAudioSource", typeof(AudioSource)) as AudioSource;
+        piecePlace = Resources.Load("piecePlaceAudioSource", typeof(AudioSource)) as AudioSource;
     }
     
     void Update()
@@ -55,6 +68,8 @@ public class Piece : MonoBehaviour {
             {
                 //animation is complete at this point
                 theMaker.PlaceAnimationFinished();
+                //play capture sound
+                this.GetComponent<AudioSource>().PlayOneShot(place);
                 enterAnimating = false;
                 //reset values to prep for removal animation
                 currentLerpTime = 0f;
@@ -78,6 +93,7 @@ public class Piece : MonoBehaviour {
             transform.position = new Vector3(0, heightAdder, 0) + Vector3.Lerp(startPoint, target, perc);
             if (currentLerpTime >= 1.0f)
             {
+                
                 //leaving is complete
                 if (!SaveLoad.captureLocked)
                 {
@@ -116,8 +132,7 @@ public class Piece : MonoBehaviour {
         Destroy(gameObject);
 	}
 
-    public static float captureOrder = 0;
-    private float pieceAnimationSpacing = 0.05f;
+    
 
     public void DestroyWithTiming()
     {
@@ -130,6 +145,7 @@ public class Piece : MonoBehaviour {
     {
         //so you cant abuse the wait time of the animation
         SaveLoad.AnimLock();
+        this.GetComponent<AudioSource>().PlayOneShot(capture);
         leaveAnimating = true;
     }
 
