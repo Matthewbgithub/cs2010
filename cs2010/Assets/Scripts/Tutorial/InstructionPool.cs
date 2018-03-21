@@ -34,7 +34,8 @@ public class InstructionPool
 	public void SetupInstructions(string XmlPath) {
 		// Load the XML file
 		try {
-			instructionSet.Load (XmlPath);
+            TextAsset xmlFile = (TextAsset)Resources.Load(XmlPath);
+            instructionSet.LoadXml(xmlFile.text);
 		}
 		catch (FileNotFoundException e) {
 			Debug.LogError ("Reverting back to main menu due to: " + e);
