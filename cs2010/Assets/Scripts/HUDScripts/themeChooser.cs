@@ -8,13 +8,14 @@ using UnityEngine.SceneManagement;
 public class themeChooser : MonoBehaviour {
 
 	private Button button;
+    public int themeNo;
 
 	void Start() {
 		button = GetComponent<Button>();
-		button.onClick.AddListener(TaskOnClick);
+        button.onClick.AddListener(TaskOnClick);
 	}
 
-	void TaskOnClick(int themeNo) {
+	void TaskOnClick() {
 		GoBoard.themeSelect = themeNo;
 	}
 

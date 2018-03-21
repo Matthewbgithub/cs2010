@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 37754808}
   - component: {fileID: 37754807}
   - component: {fileID: 37754806}
+  - component: {fileID: 37754809}
   m_Layer: 5
   m_Name: luxuryButton
   m_TagString: Untagged
@@ -610,6 +611,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 37754804}
+--- !u!114 &37754809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37754804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db7188bac08b401d86adef9ee3114a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeNo: 2
 --- !u!1 &132495194
 GameObject:
   m_ObjectHideFlags: 0
@@ -5473,6 +5486,7 @@ GameObject:
   - component: {fileID: 1136719257}
   - component: {fileID: 1136719256}
   - component: {fileID: 1136719255}
+  - component: {fileID: 1136719258}
   m_Layer: 5
   m_Name: traditionalButton
   m_TagString: Untagged
@@ -5585,6 +5599,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136719253}
+--- !u!114 &1136719258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1136719253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db7188bac08b401d86adef9ee3114a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeNo: 3
 --- !u!1 &1138278718
 GameObject:
   m_ObjectHideFlags: 0
@@ -6284,7 +6310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1335411985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7922,6 +7948,7 @@ GameObject:
   - component: {fileID: 1611526684}
   - component: {fileID: 1611526683}
   - component: {fileID: 1611526682}
+  - component: {fileID: 1611526685}
   m_Layer: 5
   m_Name: classicButton
   m_TagString: Untagged
@@ -8034,6 +8061,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1611526680}
+--- !u!114 &1611526685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1611526680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db7188bac08b401d86adef9ee3114a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themeNo: 1
 --- !u!1 &1641346358
 GameObject:
   m_ObjectHideFlags: 0
