@@ -69,7 +69,10 @@ public class GoBoard : MonoBehaviour {
     public GameObject model13;
     public GameObject model19;
     private GameObject boardModel;
-	public GameObject[,] roomArray;
+	
+	public GameObject room1;
+	public GameObject room2;
+	public GameObject room3;
 	private GameObject roomModel;
 	public static int themeSelect = 0;
 
@@ -138,7 +141,16 @@ public class GoBoard : MonoBehaviour {
     }
 	private void RoomSwitch()
 	{
-		
+		if(themeSelect==1)
+		{
+			roomModel =  Instantiate(room1) as GameObject;
+		}else if(themeSelect==2)
+		{
+			roomModel =  Instantiate(room2) as GameObject;
+		}else
+		{
+			roomModel =  Instantiate(room3) as GameObject;
+		}
 	}
     void ModelSwitch()
     {

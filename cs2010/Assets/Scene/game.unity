@@ -4302,6 +4302,9 @@ MonoBehaviour:
   model9: {fileID: 100000, guid: 996c4794856d0d941acf1399e59c8133, type: 3}
   model13: {fileID: 100000, guid: a5ae0bb6aca27ad42bc72529a1089757, type: 3}
   model19: {fileID: 100000, guid: 9e7c036f44e6c2645b981521ccfe4fea, type: 3}
+  room1: {fileID: 1012619463864652, guid: 56e2fb54081464a4faedfecb3baf4c58, type: 2}
+  room2: {fileID: 1462675239024616, guid: 605b217476066db4c837a9e487d1f671, type: 2}
+  room3: {fileID: 1956917513419988, guid: e88bea70fb760bc409824399aaed427d, type: 2}
 --- !u!1 &225754744
 GameObject:
   m_ObjectHideFlags: 0
@@ -5723,7 +5726,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1587971782352016, guid: 3b1f1127a2eb94b1b934f647ccf3da00, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b1f1127a2eb94b1b934f647ccf3da00, type: 2}
@@ -21223,7 +21226,6 @@ GameObject:
   - component: {fileID: 1417176160}
   - component: {fileID: 1417176159}
   - component: {fileID: 1417176158}
-  - component: {fileID: 1417176157}
   m_Layer: 5
   m_Name: no
   m_TagString: Untagged
@@ -21251,18 +21253,6 @@ RectTransform:
   m_AnchoredPosition: {x: 40, y: -50}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1417176157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114634287055850622, guid: 8a8cfd404d4534307a4ed21673183a7f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1417176155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a21f17a3bd0f14a3d9c98f9ddc8341f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1417176158
 MonoBehaviour:
   m_ObjectHideFlags: 0
