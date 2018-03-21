@@ -53,13 +53,13 @@ public class HUDScore : MonoBehaviour
             if (text.name == "blackScore")
             {
                 int val = board.GetBlackTerritories() + board.GetBlackCount();
-                text.text = "score: " + val.ToString();
+                text.text = val.ToString();
             }
 
             if (text.name == "whiteScore")
             {
                 float val = (board.GetWhiteTerritories() + board.GetWhiteCount() + board.komi);
-                text.text = "score: " + val.ToString();
+                text.text = val.ToString();
 
                 text.faceColor = new Color32(0, 0, 0, 255);
             }
