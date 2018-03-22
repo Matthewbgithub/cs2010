@@ -294,7 +294,7 @@ public class GoBoardTests {
         string testgame = "testgame";
         script.SaveFile(s1, testgame);
 
-        boardScript.ResetBoard();
+        script.ResetBoard();
 
         script.LoadFile(s1);
     }
@@ -316,7 +316,7 @@ public class GoBoardTests {
 
         script.SaveFile(s3, filename);
 
-        boardScript.ResetBoard();
+        script.ResetBoard();
 
         script.LoadFile(s3);
         Assert.IsFalse(script.IsEmpty(4, 4), "4, 4 should be occupied, thus return false");
@@ -332,7 +332,7 @@ public class GoBoardTests {
         string slot1 = "testing slot one";
         script.SaveFile(s1, slot1);
 
-        boardScript.ResetBoard();
+        script.ResetBoard();
 
         script.LoadFile(s1);
     }
