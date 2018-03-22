@@ -29,8 +29,6 @@ public class Piece : MonoBehaviour {
     private float pieceAnimationSpacing = 0.2f;
 
     //audio
-    private AudioSource piecePlace;
-    private AudioSource pieceCapture;
     public AudioClip place;
     public AudioClip capture;
 
@@ -42,9 +40,7 @@ public class Piece : MonoBehaviour {
         currentLerpTime = 0f;
         enterAnimating = true;
         leaveAnimating = false;
-
-        pieceCapture = Resources.Load("pieceRemoveAudioSource", typeof(AudioSource)) as AudioSource;
-        piecePlace = Resources.Load("piecePlaceAudioSource", typeof(AudioSource)) as AudioSource;
+        
     }
     
     void Update()

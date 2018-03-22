@@ -77,7 +77,7 @@ public class GoBoard : MonoBehaviour {
 	public static int themeSelect = 0;
 
     //testing features
-    private bool incrementMode = true;
+    //private bool incrementMode = true;
 
     public void Start()
     {
@@ -93,6 +93,7 @@ public class GoBoard : MonoBehaviour {
 	{
         SaveLoad.Init();
         SaveLoad.AnimUnlock();
+        SaveLoad.CaptureUnlock();
 		boardSize = size;
         ModelSwitch();
 		RoomSwitch();
@@ -127,16 +128,11 @@ public class GoBoard : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 PassTurn();
-            }
+            }/*
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 Debug.Log("anim:"+ SaveLoad.animLocked + " board: " + SaveLoad.boardLocked + " capture: " + SaveLoad.captureLocked);
-            }
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                incrementMode = !incrementMode;
-                Debug.Log("incrementing turns is " + incrementMode);
-            }
+            }*/
         }
     }
 	private void RoomSwitch()
@@ -337,8 +333,6 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
-        if (incrementMode)
-        {
             if(IsWhiteTurn())
             {
                 whitePass = false;
@@ -348,7 +342,6 @@ public class GoBoard : MonoBehaviour {
                 blackPass = false;
             }
             turns++;
-        }
     }
     public int GetBoardSize()
     {
