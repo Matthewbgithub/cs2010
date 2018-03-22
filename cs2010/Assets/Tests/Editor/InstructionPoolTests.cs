@@ -51,7 +51,7 @@ public class InstructionPoolTests {
 
 	[Test]
 	public void TestImportFromXML() {
-		pool.SetupInstructions ("Assets/Tests/Editor/ImporterTest.xml");
+		pool.SetupInstructions ("ImporterTest");
 
 		// Check the first instruction
 		InstructionToTest = pool.GetInstruction(0);

@@ -73,7 +73,7 @@ public class GoBoard : MonoBehaviour {
 	public GameObject room1;
 	public GameObject room2;
 	public GameObject room3;
-	private GameObject roomModel;
+    private GameObject roomModel = Resources.Load("pot") as GameObject;
 	public static int themeSelect = 0;
 
     //testing features
@@ -137,7 +137,8 @@ public class GoBoard : MonoBehaviour {
     }
 	private void RoomSwitch()
 	{
-		if(!roomModel)
+        
+        if(!roomModel && room1)
 		{
 			if(themeSelect==1)
 			{
@@ -397,6 +398,7 @@ public class GoBoard : MonoBehaviour {
                 Destroy(GetPieceOnBoard(x,y).gameObject);
             }
         }
+
         //removes the current board model
         Destroy(boardModel.gameObject);
     }
