@@ -69,9 +69,15 @@ public class GoBoard : MonoBehaviour {
     public GameObject model13;
     public GameObject model19;
     private GameObject boardModel;
+	
+	public GameObject room1;
+	public GameObject room2;
+	public GameObject room3;
+    private GameObject roomModel = Resources.Load("pot") as GameObject;
+	public static int themeSelect = 0;
 
     //testing features
-    private bool incrementMode = true;
+    //private bool incrementMode = true;
 
     public void Start()
     {
@@ -86,8 +92,11 @@ public class GoBoard : MonoBehaviour {
 	public void Initialize(int size)
 	{
         SaveLoad.Init();
+        SaveLoad.AnimUnlock();
+        SaveLoad.CaptureUnlock();
 		boardSize = size;
         ModelSwitch();
+		RoomSwitch();
         checkedPieces = new bool[GetBoardSize(), GetBoardSize()];
 		groupCapture = new bool[GetBoardSize(), GetBoardSize()];
 
@@ -119,14 +128,30 @@ public class GoBoard : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 PassTurn();
-            }
-            if (Input.GetKeyDown(KeyCode.I))
+            }/*
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                incrementMode = !incrementMode;
-                Debug.Log("incrementing turns is " + incrementMode);
-            }
+                Debug.Log("anim:"+ SaveLoad.animLocked + " board: " + SaveLoad.boardLocked + " capture: " + SaveLoad.captureLocked);
+            }*/
         }
     }
+	private void RoomSwitch()
+	{
+        
+        if(!roomModel && room1)
+		{
+			if(themeSelect==1)
+			{
+				roomModel =  Instantiate(room1) as GameObject;
+			}else if(themeSelect==2)
+			{
+				roomModel =  Instantiate(room2) as GameObject;
+			}else
+			{
+				roomModel =  Instantiate(room3) as GameObject;
+			}
+		}
+	}
     void ModelSwitch()
     {
         if (GetBoardSize() == 9)
@@ -309,8 +334,6 @@ public class GoBoard : MonoBehaviour {
     //todo remove before prod
     public void IncrementTurns()
     {
-        if (incrementMode)
-        {
             if(IsWhiteTurn())
             {
                 whitePass = false;
@@ -320,7 +343,6 @@ public class GoBoard : MonoBehaviour {
                 blackPass = false;
             }
             turns++;
-        }
     }
     public int GetBoardSize()
     {
@@ -376,6 +398,7 @@ public class GoBoard : MonoBehaviour {
                 Destroy(GetPieceOnBoard(x,y).gameObject);
             }
         }
+
         //removes the current board model
         Destroy(boardModel.gameObject);
     }

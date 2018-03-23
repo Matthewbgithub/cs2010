@@ -67,19 +67,7 @@ public class PieceMakers : MonoBehaviour {
     {
         if (!SaveLoad.Locked())
         {
-            if(this.isPiece && Input.GetKey("a"))
-            {
-                //swap piece colour
-                RemovePiece();
-                this.Place(!this.isWhite);
-            }
-            else if(Input.GetKey("d"))
-            { 
-                RemovePiece();
-            }else 
-            {
-                thisBoard.TakeTurn(this.boardx, this.boardy);
-            }
+            thisBoard.TakeTurn(this.boardx, this.boardy);
         }
 
     }

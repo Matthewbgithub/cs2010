@@ -65,10 +65,11 @@ public class GoBoardTests {
 
 	[Test]
 	public void TestBoardCreation() {
-		script.Start ();
 
+        LoadScene.size = 19; 
+        script.Start();
 		// The default board game is 19. Check this is the case on invocation.
-		Assert.AreEqual (19, script.GetBoardSize ());
+        Assert.AreEqual (19, script.GetBoardSize ());
 	}
 
 	[Test]
@@ -253,31 +254,87 @@ public class GoBoardTests {
     public void TestTerritoryCount(){
         script.Start();
 
+        //black
         Debug.Log(script.GetTurns().ToString());
         script.PlacePiece(1,0);
+
         //white
         Debug.Log(script.GetTurns().ToString());
-        script.PlacePiece(9, 9);
-        //script.PassTurn();
+        script.PlacePiece(8, 8);
+
+        ///black
         Debug.Log(script.GetTurns().ToString());
         script.PlacePiece(1,1);
+
         //white
         Debug.Log(script.GetTurns().ToString());
-        script.PlacePiece(10, 10);
-        //script.PassTurn();
+        script.PlacePiece(3, 3);
+
+        //black
         Debug.Log(script.GetTurns().ToString());
         script.PlacePiece(1, 2);
+
         //white
         Debug.Log(script.GetTurns().ToString());
         script.PlacePiece(7,7);
-        //script.PassTurn();
+
+        //black
         Debug.Log(script.GetTurns().ToString());
         script.PlacePiece(0,3);
        
         script.TakeTurnPart2();
-        //Debug.Log(script.GetTurns().ToString());
-        //script.PlacePiece(7, 8);
-        //script.PlacePiece(7, 9);
         Assert.AreEqual(3,script.GetBlackTerritories(),"black territory is not 3");
     }
+
+    [Test]
+    public void TestLoadSlot()
+    {
+        script.Start();
+        string s1 = "s1";
+        string testgame = "testgame";
+        script.SaveFile(s1, testgame);
+
+        boardScript.ResetBoard();
+
+        script.LoadFile(s1);
+    }
+
+
+    [Test]
+    public void TestLoadSlot3()
+    {
+        script.Start();
+        // Place a black pebble at 4, 4
+        script.PlacePiece(4, 4);
+        // Place a white pebble at 5, 4
+        script.PlacePiece(5, 4);
+        // Place a black pebble at 6, 4
+        script.PlacePiece(6, 4);
+
+        string s3 = "s3";
+        string filename = "slot3";
+
+        script.SaveFile(s3, filename);
+
+        boardScript.ResetBoard();
+
+        script.LoadFile(s3);
+        Assert.IsFalse(script.IsEmpty(4, 4), "4, 4 should be occupied, thus return false");
+        Assert.IsFalse(script.IsEmpty(5, 4), "5, 4 should be occupied, thus return false");
+        Assert.IsFalse(script.IsEmpty(6, 4), "6, 4 should be occupied, thus return false");
+    }
+
+    [Test]
+    public void TestLoadNames()
+    {
+        script.Start();
+        string s1 = "s1";
+        string slot1 = "testing slot one";
+        script.SaveFile(s1, slot1);
+
+        boardScript.ResetBoard();
+
+        script.LoadFile(s1);
+    }
+
 }

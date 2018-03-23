@@ -320,6 +320,7 @@
     <Compile Include="Assets\Scripts\HUDScripts\HUDScore.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\MenuLoader.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\RestartScript.cs" />
+    <Compile Include="Assets\Scripts\HUDScripts\themeChooser.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\TutorialEventManager.cs" />
     <Compile Include="Assets\Scripts\LoadingScript.cs" />
     <Compile Include="Assets\Scripts\LoadScene.cs" />
@@ -365,8 +366,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\manga\original\Font License.txt" />
-    <None Include="Assets\Scripts\Tutorial\Tutorial.xml" />
-    <None Include="Assets\Tests\Editor\ImporterTest.xml" />
+    <None Include="Assets\Resources\ImporterTest.xml" />
+    <None Include="Assets\Resources\Tutorial.xml" />
     <None Include="Assets\TextMesh Pro\Fonts\Anton OFL.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
